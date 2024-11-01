@@ -58,23 +58,27 @@ def save_base():
 def new_id(user: dict):
     base[user['id']] = {'username': user['username'],
                         'credits': 0,
-                        'time': ''}
+                        'time': '',
+                        "inventory": {}}
     save_base()
 
 
-def add_credits(user: dict, credits):
-    id = user['id']
-    if id not in base:
+def check_user(user: dict):
+    if user['id'] not in base:
         new_id(user)
+
+
+def add_credits(user: dict, credits):
+    check_user(user)
+    id = user['id']
     base[id]['credits'] = base[id]['credits'] + credits
     save_base()
 
 
 def work(user: dict):
+    check_user(user)
     id = user['id']
     credits = randint(30, 45)
-    if id not in base:
-        new_id(user)
 
     cur_data = get_data()
 

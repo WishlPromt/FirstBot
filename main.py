@@ -2,7 +2,7 @@ import telebot
 from telebot import types
 from random import choice, randint
 import json, time
-from social_credits import add_credits, show_credits, work
+from social_credits import add_credits, show_credits, work, check_user
 
 
 #JSON
@@ -198,6 +198,7 @@ def choose(message):
 
 @bot.callback_query_handler(func=lambda callback: True)
 def callback(callback):
+
     if callback.data == 'new_tag':
         new_tag(callback.message)
 
@@ -278,6 +279,14 @@ def show(message):
     bot.send_message(message.chat.id, show_credits())
 
 
+@bot.message_handler(commands=['shop'])
+def shop(message):
+    check_user({'id': str(message.from_user.id), 'username': message.from_user.username})
+
+    markup = types.InlineKeyboardMarkup
+
+
+#GAMES
 @bot.message_handler(commands=['russian_roulette', 'russkaia_ruletka'])
 def start_roul(message):
     global games, org, players
