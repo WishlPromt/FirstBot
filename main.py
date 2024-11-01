@@ -278,10 +278,6 @@ def show(message):
     bot.send_message(message.chat.id, show_credits())
 
 
-@bot.message_handler(commands=['add_credits'])
-def add(message):
-    add_credits({'id': str(message.from_user.id), 'username': message.from_user.username}, 100)
-
 @bot.message_handler(commands=['russian_roulette', 'russkaia_ruletka'])
 def start_roul(message):
     global games, org, players
