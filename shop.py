@@ -13,9 +13,8 @@ def buy(item, buyer):
 
 
 def get_items(page):
-    list = items
-    for item in range(0, len(list), 3):
-        yield list[item:item + 3]
+    items_on_page = []
+    for item in items[page*3:(page+1*3)]:
+        items_on_page.append(item)
 
-    return list[page]
-
+    return items_on_page
