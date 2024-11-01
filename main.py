@@ -278,6 +278,10 @@ def show(message):
     bot.send_message(message.chat.id, show_credits())
 
 
+@bot.message_handler(commands=['add_credits'])
+def add(message):
+    add_credits({'id': str(message.from_user.id), 'username': message.from_user.username}, 100)
+
 @bot.message_handler(commands=['russian_roulette', 'russkaia_ruletka'])
 def start_roul(message):
     global games, org, players
@@ -347,7 +351,7 @@ def start_game(message):
                 time.sleep(2)
 
                 bot.send_message(message.chat.id, f'{players[0]["username"]} - Победитель! Он получает 100 кредитов!')
-                add_credits(players[0]['id'], 100)
+                add_credits({'id':str(players[0]['id']), 'username': players[0]['username']}, 100)
 
             else:
                 bot.send_message(message.chat.id, 'НИЧЬЯ!')
