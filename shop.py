@@ -13,8 +13,9 @@ def buy(item, buyer):
 
 
 def get_items(page):
-    items_on_page = []
-    for item in items[page*3:(page+1*3)]:
-        items_on_page.append(item)
+    items_on_page = {}
+    for item in items:
+        if items[item][2] == page:
+            items_on_page[item] = (items[item])
 
     return items_on_page

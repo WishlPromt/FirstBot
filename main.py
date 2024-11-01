@@ -284,7 +284,13 @@ def show(message):
 def shop(message):
     check_user({'id': str(message.from_user.id), 'username': message.from_user.username})
 
-    bot.send_message(message.chat.id, get_items(0))
+    items = get_items(1)
+    print(items)
+
+    markup = types.InlineKeyboardMarkup()
+    markup.add(types.InlineKeyboardButton(f'{items[0]} - {str(items[1])}', callback_data=buy(items[0],{'id': message.from_user.id, 'username': message.from_user.username})))
+
+    bot.send_message(message.chat.id, 'Магазин бота')
 
 
 #GAMES
