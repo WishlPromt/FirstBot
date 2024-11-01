@@ -285,10 +285,16 @@ def shop(message):
     check_user({'id': str(message.from_user.id), 'username': message.from_user.username})
 
     items = get_items(1)
-    print(items)
+    names = []
+    for name in items.keys():
+        names.append(name)
+
+    prices = []
+    for name in names:
+        prices.append(items[name][0])
 
     markup = types.InlineKeyboardMarkup()
-    markup.add(types.InlineKeyboardButton(f'{items[0]} - {str(items[1])}', callback_data=buy(items[0],{'id': message.from_user.id, 'username': message.from_user.username})))
+    markup.add(types.InlineKeyboardButton(f'{names[0]} - {str(prices[0])}', callback_data=buy(names[0],{'id': message.from_user.id, 'username': message.from_user.username})))
 
     bot.send_message(message.chat.id, 'Магазин бота')
 
