@@ -3,6 +3,7 @@ from telebot import types
 from random import choice, randint
 import json, time
 from social_credits import add_credits, show_credits, work, check_user
+from shop import buy, get_items
 
 
 #JSON
@@ -283,7 +284,7 @@ def show(message):
 def shop(message):
     check_user({'id': str(message.from_user.id), 'username': message.from_user.username})
 
-    markup = types.InlineKeyboardMarkup
+    bot.send_message(message.chat.id, get_items(0))
 
 
 #GAMES
