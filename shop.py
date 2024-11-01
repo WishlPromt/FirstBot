@@ -9,4 +9,4 @@ with open('credits_base.json', 'r', encoding='utf-8') as file:
 def buy(item, buyer):
     if item in items:
         if items[item][0] <= credits[buyer]['credits']:
-            pass
+            credits[buyer]['inventory'][item] = [items[item][1], int(items[item][0] / 2)]
