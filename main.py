@@ -294,7 +294,9 @@ def shop(message):
         prices.append(items[name][0])
 
     markup = types.InlineKeyboardMarkup()
-    markup.add(types.InlineKeyboardButton(f'{names[0]} - {str(prices[0])}', callback_data=buy(names[0],{'id': message.from_user.id, 'username': message.from_user.username})))
+    markup.add(types.InlineKeyboardButton(f'{names[0]} - {str(prices[0])}'))
+    markup.add(types.InlineKeyboardButton(f'{names[1]} - {str(prices[1])}'))
+    markup.add(types.InlineKeyboardButton(f'{names[2]} - {str(prices[2])}'))
 
     bot.send_message(message.chat.id, 'Магазин бота')
 
