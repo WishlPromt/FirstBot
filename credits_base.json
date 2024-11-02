@@ -1,26 +1,29 @@
 {
     "5105507379": {
         "username": "WishlPromt",
-        "credits": 269,
-        "time": "02-13",
-        "inventory": {}
+        "credits": 242,
+        "time": "02-17",
+        "inventory": [
+            "Вилка",
+            "Костюм горничной"
+        ]
     },
     "5422828618": {
         "username": "Mzmz640404",
-        "credits": 97,
-        "time": "01-19",
-        "inventory": {}
+        "credits": 130,
+        "time": "02-15",
+        "inventory": []
     },
     "1234733553": {
         "username": "ultras567",
         "credits": 41,
         "time": "01-14",
-        "inventory": {}
+        "inventory": []
     },
     "5817779536": {
         "username": "Артем",
         "credits": 42,
         "time": "01-15",
-        "inventory": {}
+        "inventory": []
     }
 }

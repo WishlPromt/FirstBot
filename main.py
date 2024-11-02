@@ -199,27 +199,41 @@ def choose(message):
 
 @bot.callback_query_handler(func=lambda callback: True)
 def callback(callback):
+    if education_mode:
 
-    if callback.data == 'new_tag':
-        new_tag(callback.message)
+        if callback.data == 'new_tag':
+            new_tag(callback.message)
 
-    elif callback.data == 'edit_tag':
-        edit_tag(callback.message)
+        elif callback.data == 'edit_tag':
+            edit_tag(callback.message)
 
-    elif callback.data == 'rename_tag':
-        rename(callback.message)
+        elif callback.data == 'rename_tag':
+            rename(callback.message)
 
-    elif callback.data == 'edit_messages':
-        add_message(callback.message)
+        elif callback.data == 'edit_messages':
+            add_message(callback.message)
 
-    elif callback.data == 'edit_answers':
-        add_answers(callback.message)
+        elif callback.data == 'edit_answers':
+            add_answers(callback.message)
 
-    elif callback.data == 'finish':
-        finish(callback.message)
+        elif callback.data == 'finish':
+            finish(callback.message)
 
-    else:
-        bot.send_message(callback.message.chat.id, 'Произошла ошибка')
+        else:
+            bot.send_message(callback.message.chat.id, 'Произошла ошибка')
+
+
+    if callback.data == 'Вилка':
+        if buy('Вилка', {'id': str(callback.from_user.id), 'username': callback.from_user.username}):
+            bot.send_message(callback.message.chat.id, 'Вы купили вилку!')
+        else:
+            bot.send_message(callback.message.chat.id, 'Ошибка! Предмет не куплен!')
+
+    elif callback.data == 'Костюм горничной':
+        if buy('Костюм горничной', {'id': str(callback.from_user.id), 'username': callback.from_user.username}):
+            bot.send_message(callback.message.chat.id, 'Вы купили костюм горничной!')
+        else:
+            bot.send_message(callback.message.chat.id, 'Ошибка! Предмет не куплен!')
 
 
 #Режим обучения
@@ -264,7 +278,7 @@ def add_answers(message):
 
 @bot.message_handler(commands=['nsfw'])
 def nsfw(message):
-    bot.send_message(message.chat.id, "https://youtu.be/dQw4w9WgXcQ?si=djCpzMaLxIP6jOlW")
+    bot.send_message(message.chat.id, 'https://youtu.be/dQw4w9WgXcQ?si=djCpzMaLxIP6jOlW')
 
 
 #SOCIAL CREDITS
@@ -294,12 +308,17 @@ def shop(message):
         prices.append(items[name][0])
 
     markup = types.InlineKeyboardMarkup()
-    markup.add(types.InlineKeyboardButton(f'{names[0]} - {str(prices[0])}'))
-    markup.add(types.InlineKeyboardButton(f'{names[1]} - {str(prices[1])}'))
-    markup.add(types.InlineKeyboardButton(f'{names[2]} - {str(prices[2])}'))
+    but_item_0 = types.InlineKeyboardButton(f'{names[0]} - {str(prices[0])}', callback_data=names[0])
+    but_item_1 = types.InlineKeyboardButton(f'{names[1]} - {str(prices[1])}', callback_data=names[1])
+    but_item_2 = types.InlineKeyboardButton(f'{names[2]} - {str(prices[2])}', callback_data=names[2])
+    but_next = types.InlineKeyboardButton('>>', url='https://youtu.be/dQw4w9WgXcQ?si=djCpzMaLxIP6jOlW')
+    but_back = types.InlineKeyboardButton('<<', url='https://youtu.be/dQw4w9WgXcQ?si=djCpzMaLxIP6jOlW')
+    markup.add(but_item_0)
+    markup.add(but_item_1)
+    markup.add(but_item_2)
+    markup.row(but_back, but_next)
 
-    bot.send_message(message.chat.id, 'Магазин бота')
-
+    bot.send_message(message.chat.id, 'Магазин бота', reply_markup=markup)
 
 #GAMES
 @bot.message_handler(commands=['russian_roulette', 'russkaia_ruletka'])

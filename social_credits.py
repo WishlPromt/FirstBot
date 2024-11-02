@@ -55,11 +55,12 @@ def save_base():
     json.dump(base, file, indent=4, ensure_ascii=False)
     file.close()
 
+
 def new_id(user: dict):
     base[user['id']] = {'username': user['username'],
                         'credits': 0,
                         'time': '',
-                        "inventory": {}}
+                        "inventory": []}
     save_base()
 
 
