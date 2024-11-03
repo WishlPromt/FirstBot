@@ -2,7 +2,7 @@ import telebot
 from telebot import types
 from random import choice, randint
 import json, time
-from social_credits import add_credits, show_credits, work, check_user
+from social_credits import add_credits, show_credits, work, check_user, balance
 from shop import buy, get_items, next_page,back_page
 
 
@@ -304,6 +304,11 @@ def work_credit(message):
 @bot.message_handler(commands=['credits'])
 def show(message):
     bot.send_message(message.chat.id, show_credits())
+
+
+@bot.message_handler(commands=['balance'])
+def send_balance(message):
+    bot.send_message(message.chat.id, balance({'id': str(message.from_user.id), 'username': message.from_user.username}), parse_mode='html')
 
 
 @bot.message_handler(commands=['shop'])

@@ -56,6 +56,13 @@ def work(user: dict):
         return f'Не так быстро!\n Вы сможете снова воркать только {convert_time(base[id]["time"])}'
 
 
+def balance(user: dict):
+    check_user(user)
+    id = user['id']
+
+    return f'<b>{base[id]["username"]}</b>\n Ваши социальные кредиты:\n <b>{str(base[id]["credits"])}</b>'
+
+
 def show_credits():
     credits = 'Социальные кредиты участников'
     for id in base.keys():
