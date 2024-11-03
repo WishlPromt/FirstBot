@@ -43,7 +43,7 @@ def start(message):
 @bot.message_handler(commands=['developer', 'author'])
 def developer(message):
     if message.from_user.id != 5105507379:
-        bot.send_message(message.chat.id, 'Меня создал @AppleBox01')
+        bot.send_message(message.chat.id, 'Меня создал @WishlPromt')
     else:
         bot.send_message(message.chat.id, 'Ты мой создатель')
 
