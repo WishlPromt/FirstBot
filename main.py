@@ -298,7 +298,7 @@ def work_credit(message):
     user = {'id': str(message.from_user.id),
             'username': message.from_user.username,
             'datetime': message.date}
-    bot.reply_to(message, f'{user["username"]}, {work(user)}')
+    bot.reply_to(message, f'<b>{user["username"]}</b>, {work(user)}', parse_mode='html')
 
 
 @bot.message_handler(commands=['credits'])

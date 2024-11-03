@@ -1,8 +1,8 @@
 {
     "5105507379": {
         "username": "WishlPromt",
-        "credits": 150,
-        "time": 1730622316,
+        "credits": 186,
+        "time": 1730637555,
         "inventory": [
             "Вилка",
             "Костюм горничной",
@@ -36,6 +36,12 @@
     },
     "7179420529": {
         "username": "OkeeeeMyBot",
+        "credits": 0,
+        "time": 0,
+        "inventory": []
+    },
+    "6638790681": {
+        "username": "Lalsans1111",
         "credits": 0,
         "time": 0,
         "inventory": []

@@ -50,10 +50,10 @@ def work(user: dict):
 
         save_base()
 
-        return f'Вы заработали {credits} кредитов!\nВы сможете воркать снова только {convert_time(base[id]["time"])}'
+        return f'Вы заработали <b>{credits}</b> кредитов!\nВы сможете воркать снова только <i>{convert_time(base[id]["time"])}</i>'
 
     else:
-        return f'Не так быстро!\n Вы сможете снова воркать только {convert_time(base[id]["time"])}'
+        return f'Не так быстро!\n Вы сможете снова воркать только <b>{convert_time(base[id]["time"])}</b>'
 
 
 def balance(user: dict):
