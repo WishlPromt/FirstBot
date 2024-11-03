@@ -286,7 +286,8 @@ def nsfw(message):
 @bot.message_handler(commands=['work'])
 def work_credit(message):
     user = {'id': str(message.from_user.id),
-            'username': message.from_user.username}
+            'username': message.from_user.username,
+            'datetime': message.date}
     bot.reply_to(message, f'{user["username"]}, {work(user)}')
 
 
