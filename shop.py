@@ -27,7 +27,9 @@ def buy(item, buyer):
     price = items[item][0]
     inventory = credits[buyer['id']]['inventory']
 
-    if item not in inventory:
+    username = credits[buyer["id"]]["username"]
+
+    if item not in inventory and item not in ['Пак карточек']:
         if price <= credits[buyer['id']]['credits']:
 
             inventory.append(item)
@@ -39,9 +41,34 @@ def buy(item, buyer):
             return 'buy'
 
         else:
-            return f'{credits[buyer["id"]]["username"]}, у вас нет денег\n Используйте /balance, чтобы посмотреть баланс'
+            return f'{username}, у вас нет денег\n Используйте /balance, чтобы посмотреть баланс'
 
-    return f'{credits[buyer["id"]]["username"]}, предмет уже есть в вашем инвенторе'
+    elif item not in inventory and item in ['Пак карточек']:
+        if price <= credits[buyer['id']]['credits']:
+
+            inventory.append(item)
+            credits[buyer['id']]['cards_packs']['item'] = 1
+            credits[buyer['id']]['inventory'] = inventory
+            credits[buyer['id']]['credits'] = credits[buyer['id']]['credits'] - price
+
+            save_inventory()
+
+            return f'{username}, вы купили {item}.\n Его можно будет открыть из инвенторя'
+
+        else:
+            return f'{username}, у вас нет денег\n Используйте /balance, чтобы посмотреть баланс'
+
+    elif item in inventory and item in ['Пак карточек']:
+        if price <= credits[buyer['id']]['credits']:
+
+            credits[buyer['id']]['cards_packs'] += 1
+
+            return f'{username}, вы купили {item}.\n Теперь их у вас {inventory['cards_packs'][item]}\n Их можно будет открыть из инвенторя'
+
+        else:
+            return f'{username}, у вас нет денег\n Используйте /balance, чтобы посмотреть баланс'
+
+    return f'{username}, предмет уже есть в вашем инвенторе'
 
 
 def next_page(cur_page):
