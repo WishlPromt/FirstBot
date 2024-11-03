@@ -62,8 +62,11 @@ def buy(item, buyer):
         if price <= credits[buyer['id']]['credits']:
 
             credits[buyer['id']]['cards_packs'][item] += 1
+            credits[buyer['id']]['credits'] = credits[buyer['id']]['credits'] - price
+            
+            save_inventory()
 
-            return f'{username}, вы купили {item}.\n Теперь их у вас {inventory["cards_packs"][item]}\n Их можно будет открыть из инвенторя'
+            return f'{username}, вы купили {item}.\n Теперь их у вас {credits[buyer["id"]]["cards_packs"][item]}\n Их можно будет открыть из инвенторя'
 
         else:
             return f'{username}, у вас нет денег\n Используйте /balance, чтобы посмотреть баланс'
