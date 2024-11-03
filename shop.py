@@ -36,13 +36,15 @@ def buy(item, buyer):
 
             save_inventory()
 
-            return True
+            return 'buy'
 
-    return False
+        else:
+            return f'{credits[buyer["id"]]["username"]}, у вас нет денег\n Используйте /balance, чтобы посмотреть баланс'
+
+    return f'{credits[buyer["id"]]["username"]}, предмет уже есть в вашем инвенторе'
 
 
 def next_page(cur_page):
-    print(cur_page)
     if cur_page < max_pages:
         return cur_page + 1
     else:

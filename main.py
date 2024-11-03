@@ -228,22 +228,19 @@ def callback(callback):
 
 
     if callback.data in items.keys():
-        if buy(callback.data, {'id': str(callback.from_user.id), 'username': callback.from_user.username}):
-            bot.send_message(callback.message.chat.id, f'Вы купили {callback.data}!\n')
+        buy_status = buy(callback.data, {'id': str(callback.from_user.id), 'username': callback.from_user.username})
+        if buy_status == 'buy':
+            bot.send_message(callback.message.chat.id, f'{callback.from_user.username}, вы купили {callback.data}!\n')
         else:
-            bot.send_message(callback.message.chat.id, 'Предмет уже есть у вас в инвенторе!')
+            bot.send_message(callback.message.chat.id, buy_status)
 
 
     if callback.data.find('>>') != -1:
         next = next_page(int(callback.data[2]))
-        print(next)
         if next != 0:
             shop(callback.message, next)
             bot.delete_message(callback.message.chat.id, callback.message.id)
 
-
-    else:
-        bot.send_message(callback.message.chat.id, 'Ошибка! Разработчик рукожоп!')
 
 
 #Режим обучения
@@ -310,7 +307,6 @@ def shop(message, page=1):
     check_user({'id': str(message.from_user.id), 'username': message.from_user.username})
 
     items = get_items(page)
-    print(items)
     names = []
     for name in items.keys():
         names.append(name)
