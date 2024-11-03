@@ -16,7 +16,7 @@ def save_base():
 def new_id(user: dict):
     base[user['id']] = {'username': user['username'],
                         'credits': 0,
-                        'time': '',
+                        'time': 0,
                         "inventory": []}
     save_base()
 
