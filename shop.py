@@ -1,6 +1,5 @@
 import json
-from social_credits import check_user, add_credits, save_base
-from time import sleep
+
 
 #DATABASES
 with open('items.json', 'r', encoding='utf-8') as file:
@@ -22,12 +21,14 @@ max_pages = 2
 
 def buy(item, buyer):
 
-    check_user(buyer)
+    try:
+        inventory = credits[buyer['id']]['inventory']
+        username = credits[buyer['id']]['username']
+    except:
+        return 'Ошибка'
 
     price = items[item][0]
-    inventory = credits[buyer['id']]['inventory']
 
-    username = credits[buyer["id"]]["username"]
 
     if item not in inventory and item not in ['Пак карточек']:
         if price <= credits[buyer['id']]['credits']:
@@ -41,7 +42,7 @@ def buy(item, buyer):
             return 'buy'
 
         else:
-            return f'{username}, у вас нет денег\n Используйте /balance, чтобы посмотреть баланс'
+            return f'<b>{username}</b>, у вас нет денег\n Используйте /balance, чтобы посмотреть баланс'
 
     elif item not in inventory and item in ['Пак карточек']:
         if price <= credits[buyer['id']]['credits']:
@@ -53,25 +54,25 @@ def buy(item, buyer):
 
             save_inventory()
 
-            return f'{username}, вы купили {item}.\n Его можно будет открыть из инвенторя'
+            return f'<b>{username}</b>, вы купили <b>{item}</b>.\n Его можно будет открыть из <i>инвенторя</i>'
 
         else:
-            return f'{username}, у вас нет денег\n Используйте /balance, чтобы посмотреть баланс'
+            return f'<b>{username}</b>, у вас нет денег\n Используйте /balance, чтобы посмотреть баланс'
 
     elif item in inventory and item in ['Пак карточек']:
         if price <= credits[buyer['id']]['credits']:
 
             credits[buyer['id']]['cards_packs'][item] += 1
             credits[buyer['id']]['credits'] = credits[buyer['id']]['credits'] - price
-            
+
             save_inventory()
 
-            return f'{username}, вы купили {item}.\n Теперь их у вас {credits[buyer["id"]]["cards_packs"][item]}\n Их можно будет открыть из инвенторя'
+            return f'<b>{username}</b>, вы купили <b>{item}</b>.\n Теперь их у вас <b>{credits[buyer["id"]]["cards_packs"][item]}</b>\n Их можно будет открыть из инвенторя'
 
         else:
-            return f'{username}, у вас нет денег\n Используйте /balance, чтобы посмотреть баланс'
+            return f'<b>{username}</b>, у вас нет денег\n Используйте /balance, чтобы посмотреть баланс'
 
-    return f'{username}, предмет уже есть в вашем инвенторе'
+    return f'<b>{username}</b>, предмет уже есть в вашем инвенторе'
 
 
 def next_page(cur_page):

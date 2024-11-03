@@ -1,8 +1,8 @@
 {
     "5105507379": {
         "username": "WishlPromt",
-        "credits": 263,
-        "time": 1730657743,
+        "credits": 192,
+        "time": 0,
         "inventory": [
             "Вилка",
             "Костюм горничной",
@@ -10,7 +10,7 @@
             "Шампунь Жумайсынба"
         ],
         "cards_packs": {
-            "Пак карточек": 1
+            "Пак карточек": 3
         }
     },
     "5422828618": {
@@ -37,16 +37,19 @@
         "time": 1730575828,
         "inventory": []
     },
-    "7179420529": {
-        "username": "OkeeeeMyBot",
-        "credits": 0,
-        "time": 0,
-        "inventory": []
-    },
     "6638790681": {
         "username": "Lalsans1111",
         "credits": 0,
         "time": 0,
         "inventory": []
+    },
+    "7371953508": {
+        "username": null,
+        "credits": 0,
+        "time": 0,
+        "inventory": [],
+        "cards_packs": {
+            "Пак карточек": 0
+        }
     }
 }

@@ -27,6 +27,8 @@ def new_id(user: dict):
 def check_user(user: dict):
     if user['id'] not in base:
         new_id(user)
+        return False
+
 
 
 def add_credits(user: dict, credits):
