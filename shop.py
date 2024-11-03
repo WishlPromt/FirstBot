@@ -47,7 +47,7 @@ def buy(item, buyer):
         if price <= credits[buyer['id']]['credits']:
 
             inventory.append(item)
-            credits[buyer['id']]['cards_packs']['item'] = 1
+            credits[buyer['id']]['cards_packs'][item] = 1
             credits[buyer['id']]['inventory'] = inventory
             credits[buyer['id']]['credits'] = credits[buyer['id']]['credits'] - price
 
@@ -61,9 +61,9 @@ def buy(item, buyer):
     elif item in inventory and item in ['Пак карточек']:
         if price <= credits[buyer['id']]['credits']:
 
-            credits[buyer['id']]['cards_packs'] += 1
+            credits[buyer['id']]['cards_packs'][item] += 1
 
-            return f'{username}, вы купили {item}.\n Теперь их у вас {inventory['cards_packs'][item]}\n Их можно будет открыть из инвенторя'
+            return f'{username}, вы купили {item}.\n Теперь их у вас {inventory["cards_packs"][item]}\n Их можно будет открыть из инвенторя'
 
         else:
             return f'{username}, у вас нет денег\n Используйте /balance, чтобы посмотреть баланс'
