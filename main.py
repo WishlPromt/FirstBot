@@ -3,7 +3,7 @@ from telebot import types
 from random import choice, randint
 import json, time
 from social_credits import add_credits, show_credits, work, check_user
-from shop import buy, get_items
+from shop import buy, get_items, next_page
 
 
 #JSON
@@ -233,6 +233,15 @@ def callback(callback):
         else:
             bot.send_message(callback.message.chat.id, 'Предмет уже есть у вас в инвенторе!')
 
+
+    if callback.data.find('>>') != -1:
+        next = next_page(int(callback.data[2]))
+        print(next)
+        if next != 0:
+            shop(callback.message, next)
+            bot.delete_message(callback.message.chat.id, callback.message.id)
+
+
     else:
         bot.send_message(callback.message.chat.id, 'Ошибка! Разработчик рукожоп!')
 
@@ -297,10 +306,11 @@ def show(message):
 
 
 @bot.message_handler(commands=['shop'])
-def shop(message):
+def shop(message, page=1):
     check_user({'id': str(message.from_user.id), 'username': message.from_user.username})
 
-    items = get_items(1)
+    items = get_items(page)
+    print(items)
     names = []
     for name in items.keys():
         names.append(name)
@@ -313,7 +323,7 @@ def shop(message):
     but_item_0 = types.InlineKeyboardButton(f'{names[0]} - {str(prices[0])}', callback_data=names[0])
     but_item_1 = types.InlineKeyboardButton(f'{names[1]} - {str(prices[1])}', callback_data=names[1])
     but_item_2 = types.InlineKeyboardButton(f'{names[2]} - {str(prices[2])}', callback_data=names[2])
-    but_next = types.InlineKeyboardButton('>>', url='https://youtu.be/dQw4w9WgXcQ?si=djCpzMaLxIP6jOlW')
+    but_next = types.InlineKeyboardButton('>>', callback_data=f'>>{page}')
     but_back = types.InlineKeyboardButton('<<', url='https://youtu.be/dQw4w9WgXcQ?si=djCpzMaLxIP6jOlW')
     markup.add(but_item_0)
     markup.add(but_item_1)
