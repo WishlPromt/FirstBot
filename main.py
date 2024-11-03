@@ -293,10 +293,13 @@ def add_answers(message):
     bot.send_message(message.chat.id, 'Напишите сообщение или сообщения(через точку с запятой), которые я должен буду писать в ответ')
 
 
-
 @bot.message_handler(commands=['nsfw'])
 def nsfw(message):
-    bot.send_message(message.chat.id, 'https://youtu.be/dQw4w9WgXcQ?si=djCpzMaLxIP6jOlW')
+    link = choice(['rickroll', 'vergil status1'])
+    if link == 'rickroll':
+        bot.send_message(message.chat.id, f'<a href="https://youtu.be/dQw4w9WgXcQ?si=djCpzMaLxIP6jOlW">Возьми</a>', parse_mode='html', disable_web_page_preview=True)
+    elif link == 'vergil status1':
+        bot.send_message(message.chat.id, f'<a href="https://youtu.be/6Sdaudjygeg?si=naV-TAMJSSIVNeEv">Возьми</a>', parse_mode='html', disable_web_page_preview=True)
 
 
 #SOCIAL CREDITS
