@@ -62,6 +62,7 @@ def help(message):
     bot.send_message(message.chat.id, 'Я короче бот.\n'
                                       'Умею разговаривать\n'
                                       'У меня есть несколько <i>команд</i>:\n'
+                                      'Обычные команды:\n'
                                       '/start\n'
                                       '/help\n'
                                       '/developer\n'
@@ -69,7 +70,13 @@ def help(message):
                                       '/education\n'
                                       '/finish\n'
                                       '/nsfw\n'
+                                      'Для администрации:\n'
+                                      '/mute\n'
+                                      'Экономика:\n'
                                       '/work\n'
+                                      '/shop\n'
+                                      '/balance\n'
+                                      'Мини-игры:\n'
                                       '/russian_roulette\n', 'html')
 
 
