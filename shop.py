@@ -51,6 +51,13 @@ def next_page(cur_page):
         return cur_page
 
 
+def back_page(cur_page):
+    if cur_page > 1:
+        return cur_page - 1
+    else:
+        return cur_page
+
+
 def get_items(page):
     items_on_page = {}
     for item in items:
