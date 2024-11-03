@@ -11,6 +11,10 @@ with open('base.json', 'r', encoding='utf-8') as file:
     data = json.load(file)
 
 
+with open('items.json', 'r', encoding='utf-8') as file:
+    items = json.load(file)
+
+
 def save_base():
     file = open('base.json', 'w', encoding='utf-8')
     json.dump(data, file, indent=4, ensure_ascii=False)
@@ -223,17 +227,14 @@ def callback(callback):
             bot.send_message(callback.message.chat.id, 'Произошла ошибка')
 
 
-    if callback.data == 'Вилка':
-        if buy('Вилка', {'id': str(callback.from_user.id), 'username': callback.from_user.username}):
-            bot.send_message(callback.message.chat.id, 'Вы купили вилку!')
+    if callback.data in items.keys():
+        if buy(callback.data, {'id': str(callback.from_user.id), 'username': callback.from_user.username}):
+            bot.send_message(callback.message.chat.id, f'Вы купили {callback.data}!\n')
         else:
-            bot.send_message(callback.message.chat.id, 'Ошибка! Предмет не куплен!')
+            bot.send_message(callback.message.chat.id, 'Предмет уже есть у вас в инвенторе!')
 
-    elif callback.data == 'Костюм горничной':
-        if buy('Костюм горничной', {'id': str(callback.from_user.id), 'username': callback.from_user.username}):
-            bot.send_message(callback.message.chat.id, 'Вы купили костюм горничной!')
-        else:
-            bot.send_message(callback.message.chat.id, 'Ошибка! Предмет не куплен!')
+    else:
+        bot.send_message(callback.message.chat.id, 'Ошибка! Разработчик рукожоп!')
 
 
 #Режим обучения
