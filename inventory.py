@@ -7,10 +7,15 @@ def load_base():
         base = json.load(file)
         return base
 
+def load_items_base():
+    with open('items.json', 'r', encoding='utf-8') as file:
+        items_base = json.load(file)
+        return items_base
 
 def show_inventory(user):
     check_user(user)
     base = load_base()
+    items_base = load_items_base()
 
     id = user['id']
     username = base[id]['username']
@@ -22,10 +27,10 @@ def show_inventory(user):
 
         for item in inventory:
             if item not in ['Пак карточек']:
-                text += f'<b>{item}</b>\n'
+                text += f'<b>{item} - {items_base[item][3]}</b>\n'
 
             else:
-                text += f'<b>{item} - {cards_packs[item]}</b>\n'
+                text += f'<b>{item} - x{cards_packs[item]} - Предмет</b>\n'
 
         return text
 

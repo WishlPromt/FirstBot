@@ -196,7 +196,8 @@ def send_balance(message):
 
 @bot.message_handler(commands=['inventory'])
 def send_inventory(message):
-    bot.reply_to(message, show_inventory(get_message_data(message)), parse_mode='html')
+    inventory = show_inventory(get_message_data(message))
+    bot.reply_to(message, inventory + '\nЧтобы использовать предмет, пропишите /use "предмет", чтобы отобразить роль в профиле - /equip', parse_mode='html')
 
 
 @bot.message_handler(commands=['shop'])
@@ -209,13 +210,16 @@ def shop(message, page=1):
         names.append(name)
 
     prices = []
+    item_types = []
+
     for name in names:
         prices.append(items[name][0])
+        item_types.append(items[name][3])
 
     markup = types.InlineKeyboardMarkup()
-    but_item_0 = types.InlineKeyboardButton(f'{names[0]} - {str(prices[0])}', callback_data=names[0])
-    but_item_1 = types.InlineKeyboardButton(f'{names[1]} - {str(prices[1])}', callback_data=names[1])
-    but_item_2 = types.InlineKeyboardButton(f'{names[2]} - {str(prices[2])}', callback_data=names[2])
+    but_item_0 = types.InlineKeyboardButton(f'{item_types[0]} {names[0]} - {str(prices[0])}', callback_data=names[0])
+    but_item_1 = types.InlineKeyboardButton(f'{item_types[1]} {names[1]} - {str(prices[1])}', callback_data=names[1])
+    but_item_2 = types.InlineKeyboardButton(f'{item_types[2]} {names[2]} - {str(prices[2])}', callback_data=names[2])
     but_next = types.InlineKeyboardButton('>>', callback_data=f'>>{page}')
     but_back = types.InlineKeyboardButton('<<', callback_data=f'<<{page}')
     markup.add(but_item_0)
@@ -224,6 +228,18 @@ def shop(message, page=1):
     markup.row(but_back, but_next)
 
     bot.send_message(message.chat.id, 'Магазин бота', reply_markup=markup)
+
+
+@bot.message_handler(commands=['use'])
+def use_item(message):
+    bot.reply_to(message, 'В разработке')
+
+
+@bot.message_handler(commands=['equip'])
+def equip_role(message):
+    bot.reply_to(message, 'В разработке')
+
+
 
 #GAMES
 @bot.message_handler(commands=['russian_roulette', 'russkaia_ruletka'])
