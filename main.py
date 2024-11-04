@@ -4,6 +4,7 @@ from random import choice, randint
 import json, time
 from social_credits import add_credits, show_credits, work, check_user, balance
 from shop import buy, get_items, next_page,back_page
+from system import get_message_data
 
 
 #JSON
@@ -235,10 +236,8 @@ def callback(callback):
 
 
     if callback.data in items.keys():
-        buy_status = buy(callback.data, {'id': str(callback.from_user.id), 'username': callback.from_user.username})
+        buy_status = buy(callback.data, get_message_data(callback))
         bot.send_message(callback.message.chat.id, buy_status, parse_mode='html')
-
-
 
     if callback.data.find('>>') != -1:
         next = next_page(int(callback.data[2]))
@@ -295,17 +294,15 @@ def add_answers(message):
 def nsfw(message):
     link = choice(['rickroll', 'vergil status1'])
     if link == 'rickroll':
-        bot.send_message(message.chat.id, f'<a href="https://youtu.be/dQw4w9WgXcQ?si=djCpzMaLxIP6jOlW">Возьми</a>', parse_mode='html', disable_web_page_preview=True)
+        bot.reply_to(message, f'<a href="https://youtu.be/dQw4w9WgXcQ?si=djCpzMaLxIP6jOlW">Возьми</a>', parse_mode='html', disable_web_page_preview=True)
     elif link == 'vergil status1':
-        bot.send_message(message.chat.id, f'<a href="https://youtu.be/6Sdaudjygeg?si=naV-TAMJSSIVNeEv">Возьми</a>', parse_mode='html', disable_web_page_preview=True)
+        bot.reply_to(message, f'<a href="https://youtu.be/6Sdaudjygeg?si=naV-TAMJSSIVNeEv">Возьми</a>', parse_mode='html', disable_web_page_preview=True)
 
 
 #SOCIAL CREDITS
 @bot.message_handler(commands=['work'])
 def work_credit(message):
-    user = {'id': str(message.from_user.id),
-            'username': message.from_user.username,
-            'datetime': message.date}
+    user = get_message_data(message)
     bot.reply_to(message, f'<b>{user["username"]}</b>, {work(user)}', parse_mode='html')
 
 
@@ -316,12 +313,12 @@ def show(message):
 
 @bot.message_handler(commands=['balance'])
 def send_balance(message):
-    bot.send_message(message.chat.id, balance({'id': str(message.from_user.id), 'username': message.from_user.username}), parse_mode='html')
+    bot.send_message(message.chat.id, balance(get_message_data(message)), parse_mode='html')
 
 
 @bot.message_handler(commands=['shop'])
 def shop(message, page=1):
-    check_user({'id': str(message.from_user.id), 'username': message.from_user.username})
+    check_user(get_message_data(message))
 
     items = get_items(page)
     names = []

@@ -1,5 +1,4 @@
 {
-
     "5105507379": {
         "username": "WishlPromt",
         "credits": 190,
@@ -46,6 +45,15 @@
     },
     "7371953508": {
         "username": null,
+        "credits": 0,
+        "time": 0,
+        "inventory": [],
+        "cards_packs": {
+            "Пак карточек": 0
+        }
+    },
+    "7179420529": {
+        "username": "OkeeeeMyBot",
         "credits": 0,
         "time": 0,
         "inventory": [],
