@@ -22,9 +22,7 @@ def save_base():
     file.close()
 
 
-
-education_mode = False
-math_mode = False
+#VARIABKES
 games = None
 org = None
 players = []
