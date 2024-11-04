@@ -16,7 +16,6 @@ def load_base():
 
 
 load_base()
-print(credits)
 
 
 def save_inventory():

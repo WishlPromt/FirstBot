@@ -27,10 +27,10 @@ def show_inventory(user):
 
         for item in inventory:
             if item not in ['Пак карточек']:
-                text += f'<b>{item} - {items_base[item][3]}</b>\n'
+                text += f'<b>{item}</b>\n {items_base[item][3]}\n {items_base[item][1]}\n'
 
             else:
-                text += f'<b>{item} - x{cards_packs[item]} - Предмет</b>\n'
+                text += f'<b>{item} - x{cards_packs[item]}</b>\n Предмет\n {items_base[item][1]}\n'
 
         return text
 
