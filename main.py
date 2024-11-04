@@ -3,7 +3,8 @@ from telebot import types
 from random import choice, randint
 import json, time
 from social_credits import add_credits, show_credits, work, check_user, balance
-from shop import buy, get_items, next_page,back_page
+from shop import buy, get_items, next_page, back_page
+from inventory import show_inventory
 from system import get_message_data
 
 
@@ -191,6 +192,11 @@ def show(message):
 @bot.message_handler(commands=['balance'])
 def send_balance(message):
     bot.send_message(message.chat.id, balance(get_message_data(message)), parse_mode='html')
+
+
+@bot.message_handler(commands=['inventory'])
+def send_inventory(message):
+    bot.reply_to(message.chat.id, show_inventory(get_message_data(message)))
 
 
 @bot.message_handler(commands=['shop'])
