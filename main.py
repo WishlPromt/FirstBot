@@ -149,18 +149,6 @@ def unmute(message):
                      "Эта команда должна быть использована в ответ на сообщение пользователя, которого вы хотите размутить.")
 
 
-@bot.message_handler(commands=['choose'])
-def choose(message):
-    if education_mode:
-        markup = types.InlineKeyboardMarkup()
-        markup.add(types.InlineKeyboardButton('Новый тег', callback_data='new_tag'))
-        markup.add(types.InlineKeyboardButton('Редактировать тег', callback_data='edit_tag'))
-        markup.add(types.InlineKeyboardButton('Закончить обучение', callback_data='finish'))
-        bot.send_message(message.chat.id, 'Что вы хотите сделать?', reply_markup=markup)
-    else:
-        bot.send_message(message.chat.id, 'Режим обучения не включен')
-
-
 @bot.callback_query_handler(func=lambda callback: True)
 def callback(callback):
 

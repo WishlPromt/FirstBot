@@ -14,6 +14,8 @@ def save_base():
 
 
 def new_id(user: dict):
+    if user['username'] =='null':
+        user['username'] = user['name']
     base[user['id']] = {'username': user['username'],
                         'credits': 0,
                         'time': 0,
@@ -27,7 +29,6 @@ def new_id(user: dict):
 def check_user(user: dict):
     if user['id'] not in base:
         new_id(user)
-        return False
 
 
 
