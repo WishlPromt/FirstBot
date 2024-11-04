@@ -1,12 +1,22 @@
 import json
+from social_credits import check_user
 
 
 #DATABASES
 with open('items.json', 'r', encoding='utf-8') as file:
     items = json.load(file)
 
-with open('credits_base.json', 'r', encoding='utf-8') as file:
-    credits = json.load(file)
+
+credits = {}
+
+def load_base():
+    global credits
+    with open('credits_base.json', 'r', encoding='utf-8') as file:
+        credits = json.load(file)
+
+
+load_base()
+print(credits)
 
 
 def save_inventory():
@@ -21,11 +31,13 @@ max_pages = 2
 
 def buy(item, buyer):
 
-    try:
-        inventory = credits[buyer['id']]['inventory']
-        username = credits[buyer['id']]['username']
-    except:
-        return 'Ошибка'
+    check_user(buyer)
+
+    load_base()
+
+    inventory = credits[buyer['id']]['inventory']
+    username = credits[buyer['id']]['username']
+
 
     price = items[item][0]
 
@@ -39,7 +51,7 @@ def buy(item, buyer):
 
             save_inventory()
 
-            return 'buy'
+            return f'<b>{username}</b>, вы купили <b>{item}</b>!\n'
 
         else:
             return f'<b>{username}</b>, у вас нет денег\n Используйте /balance, чтобы посмотреть баланс'

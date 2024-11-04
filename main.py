@@ -236,10 +236,7 @@ def callback(callback):
 
     if callback.data in items.keys():
         buy_status = buy(callback.data, {'id': str(callback.from_user.id), 'username': callback.from_user.username})
-        if buy_status == 'buy':
-            bot.send_message(callback.message.chat.id, f'<b>{callback.from_user.username}</b>, вы купили <b>{callback.data}</b>!\n', parse_mode='html')
-        else:
-            bot.send_message(callback.message.chat.id, buy_status, parse_mode='html')
+        bot.send_message(callback.message.chat.id, buy_status, parse_mode='html')
 
 
 
