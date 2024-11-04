@@ -197,7 +197,7 @@ def send_balance(message):
 @bot.message_handler(commands=['inventory'])
 def send_inventory(message):
     inventory = show_inventory(get_message_data(message))
-    bot.reply_to(message, inventory + '\nЧтобы использовать предмет, пропишите /use "предмет", чтобы отобразить роль в профиле - /equip', parse_mode='html')
+    bot.reply_to(message, inventory + '\nЧтобы использовать предмет, пропишите /use "предмет" "участник"(на котором вы хотите использовать предмет, предметы не тратятся),\n чтобы отобразить роль в профиле - /equip "роль"\n /open - открыть пак карточек', parse_mode='html')
 
 
 @bot.message_handler(commands=['shop'])
@@ -311,7 +311,7 @@ def start_game(message):
                 time.sleep(2)
 
                 bot.send_message(message.chat.id, f'{players[0]["username"]} - Победитель! Он получает 100 кредитов!')
-                add_credits({'id':str(players[0]['id']), 'username': players[0]['username']}, 100)
+                add_credits(get_message_data(message), 100)
 
             else:
                 bot.send_message(message.chat.id, 'НИЧЬЯ!')

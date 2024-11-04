@@ -7,10 +7,12 @@ def load_base():
         base = json.load(file)
         return base
 
+
 def load_items_base():
     with open('items.json', 'r', encoding='utf-8') as file:
         items_base = json.load(file)
         return items_base
+
 
 def show_inventory(user):
     check_user(user)

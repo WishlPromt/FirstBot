@@ -1,12 +1,12 @@
 {
     "5105507379": {
         "username": "WishlPromt",
-        "credits": 190,
-        "time": 1730724000,
+        "credits": 232,
+        "time": 1730731869,
         "inventory": [
-            "Вилка",
             "Костюм горничной",
             "Пак карточек",
+            "Вилка",
             "Шампунь Жумайсынба"
         ],
         "cards_packs": {
@@ -15,33 +15,53 @@
     },
     "5422828618": {
         "username": "Mzmz640404",
-        "credits": 237,
-        "time": 1730657759,
-        "inventory": []
+        "credits": 150,
+        "time": 1730732056,
+        "inventory": [
+            "Вилка",
+            "Шампунь Жумайсынба",
+            "Пак карточек",
+            "Костюм горничной"
+        ],
+        "cards_packs": {
+            "Пак карточек": 1
+        }
     },
     "1234733553": {
         "username": "ultras567",
         "credits": 41,
         "time": 0,
-        "inventory": []
+        "inventory": [],
+        "cards_packs": {
+            "Пак карточек": 0
+        }
     },
     "5817779536": {
         "username": "Артем",
         "credits": 42,
         "time": 0,
-        "inventory": []
+        "inventory": [],
+        "cards_packs": {
+            "Пак карточек": 0
+        }
     },
     "6586917192": {
         "username": "pfpfbw",
         "credits": 36,
         "time": 1730575828,
-        "inventory": []
+        "inventory": [],
+        "cards_packs": {
+            "Пак карточек": 0
+        }
     },
     "6638790681": {
         "username": "Lalsans1111",
         "credits": 0,
         "time": 0,
-        "inventory": []
+        "inventory": [],
+        "cards_packs": {
+            "Пак карточек": 0
+        }
     },
     "7371953508": {
         "username": null,
