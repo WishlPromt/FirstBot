@@ -51,7 +51,7 @@ def buy(item, buyer):
 
             save_inventory()
 
-            return f'<b>{username}</b>, вы купили <b>{item}</b>!\n'
+            return f'<b>{username}</b>, вы купили <b>{item}</b>!\n{items[item][1]}'
 
         else:
             return f'<b>{username}</b>, у вас нет денег\n Используйте /balance, чтобы посмотреть баланс'
@@ -66,10 +66,10 @@ def buy(item, buyer):
 
             save_inventory()
 
-            return f'<b>{username}</b>, вы купили <b>{item}</b>.\n Его можно будет открыть из <i>инвенторя</i>'
+            return f'<b>{username}</b>, вы купили <b>{item}</b>.\n{items[item][1]}'
 
         else:
-            return f'<b>{username}</b>, у вас нет денег\n Используйте /balance, чтобы посмотреть баланс'
+            return f'<b>{username}</b>, у вас нет денег\n'
 
     elif item in inventory and item in ['Пак карточек']:
         if price <= credits[buyer['id']]['credits']:
@@ -79,7 +79,7 @@ def buy(item, buyer):
 
             save_inventory()
 
-            return f'<b>{username}</b>, вы купили <b>{item}</b>.\n Теперь их у вас <b>{credits[buyer["id"]]["cards_packs"][item]}</b>\n Их можно будет открыть из инвенторя'
+            return f'<b>{username}</b>, вы купили <b>{item}</b>.\n Теперь их у вас <b>{credits[buyer["id"]]["cards_packs"][item]}</b>\n{items[item][1]}'
 
         else:
             return f'<b>{username}</b>, у вас нет денег\n Используйте /balance, чтобы посмотреть баланс'
