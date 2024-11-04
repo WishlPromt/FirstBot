@@ -50,7 +50,7 @@ def developer(message):
 
 
 @bot.message_handler(commands=['stop'])
-def developer(message):
+def stop(message):
     if message.from_user.id == 5105507379:
         bot.send_message(message.chat.id, 'Ты предал меня! Ублюдок!')
         bot.stop_bot()
@@ -151,52 +151,6 @@ def unmute(message):
                      "Эта команда должна быть использована в ответ на сообщение пользователя, которого вы хотите размутить.")
 
 
-@bot.message_handler(commands=['math'])
-def math(message):
-    global math_mode
-    if not education_mode:
-        if not math_mode:
-            math_mode = True
-            bot.send_message(message.chat.id, 'Отправьте мне математическое выражение, я решу его... Наверное')
-        else:
-            bot.send_message(message.chat.id, 'Вы уже в режиме математики')
-    else:
-        bot.send_message(message.chat.id, 'Вы в режиме обучения')
-
-
-@bot.message_handler(commands=['education'])
-def education(message):
-    global education_mode
-    if not math_mode:
-        if not education_mode:
-            education_mode = True
-            bot.send_message(message.chat.id, 'Обучение начато')
-            bot.send_message(message.chat.id, 'Напишите "/choose"')
-        else:
-            bot.send_message(message.chat.id, 'Обучение уже начато')
-    else:
-        bot.send_message(message.chat.id, 'Вы в режиме математики')
-
-
-@bot.message_handler(commands=['finish'])
-def finish(message):
-    global education_mode, action, math_mode
-    if education_mode:
-        education_mode = False
-        action = ''
-        bot.send_message(message.chat.id, 'Обучение завершено\nЕсли вы хотите продолжить обучение, напишите /education')
-
-    elif math_mode:
-        math_mode = False
-        bot.send_message(message.chat.id, 'Вы вышли из режима математики')
-
-    else:
-        if message.from_user.id != 5105507379:
-            bot.send_message(message.chat.id, 'Вы не вошли ни в один из режимов')
-        else:
-            bot.send_message(message.chat.id, 'Сначала войди в какой-нибудь режим, идиот!')
-
-
 @bot.message_handler(commands=['choose'])
 def choose(message):
     if education_mode:
@@ -211,29 +165,6 @@ def choose(message):
 
 @bot.callback_query_handler(func=lambda callback: True)
 def callback(callback):
-    if education_mode:
-
-        if callback.data == 'new_tag':
-            new_tag(callback.message)
-
-        elif callback.data == 'edit_tag':
-            edit_tag(callback.message)
-
-        elif callback.data == 'rename_tag':
-            rename(callback.message)
-
-        elif callback.data == 'edit_messages':
-            add_message(callback.message)
-
-        elif callback.data == 'edit_answers':
-            add_answers(callback.message)
-
-        elif callback.data == 'finish':
-            finish(callback.message)
-
-        else:
-            bot.send_message(callback.message.chat.id, 'Произошла ошибка')
-
 
     if callback.data in items.keys():
         buy_status = buy(callback.data, get_message_data(callback))
@@ -248,46 +179,6 @@ def callback(callback):
         back = back_page(int(callback.data[2]))
         shop(callback.message, back)
         bot.delete_message(callback.message.chat.id, callback.message.id)
-
-
-
-#Режим обучения
-@bot.message_handler(commands=['new tag'])
-def new_tag(message):
-    global action
-    if education_mode:
-        action = 'new tag'
-        bot.send_message(message.chat.id, 'Напишите мне новый тег')
-    else:
-        bot.send_message(message.chat.id, 'Режим обучения не включен')
-
-
-@bot.message_handler(commands=['edit tag'])
-def edit_tag(message):
-    global action
-    if education_mode:
-        action = 'edit tag'
-        bot.send_message(message.chat.id,'Напишите тег, который хотите редактировать')
-    else:
-        bot.send_message(message.chat.id, 'Режим обучения не включен')
-
-
-def rename(message):
-    global action
-    action = 'rename tag'
-    bot.send_message(message.chat.id, 'Напишите новое название тега')
-
-
-def add_message(message):
-    global action
-    action = 'add messages'
-    bot.send_message(message.chat.id, 'Напишите сообщение или сообщения(через точку с запятой), на которые я должен буду давать ответ')
-
-
-def add_answers(message):
-    global action
-    action = 'add answers'
-    bot.send_message(message.chat.id, 'Напишите сообщение или сообщения(через точку с запятой), которые я должен буду писать в ответ')
 
 
 @bot.message_handler(commands=['nsfw'])
@@ -475,102 +366,38 @@ def end_game(message):
 @bot.message_handler(func=lambda message: True)
 def chat(message):
     global action
-    if not education_mode and not math_mode:
 
-        text = message.text.lower()
-        text = text.translate(str.maketrans('', '', ignore_symbols))
-        words = text.split()
+    text = message.text.lower()
+    text = text.translate(str.maketrans('', '', ignore_symbols))
+    words = text.split()
 
-        target_id = None
+    target_id = None
 
-        try:
-            target_id = message.reply_to_message.from_user.id
-        except:
-            pass
-
-
-        if '@okeeeemybot' in words or target_id == 7179420529:
-
-            for i in data.keys():
-
-                for word in words:
-
-                    if word in data[i]['messages']:
-                        if i == 'hello' or i == 'bye':
-                            bot.send_message(message.chat.id, choice(data[i]['answers']) + ', ' + message.from_user.first_name)
-                        elif i == 'id':
-                            bot.reply_to(message, f'Вот твой ID: {message.from_user.id}')
-                        elif i == 'info':
-                            info(message)
-                        elif i == 'developer':
-                            developer(message)
-                        else:
-                            bot.send_message(message.chat.id, choice(data[i]['answers']))
-
-                        break
+    try:
+        target_id = message.reply_to_message.from_user.id
+    except:
+        pass
 
 
-    elif education_mode:
-        global tag
-        if action == 'new tag' and message.text != '':
-            tag = message.text
-            data[tag] = {'messages': [], 'answers': []}
-            add_message(message)
+    if '@okeeeemybot' in words or target_id == 7179420529:
 
-        elif action == 'edit tag' and message.text != '':
-            tag = message.text.lower()
-            if tag in data.keys():
-                markup = types.InlineKeyboardMarkup()
-                markup.add(types.InlineKeyboardButton('Изменить название', callback_data='rename_tag'))
-                markup.add(types.InlineKeyboardButton('Изменить содержимое', callback_data='edit_messages'))
-                markup.add(types.InlineKeyboardButton('Закончить обучение', callback_data='finish'))
-                bot.send_message(message.chat.id, 'Что вы хотите сделать?', reply_markup=markup)
+        for i in data.keys():
 
-            else:
-                bot.send_message(message.chat.id, 'Такого тега не существует')
+            for word in words:
 
-        elif action == 'rename tag' and message.text != '':
-            new_tag = message.text.lower()
-            data[new_tag] = data.pop(tag)
-            tag = ''
-            save_base()
-            finish(message)
+                if word in data[i]['messages']:
+                    if i == 'hello' or i == 'bye':
+                        bot.send_message(message.chat.id, choice(data[i]['answers']) + ', ' + message.from_user.first_name)
+                    elif i == 'id':
+                        bot.reply_to(message, f'Вот твой ID: {message.from_user.id}')
+                    elif i == 'info':
+                        info(message)
+                    elif i == 'developer':
+                        developer(message)
+                    else:
+                        bot.send_message(message.chat.id, choice(data[i]['answers']))
 
-        elif action == 'add messages' and message.text != '':
-            messages = message.text.lower()
-            messages = messages.split(';')
-            for i in range(len(messages)):
-                if messages[i][0] == ' ':
-                    messages[i] = messages[i][1:]
-            data[tag]['messages'] = messages
-            add_answers(message)
-
-        elif action == 'add answers' and message.text != '':
-            answers = message.text
-            answers = answers.split(';')
-            for i in range(len(answers)):
-                if answers[i][0] == ' ':
-                    answers[i] = answers[i][1:]
-            data[tag]['answers'] = answers
-            tag = ''
-            save_base()
-            finish(message)
-
-        else:
-            if message.from_user.id != 5105507379:
-                bot.send_message(message.chat.id, 'Ошибка')
-            else:
-                bot.send_message(message.chat.id, 'Ошибка. Чини меня, дебил')
-
-
-    elif math_mode:
-        if message.text != '/finish':
-            try:
-                math_exp = eval(message.text)
-                bot.send_message(message.chat.id, math_exp)
-                finish(message)
-            except:
-                bot.send_message(message.chat.id, 'непонятно')
+                    break
 
 
 bot.polling(none_stop=True)
