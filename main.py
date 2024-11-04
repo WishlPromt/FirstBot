@@ -196,7 +196,7 @@ def send_balance(message):
 
 @bot.message_handler(commands=['inventory'])
 def send_inventory(message):
-    bot.reply_to(message.chat.id, show_inventory(get_message_data(message)))
+    bot.reply_to(message, show_inventory(get_message_data(message)), parse_mode='html')
 
 
 @bot.message_handler(commands=['shop'])

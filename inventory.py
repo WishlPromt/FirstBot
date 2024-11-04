@@ -4,7 +4,7 @@ from social_credits import check_user
 
 def load_base():
     with open('credits_base.json', 'r', encoding='utf-8') as file:
-        base = json.dump(file)
+        base = json.load(file)
         return base
 
 
@@ -25,7 +25,7 @@ def show_inventory(user):
                 text += f'<b>{item}</b>\n'
 
             else:
-                text += f'<b>{item}x{cards_packs['item']}</b>\n'
+                text += f'<b>{item} - {cards_packs[item]}</b>\n'
 
         return text
 
