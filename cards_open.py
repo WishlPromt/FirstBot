@@ -1,12 +1,11 @@
+import os
 import random
 
-regular_cards = []
-rare_cards = []
-epic_cards = []
-legendary_cards = []
 
-for image in open('cards/regular', 'r'):
-    regular_cards.append(image)
+regular_cards = os.listdir('cards/regular')
+rare_cards = os.listdir('cards/rare')
+epic_cards = os.listdir('cards/epic')
+legendary_cards = os.listdir('cards/legendary')
 
 
 def get_rare():
@@ -14,10 +13,10 @@ def get_rare():
     if rare_n < 65:
         return 'regular'
 
-    elif rare_n < 85:
+    elif rare_n <= 85:
         return 'rare'
 
-    elif rare_n < 95:
+    elif rare_n <= 95:
         return 'epic'
 
     else:
@@ -25,22 +24,30 @@ def get_rare():
 
 
 def open_pack(user, item):
-    id = user[id]
+    id = user['id']
+    cards = []
+
     if item == 'Пак карточек':
-        rare = get_rare()
-        if rare == 'regular':
-            return f'cards/regular/{random.choice(regular_cards)}'
+        for card in range(random.randint(5, 7)):
+            rare = get_rare()
+            if rare == 'regular':
+                cards.append(f'regular-{random.choice(regular_cards)}')
+                print(cards)
 
-        elif rare == 'rare':
-            return f'cards/rare/{random.choice(rare_cards)}'
+            elif rare == 'rare':
+                cards.append(f'rare-{random.choice(rare_cards)}')
+                print(cards)
 
-        elif rare == 'epic':
-            return f'cards/rare/{random.choice(epic_cards)}'
+            elif rare == 'epic':
+                cards.append(f'epic-{random.choice(epic_cards)}')
+                print(cards)
 
-        elif rare == 'legendary':
-            return f'cards/rare/{random.choice(legendary_cards)}'
+            elif rare == 'legendary':
+                cards.append(f'legendary-{random.choice(legendary_cards)}')
+                print(cards)
 
-    return f'{user["username"]}, произошла ошибка, иди нахуй'
+    return str(cards)
 
 
-print(regular_cards)
+
+

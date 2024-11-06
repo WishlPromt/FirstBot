@@ -4,8 +4,9 @@ from random import choice, randint
 import json, time
 from social_credits import add_credits, show_credits, work, check_user, balance
 from shop import buy, get_items, next_page, back_page
-from inventory import show_inventory
+from inventory import show_inventory, show_card_packs
 from system import get_message_data
+from cards_open import open_pack
 
 
 #JSON
@@ -167,6 +168,10 @@ def callback(callback):
         shop(callback.message, back)
         bot.delete_message(callback.message.chat.id, callback.message.id)
 
+    if callback.data == 'open Пак карточек':
+        open_pack(get_message_data(callback), 'Пак карточек')
+
+
 
 @bot.message_handler(commands=['nsfw'])
 def nsfw(message):
@@ -198,6 +203,15 @@ def send_balance(message):
 def send_inventory(message):
     inventory = show_inventory(get_message_data(message))
     bot.reply_to(message, inventory + '\nЧтобы использовать предмет, пропишите /use "предмет" "участник"(на котором вы хотите использовать предмет, предметы не тратятся),\n чтобы отобразить роль в профиле - /equip "роль"\n /open - открыть пак карточек', parse_mode='html')
+
+
+@bot.message_handler(commands=['open_pack'])
+def open_cards_pack(message):
+    markup = types.InlineKeyboardMarkup()
+    btn_pack1 = types.InlineKeyboardButton(show_card_packs(get_message_data(message), 'Пак карточек'), callback_data='open Пак карточек')
+    markup.add(btn_pack1)
+
+    bot.reply_to(message, 'Открыть пак коллекционных карточек', reply_markup=markup)
 
 
 @bot.message_handler(commands=['shop'])
