@@ -1,5 +1,18 @@
+import json
 import os
 import random
+
+
+def load_base():
+    with open('credits_base.json', 'r', encoding='utf-8') as file:
+        base = json.load(file)
+        return base
+
+
+def save_base(base):
+    file = open('credits_base.json', 'w', encoding='utf-8')
+    json.dump(base, file, indent=4, ensure_ascii='utf-8')
+    file.close()
 
 
 regular_cards = os.listdir('cards/regular')
@@ -27,24 +40,34 @@ def open_pack(user, item):
     id = user['id']
     cards = []
 
+    base = load_base()
+
     if item == 'Пак карточек':
-        for card in range(random.randint(5, 7)):
+        for c in range(random.randint(5, 7)):
             rare = get_rare()
             if rare == 'regular':
-                cards.append(f'regular/{random.choice(regular_cards)}')
-                print(cards)
+                card = random.choice(regular_cards)
+                cards.append(f'regular/{card}')
+                base[id]['cards']['Обычные'] = card
+                save_base(base)
 
             elif rare == 'rare':
-                cards.append(f'rare/{random.choice(rare_cards)}')
-                print(cards)
+                card = random.choice(rare_cards)
+                cards.append(f'rare/{card}')
+                base[id]['cards']['Редкие'] = card
+                save_base(base)
 
             elif rare == 'epic':
-                cards.append(f'epic/{random.choice(epic_cards)}')
-                print(cards)
+                card = random.choice(epic_cards)
+                cards.append(f'epic/{card}')
+                base[id]['cards']['Эпические'] = card
+                save_base(base)
 
             elif rare == 'legendary':
-                cards.append(f'legendary/{random.choice(legendary_cards)}')
-                print(cards)
+                card = random.choice(legendary_cards)
+                cards.append(f'legendary/{card}')
+                base[id]['cards']['Легендарные'] = card
+                save_base(base)
 
     if cards != []:
         return cards
