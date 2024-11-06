@@ -41,8 +41,8 @@ def show_inventory(user):
 
 
 def show_card_packs(user, pack):
-    check_user()
+    check_user(user)
     id = user['id']
     base = load_base()
 
-    return f'{pack} - {base[id]['cards_packs'][pack]}'
+    return f'{pack} - {base[id]["cards_packs"][pack]}'

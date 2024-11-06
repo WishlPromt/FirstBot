@@ -31,22 +31,26 @@ def open_pack(user, item):
         for card in range(random.randint(5, 7)):
             rare = get_rare()
             if rare == 'regular':
-                cards.append(f'regular-{random.choice(regular_cards)}')
+                cards.append(f'regular/{random.choice(regular_cards)}')
                 print(cards)
 
             elif rare == 'rare':
-                cards.append(f'rare-{random.choice(rare_cards)}')
+                cards.append(f'rare/{random.choice(rare_cards)}')
                 print(cards)
 
             elif rare == 'epic':
-                cards.append(f'epic-{random.choice(epic_cards)}')
+                cards.append(f'epic/{random.choice(epic_cards)}')
                 print(cards)
 
             elif rare == 'legendary':
-                cards.append(f'legendary-{random.choice(legendary_cards)}')
+                cards.append(f'legendary/{random.choice(legendary_cards)}')
                 print(cards)
 
-    return str(cards)
+    if cards != []:
+        return cards
+
+    else:
+        return False
 
 
 

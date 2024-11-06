@@ -169,7 +169,16 @@ def callback(callback):
         bot.delete_message(callback.message.chat.id, callback.message.id)
 
     if callback.data == 'open Пак карточек':
-        open_pack(get_message_data(callback), 'Пак карточек')
+        cards = open_pack(get_message_data(callback), 'Пак карточек')
+
+        if cards != False:
+            for card in cards:
+                with open(f'cards/{card}', 'rb') as image_card:
+                    bot.send_photo(callback.message.chat.id, image_card)
+                    bot.reply_to(callback.message, f'{get_message_data(callback)["username"]}, вы получили {card}')
+
+        else:
+            bot.reply_to(callback.message, f'{get_message_data(callback)["username"]}, {cards}')
 
 
 
