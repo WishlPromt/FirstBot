@@ -1,4 +1,9 @@
-import time
+import time, json
+
+def load_base():
+    with open('credits_base.json', 'r', encoding='utf-8') as file:
+        base = json.load(file)
+        return base
 
 def convert_time(datetime):
     return time.strftime('%H:%M:%S %d.%m.%Y', time.localtime(datetime))
@@ -18,3 +23,4 @@ def get_message_data(data):
             'username': username,
             'datetime': datetime,
             'name': name}
+

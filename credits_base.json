@@ -1,15 +1,15 @@
 {
     "5105507379": {
         "username": "WishlPromt",
-        "credits": 268,
-        "time": 1730972035,
+        "credits": 271,
+        "time": 1730982506,
         "inventory": [
             "Костюм горничной",
             "Пак карточек",
             "Вилка",
             "Шампунь Жумайсынба"
         ],
-        "favorite_item": "Нет предмета",
+        "favorite_item": "Шампунь Жумайсынба",
         "role": "Нет роли",
         "favorite_card": "Нет карты",
         "cards_packs": {
@@ -30,14 +30,21 @@
                 "re790.jpeg",
                 "re127.jpeg",
                 "re289.jpeg",
-                "re378.png"
+                "re378.png",
+                "re904.jpg",
+                "re912.jpg",
+                "re401.png",
+                "re912.jpg"
             ],
             "Редкие": [
                 "ra090.jpg",
                 "ra589.jpeg",
                 "ra409.png",
                 "ra178.png",
-                "ra309.jpg"
+                "ra309.jpg",
+                "ra589.jpeg",
+                "ra534.png",
+                "ra178.png"
             ],
             "Эпические": [
                 "e234.jpeg",
@@ -48,38 +55,39 @@
             "Легендарные": []
         },
         "new_cards": [
-            "regular/3.jpeg",
-            "regular/7.jpeg",
-            "regular/5.jpeg",
-            "rare/12.jpg",
-            "regular/17.png",
-            "epic/3.jpeg"
+            "rare/ra589.jpeg",
+            "regular/re904.jpg",
+            "regular/re912.jpg",
+            "rare/ra534.png",
+            "regular/re401.png",
+            "regular/re912.jpg",
+            "rare/ra178.png"
         ],
-        "cur_card": 0
+        "cur_card": 6
     },
     "5422828618": {
         "username": "Mzmz640404",
-        "credits": 79,
-        "time": 1730971499,
+        "credits": 117,
+        "time": 1730982720,
         "inventory": [
             "Вилка",
             "Шампунь Жумайсынба",
             "Пак карточек",
             "Костюм горничной"
         ],
+        "favorite_item": "Вилка",
+        "role": "Нет роли",
+        "favorite_card": "Нет карты",
         "cards_packs": {
             "Пак карточек": 5
         },
         "cards": {
-            "Обычные": [
-            ],
-            "Редкие": [
-            ],
+            "Обычные": [],
+            "Редкие": [],
             "Эпические": [],
             "Легендарные": []
         },
-        "new_cards": [
-        ],
+        "new_cards": [],
         "cur_card": 0
     },
     "1234733553": {
@@ -87,6 +95,9 @@
         "credits": 41,
         "time": 0,
         "inventory": [],
+        "favorite_item": "Вилка",
+        "role": "Нет роли",
+        "favorite_card": "Нет карты",
         "cards_packs": {
             "Пак карточек": 0
         },
@@ -104,6 +115,9 @@
         "credits": 42,
         "time": 0,
         "inventory": [],
+        "favorite_item": "Вилка",
+        "role": "Нет роли",
+        "favorite_card": "Нет карты",
         "cards_packs": {
             "Пак карточек": 0
         },
@@ -121,6 +135,9 @@
         "credits": 36,
         "time": 1730575828,
         "inventory": [],
+        "favorite_item": "Вилка",
+        "role": "Нет роли",
+        "favorite_card": "Нет карты",
         "cards_packs": {
             "Пак карточек": 0
         },
@@ -138,6 +155,9 @@
         "credits": 0,
         "time": 0,
         "inventory": [],
+        "favorite_item": "Вилка",
+        "role": "Нет роли",
+        "favorite_card": "Нет карты",
         "cards_packs": {
             "Пак карточек": 0
         },

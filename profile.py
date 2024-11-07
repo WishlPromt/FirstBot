@@ -7,6 +7,16 @@ def load_base():
         base = json.load(file)
         return base
 
+def load_items():
+    with open('items.json', 'r', encoding='utf-8') as file:
+        items = json.load(file)
+        return items
+
+def save_base(base):
+    file = open('credits_base.json', 'w', encoding='utf-8')
+    json.dump(base, file, indent=4, ensure_ascii=False)
+    file.close()
+
 
 def show_profile(user):
     check_user(user)
@@ -25,3 +35,29 @@ def show_profile(user):
                f'Любимая карта: {fav_card}')
 
     return profile
+
+def equip(user, item):
+    check_user(user)
+    id = user['id']
+    items = load_items()
+    base = load_base()
+
+    if items[item][3] == 'Предмет':
+        base[id]['favorite_item'] = item
+        save_base(base)
+        return f'Теперь предмет <b>{item}</b> отображается у вас в /profile'
+
+    elif items[item][3] == 'Роль':
+        base[id]['role'] = item
+        save_base(base)
+        return f'Теперь роль <b>{item}</b> отображается у вас в /profile'
+
+    return 'Ошибка. Иди нахуй'
+
+
+def show_items(user):
+    check_user(user)
+    id = user['id']
+    base = load_base()
+
+    return base[id]['inventory']

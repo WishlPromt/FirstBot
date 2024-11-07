@@ -114,26 +114,28 @@ def next_back_card(user, action):
 
     cur_card = base[id]['cur_card']
 
-    if action == 'next' and cur_card < len(base[id]['new_cards']) - 1:
-        base[id]['cur_card'] += 1
-        save_base(base)
+    if action == 'next':
+        if cur_card < len(base[id]['new_cards']) - 1:
+            base[id]['cur_card'] += 1
+            save_base(base)
 
-        return base[id]['cur_card']
+            return base[id]['cur_card']
 
-    else:
-        base[id]['cur_card'] = 0
-        save_base(base)
+        else:
+            base[id]['cur_card'] = 0
+            save_base(base)
 
-        return base[id]['cur_card']
+            return base[id]['cur_card']
 
-    if action == 'back' and cur_card > 0:
-        base[id]['cur_card'] -= 1
-        save_base(base)
+    if action == 'back':
+        if cur_card > 0:
+            base[id]['cur_card'] -= 1
+            save_base(base)
 
-        return base[id]['cur_card']
+            return base[id]['cur_card']
 
-    else:
-        base[id]['cur_card'] = len(base[id]['new_cards']) - 1
-        save_base(base)
+        else:
+            base[id]['cur_card'] = len(base[id]['new_cards']) - 1
+            save_base(base)
 
-        return base[id]['cur_card']
+            return base[id]['cur_card']

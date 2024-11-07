@@ -7,6 +7,7 @@ from shop import buy, get_items, next_page, back_page
 from inventory import show_inventory, show_card_packs
 from system import get_message_data
 from cards_open import open_pack, show_cards, next_back_card, create_markup
+from profile import show_profile, equip, show_items
 
 
 #JSON
@@ -16,7 +17,6 @@ with open('base.json', 'r', encoding='utf-8') as file:
 
 with open('items.json', 'r', encoding='utf-8') as file:
     items = json.load(file)
-
 
 def save_base():
     file = open('base.json', 'w', encoding='utf-8')
@@ -215,8 +215,7 @@ def nsfw(message):
 #SOCIAL CREDITS
 @bot.message_handler(commands=['profile'])
 def profile(message):
-    if message.text.find('@') != -1:
-        pass
+    bot.reply_to(message, show_profile(get_message_data(message)))
 
 
 @bot.message_handler(commands=['work'])
@@ -238,7 +237,7 @@ def send_balance(message):
 @bot.message_handler(commands=['inventory'])
 def send_inventory(message):
     inventory = show_inventory(get_message_data(message))
-    bot.reply_to(message, inventory + '\nЧтобы использовать предмет, пропишите /use "предмет" "участник"(на котором вы хотите использовать предмет, предметы не тратятся),\n чтобы отобразить роль в профиле - /equip "роль"\n /open - открыть пак карточек', parse_mode='html')
+    bot.reply_to(message, inventory + '\n Чтобы отобразить роль/предмет в профиле - /equip_items\n /open_pack - открыть пак карточек', parse_mode='html')
 
 
 @bot.message_handler(commands=['open_pack'])
@@ -285,10 +284,24 @@ def use_item(message):
     bot.reply_to(message, 'В разработке')
 
 
-@bot.message_handler(commands=['equip'])
-def equip_role(message):
-    bot.reply_to(message, 'В разработке')
+@bot.message_handler(commands=['equip_items'])
+def show_equip_items(message):
+    bot.reply_to(message, 'Ответьте на сообщение с названием предмета, который вы хотите экипировать командой /equip')
+    user_inventory = show_items(get_message_data(message))
 
+    for item in user_inventory:
+        bot.send_message(message.chat.id, item)
+
+@bot.message_handler(commands=['equip'])
+def equip_item(message):
+    if message.reply_to_message:
+        try:
+            equip_status = equip(get_message_data(message), message.reply_to_message.text)
+            bot.reply_to(message, equip_status, parse_mode='html')
+        except:
+            bot.reply_to(message, 'Долбаеб')
+    else:
+        bot.reply_to(message, 'Долбаеб')
 
 
 #GAMES
