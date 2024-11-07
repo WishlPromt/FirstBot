@@ -103,7 +103,7 @@ def show_cards(user):
     base = load_base()
     cur_card = base[id]['cur_card']
 
-    if cur_card <= len(base[id]["new_cards"]):
+    if cur_card <= len(base[id]["new_cards"]) - 1:
 
         return base[id]["new_cards"][cur_card]
 

@@ -39,7 +39,7 @@ def new_id(user: dict):
 
 
 def check_user(user: dict):
-    if user['id'] not in base:
+    if user['id'] not in base and user['id'] != "7179420529":
         new_id(user)
 
 

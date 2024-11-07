@@ -124,16 +124,49 @@
         "role": "Нет роли",
         "favorite_card": "Нет карты",
         "cards_packs": {
-            "Пак карточек": 6
+            "Пак карточек": 2
         },
         "cards": {
-            "Обычные": [],
-            "Редкие": [],
+            "Обычные": [
+                "re097.jpeg",
+                "re576.jpg",
+                "re790.jpeg",
+                "re270.jpg",
+                "re456.jpg",
+                "re782.png",
+                "re017.jpeg",
+                "re579.png",
+                "re782.png",
+                "re962.png",
+                "re912.jpg",
+                "re270.jpg",
+                "re097.jpeg",
+                "re912.jpg",
+                "re580.jpg",
+                "re782.png",
+                "re580.jpg",
+                "re580.jpg",
+                "re456.jpg"
+            ],
+            "Редкие": [
+                "ra078.jpg",
+                "ra789.jpeg",
+                "ra589.jpeg",
+                "ra090.jpg"
+            ],
             "Эпические": [],
             "Легендарные": []
         },
-        "new_cards": [],
-        "cur_card": 0
+        "new_cards": [
+            "regular/re912.jpg",
+            "regular/re580.jpg",
+            "regular/re782.png",
+            "regular/re580.jpg",
+            "rare/ra090.jpg",
+            "regular/re580.jpg",
+            "regular/re456.jpg"
+        ],
+        "cur_card": 5
     },
     "1234733553": {
         "username": "ultras567",
@@ -197,8 +230,8 @@
     },
     "6638790681": {
         "username": "Lalsans1111",
-        "credits": 0,
-        "time": 0,
+        "credits": 39,
+        "time": 1730993347,
         "inventory": [],
         "favorite_item": "Вилка",
         "role": "Нет роли",
@@ -213,7 +246,7 @@
             "Легендарные": []
         },
         "new_cards": [],
-        "cur_card": -1
+        "cur_card": 0
     },
     "5722997773": {
         "username": "akaza096",
@@ -237,9 +270,11 @@
     },
     "6891646558": {
         "username": "darhasira",
-        "credits": 35,
+        "credits": -5,
         "time": 1730989231,
-        "inventory": [],
+        "inventory": [
+            "Пак карточек"
+        ],
         "cards_packs": {
             "Пак карточек": 0
         },
@@ -247,13 +282,26 @@
         "role": "Нет роли",
         "favorite_card": "Нет карты",
         "cards": {
-            "Обычные": [],
-            "Редкие": [],
+            "Обычные": [
+                "re019.jpg",
+                "re127.jpeg",
+                "re017.jpeg",
+                "re790.jpeg"
+            ],
+            "Редкие": [
+                "ra109.png"
+            ],
             "Эпические": [],
             "Легендарные": []
         },
-        "new_cards": [],
-        "cur_card": 0
+        "new_cards": [
+            "regular/re019.jpg",
+            "regular/re127.jpeg",
+            "rare/ra109.png",
+            "regular/re017.jpeg",
+            "regular/re790.jpeg"
+        ],
+        "cur_card": 2
     },
     "1336049480": {
         "username": "Rimura_tempest3919",
@@ -293,30 +341,10 @@
             "epic/e234.jpeg",
             "regular/re809.png"
         ],
-        "cur_card": 5
+        "cur_card": 1
     },
     "1355067969": {
         "username": "skymalll111",
-        "credits": 0,
-        "time": 0,
-        "inventory": [],
-        "cards_packs": {
-            "Пак карточек": 0
-        },
-        "favorite_item": "Нет предмета",
-        "role": "Нет роли",
-        "favorite_card": "Нет карты",
-        "cards": {
-            "Обычные": [],
-            "Редкие": [],
-            "Эпические": [],
-            "Легендарные": []
-        },
-        "new_cards": [],
-        "cur_card": 0
-    },
-    "7179420529": {
-        "username": "OkeeeeMyBot",
         "credits": 0,
         "time": 0,
         "inventory": [],
