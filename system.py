@@ -7,6 +7,8 @@ def get_message_data(data):
     id = str(data.from_user.id)
     username = data.from_user.username
     name = data.from_user.first_name
+    if username == 'null':
+        username = name
     try:
         datetime = data.date
     except:

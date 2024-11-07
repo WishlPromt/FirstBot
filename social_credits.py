@@ -22,7 +22,16 @@ def new_id(user: dict):
                         'inventory': [],
                         'cards_packs': {
                             'Пак карточек': 0
-                        }}
+                        },
+                        'cards': {
+                            'Обычные': [],
+                            'Редкие': [],
+                            'Эпические': [],
+                            'Легендарные': []
+                        },
+                        'new_cards': [],
+                        'cur_card': 0
+                        }
     save_base()
 
 
