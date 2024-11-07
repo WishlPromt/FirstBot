@@ -1,8 +1,8 @@
 {
     "5105507379": {
         "username": "WishlPromt",
-        "credits": 24,
-        "time": 1730992486,
+        "credits": 64,
+        "time": 1731000094,
         "inventory": [
             "Костюм горничной",
             "Пак карточек",
@@ -277,8 +277,8 @@
     },
     "6891646558": {
         "username": "darhasira",
-        "credits": 1,
-        "time": 1730997434,
+        "credits": 0,
+        "time": 1731009553,
         "inventory": [
             "Пак карточек"
         ],
@@ -300,25 +300,30 @@
                 "re401.png",
                 "re580.jpg",
                 "re097.jpeg",
-                "re782.png"
+                "re782.png",
+                "re378.png",
+                "re127.jpeg",
+                "re378.png",
+                "re127.jpeg"
             ],
             "Редкие": [
                 "ra109.png",
-                "ra460.png"
+                "ra460.png",
+                "ra109.png",
+                "ra409.png"
             ],
             "Эпические": [],
             "Легендарные": []
         },
         "new_cards": [
+            "rare/ra109.png",
+            "regular/re378.png",
+            "rare/ra409.png",
             "regular/re127.jpeg",
-            "rare/ra460.png",
-            "regular/re912.jpg",
-            "regular/re401.png",
-            "regular/re580.jpg",
-            "regular/re097.jpeg",
-            "regular/re782.png"
+            "regular/re378.png",
+            "regular/re127.jpeg"
         ],
-        "cur_card": 1
+        "cur_card": 0
     },
     "1336049480": {
         "username": "Rimura_tempest3919",
