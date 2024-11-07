@@ -57,7 +57,7 @@ def open_pack(user, item):
     base[id]['new_cards'] = []
     base[id]['cur_card'] = 0
 
-    if item == 'Пак карточек':
+    if item == 'Пак карточек' and base[id]['cards_packs'] > 0:
         for c in range(random.randint(5, 7)):
             rare = get_rare()
             if rare == 'regular':
@@ -87,6 +87,7 @@ def open_pack(user, item):
         save_base(base)
 
     if cards != []:
+        base[id]['cards_packs'][item] -= 1
         return True
 
     else:
