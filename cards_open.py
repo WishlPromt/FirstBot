@@ -103,7 +103,11 @@ def show_cards(user):
     base = load_base()
     cur_card = base[id]['cur_card']
 
-    return f'{base[id]["new_cards"][cur_card]}'
+    if cur_card <= len(base[id]["new_cards"]):
+
+        return base[id]["new_cards"][cur_card]
+
+    return base[id]["new_cards"][0]
 
 
 def next_back_card(user, action):

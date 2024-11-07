@@ -1,8 +1,8 @@
 {
     "5105507379": {
         "username": "WishlPromt",
-        "credits": 271,
-        "time": 1730982506,
+        "credits": 24,
+        "time": 1730992486,
         "inventory": [
             "Костюм горничной",
             "Пак карточек",
@@ -34,7 +34,41 @@
                 "re904.jpg",
                 "re912.jpg",
                 "re401.png",
-                "re912.jpg"
+                "re912.jpg",
+                "re406.jpg",
+                "re891.jpg",
+                "re097.jpeg",
+                "re401.png",
+                "re097.jpeg",
+                "re904.jpg",
+                "re891.jpg",
+                "re097.jpeg",
+                "re579.png",
+                "re809.png",
+                "re782.jpeg",
+                "re019.jpg",
+                "re576.jpg",
+                "re456.jpg",
+                "re345.jpg",
+                "re579.png",
+                "re345.jpg",
+                "re401.png",
+                "re580.jpg",
+                "re891.jpg",
+                "re891.jpg",
+                "re579.png",
+                "re406.jpg",
+                "re097.jpeg",
+                "re579.png",
+                "re809.png",
+                "re782.png",
+                "re579.png",
+                "re782.jpeg",
+                "re127.jpeg",
+                "re406.jpg",
+                "re790.jpeg",
+                "re576.jpg",
+                "re456.jpg"
             ],
             "Редкие": [
                 "ra090.jpg",
@@ -44,30 +78,41 @@
                 "ra309.jpg",
                 "ra589.jpeg",
                 "ra534.png",
-                "ra178.png"
+                "ra178.png",
+                "ra091.jpg",
+                "ra589.jpeg",
+                "ra123.jpeg",
+                "ra460.png",
+                "ra309.jpg",
+                "ra078.jpg",
+                "ra109.png",
+                "ra409.png",
+                "ra123.jpeg",
+                "ra589.jpeg",
+                "ra409.png"
             ],
             "Эпические": [
                 "e234.jpeg",
                 "e234.jpeg",
                 "e569.jpeg",
-                "e569.jpeg"
+                "e569.jpeg",
+                "e245.jpeg"
             ],
             "Легендарные": []
         },
         "new_cards": [
-            "rare/ra589.jpeg",
-            "regular/re904.jpg",
-            "regular/re912.jpg",
-            "rare/ra534.png",
-            "regular/re401.png",
-            "regular/re912.jpg",
-            "rare/ra178.png"
+            "regular/re127.jpeg",
+            "regular/re406.jpg",
+            "regular/re790.jpeg",
+            "regular/re576.jpg",
+            "regular/re456.jpg",
+            "rare/ra409.png"
         ],
-        "cur_card": 6
+        "cur_card": 0
     },
     "5422828618": {
         "username": "Mzmz640404",
-        "credits": 117,
+        "credits": 82,
         "time": 1730982720,
         "inventory": [
             "Вилка",
@@ -79,7 +124,7 @@
         "role": "Нет роли",
         "favorite_card": "Нет карты",
         "cards_packs": {
-            "Пак карточек": 5
+            "Пак карточек": 6
         },
         "cards": {
             "Обычные": [],
@@ -92,8 +137,8 @@
     },
     "1234733553": {
         "username": "ultras567",
-        "credits": 41,
-        "time": 0,
+        "credits": 85,
+        "time": 1730989288,
         "inventory": [],
         "favorite_item": "Вилка",
         "role": "Нет роли",
@@ -161,6 +206,126 @@
         "cards_packs": {
             "Пак карточек": 0
         },
+        "cards": {
+            "Обычные": [],
+            "Редкие": [],
+            "Эпические": [],
+            "Легендарные": []
+        },
+        "new_cards": [],
+        "cur_card": -1
+    },
+    "5722997773": {
+        "username": "akaza096",
+        "credits": 0,
+        "time": 0,
+        "inventory": [],
+        "cards_packs": {
+            "Пак карточек": 0
+        },
+        "favorite_item": "Нет предмета",
+        "role": "Нет роли",
+        "favorite_card": "Нет карты",
+        "cards": {
+            "Обычные": [],
+            "Редкие": [],
+            "Эпические": [],
+            "Легендарные": []
+        },
+        "new_cards": [],
+        "cur_card": 0
+    },
+    "6891646558": {
+        "username": "darhasira",
+        "credits": 35,
+        "time": 1730989231,
+        "inventory": [],
+        "cards_packs": {
+            "Пак карточек": 0
+        },
+        "favorite_item": "Нет предмета",
+        "role": "Нет роли",
+        "favorite_card": "Нет карты",
+        "cards": {
+            "Обычные": [],
+            "Редкие": [],
+            "Эпические": [],
+            "Легендарные": []
+        },
+        "new_cards": [],
+        "cur_card": 0
+    },
+    "1336049480": {
+        "username": "Rimura_tempest3919",
+        "credits": 4,
+        "time": 1730992904,
+        "inventory": [
+            "Пак карточек"
+        ],
+        "cards_packs": {
+            "Пак карточек": 0
+        },
+        "favorite_item": "Нет предмета",
+        "role": "Нет роли",
+        "favorite_card": "Нет карты",
+        "cards": {
+            "Обычные": [
+                "re097.jpeg",
+                "re270.jpg",
+                "re809.png",
+                "re782.jpeg",
+                "re809.png"
+            ],
+            "Редкие": [
+                "ra408.png"
+            ],
+            "Эпические": [
+                "e234.jpeg"
+            ],
+            "Легендарные": []
+        },
+        "new_cards": [
+            "regular/re097.jpeg",
+            "regular/re270.jpg",
+            "regular/re809.png",
+            "regular/re782.jpeg",
+            "rare/ra408.png",
+            "epic/e234.jpeg",
+            "regular/re809.png"
+        ],
+        "cur_card": 5
+    },
+    "1355067969": {
+        "username": "skymalll111",
+        "credits": 0,
+        "time": 0,
+        "inventory": [],
+        "cards_packs": {
+            "Пак карточек": 0
+        },
+        "favorite_item": "Нет предмета",
+        "role": "Нет роли",
+        "favorite_card": "Нет карты",
+        "cards": {
+            "Обычные": [],
+            "Редкие": [],
+            "Эпические": [],
+            "Легендарные": []
+        },
+        "new_cards": [],
+        "cur_card": 0
+    },
+    "7179420529": {
+        "username": "OkeeeeMyBot",
+        "credits": 0,
+        "time": 0,
+        "inventory": [],
+        "cards_packs": {
+            "Пак карточек": 0
+        },
+        "favorite_item": "Нет предмета",
+        "role": "Нет роли",
+        "favorite_card": "Нет карты",
         "cards": {
             "Обычные": [],
             "Редкие": [],
