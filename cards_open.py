@@ -88,7 +88,7 @@ def open_pack(user, item):
 
     if cards != []:
         base[id]['cards_packs'][item] -= 1
-        save_base()
+        save_base(base)
         return True
 
     else:

@@ -10,27 +10,47 @@
             "Шампунь Жумайсынба"
         ],
         "cards_packs": {
-            "Пак карточек": 3
+            "Пак карточек": 0
         },
         "cards": {
             "Обычные": [
                 "2.png",
                 "3.jpeg",
-                "5.jpeg"
+                "5.jpeg",
+                "18.jpg",
+                "3.jpeg",
+                "13.jpg",
+                "19.png",
+                "8.jpg",
+                "20.jpg",
+                "1.png",
+                "3.jpeg",
+                "7.jpeg",
+                "5.jpeg",
+                "17.png"
             ],
             "Редкие": [
                 "6.jpg",
+                "3.jpeg",
+                "7.png",
+                "5.png",
+                "12.jpg"
+            ],
+            "Эпические": [
+                "5.jpeg",
+                "5.jpeg",
+                "3.jpeg",
                 "3.jpeg"
             ],
-            "Эпические": [],
             "Легендарные": []
         },
         "new_cards": [
-            "regular/2.png",
             "regular/3.jpeg",
+            "regular/7.jpeg",
             "regular/5.jpeg",
-            "rare/6.jpg",
-            "rare/3.jpeg"
+            "rare/12.jpg",
+            "regular/17.png",
+            "epic/3.jpeg"
         ],
         "cur_card": 0
     },
