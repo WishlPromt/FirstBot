@@ -109,33 +109,38 @@ def info(message):
 
 @bot.message_handler(commands=['mute'])
 def mute(message):
-    if message.reply_to_message:
-        chat_id = message.chat.id
-        user_id = message.reply_to_message.from_user.id
-        user_status = bot.get_chat_member(chat_id, user_id).status
-        if user_status == 'administrator' or user_status == 'creator':
-            bot.reply_to(message, "Невозможно замутить администратора.")
+    iterator_status = bot.get_chat_member(message.chat.id, message.from_user.id).status
+    if iterator_status == 'administrator' or iterator_status == 'creator':
+        if message.reply_to_message:
+            chat_id = message.chat.id
+            user_id = message.reply_to_message.from_user.id
+            user_status = bot.get_chat_member(chat_id, user_id).status
+            if user_status == 'administrator' or user_status == 'creator':
+                bot.reply_to(message, "Невозможно замутить администратора.")
+            else:
+                duration = 60  # Значение по умолчанию - 1 минута
+                args = message.text.split()[1:]
+                if args:
+                    try:
+                        duration = int(args[0])
+                    except ValueError:
+                        bot.reply_to(message, "Неправильный формат времени.")
+                        return
+                    if duration < 1:
+                        bot.reply_to(message, "Время должно быть положительным числом.")
+                        return
+                    if duration > 1440:
+                        bot.reply_to(message, "Максимальное время - 1 день.")
+                        return
+                bot.restrict_chat_member(chat_id, user_id, until_date=time.time() + duration * 60)
+                bot.reply_to(message,
+                             f"Пользователь {message.reply_to_message.from_user.username} замучен на {duration} минут.")
         else:
-            duration = 60  # Значение по умолчанию - 1 минута
-            args = message.text.split()[1:]
-            if args:
-                try:
-                    duration = int(args[0])
-                except ValueError:
-                    bot.reply_to(message, "Неправильный формат времени.")
-                    return
-                if duration < 1:
-                    bot.reply_to(message, "Время должно быть положительным числом.")
-                    return
-                if duration > 1440:
-                    bot.reply_to(message, "Максимальное время - 1 день.")
-                    return
-            bot.restrict_chat_member(chat_id, user_id, until_date=time.time() + duration * 60)
             bot.reply_to(message,
-                         f"Пользователь {message.reply_to_message.from_user.username} замучен на {duration} минут.")
+                         "Эта команда должна быть использована в ответ на сообщение пользователя, которого вы хотите замутить.")
+
     else:
-        bot.reply_to(message,
-                     "Эта команда должна быть использована в ответ на сообщение пользователя, которого вы хотите замутить.")
+        bot.reply_to(message, 'У тебя нет прав')
 
 
 @bot.message_handler(commands=['unmute'])
