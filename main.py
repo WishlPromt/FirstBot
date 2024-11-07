@@ -213,6 +213,12 @@ def nsfw(message):
 
 
 #SOCIAL CREDITS
+@bot.message_handler(commands=['profile'])
+def profile(message):
+    if message.text.find('@') != -1:
+        pass
+
+
 @bot.message_handler(commands=['work'])
 def work_credit(message):
     user = get_message_data(message)

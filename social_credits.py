@@ -23,6 +23,9 @@ def new_id(user: dict):
                         'cards_packs': {
                             'Пак карточек': 0
                         },
+                        "favorite_item": "Нет предмета",
+                        "role": "Нет роли",
+                        "favorite_card": "Нет карты",
                         'cards': {
                             'Обычные': [],
                             'Редкие': [],
