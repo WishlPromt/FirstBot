@@ -82,9 +82,34 @@ def open_pack(user, item):
                 cards.append(f'legendary/{card}')
                 base[id]['cards']['Легендарные'].append(card)
 
+    elif item == 'Коробка карточек' and base[id]['cards_packs'][item] > 0:
+        for c in range(random.randint(250, 300)):
+            rare = get_rare()
+            if rare == 'regular':
+                card = random.choice(regular_cards)
 
-        base[id]['new_cards'] = cards
-        save_base(base)
+                cards.append(f'regular/{card}')
+                base[id]['cards']['Обычные'].append(card)
+
+
+            elif rare == 'rare':
+                card = random.choice(rare_cards)
+                cards.append(f'rare/{card}')
+                base[id]['cards']['Редкие'].append(card)
+
+            elif rare == 'epic':
+                card = random.choice(epic_cards)
+                cards.append(f'epic/{card}')
+                base[id]['cards']['Эпические'].append(card)
+
+            elif rare == 'legendary':
+                card = random.choice(legendary_cards)
+                cards.append(f'legendary/{card}')
+                base[id]['cards']['Легендарные'].append(card)
+
+
+    base[id]['new_cards'] = cards
+    save_base(base)
 
     if cards != []:
         base[id]['cards_packs'][item] -= 1

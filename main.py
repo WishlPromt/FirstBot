@@ -186,6 +186,19 @@ def callback(callback):
         else:
             bot.reply_to(callback.message, f'{get_message_data(callback)["username"]}, {cards}')
 
+    elif callback.data == 'open Коробка карточек':
+        cards = open_pack(get_message_data(callback), 'Коробка карточек')
+
+
+        if cards:
+
+            card = show_cards(get_message_data(callback))
+            with open(f'cards/{card}', 'rb') as image_card:
+                bot.send_photo(callback.message.chat.id, image_card, caption=f'{get_message_data(callback)["username"]}, вы получили {card}', reply_markup=create_markup())
+
+        else:
+            bot.reply_to(callback.message, f'{get_message_data(callback)["username"]}, {cards}')
+
 
 
     if callback.data == 'new Следующая':
@@ -454,26 +467,23 @@ def chat(message):
     except:
         pass
 
+    for i in data.keys():
 
-    if '@okeeeemybot' in words or target_id == 7179420529:
+        for word in words:
 
-        for i in data.keys():
+            if word in data[i]['messages']:
+                if i == 'hello' or i == 'bye':
+                    bot.send_message(message.chat.id, choice(data[i]['answers']) + ', ' + message.from_user.first_name)
+                elif i == 'id':
+                    bot.reply_to(message, f'Вот твой ID: {message.from_user.id}')
+                elif i == 'info':
+                    info(message)
+                elif i == 'developer':
+                    developer(message)
+                else:
+                    bot.send_message(message.chat.id, choice(data[i]['answers']))
 
-            for word in words:
-
-                if word in data[i]['messages']:
-                    if i == 'hello' or i == 'bye':
-                        bot.send_message(message.chat.id, choice(data[i]['answers']) + ', ' + message.from_user.first_name)
-                    elif i == 'id':
-                        bot.reply_to(message, f'Вот твой ID: {message.from_user.id}')
-                    elif i == 'info':
-                        info(message)
-                    elif i == 'developer':
-                        developer(message)
-                    else:
-                        bot.send_message(message.chat.id, choice(data[i]['answers']))
-
-                    break
+                break
 
 
 bot.polling(none_stop=True)

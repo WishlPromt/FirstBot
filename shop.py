@@ -25,7 +25,7 @@ def save_inventory():
 
 
 #Variables
-max_pages = 2
+max_pages = 3
 
 
 def buy(item, buyer):
@@ -41,7 +41,7 @@ def buy(item, buyer):
     price = items[item][0]
 
 
-    if item not in inventory and item not in ['Пак карточек']:
+    if item not in inventory and item not in ['Пак карточек', 'Коробка карточек']:
         if price <= credits[buyer['id']]['credits']:
 
             inventory.append(item)
@@ -55,7 +55,7 @@ def buy(item, buyer):
         else:
             return f'<b>{username}</b>, у вас нет денег\n Используйте /balance, чтобы посмотреть баланс'
 
-    elif item not in inventory and item in ['Пак карточек']:
+    elif item not in inventory and item in ['Пак карточек', 'Коробка карточек']:
         if price <= credits[buyer['id']]['credits']:
 
             inventory.append(item)
@@ -70,7 +70,7 @@ def buy(item, buyer):
         else:
             return f'<b>{username}</b>, у вас нет денег\n'
 
-    elif item in inventory and item in ['Пак карточек']:
+    elif item in inventory and item in ['Пак карточек', 'Коробка карточек']:
         if price <= credits[buyer['id']]['credits']:
 
             credits[buyer['id']]['cards_packs'][item] += 1

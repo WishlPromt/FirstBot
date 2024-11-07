@@ -21,7 +21,8 @@ def new_id(user: dict):
                         'time': 0,
                         'inventory': [],
                         'cards_packs': {
-                            'Пак карточек': 0
+                            'Пак карточек': 0,
+                            'Коробка карточек': 0
                         },
                         "favorite_item": "Нет предмета",
                         "role": "Нет роли",
