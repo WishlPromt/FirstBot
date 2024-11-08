@@ -1,8 +1,8 @@
 {
     "5105507379": {
         "username": "WishlPromt",
-        "credits": 64,
-        "time": 1731000094,
+        "credits": 173,
+        "time": 1731074984,
         "inventory": [
             "Костюм горничной",
             "Пак карточек",
@@ -113,8 +113,8 @@
     },
     "5422828618": {
         "username": "Mzmz640404",
-        "credits": 126,
-        "time": 1730995637,
+        "credits": 162,
+        "time": 1731070358,
         "inventory": [
             "Вилка",
             "Шампунь Жумайсынба",
@@ -235,8 +235,8 @@
     },
     "6638790681": {
         "username": "Lalsans1111",
-        "credits": 39,
-        "time": 1730993347,
+        "credits": 83,
+        "time": 1731070114,
         "inventory": [],
         "favorite_item": "Вилка",
         "role": "Нет роли",
@@ -277,8 +277,8 @@
     },
     "6891646558": {
         "username": "darhasira",
-        "credits": 0,
-        "time": 1731009553,
+        "credits": 17,
+        "time": 1731075515,
         "inventory": [
             "Пак карточек"
         ],
@@ -304,26 +304,38 @@
                 "re378.png",
                 "re127.jpeg",
                 "re378.png",
-                "re127.jpeg"
+                "re127.jpeg",
+                "re289.jpeg",
+                "re091.png",
+                "re904.jpg",
+                "re378.png",
+                "re406.jpg",
+                "re127.jpeg",
+                "re406.jpg",
+                "re782.png"
             ],
             "Редкие": [
                 "ra109.png",
                 "ra460.png",
                 "ra109.png",
-                "ra409.png"
+                "ra409.png",
+                "ra534.png",
+                "ra589.jpeg"
             ],
-            "Эпические": [],
+            "Эпические": [
+                "e569.jpeg"
+            ],
             "Легендарные": []
         },
         "new_cards": [
-            "rare/ra109.png",
             "regular/re378.png",
-            "rare/ra409.png",
+            "regular/re406.jpg",
             "regular/re127.jpeg",
-            "regular/re378.png",
-            "regular/re127.jpeg"
+            "regular/re406.jpg",
+            "rare/ra589.jpeg",
+            "regular/re782.png"
         ],
-        "cur_card": 0
+        "cur_card": 1
     },
     "1336049480": {
         "username": "Rimura_tempest3919",
