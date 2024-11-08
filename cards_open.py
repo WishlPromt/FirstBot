@@ -119,7 +119,7 @@ def open_pack(user, item, message_id):
         return True
 
     else:
-        return 'Вы не получили не одной карточки'
+        return False
 
 
 def show_cards(user):
@@ -178,4 +178,13 @@ def get_iterator_message(user):
     base = load_base()
 
     return base[id]['iterator_of_message']
+
+
+def set_iterator(user, message):
+    check_user(user)
+    id = user['id']
+    base = load_base()
+
+    base[id]['iterator_of_message'] = message
+    save_base(base)
 
