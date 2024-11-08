@@ -46,7 +46,7 @@ def get_rare():
         return 'legendary'
 
 
-def open_pack(user, item):
+def open_pack(user, item, message_id):
     check_user(user)
 
     id = user['id']
@@ -56,6 +56,8 @@ def open_pack(user, item):
 
     base[id]['new_cards'] = []
     base[id]['cur_card'] = 0
+
+    base[id]['iterator_of_message'] = message_id
 
     if item == 'Пак карточек' and base[id]['cards_packs'][item] > 0:
         for c in range(random.randint(5, 7)):
@@ -168,3 +170,12 @@ def next_back_card(user, action):
             save_base(base)
 
             return base[id]['cur_card']
+
+
+def get_iterator_message(user):
+    check_user(user)
+    id = user['id']
+    base = load_base()
+
+    return base[id]['iterator_of_message']
+

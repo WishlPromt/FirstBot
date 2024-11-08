@@ -6,7 +6,7 @@ from social_credits import add_credits, show_credits, work, check_user, balance
 from shop import buy, get_items, next_page, back_page
 from inventory import show_inventory, show_card_packs
 from system import get_message_data
-from cards_open import open_pack, show_cards, next_back_card, create_markup
+from cards_open import open_pack, show_cards, next_back_card, create_markup, get_iterator_message
 from profile import show_profile, equip, show_items
 
 
@@ -174,20 +174,23 @@ def callback(callback):
         bot.delete_message(callback.message.chat.id, callback.message.id)
 
     if callback.data == 'open Пак карточек':
-        cards = open_pack(get_message_data(callback), 'Пак карточек')
+        cards = open_pack(get_message_data(callback), 'Пак карточек', callback.message.id)
 
 
         if cards:
 
             card = show_cards(get_message_data(callback))
             with open(f'cards/{card}', 'rb') as image_card:
-                bot.send_photo(callback.message.chat.id, image_card, caption=f'{get_message_data(callback)["username"]}, вы получили {card}', reply_markup=create_markup())
+                bot.send_photo(callback.message.chat.id,
+                               image_card,
+                               reply_to_message_id=callback.message.id,
+                               caption=f'{get_message_data(callback)["username"]}, вы получили {card}', reply_markup=create_markup())
 
         else:
             bot.reply_to(callback.message, f'{get_message_data(callback)["username"]}, {cards}')
 
     elif callback.data == 'open Коробка карточек':
-        cards = open_pack(get_message_data(callback), 'Коробка карточек')
+        cards = open_pack(get_message_data(callback), 'Коробка карточек', callback.message.id)
 
 
         if cards:
@@ -202,7 +205,9 @@ def callback(callback):
 
 
     if callback.data == 'new Следующая':
-        if callback.from_user.id == callback.reply_to_message.from_user.id:
+
+        if callback.from_user.id == get_iterator_message(get_message_data(callback)):
+
             next_back_card(get_message_data(callback), 'next')
 
             card = show_cards(get_message_data(callback))
@@ -218,7 +223,9 @@ def callback(callback):
                                        media=types.InputMediaPhoto(image_card))
 
     elif callback.data == 'new Предыдущая':
-        if callback.from_user.id == callback.reply_to_message.from_user.id:
+
+        if callback.from_user.id == get_iterator_message(get_message_data(callback)):
+
             next_back_card(get_message_data(callback), 'back')
 
             card = show_cards(get_message_data(callback))

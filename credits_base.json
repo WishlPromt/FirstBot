@@ -1,7 +1,7 @@
 {
     "5105507379": {
         "username": "WishlPromt",
-        "credits": 173,
+        "credits": 138,
         "time": 1731074984,
         "inventory": [
             "Костюм горничной",
@@ -69,7 +69,13 @@
                 "re406.jpg",
                 "re790.jpeg",
                 "re576.jpg",
-                "re456.jpg"
+                "re456.jpg",
+                "re406.jpg",
+                "re580.jpg",
+                "re406.jpg",
+                "re016.jpg",
+                "re016.jpg",
+                "re406.jpg"
             ],
             "Редкие": [
                 "ra090.jpg",
@@ -90,6 +96,7 @@
                 "ra409.png",
                 "ra123.jpeg",
                 "ra589.jpeg",
+                "ra409.png",
                 "ra409.png"
             ],
             "Эпические": [
@@ -102,14 +109,16 @@
             "Легендарные": []
         },
         "new_cards": [
-            "regular/re127.jpeg",
             "regular/re406.jpg",
-            "regular/re790.jpeg",
-            "regular/re576.jpg",
-            "regular/re456.jpg",
+            "regular/re580.jpg",
+            "regular/re406.jpg",
+            "regular/re016.jpg",
+            "regular/re016.jpg",
+            "regular/re406.jpg",
             "rare/ra409.png"
         ],
-        "cur_card": 0
+        "cur_card": 0,
+        "iterator_of_message": 0
     },
     "5422828618": {
         "username": "Mzmz640404",
