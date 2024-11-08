@@ -6,7 +6,7 @@ from social_credits import add_credits, show_credits, work, check_user, balance
 from shop import buy, get_items, next_page, back_page
 from inventory import show_inventory, show_card_packs
 from system import get_message_data
-from cards_open import open_pack, show_cards, next_back_card, create_markup, get_iterator_message, set_iterator
+from cards_open import open_pack, show_cards, next_back_card, create_markup
 from profile import show_profile, equip, show_items
 
 
@@ -185,7 +185,6 @@ def callback(callback):
                                image_card,
                                reply_to_message_id=callback.message.id,
                                caption=f'{get_message_data(callback)["username"]}, вы получили {card}', reply_markup=create_markup())
-                set_iterator(get_message_data(callback), callback.message.id+1)
 
         else:
             bot.reply_to(callback.message, f'{get_message_data(callback)["username"]}, вы не получили не одной карточки')
@@ -201,7 +200,6 @@ def callback(callback):
             card = show_cards(get_message_data(callback))
             with open(f'cards/{card}', 'rb') as image_card:
                 bot.send_photo(callback.message.chat.id, image_card, caption=f'{get_message_data(callback)["username"]}, вы получили {card}', reply_markup=create_markup())
-                set_iterator(get_message_data(callback), callback.message.id + 1)
 
         else:
             bot.reply_to(callback.message, f'{get_message_data(callback)["username"]}, вы не получили не одной карточки')
@@ -211,45 +209,39 @@ def callback(callback):
 
 
     if callback.data == 'new Следующая':
-        print(callback.message.id)
-        if callback.message.id == get_iterator_message(get_message_data(callback)):
 
-            next_back_card(get_message_data(callback), 'next')
+        next_back_card(get_message_data(callback), 'next')
 
-            card = show_cards(get_message_data(callback))
+        card = show_cards(get_message_data(callback))
 
-            with open(f'cards/{card}', 'rb') as image_card:
+        with open(f'cards/{card}', 'rb') as image_card:
 
-                bot.edit_message_media(chat_id=callback.message.chat.id,
-                                       message_id=callback.message.id,
-                                       media=types.InputMediaPhoto(image_card))
+            bot.edit_message_media(chat_id=callback.message.chat.id,
+                                   message_id=callback.message.id,
+                                   media=types.InputMediaPhoto(image_card))
 
-                bot.edit_message_caption(chat_id=callback.message.chat.id,
-                                         message_id=callback.message.id,
-                                         caption=f'{get_message_data(callback)["username"]}, вы получили {card}',
-                                         reply_markup=create_markup())
+            bot.edit_message_caption(chat_id=callback.message.chat.id,
+                                     message_id=callback.message.id,
+                                     caption=f'{get_message_data(callback)["username"]}, вы получили {card}',
+                                     reply_markup=create_markup())
 
-        else:
-            bot.send_message(callback.message.chat.id, 'Ты не итератор')
 
     elif callback.data == 'new Предыдущая':
 
-        if callback.message.id == get_iterator_message(get_message_data(callback)):
+        next_back_card(get_message_data(callback), 'back')
 
-            next_back_card(get_message_data(callback), 'back')
+        card = show_cards(get_message_data(callback))
 
-            card = show_cards(get_message_data(callback))
+        with open(f'cards/{card}', 'rb') as image_card:
 
-            with open(f'cards/{card}', 'rb') as image_card:
+            bot.edit_message_media(chat_id=callback.message.chat.id,
+                                   message_id=callback.message.id,
+                                   media=types.InputMediaPhoto(image_card))
 
-                bot.edit_message_media(chat_id=callback.message.chat.id,
-                                       message_id=callback.message.id,
-                                       media=types.InputMediaPhoto(image_card))
-
-                bot.edit_message_caption(chat_id=callback.message.chat.id,
-                                         message_id=callback.message.id,
-                                         caption=f'{get_message_data(callback)["username"]}, вы получили {card}',
-                                         reply_markup=create_markup())
+            bot.edit_message_caption(chat_id=callback.message.chat.id,
+                                     message_id=callback.message.id,
+                                     caption=f'{get_message_data(callback)["username"]}, вы получили {card}',
+                                     reply_markup=create_markup())
 
 
 
