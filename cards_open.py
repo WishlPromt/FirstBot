@@ -34,6 +34,33 @@ def get_packs(user, pack):
     return False
 
 
+def get_card_info(card):
+    rare: str
+    name: str
+
+    if card[:2] == 're':
+        rare = 'Обычная'
+        name = '#' + card[2:]
+
+    elif card[:2] == 'ra':
+        rare = 'Редкая'
+        name = '#' + card[2:]
+
+    elif card[0] == 'e':
+        rare = 'Эпическая'
+        name = '#' + card[1:]
+
+    elif card[0] == 'l':
+        rare = 'Легендарная'
+        name = card[1:]
+
+    else:
+        rare = '???'
+        name = '???'
+
+    return f'\n <i>{name}</i>\n\n <b>{rare}</b>'
+
+
 def create_markup():
     cards_markup = types.InlineKeyboardMarkup()
     btn_next = types.InlineKeyboardButton('>>', callback_data='new Следующая')

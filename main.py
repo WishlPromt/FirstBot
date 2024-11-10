@@ -156,6 +156,16 @@ def unmute(message):
                      "Эта команда должна быть использована в ответ на сообщение пользователя, которого вы хотите размутить.")
 
 
+@bot.message_handler(commands=['nsfw'])
+def nsfw(message):
+    link = choice(['rickroll', 'vergil status1'])
+    if link == 'rickroll':
+        bot.reply_to(message, f'<a href="https://youtu.be/dQw4w9WgXcQ?si=djCpzMaLxIP6jOlW">Возьми</a>', parse_mode='html', disable_web_page_preview=True)
+    elif link == 'vergil status1':
+        bot.reply_to(message, f'<a href="https://youtu.be/6Sdaudjygeg?si=naV-TAMJSSIVNeEv">Возьми</a>', parse_mode='html', disable_web_page_preview=True)
+
+
+#CALLBACK
 @bot.callback_query_handler(func=lambda callback: True)
 def callback(callback):
 
@@ -194,7 +204,8 @@ def callback(callback):
                 bot.edit_message_caption(chat_id=callback.message.chat.id,
                                          message_id=callback.message.id,
                                          caption=f'{get_message_data(callback)["username"]}, вы получили {card}',
-                                         reply_markup=create_markup())
+                                         reply_markup=create_markup(),
+                                         parse_mode='html')
 
 
     elif callback.data == 'new Предыдущая':
@@ -218,15 +229,6 @@ def callback(callback):
                                          caption=f'{get_message_data(callback)["username"]}, вы получили {card}',
                                          reply_markup=create_markup())
 
-
-
-@bot.message_handler(commands=['nsfw'])
-def nsfw(message):
-    link = choice(['rickroll', 'vergil status1'])
-    if link == 'rickroll':
-        bot.reply_to(message, f'<a href="https://youtu.be/dQw4w9WgXcQ?si=djCpzMaLxIP6jOlW">Возьми</a>', parse_mode='html', disable_web_page_preview=True)
-    elif link == 'vergil status1':
-        bot.reply_to(message, f'<a href="https://youtu.be/6Sdaudjygeg?si=naV-TAMJSSIVNeEv">Возьми</a>', parse_mode='html', disable_web_page_preview=True)
 
 
 #SOCIAL CREDITS
@@ -271,7 +273,8 @@ def open_cards_pack(message):
                                image_card,
                                reply_to_message_id=message.id,
                                caption=f'{get_message_data(message)["username"]}, вы получили {card}',
-                               reply_markup=create_markup())
+                               reply_markup=create_markup(),
+                               parse_mode='html')
 
         else:
             bot.reply_to(message, f'{get_message_data(message)["username"]}, вы не получили не одной карточки')
@@ -295,7 +298,8 @@ def open_cards_pack(message):
                                image_card,
                                reply_to_message_id=message.id,
                                caption=f'{get_message_data(message)["username"]}, вы получили {card}',
-                               reply_markup=create_markup())
+                               reply_markup=create_markup(),
+                               parse_mode='html')
 
         else:
             bot.reply_to(message, f'{get_message_data(message)["username"]}, вы не получили не одной карточки')
