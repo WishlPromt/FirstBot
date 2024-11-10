@@ -38,11 +38,3 @@ def show_inventory(user):
 
     else:
         return f'<b>{username}</b>, ваш инвентарь <b>пуст</b>\n /shop для покупки предметов и ролей'
-
-
-def show_card_packs(user, pack):
-    check_user(user)
-    id = user['id']
-    base = load_base()
-
-    return f'{pack} - {base[id]["cards_packs"][pack]}'

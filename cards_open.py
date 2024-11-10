@@ -38,25 +38,23 @@ def get_card_info(card):
     rare: str
     name: str
 
-    if card[:2] == 're':
+    name = '#' + card[card.find('/')+1:card.find('.')]
+
+    if card[0:card.find('/')] == 'regular':
         rare = 'Обычная'
-        name = '#' + card[2:]
 
-    elif card[:2] == 'ra':
+    elif card[0:card.find('/')] == 'rare':
         rare = 'Редкая'
-        name = '#' + card[2:]
 
-    elif card[0] == 'e':
+    elif card[0:card.find('/')] == 'epic':
         rare = 'Эпическая'
-        name = '#' + card[1:]
+        name = '#' + card[card.find('/'):]
 
-    elif card[0] == 'l':
+    elif card[0:card.find('/')] == 'legendary':
         rare = 'Легендарная'
-        name = card[1:]
 
     else:
         rare = '???'
-        name = '???'
 
     return f'\n <i>{name}</i>\n\n <b>{rare}</b>'
 

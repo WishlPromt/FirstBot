@@ -4,9 +4,9 @@ from random import choice, randint
 import json, time
 from social_credits import add_credits, show_credits, work, check_user, balance
 from shop import buy, get_items, next_page, back_page
-from inventory import show_inventory, show_card_packs
+from inventory import show_inventory
 from system import get_message_data
-from cards_open import open_pack, show_cards, next_back_card, create_markup, get_packs
+from cards_open import open_pack, show_cards, next_back_card, create_markup, get_packs, get_card_info
 from profile import show_profile, equip, show_items
 
 
@@ -203,7 +203,7 @@ def callback(callback):
 
                 bot.edit_message_caption(chat_id=callback.message.chat.id,
                                          message_id=callback.message.id,
-                                         caption=f'{get_message_data(callback)["username"]}, вы получили {card}',
+                                         caption=f'{get_message_data(callback)["username"]}, вы получили {get_card_info(card)}',
                                          reply_markup=create_markup(),
                                          parse_mode='html')
 
@@ -226,7 +226,7 @@ def callback(callback):
 
                 bot.edit_message_caption(chat_id=callback.message.chat.id,
                                          message_id=callback.message.id,
-                                         caption=f'{get_message_data(callback)["username"]}, вы получили {card}',
+                                         caption=f'{get_message_data(callback)["username"]}, вы получили {get_card_info(card)}',
                                          reply_markup=create_markup())
 
 
@@ -272,7 +272,7 @@ def open_cards_pack(message):
                 bot.send_photo(message.chat.id,
                                image_card,
                                reply_to_message_id=message.id,
-                               caption=f'{get_message_data(message)["username"]}, вы получили {card}',
+                               caption=f'{get_message_data(message)["username"]}, вы получили {get_card_info(card)}',
                                reply_markup=create_markup(),
                                parse_mode='html')
 
