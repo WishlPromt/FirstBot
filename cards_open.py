@@ -23,6 +23,17 @@ epic_cards = os.listdir('cards/epic')
 legendary_cards = os.listdir('cards/legendary')
 
 
+def get_packs(user, pack):
+    check_user(user)
+    id = user['id']
+
+    base = load_base()
+
+    if base[id]['cards_packs'][pack] > 0:
+        return True
+    return False
+
+
 def create_markup():
     cards_markup = types.InlineKeyboardMarkup()
     btn_next = types.InlineKeyboardButton('>>', callback_data='new Следующая')

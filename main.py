@@ -6,7 +6,7 @@ from social_credits import add_credits, show_credits, work, check_user, balance
 from shop import buy, get_items, next_page, back_page
 from inventory import show_inventory, show_card_packs
 from system import get_message_data
-from cards_open import open_pack, show_cards, next_back_card, create_markup
+from cards_open import open_pack, show_cards, next_back_card, create_markup, get_packs
 from profile import show_profile, equip, show_items
 
 
@@ -173,39 +173,6 @@ def callback(callback):
         shop(callback.message, back)
         bot.delete_message(callback.message.chat.id, callback.message.id)
 
-    if callback.data == 'open Пак карточек':
-        cards = open_pack(get_message_data(callback), 'Пак карточек', callback.message.id)
-
-
-        if cards:
-
-            card = show_cards(get_message_data(callback))
-            with open(f'cards/{card}', 'rb') as image_card:
-                bot.send_photo(callback.message.chat.id,
-                               image_card,
-                               reply_to_message_id=callback.message.id,
-                               caption=f'{get_message_data(callback)["username"]}, вы получили {card}', reply_markup=create_markup())
-
-        else:
-            bot.reply_to(callback.message, f'{get_message_data(callback)["username"]}, вы не получили не одной карточки')
-
-        bot.delete_message(chat_id=callback.message.chat.id, message_id=callback.message.id)
-
-    elif callback.data == 'open Коробка карточек':
-        cards = open_pack(get_message_data(callback), 'Коробка карточек', callback.message.id)
-
-
-        if cards:
-
-            card = show_cards(get_message_data(callback))
-            with open(f'cards/{card}', 'rb') as image_card:
-                bot.send_photo(callback.message.chat.id, image_card, caption=f'{get_message_data(callback)["username"]}, вы получили {card}', reply_markup=create_markup())
-
-        else:
-            bot.reply_to(callback.message, f'{get_message_data(callback)["username"]}, вы не получили не одной карточки')
-
-        bot.delete_message(chat_id=callback.message.chat.id, message_id=callback.message.id)
-
 
 
     if callback.data == 'new Следующая':
@@ -284,11 +251,25 @@ def send_inventory(message):
 
 @bot.message_handler(commands=['open_pack'])
 def open_cards_pack(message):
-    markup = types.InlineKeyboardMarkup()
-    btn_pack1 = types.InlineKeyboardButton(show_card_packs(get_message_data(message), 'Пак карточек'), callback_data='open Пак карточек')
-    markup.add(btn_pack1)
 
-    bot.reply_to(message, 'Открыть пак коллекционных карточек', reply_markup=markup)
+    if get_packs(get_message_data(message), 'Пак карточек'):
+        cards = open_pack(get_message_data(message), 'Пак карточек', message.id)
+
+        if cards:
+
+            card = show_cards(get_message_data(message))
+            with open(f'cards/{card}', 'rb') as image_card:
+                bot.send_photo(message.chat.id,
+                               image_card,
+                               reply_to_message_id=message.id,
+                               caption=f'{get_message_data(message)["username"]}, вы получили {card}',
+                               reply_markup=create_markup())
+
+        else:
+            bot.reply_to(message, f'{get_message_data(message)["username"]}, вы не получили не одной карточки')
+
+    else:
+        bot.reply_to(message, f'{get_message_data(message)["username"]}, у тебя нет паков, купи в /shop')
 
 
 @bot.message_handler(commands=['shop'])

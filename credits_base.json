@@ -1,16 +1,17 @@
 {
     "5105507379": {
         "username": "WishlPromt",
-        "credits": 138,
-        "time": 1731074984,
+        "credits": 91,
+        "time": 1731235320,
         "inventory": [
             "Костюм горничной",
             "Пак карточек",
             "Вилка",
-            "Шампунь Жумайсынба"
+            "Шампунь Жумайсынба",
+            "Клоун"
         ],
         "favorite_item": "Шампунь Жумайсынба",
-        "role": "Нет роли",
+        "role": "Клоун",
         "favorite_card": "Нет карты",
         "cards_packs": {
             "Пак карточек": 0,
@@ -117,12 +118,12 @@
             "regular/re406.jpg",
             "rare/ra409.png"
         ],
-        "cur_card": 0
+        "cur_card": 5
     },
     "5422828618": {
         "username": "Mzmz640404",
-        "credits": 162,
-        "time": 1731070358,
+        "credits": 307,
+        "time": 1731239524,
         "inventory": [
             "Вилка",
             "Шампунь Жумайсынба",
@@ -133,7 +134,7 @@
         "role": "Нет роли",
         "favorite_card": "Нет карты",
         "cards_packs": {
-            "Пак карточек": 2,
+            "Пак карточек": 1,
             "Коробка карточек": 0
         },
         "cards": {
@@ -156,7 +157,13 @@
                 "re782.png",
                 "re580.jpg",
                 "re580.jpg",
-                "re456.jpg"
+                "re456.jpg",
+                "re127.jpeg",
+                "re782.jpeg",
+                "re097.jpeg",
+                "re576.jpg",
+                "re782.png",
+                "re809.png"
             ],
             "Редкие": [
                 "ra078.jpg",
@@ -168,15 +175,15 @@
             "Легендарные": []
         },
         "new_cards": [
-            "regular/re912.jpg",
-            "regular/re580.jpg",
+            "regular/re127.jpeg",
+            "regular/re782.jpeg",
+            "regular/re097.jpeg",
+            "regular/re576.jpg",
             "regular/re782.png",
-            "regular/re580.jpg",
-            "rare/ra090.jpg",
-            "regular/re580.jpg",
-            "regular/re456.jpg"
+            "regular/re809.png"
         ],
-        "cur_card": 5
+        "cur_card": 4,
+        "iterator_of_message": 4741
     },
     "1234733553": {
         "username": "ultras567",
@@ -243,9 +250,11 @@
     },
     "6638790681": {
         "username": "Lalsans1111",
-        "credits": 83,
-        "time": 1731070114,
-        "inventory": [],
+        "credits": 66,
+        "time": 1731235033,
+        "inventory": [
+            "Шампунь Жумайсынба"
+        ],
         "favorite_item": "Вилка",
         "role": "Нет роли",
         "favorite_card": "Нет карты",
@@ -285,8 +294,8 @@
     },
     "6891646558": {
         "username": "darhasira",
-        "credits": 17,
-        "time": 1731075515,
+        "credits": 85,
+        "time": 1731235028,
         "inventory": [
             "Пак карточек"
         ],
@@ -347,8 +356,8 @@
     },
     "1336049480": {
         "username": "Rimura_tempest3919",
-        "credits": 4,
-        "time": 1730992904,
+        "credits": 71,
+        "time": 1731081540,
         "inventory": [
             "Пак карточек"
         ],
