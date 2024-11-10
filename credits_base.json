@@ -1,7 +1,7 @@
 {
     "5105507379": {
         "username": "WishlPromt",
-        "credits": 91,
+        "credits": 56,
         "time": 1731235320,
         "inventory": [
             "Костюм горничной",
@@ -80,7 +80,12 @@
                 "re091.png",
                 "re345.jpg",
                 "re401.png",
-                "re401.png"
+                "re401.png",
+                "re891.jpg",
+                "re127.jpeg",
+                "re289.jpeg",
+                "re401.png",
+                "re406.jpg"
             ],
             "Редкие": [
                 "ra090.jpg",
@@ -104,7 +109,8 @@
                 "ra409.png",
                 "ra409.png",
                 "ra789.jpeg",
-                "ra409.png"
+                "ra409.png",
+                "ra408.png"
             ],
             "Эпические": [
                 "e234.jpeg",
@@ -116,15 +122,15 @@
             "Легендарные": []
         },
         "new_cards": [
-            "regular/re091.png",
-            "regular/re345.jpg",
+            "rare/ra408.png",
+            "regular/re891.jpg",
+            "regular/re127.jpeg",
+            "regular/re289.jpeg",
             "regular/re401.png",
-            "rare/ra789.jpeg",
-            "regular/re401.png",
-            "rare/ra409.png"
+            "regular/re406.jpg"
         ],
-        "cur_card": 5,
-        "iterator_of_message": 379
+        "cur_card": 1,
+        "iterator_of_message": 388
     },
     "5422828618": {
         "username": "Mzmz640404",
@@ -362,7 +368,7 @@
     },
     "1336049480": {
         "username": "Rimura_tempest3919",
-        "credits": 67,
+        "credits": 32,
         "time": 1731243175,
         "inventory": [
             "Пак карточек"
@@ -382,11 +388,17 @@
                 "re782.jpeg",
                 "re809.png",
                 "re782.jpeg",
-                "re790.jpeg"
+                "re790.jpeg",
+                "re401.png",
+                "re904.jpg",
+                "re017.jpeg",
+                "re019.jpg"
             ],
             "Редкие": [
                 "ra408.png",
-                "ra589.jpeg"
+                "ra589.jpeg",
+                "ra789.jpeg",
+                "ra078.jpg"
             ],
             "Эпические": [
                 "e234.jpeg",
@@ -396,14 +408,15 @@
             "Легендарные": []
         },
         "new_cards": [
-            "epic/e234.jpeg",
-            "epic/e237.png",
-            "rare/ra589.jpeg",
-            "regular/re782.jpeg",
-            "regular/re790.jpeg"
+            "regular/re401.png",
+            "rare/ra789.jpeg",
+            "rare/ra078.jpg",
+            "regular/re904.jpg",
+            "regular/re017.jpeg",
+            "regular/re019.jpg"
         ],
         "cur_card": 2,
-        "iterator_of_message": 5137
+        "iterator_of_message": 5267
     },
     "1355067969": {
         "username": "skymalll111",

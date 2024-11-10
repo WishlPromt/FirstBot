@@ -264,6 +264,7 @@ def send_inventory(message):
 def open_cards_pack(message):
 
     if get_packs(get_message_data(message), 'Пак карточек'):
+
         cards = open_pack(get_message_data(message), 'Пак карточек', message.id)
 
         if cards:
