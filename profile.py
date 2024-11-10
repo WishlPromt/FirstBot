@@ -42,17 +42,22 @@ def equip(user, item):
     items = load_items()
     base = load_base()
 
-    if items[item][3] == 'Предмет':
-        base[id]['favorite_item'] = item
-        save_base(base)
-        return f'Теперь предмет <b>{item}</b> отображается у вас в /profile'
+    if item in base[id]['inventory']:
 
-    elif items[item][3] == 'Роль':
-        base[id]['role'] = item
-        save_base(base)
-        return f'Теперь роль <b>{item}</b> отображается у вас в /profile'
+        if items[item][3] == 'Предмет':
+            base[id]['favorite_item'] = item
+            save_base(base)
+            return f'Теперь предмет <b>{item}</b> отображается у вас в /profile'
 
-    return 'Ошибка. Иди нахуй'
+        elif items[item][3] == 'Роль':
+            base[id]['role'] = item
+            save_base(base)
+            return f'Теперь роль <b>{item}</b> отображается у вас в /profile'
+
+        return 'Ошибка. Иди нахуй'
+
+    else:
+        return 'Это не твой предмет/роль. Иди нахуй'
 
 
 def show_items(user):

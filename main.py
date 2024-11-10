@@ -227,7 +227,8 @@ def callback(callback):
                 bot.edit_message_caption(chat_id=callback.message.chat.id,
                                          message_id=callback.message.id,
                                          caption=f'{get_message_data(callback)["username"]}, вы получили {get_card_info(card)}',
-                                         reply_markup=create_markup())
+                                         reply_markup=create_markup(),
+                                         parse_mode='html')
 
 
 

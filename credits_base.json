@@ -371,8 +371,8 @@
             "Пак карточек": 0,
             "Коробка карточек": 0
         },
-        "favorite_item": "Нет предмета",
-        "role": "Нет роли",
+        "favorite_item": "Шампунь Жумайсынба",
+        "role": "Клоун",
         "favorite_card": "Нет карты",
         "cards": {
             "Обычные": [
@@ -402,7 +402,7 @@
             "regular/re782.jpeg",
             "regular/re790.jpeg"
         ],
-        "cur_card": 1,
+        "cur_card": 2,
         "iterator_of_message": 5137
     },
     "1355067969": {
