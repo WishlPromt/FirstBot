@@ -76,7 +76,11 @@
                 "re406.jpg",
                 "re016.jpg",
                 "re016.jpg",
-                "re406.jpg"
+                "re406.jpg",
+                "re091.png",
+                "re345.jpg",
+                "re401.png",
+                "re401.png"
             ],
             "Редкие": [
                 "ra090.jpg",
@@ -98,6 +102,8 @@
                 "ra123.jpeg",
                 "ra589.jpeg",
                 "ra409.png",
+                "ra409.png",
+                "ra789.jpeg",
                 "ra409.png"
             ],
             "Эпические": [
@@ -110,15 +116,15 @@
             "Легендарные": []
         },
         "new_cards": [
-            "regular/re406.jpg",
-            "regular/re580.jpg",
-            "regular/re406.jpg",
-            "regular/re016.jpg",
-            "regular/re016.jpg",
-            "regular/re406.jpg",
+            "regular/re091.png",
+            "regular/re345.jpg",
+            "regular/re401.png",
+            "rare/ra789.jpeg",
+            "regular/re401.png",
             "rare/ra409.png"
         ],
-        "cur_card": 5
+        "cur_card": 1,
+        "iterator_of_message": 379
     },
     "5422828618": {
         "username": "Mzmz640404",
