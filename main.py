@@ -280,6 +280,30 @@ def open_cards_pack(message):
         bot.reply_to(message, f'{get_message_data(message)["username"]}, у тебя нет паков, купи в /shop')
 
 
+@bot.message_handler(commands=['open_box'])
+def open_cards_pack(message):
+
+    if get_packs(get_message_data(message), 'Коробка карточек'):
+
+        cards = open_pack(get_message_data(message), 'Коробка карточек', message.id)
+
+        if cards:
+
+            card = show_cards(get_message_data(message))
+            with open(f'cards/{card}', 'rb') as image_card:
+                bot.send_photo(message.chat.id,
+                               image_card,
+                               reply_to_message_id=message.id,
+                               caption=f'{get_message_data(message)["username"]}, вы получили {card}',
+                               reply_markup=create_markup())
+
+        else:
+            bot.reply_to(message, f'{get_message_data(message)["username"]}, вы не получили не одной карточки')
+
+    else:
+        bot.reply_to(message, f'{get_message_data(message)["username"]}, у тебя нет паков, купи в /shop')
+
+
 @bot.message_handler(commands=['shop'])
 def shop(message, page=1):
     check_user(get_message_data(message))
