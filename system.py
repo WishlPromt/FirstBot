@@ -1,14 +1,33 @@
 import time, json
 
+
 def load_base():
-    with open('credits_base.json', 'r', encoding='utf-8') as file:
+    with (open('credits_base.json', 'r', encoding='utf-8') as file):
         base = json.load(file)
         return base
+
+
+def save_base(base):
+    file = open('credits_base.json', 'w', encoding='utf-8')
+    json.dump(base, file, indent=4, ensure_ascii=False)
+    file.close()
+
 
 def convert_time(datetime):
     return time.strftime('%H:%M:%S %d.%m.%Y', time.localtime(datetime))
 
+
+def check_chat_id(chat_id):
+    base = load_base()
+
+    if chat_id not in base:
+        base[chat_id] = {}
+        save_base(base)
+
+
 def get_message_data(data):
+    check_chat_id(str(data.chat.id))
+
     id = str(data.from_user.id)
     username = data.from_user.username
     name = data.from_user.first_name
@@ -19,8 +38,8 @@ def get_message_data(data):
     except:
         datetime = 0
 
-    return {'id': id,
+    return {'chat_id': str(data.chat.id),
+            'id': id,
             'username': username,
             'datetime': datetime,
             'name': name}
-

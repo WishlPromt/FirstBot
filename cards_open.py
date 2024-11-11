@@ -5,10 +5,10 @@ from telebot import types
 from social_credits import check_user
 
 
-def load_base():
+def load_base(chat_id):
     with open('credits_base.json', 'r', encoding='utf-8') as file:
         base = json.load(file)
-        return base
+        return base[chat_id]
 
 
 def save_base(base):
@@ -27,7 +27,7 @@ def get_packs(user, pack):
     check_user(user)
     id = user['id']
 
-    base = load_base()
+    base = load_base(user['chat_id'])
 
     if base[id]['cards_packs'][pack] > 0:
         return True
@@ -88,7 +88,7 @@ def open_pack(user, item, message_id):
     id = user['id']
     cards = []
 
-    base = load_base()
+    base = load_base(user['chat_id'])
 
     base[id]['new_cards'] = []
     base[id]['cur_card'] = 0
@@ -163,7 +163,7 @@ def show_cards(user):
 
     id = user['id']
 
-    base = load_base()
+    base = load_base(user['chat_id'])
     cur_card = base[id]['cur_card']
 
     if cur_card <= len(base[id]["new_cards"]) - 1:
@@ -177,7 +177,7 @@ def next_back_card(user, action):
     check_user(user)
 
     id = user['id']
-    base = load_base()
+    base = load_base(user['chat_id'])
 
     cur_card = base[id]['cur_card']
 

@@ -3,19 +3,24 @@ from random import randint
 from system import convert_time
 
 
-with open("credits_base.json", "r", encoding="utf-8") as file:
-    base = json.load(file)
+def load_base(chat_id):
+    with open("credits_base.json", "r", encoding="utf-8") as file:
+        base = json.load(file)
+        return base[chat_id]
 
 
-def save_base():
+def save_base(base):
     file = open('credits_base.json', 'w', encoding='utf-8')
     json.dump(base, file, indent=4, ensure_ascii=False)
     file.close()
 
 
 def new_id(user: dict):
-    if user['username'] =='null':
+    if user['username'] == 'null':
         user['username'] = user['name']
+
+    base = load_base(user['chat_id'])
+
     base[user['id']] = {'username': user['username'],
                         'credits': 0,
                         'time': 0,
@@ -36,24 +41,26 @@ def new_id(user: dict):
                         'new_cards': [],
                         'cur_card': 0
                         }
-    save_base()
+    save_base(base)
 
 
 def check_user(user: dict):
+    base = load_base(user['chat_id'])
     if user['id'] not in base and user['id'] != "7179420529":
         new_id(user)
 
 
-
 def add_credits(user: dict, credits):
     check_user(user)
+    base = load_base(user['chat_id'])
     id = user['id']
     base[id]['credits'] = base[id]['credits'] + credits
-    save_base()
+    save_base(base)
 
 
 def work(user: dict):
     check_user(user)
+    base = load_base(user['chat_id'])
     id = user['id']
     datetime = user['datetime']
     lock_data = base[id]['time']
@@ -67,7 +74,7 @@ def work(user: dict):
         now = datetime + 7200
         base[id]['time'] = now
 
-        save_base()
+        save_base(base)
 
         return f'Вы заработали <b>{credits}</b> кредитов!\nВы сможете воркать снова только <i>{convert_time(base[id]["time"])}</i>'
 
@@ -79,10 +86,13 @@ def balance(user: dict):
     check_user(user)
     id = user['id']
 
+    base = load_base(user['chat_id'])
+
     return f'<b>{base[id]["username"]}</b>\n Ваши социальные кредиты:\n <b>{str(base[id]["credits"])}</b>'
 
 
-def show_credits():
+def show_credits(chat_id):
+    base = load_base(chat_id)
     credits = 'Социальные кредиты участников'
     for id in base.keys():
         credits += '\n' + str(base[id]['username']) + ': ' + str(base[id]['credits'])

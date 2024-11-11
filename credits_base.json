@@ -1,463 +1,465 @@
 {
-    "5105507379": {
-        "username": "WishlPromt",
-        "credits": 128,
-        "time": 1731309994,
-        "inventory": [
-            "Костюм горничной",
-            "Пак карточек",
-            "Вилка",
-            "Шампунь Жумайсынба",
-            "Клоун"
-        ],
-        "favorite_item": "Шампунь Жумайсынба",
-        "role": "Клоун",
-        "favorite_card": "Нет карты",
-        "cards_packs": {
-            "Пак карточек": 0,
-            "Коробка карточек": 0
-        },
-        "cards": {
-            "Обычные": [
-                "re809.png",
-                "re790.jpeg",
-                "re289.jpeg",
-                "re270.jpg",
-                "re790.jpeg",
-                "re904.jpg",
-                "re782.png",
-                "re912.jpg",
-                "re019.jpg",
-                "re091.png",
-                "re790.jpeg",
-                "re127.jpeg",
-                "re289.jpeg",
-                "re378.png",
-                "re904.jpg",
-                "re912.jpg",
-                "re401.png",
-                "re912.jpg",
-                "re406.jpg",
-                "re891.jpg",
-                "re097.jpeg",
-                "re401.png",
-                "re097.jpeg",
-                "re904.jpg",
-                "re891.jpg",
-                "re097.jpeg",
-                "re579.png",
-                "re809.png",
-                "re782.jpeg",
-                "re019.jpg",
-                "re576.jpg",
-                "re456.jpg",
-                "re345.jpg",
-                "re579.png",
-                "re345.jpg",
-                "re401.png",
-                "re580.jpg",
-                "re891.jpg",
-                "re891.jpg",
-                "re579.png",
-                "re406.jpg",
-                "re097.jpeg",
-                "re579.png",
-                "re809.png",
-                "re782.png",
-                "re579.png",
-                "re782.jpeg",
-                "re127.jpeg",
-                "re406.jpg",
-                "re790.jpeg",
-                "re576.jpg",
-                "re456.jpg",
-                "re406.jpg",
-                "re580.jpg",
-                "re406.jpg",
-                "re016.jpg",
-                "re016.jpg",
-                "re406.jpg",
-                "re091.png",
-                "re345.jpg",
-                "re401.png",
-                "re401.png",
-                "re891.jpg",
-                "re127.jpeg",
-                "re289.jpeg",
-                "re401.png",
-                "re406.jpg"
+    "-1002307722923": {
+        "5105507379": {
+            "username": "WishlPromt",
+            "credits": 128,
+            "time": 1731309994,
+            "inventory": [
+                "Костюм горничной",
+                "Пак карточек",
+                "Вилка",
+                "Шампунь Жумайсынба",
+                "Клоун"
             ],
-            "Редкие": [
-                "ra090.jpg",
-                "ra589.jpeg",
-                "ra409.png",
-                "ra178.png",
-                "ra309.jpg",
-                "ra589.jpeg",
-                "ra534.png",
-                "ra178.png",
-                "ra091.jpg",
-                "ra589.jpeg",
-                "ra123.jpeg",
-                "ra460.png",
-                "ra309.jpg",
-                "ra078.jpg",
-                "ra109.png",
-                "ra409.png",
-                "ra123.jpeg",
-                "ra589.jpeg",
-                "ra409.png",
-                "ra409.png",
-                "ra789.jpeg",
-                "ra409.png",
-                "ra408.png"
+            "favorite_item": "Шампунь Жумайсынба",
+            "role": "Клоун",
+            "favorite_card": "Нет карты",
+            "cards_packs": {
+                "Пак карточек": 0,
+                "Коробка карточек": 0
+            },
+            "cards": {
+                "Обычные": [
+                    "re809.png",
+                    "re790.jpeg",
+                    "re289.jpeg",
+                    "re270.jpg",
+                    "re790.jpeg",
+                    "re904.jpg",
+                    "re782.png",
+                    "re912.jpg",
+                    "re019.jpg",
+                    "re091.png",
+                    "re790.jpeg",
+                    "re127.jpeg",
+                    "re289.jpeg",
+                    "re378.png",
+                    "re904.jpg",
+                    "re912.jpg",
+                    "re401.png",
+                    "re912.jpg",
+                    "re406.jpg",
+                    "re891.jpg",
+                    "re097.jpeg",
+                    "re401.png",
+                    "re097.jpeg",
+                    "re904.jpg",
+                    "re891.jpg",
+                    "re097.jpeg",
+                    "re579.png",
+                    "re809.png",
+                    "re782.jpeg",
+                    "re019.jpg",
+                    "re576.jpg",
+                    "re456.jpg",
+                    "re345.jpg",
+                    "re579.png",
+                    "re345.jpg",
+                    "re401.png",
+                    "re580.jpg",
+                    "re891.jpg",
+                    "re891.jpg",
+                    "re579.png",
+                    "re406.jpg",
+                    "re097.jpeg",
+                    "re579.png",
+                    "re809.png",
+                    "re782.png",
+                    "re579.png",
+                    "re782.jpeg",
+                    "re127.jpeg",
+                    "re406.jpg",
+                    "re790.jpeg",
+                    "re576.jpg",
+                    "re456.jpg",
+                    "re406.jpg",
+                    "re580.jpg",
+                    "re406.jpg",
+                    "re016.jpg",
+                    "re016.jpg",
+                    "re406.jpg",
+                    "re091.png",
+                    "re345.jpg",
+                    "re401.png",
+                    "re401.png",
+                    "re891.jpg",
+                    "re127.jpeg",
+                    "re289.jpeg",
+                    "re401.png",
+                    "re406.jpg"
+                ],
+                "Редкие": [
+                    "ra090.jpg",
+                    "ra589.jpeg",
+                    "ra409.png",
+                    "ra178.png",
+                    "ra309.jpg",
+                    "ra589.jpeg",
+                    "ra534.png",
+                    "ra178.png",
+                    "ra091.jpg",
+                    "ra589.jpeg",
+                    "ra123.jpeg",
+                    "ra460.png",
+                    "ra309.jpg",
+                    "ra078.jpg",
+                    "ra109.png",
+                    "ra409.png",
+                    "ra123.jpeg",
+                    "ra589.jpeg",
+                    "ra409.png",
+                    "ra409.png",
+                    "ra789.jpeg",
+                    "ra409.png",
+                    "ra408.png"
+                ],
+                "Эпические": [
+                    "e234.jpeg",
+                    "e234.jpeg",
+                    "e569.jpeg",
+                    "e569.jpeg",
+                    "e245.jpeg"
+                ],
+                "Легендарные": []
+            },
+            "new_cards": [
+                "rare/ra408.png",
+                "regular/re891.jpg",
+                "regular/re127.jpeg",
+                "regular/re289.jpeg",
+                "regular/re401.png",
+                "regular/re406.jpg"
             ],
-            "Эпические": [
-                "e234.jpeg",
-                "e234.jpeg",
-                "e569.jpeg",
-                "e569.jpeg",
-                "e245.jpeg"
+            "cur_card": 1,
+            "iterator_of_message": 388
+        },
+        "5422828618": {
+            "username": "Mzmz640404",
+            "credits": 389,
+            "time": 1731255387,
+            "inventory": [
+                "Вилка",
+                "Шампунь Жумайсынба",
+                "Пак карточек",
+                "Костюм горничной"
             ],
-            "Легендарные": []
-        },
-        "new_cards": [
-            "rare/ra408.png",
-            "regular/re891.jpg",
-            "regular/re127.jpeg",
-            "regular/re289.jpeg",
-            "regular/re401.png",
-            "regular/re406.jpg"
-        ],
-        "cur_card": 1,
-        "iterator_of_message": 388
-    },
-    "5422828618": {
-        "username": "Mzmz640404",
-        "credits": 389,
-        "time": 1731255387,
-        "inventory": [
-            "Вилка",
-            "Шампунь Жумайсынба",
-            "Пак карточек",
-            "Костюм горничной"
-        ],
-        "favorite_item": "Вилка",
-        "role": "Нет роли",
-        "favorite_card": "Нет карты",
-        "cards_packs": {
-            "Пак карточек": 1,
-            "Коробка карточек": 0
-        },
-        "cards": {
-            "Обычные": [
-                "re097.jpeg",
-                "re576.jpg",
-                "re790.jpeg",
-                "re270.jpg",
-                "re456.jpg",
-                "re782.png",
-                "re017.jpeg",
-                "re579.png",
-                "re782.png",
-                "re962.png",
-                "re912.jpg",
-                "re270.jpg",
-                "re097.jpeg",
-                "re912.jpg",
-                "re580.jpg",
-                "re782.png",
-                "re580.jpg",
-                "re580.jpg",
-                "re456.jpg",
-                "re127.jpeg",
-                "re782.jpeg",
-                "re097.jpeg",
-                "re576.jpg",
-                "re782.png",
-                "re809.png"
+            "favorite_item": "Вилка",
+            "role": "Нет роли",
+            "favorite_card": "Нет карты",
+            "cards_packs": {
+                "Пак карточек": 1,
+                "Коробка карточек": 0
+            },
+            "cards": {
+                "Обычные": [
+                    "re097.jpeg",
+                    "re576.jpg",
+                    "re790.jpeg",
+                    "re270.jpg",
+                    "re456.jpg",
+                    "re782.png",
+                    "re017.jpeg",
+                    "re579.png",
+                    "re782.png",
+                    "re962.png",
+                    "re912.jpg",
+                    "re270.jpg",
+                    "re097.jpeg",
+                    "re912.jpg",
+                    "re580.jpg",
+                    "re782.png",
+                    "re580.jpg",
+                    "re580.jpg",
+                    "re456.jpg",
+                    "re127.jpeg",
+                    "re782.jpeg",
+                    "re097.jpeg",
+                    "re576.jpg",
+                    "re782.png",
+                    "re809.png"
+                ],
+                "Редкие": [
+                    "ra078.jpg",
+                    "ra789.jpeg",
+                    "ra589.jpeg",
+                    "ra090.jpg"
+                ],
+                "Эпические": [],
+                "Легендарные": []
+            },
+            "new_cards": [
+                "regular/re127.jpeg",
+                "regular/re782.jpeg",
+                "regular/re097.jpeg",
+                "regular/re576.jpg",
+                "regular/re782.png",
+                "regular/re809.png"
             ],
-            "Редкие": [
-                "ra078.jpg",
-                "ra789.jpeg",
-                "ra589.jpeg",
-                "ra090.jpg"
+            "cur_card": 4,
+            "iterator_of_message": 4741
+        },
+        "1234733553": {
+            "username": "ultras567",
+            "credits": 85,
+            "time": 1730989288,
+            "inventory": [],
+            "favorite_item": "Вилка",
+            "role": "Нет роли",
+            "favorite_card": "Нет карты",
+            "cards_packs": {
+                "Пак карточек": 0,
+                "Коробка карточек": 0
+            },
+            "cards": {
+                "Обычные": [],
+                "Редкие": [],
+                "Эпические": [],
+                "Легендарные": []
+            },
+            "new_cards": [],
+            "cur_card": 0
+        },
+        "5817779536": {
+            "username": "Артем",
+            "credits": 42,
+            "time": 0,
+            "inventory": [],
+            "favorite_item": "Вилка",
+            "role": "Нет роли",
+            "favorite_card": "Нет карты",
+            "cards_packs": {
+                "Пак карточек": 0,
+                "Коробка карточек": 0
+            },
+            "cards": {
+                "Обычные": [],
+                "Редкие": [],
+                "Эпические": [],
+                "Легендарные": []
+            },
+            "new_cards": [],
+            "cur_card": 0
+        },
+        "6586917192": {
+            "username": "pfpfbw",
+            "credits": 36,
+            "time": 1730575828,
+            "inventory": [],
+            "favorite_item": "Вилка",
+            "role": "Нет роли",
+            "favorite_card": "Нет карты",
+            "cards_packs": {
+                "Пак карточек": 0,
+                "Коробка карточек": 0
+            },
+            "cards": {
+                "Обычные": [],
+                "Редкие": [],
+                "Эпические": [],
+                "Легендарные": []
+            },
+            "new_cards": [],
+            "cur_card": 0
+        },
+        "6638790681": {
+            "username": "Lalsans1111",
+            "credits": 66,
+            "time": 1731235033,
+            "inventory": [
+                "Шампунь Жумайсынба"
             ],
-            "Эпические": [],
-            "Легендарные": []
+            "favorite_item": "Вилка",
+            "role": "Нет роли",
+            "favorite_card": "Нет карты",
+            "cards_packs": {
+                "Пак карточек": 0,
+                "Коробка карточек": 0
+            },
+            "cards": {
+                "Обычные": [],
+                "Редкие": [],
+                "Эпические": [],
+                "Легендарные": []
+            },
+            "new_cards": [],
+            "cur_card": 0
         },
-        "new_cards": [
-            "regular/re127.jpeg",
-            "regular/re782.jpeg",
-            "regular/re097.jpeg",
-            "regular/re576.jpg",
-            "regular/re782.png",
-            "regular/re809.png"
-        ],
-        "cur_card": 4,
-        "iterator_of_message": 4741
-    },
-    "1234733553": {
-        "username": "ultras567",
-        "credits": 85,
-        "time": 1730989288,
-        "inventory": [],
-        "favorite_item": "Вилка",
-        "role": "Нет роли",
-        "favorite_card": "Нет карты",
-        "cards_packs": {
-            "Пак карточек": 0,
-            "Коробка карточек": 0
+        "5722997773": {
+            "username": "akaza096",
+            "credits": 0,
+            "time": 0,
+            "inventory": [],
+            "cards_packs": {
+                "Пак карточек": 0,
+                "Коробка карточек": 0
+            },
+            "favorite_item": "Нет предмета",
+            "role": "Нет роли",
+            "favorite_card": "Нет карты",
+            "cards": {
+                "Обычные": [],
+                "Редкие": [],
+                "Эпические": [],
+                "Легендарные": []
+            },
+            "new_cards": [],
+            "cur_card": 0
         },
-        "cards": {
-            "Обычные": [],
-            "Редкие": [],
-            "Эпические": [],
-            "Легендарные": []
-        },
-        "new_cards": [],
-        "cur_card": 0
-    },
-    "5817779536": {
-        "username": "Артем",
-        "credits": 42,
-        "time": 0,
-        "inventory": [],
-        "favorite_item": "Вилка",
-        "role": "Нет роли",
-        "favorite_card": "Нет карты",
-        "cards_packs": {
-            "Пак карточек": 0,
-            "Коробка карточек": 0
-        },
-        "cards": {
-            "Обычные": [],
-            "Редкие": [],
-            "Эпические": [],
-            "Легендарные": []
-        },
-        "new_cards": [],
-        "cur_card": 0
-    },
-    "6586917192": {
-        "username": "pfpfbw",
-        "credits": 36,
-        "time": 1730575828,
-        "inventory": [],
-        "favorite_item": "Вилка",
-        "role": "Нет роли",
-        "favorite_card": "Нет карты",
-        "cards_packs": {
-            "Пак карточек": 0,
-            "Коробка карточек": 0
-        },
-        "cards": {
-            "Обычные": [],
-            "Редкие": [],
-            "Эпические": [],
-            "Легендарные": []
-        },
-        "new_cards": [],
-        "cur_card": 0
-    },
-    "6638790681": {
-        "username": "Lalsans1111",
-        "credits": 66,
-        "time": 1731235033,
-        "inventory": [
-            "Шампунь Жумайсынба"
-        ],
-        "favorite_item": "Вилка",
-        "role": "Нет роли",
-        "favorite_card": "Нет карты",
-        "cards_packs": {
-            "Пак карточек": 0,
-            "Коробка карточек": 0
-        },
-        "cards": {
-            "Обычные": [],
-            "Редкие": [],
-            "Эпические": [],
-            "Легендарные": []
-        },
-        "new_cards": [],
-        "cur_card": 0
-    },
-    "5722997773": {
-        "username": "akaza096",
-        "credits": 0,
-        "time": 0,
-        "inventory": [],
-        "cards_packs": {
-            "Пак карточек": 0,
-            "Коробка карточек": 0
-        },
-        "favorite_item": "Нет предмета",
-        "role": "Нет роли",
-        "favorite_card": "Нет карты",
-        "cards": {
-            "Обычные": [],
-            "Редкие": [],
-            "Эпические": [],
-            "Легендарные": []
-        },
-        "new_cards": [],
-        "cur_card": 0
-    },
-    "6891646558": {
-        "username": "darhasira",
-        "credits": 130,
-        "time": 1731248812,
-        "inventory": [
-            "Пак карточек"
-        ],
-        "cards_packs": {
-            "Пак карточек": 0,
-            "Коробка карточек": 0
-        },
-        "favorite_item": "Нет предмета",
-        "role": "Нет роли",
-        "favorite_card": "Нет карты",
-        "cards": {
-            "Обычные": [
-                "re019.jpg",
-                "re127.jpeg",
-                "re017.jpeg",
-                "re790.jpeg",
-                "re127.jpeg",
-                "re912.jpg",
-                "re401.png",
-                "re580.jpg",
-                "re097.jpeg",
-                "re782.png",
-                "re378.png",
-                "re127.jpeg",
-                "re378.png",
-                "re127.jpeg",
-                "re289.jpeg",
-                "re091.png",
-                "re904.jpg",
-                "re378.png",
-                "re406.jpg",
-                "re127.jpeg",
-                "re406.jpg",
-                "re782.png"
+        "6891646558": {
+            "username": "darhasira",
+            "credits": 130,
+            "time": 1731248812,
+            "inventory": [
+                "Пак карточек"
             ],
-            "Редкие": [
-                "ra109.png",
-                "ra460.png",
-                "ra109.png",
-                "ra409.png",
-                "ra534.png",
-                "ra589.jpeg"
+            "cards_packs": {
+                "Пак карточек": 0,
+                "Коробка карточек": 0
+            },
+            "favorite_item": "Нет предмета",
+            "role": "Нет роли",
+            "favorite_card": "Нет карты",
+            "cards": {
+                "Обычные": [
+                    "re019.jpg",
+                    "re127.jpeg",
+                    "re017.jpeg",
+                    "re790.jpeg",
+                    "re127.jpeg",
+                    "re912.jpg",
+                    "re401.png",
+                    "re580.jpg",
+                    "re097.jpeg",
+                    "re782.png",
+                    "re378.png",
+                    "re127.jpeg",
+                    "re378.png",
+                    "re127.jpeg",
+                    "re289.jpeg",
+                    "re091.png",
+                    "re904.jpg",
+                    "re378.png",
+                    "re406.jpg",
+                    "re127.jpeg",
+                    "re406.jpg",
+                    "re782.png"
+                ],
+                "Редкие": [
+                    "ra109.png",
+                    "ra460.png",
+                    "ra109.png",
+                    "ra409.png",
+                    "ra534.png",
+                    "ra589.jpeg"
+                ],
+                "Эпические": [
+                    "e569.jpeg"
+                ],
+                "Легендарные": []
+            },
+            "new_cards": [
+                "regular/re378.png",
+                "regular/re406.jpg",
+                "regular/re127.jpeg",
+                "regular/re406.jpg",
+                "rare/ra589.jpeg",
+                "regular/re782.png"
             ],
-            "Эпические": [
-                "e569.jpeg"
+            "cur_card": 1
+        },
+        "1336049480": {
+            "username": "Rimura_tempest3919",
+            "credits": 32,
+            "time": 1731243175,
+            "inventory": [
+                "Пак карточек"
             ],
-            "Легендарные": []
-        },
-        "new_cards": [
-            "regular/re378.png",
-            "regular/re406.jpg",
-            "regular/re127.jpeg",
-            "regular/re406.jpg",
-            "rare/ra589.jpeg",
-            "regular/re782.png"
-        ],
-        "cur_card": 1
-    },
-    "1336049480": {
-        "username": "Rimura_tempest3919",
-        "credits": 32,
-        "time": 1731243175,
-        "inventory": [
-            "Пак карточек"
-        ],
-        "cards_packs": {
-            "Пак карточек": 0,
-            "Коробка карточек": 0
-        },
-        "favorite_item": "Шампунь Жумайсынба",
-        "role": "Клоун",
-        "favorite_card": "Нет карты",
-        "cards": {
-            "Обычные": [
-                "re097.jpeg",
-                "re270.jpg",
-                "re809.png",
-                "re782.jpeg",
-                "re809.png",
-                "re782.jpeg",
-                "re790.jpeg",
-                "re401.png",
-                "re904.jpg",
-                "re017.jpeg",
-                "re019.jpg"
+            "cards_packs": {
+                "Пак карточек": 0,
+                "Коробка карточек": 0
+            },
+            "favorite_item": "Шампунь Жумайсынба",
+            "role": "Клоун",
+            "favorite_card": "Нет карты",
+            "cards": {
+                "Обычные": [
+                    "re097.jpeg",
+                    "re270.jpg",
+                    "re809.png",
+                    "re782.jpeg",
+                    "re809.png",
+                    "re782.jpeg",
+                    "re790.jpeg",
+                    "re401.png",
+                    "re904.jpg",
+                    "re017.jpeg",
+                    "re019.jpg"
+                ],
+                "Редкие": [
+                    "ra408.png",
+                    "ra589.jpeg",
+                    "ra789.jpeg",
+                    "ra078.jpg"
+                ],
+                "Эпические": [
+                    "e234.jpeg",
+                    "e234.jpeg",
+                    "e237.png"
+                ],
+                "Легендарные": []
+            },
+            "new_cards": [
+                "regular/re401.png",
+                "rare/ra789.jpeg",
+                "rare/ra078.jpg",
+                "regular/re904.jpg",
+                "regular/re017.jpeg",
+                "regular/re019.jpg"
             ],
-            "Редкие": [
-                "ra408.png",
-                "ra589.jpeg",
-                "ra789.jpeg",
-                "ra078.jpg"
-            ],
-            "Эпические": [
-                "e234.jpeg",
-                "e234.jpeg",
-                "e237.png"
-            ],
-            "Легендарные": []
+            "cur_card": 2,
+            "iterator_of_message": 5267
         },
-        "new_cards": [
-            "regular/re401.png",
-            "rare/ra789.jpeg",
-            "rare/ra078.jpg",
-            "regular/re904.jpg",
-            "regular/re017.jpeg",
-            "regular/re019.jpg"
-        ],
-        "cur_card": 2,
-        "iterator_of_message": 5267
-    },
-    "1355067969": {
-        "username": "skymalll111",
-        "credits": 0,
-        "time": 0,
-        "inventory": [],
-        "cards_packs": {
-            "Пак карточек": 0,
-            "Коробка карточек": 0
+        "1355067969": {
+            "username": "skymalll111",
+            "credits": 0,
+            "time": 0,
+            "inventory": [],
+            "cards_packs": {
+                "Пак карточек": 0,
+                "Коробка карточек": 0
+            },
+            "favorite_item": "Нет предмета",
+            "role": "Нет роли",
+            "favorite_card": "Нет карты",
+            "cards": {
+                "Обычные": [],
+                "Редкие": [],
+                "Эпические": [],
+                "Легендарные": []
+            },
+            "new_cards": [],
+            "cur_card": 0
         },
-        "favorite_item": "Нет предмета",
-        "role": "Нет роли",
-        "favorite_card": "Нет карты",
-        "cards": {
-            "Обычные": [],
-            "Редкие": [],
-            "Эпические": [],
-            "Легендарные": []
-        },
-        "new_cards": [],
-        "cur_card": 0
-    },
-    "6890556633": {
-        "username": "IM_CHIKATILO",
-        "credits": 0,
-        "time": 0,
-        "inventory": [],
-        "cards_packs": {
-            "Пак карточек": 0,
-            "Коробка карточек": 0
-        },
-        "favorite_item": "Нет предмета",
-        "role": "Нет роли",
-        "favorite_card": "Нет карты",
-        "cards": {
-            "Обычные": [],
-            "Редкие": [],
-            "Эпические": [],
-            "Легендарные": []
-        },
-        "new_cards": [],
-        "cur_card": 0
+        "6890556633": {
+            "username": "IM_CHIKATILO",
+            "credits": 0,
+            "time": 0,
+            "inventory": [],
+            "cards_packs": {
+                "Пак карточек": 0,
+                "Коробка карточек": 0
+            },
+            "favorite_item": "Нет предмета",
+            "role": "Нет роли",
+            "favorite_card": "Нет карты",
+            "cards": {
+                "Обычные": [],
+                "Редкие": [],
+                "Эпические": [],
+                "Легендарные": []
+            },
+            "new_cards": [],
+            "cur_card": 0
+        }
     }
 }

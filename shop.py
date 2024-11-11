@@ -9,13 +9,11 @@ with open('items.json', 'r', encoding='utf-8') as file:
 
 credits = {}
 
-def load_base():
+def load_base(chat_id):
     global credits
     with open('credits_base.json', 'r', encoding='utf-8') as file:
         credits = json.load(file)
-
-
-load_base()
+        return credits[chat_id]
 
 
 def save_inventory():
@@ -32,7 +30,7 @@ def buy(item, buyer):
 
     check_user(buyer)
 
-    load_base()
+    credits = load_base(buyer['chat_id'])
 
     inventory = credits[buyer['id']]['inventory']
     username = credits[buyer['id']]['username']

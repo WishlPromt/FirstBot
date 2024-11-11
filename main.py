@@ -107,6 +107,10 @@ def info(message):
                               f'Бот поддерживает встроенные запросы: {message.from_user.supports_inline_queries}\n')
 
 
+@bot.message_handler(commands=['chat_info'])
+def chat_info(message):
+    bot.reply_to(message, f'Айди чата: {str(message.chat.id)}')
+
 @bot.message_handler(commands=['mute'])
 def mute(message):
     iterator_status = bot.get_chat_member(message.chat.id, message.from_user.id).status
@@ -246,7 +250,7 @@ def work_credit(message):
 
 @bot.message_handler(commands=['credits'])
 def show(message):
-    bot.send_message(message.chat.id, show_credits())
+    bot.send_message(message.chat.id, show_credits(str(message.chat.id)))
 
 
 @bot.message_handler(commands=['balance'])

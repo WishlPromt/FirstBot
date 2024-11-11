@@ -2,10 +2,10 @@ import json
 from social_credits import check_user
 
 
-def load_base():
+def load_base(chat_id):
     with open('credits_base.json', 'r', encoding='utf-8') as file:
         base = json.load(file)
-        return base
+        return base[chat_id]
 
 
 def load_items_base():
@@ -16,7 +16,7 @@ def load_items_base():
 
 def show_inventory(user):
     check_user(user)
-    base = load_base()
+    base = load_base(user['chat_id'])
     items_base = load_items_base()
 
     id = user['id']

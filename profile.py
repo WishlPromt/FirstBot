@@ -2,15 +2,18 @@ import json
 
 from social_credits import check_user
 
-def load_base():
+
+def load_base(chat_id):
     with open('credits_base.json', 'r', encoding='utf-8') as file:
         base = json.load(file)
-        return base
+        return base[chat_id]
+
 
 def load_items():
     with open('items.json', 'r', encoding='utf-8') as file:
         items = json.load(file)
         return items
+
 
 def save_base(base):
     file = open('credits_base.json', 'w', encoding='utf-8')
@@ -21,7 +24,7 @@ def save_base(base):
 def show_profile(user):
     check_user(user)
     id = user['id']
-    base = load_base()
+    base = load_base(user['chat_id'])
 
     username = base[id]['username']
     credits = base[id]['credits']
@@ -36,11 +39,12 @@ def show_profile(user):
 
     return profile
 
+
 def equip(user, item):
     check_user(user)
     id = user['id']
     items = load_items()
-    base = load_base()
+    base = load_base(user['chat_id'])
 
     if item in base[id]['inventory']:
 
@@ -63,6 +67,6 @@ def equip(user, item):
 def show_items(user):
     check_user(user)
     id = user['id']
-    base = load_base()
+    base = load_base(user['chat_id'])
 
     return base[id]['inventory']
