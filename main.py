@@ -514,21 +514,19 @@ def chat(message):
 
         for i in data.keys():
 
-            for word in words:
+            if data[i]['messages'] in words:
+                if i == 'hello' or i == 'bye':
+                    bot.send_message(message.chat.id, choice(data[i]['answers']) + ', ' + message.from_user.first_name)
+                elif i == 'id':
+                    bot.reply_to(message, f'Вот твой ID: {message.from_user.id}')
+                elif i == 'info':
+                    info(message)
+                elif i == 'developer':
+                    developer(message)
+                else:
+                    bot.send_message(message.chat.id, choice(data[i]['answers']))
 
-                if word in data[i]['messages']:
-                    if i == 'hello' or i == 'bye':
-                        bot.send_message(message.chat.id, choice(data[i]['answers']) + ', ' + message.from_user.first_name)
-                    elif i == 'id':
-                        bot.reply_to(message, f'Вот твой ID: {message.from_user.id}')
-                    elif i == 'info':
-                        info(message)
-                    elif i == 'developer':
-                        developer(message)
-                    else:
-                        bot.send_message(message.chat.id, choice(data[i]['answers']))
-
-                    break
+                break
 
 
 bot.polling(none_stop=True)

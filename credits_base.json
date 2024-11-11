@@ -134,16 +134,17 @@
     },
     "5422828618": {
         "username": "Mzmz640404",
-        "credits": 389,
-        "time": 1731255387,
+        "credits": 128,
+        "time": 1731324970,
         "inventory": [
             "Вилка",
             "Шампунь Жумайсынба",
             "Пак карточек",
-            "Костюм горничной"
+            "Костюм горничной",
+            "Dungeon master"
         ],
         "favorite_item": "Вилка",
-        "role": "Нет роли",
+        "role": "Dungeon master",
         "favorite_card": "Нет карты",
         "cards_packs": {
             "Пак карточек": 1,
@@ -306,8 +307,8 @@
     },
     "6891646558": {
         "username": "darhasira",
-        "credits": 130,
-        "time": 1731248812,
+        "credits": 164,
+        "time": 1731324971,
         "inventory": [
             "Пак карточек"
         ],
@@ -368,10 +369,11 @@
     },
     "1336049480": {
         "username": "Rimura_tempest3919",
-        "credits": 32,
-        "time": 1731243175,
+        "credits": 26,
+        "time": 1731324967,
         "inventory": [
-            "Пак карточек"
+            "Пак карточек",
+            "Костюм горничной"
         ],
         "cards_packs": {
             "Пак карточек": 0,
@@ -392,31 +394,39 @@
                 "re401.png",
                 "re904.jpg",
                 "re017.jpeg",
-                "re019.jpg"
+                "re019.jpg",
+                "re016.jpg",
+                "re576.jpg",
+                "re904.jpg",
+                "re580.jpg"
             ],
             "Редкие": [
                 "ra408.png",
                 "ra589.jpeg",
                 "ra789.jpeg",
-                "ra078.jpg"
+                "ra078.jpg",
+                "ra178.png"
             ],
             "Эпические": [
                 "e234.jpeg",
                 "e234.jpeg",
-                "e237.png"
+                "e237.png",
+                "e490.jpeg",
+                "e567.jpg"
             ],
             "Легендарные": []
         },
         "new_cards": [
-            "regular/re401.png",
-            "rare/ra789.jpeg",
-            "rare/ra078.jpg",
+            "regular/re016.jpg",
+            "regular/re576.jpg",
             "regular/re904.jpg",
-            "regular/re017.jpeg",
-            "regular/re019.jpg"
+            "rare/ra178.png",
+            "epic/e490.jpeg",
+            "epic/e567.jpg",
+            "regular/re580.jpg"
         ],
-        "cur_card": 2,
-        "iterator_of_message": 5267
+        "cur_card": 1,
+        "iterator_of_message": 5619
     },
     "1355067969": {
         "username": "skymalll111",
