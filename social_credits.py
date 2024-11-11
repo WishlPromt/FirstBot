@@ -6,8 +6,6 @@ from system import convert_time
 def load_base(chat_id):
     with open("credits_base.json", "r", encoding="utf-8") as file:
         base = json.load(file)
-        print('load' + str(base))
-        print('load2 '+ str(base[chat_id]))
         return base[chat_id]
 
 
@@ -17,9 +15,12 @@ def load_full_base():
         return base
 
 
-def save_base(base):
+def save_base(base, chat_id):
+    full_base = load_full_base()
+    full_base[chat_id] = base
+
     file = open('credits_base.json', 'w', encoding='utf-8')
-    json.dump(base, file, indent=4, ensure_ascii=False)
+    json.dump(full_base, file, indent=4, ensure_ascii=False)
     file.close()
 
 
@@ -53,7 +54,7 @@ def new_id(user: dict):
          }
     print('new id was created' + str(base))
 
-    save_base(base)
+    save_base(base, user['chat_id'])
 
 
 def check_user(user: dict):
@@ -68,7 +69,7 @@ def add_credits(user: dict, credits):
     base = load_base(user['chat_id'])
     id = user['id']
     base[id]['credits'] = base[id]['credits'] + credits
-    save_base(base)
+    save_base(base, user['chat_id'])
 
 
 def work(user: dict):
@@ -87,7 +88,7 @@ def work(user: dict):
         now = datetime + 7200
         base[id]['time'] = now
 
-        save_base(base)
+        save_base(base, user['chat_id'])
 
         return f'Вы заработали <b>{credits}</b> кредитов!\nВы сможете воркать снова только <i>{convert_time(base[id]["time"])}</i>'
 

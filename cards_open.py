@@ -2,19 +2,13 @@ import json
 import os
 import random
 from telebot import types
-from social_credits import check_user
+from social_credits import check_user, save_base
 
 
 def load_base(chat_id):
     with open('credits_base.json', 'r', encoding='utf-8') as file:
         base = json.load(file)
         return base[chat_id]
-
-
-def save_base(base):
-    file = open('credits_base.json', 'w', encoding='utf-8')
-    json.dump(base, file, indent=4, ensure_ascii=False)
-    file.close()
 
 
 regular_cards = os.listdir('cards/regular')
@@ -147,11 +141,11 @@ def open_pack(user, item, message_id):
 
 
     base[id]['new_cards'] = cards
-    save_base(base)
+    save_base(base, user['chat_id'])
 
     if cards != []:
         base[id]['cards_packs'][item] -= 1
-        save_base(base)
+        save_base(base, user['chat_id'])
         return True
 
     else:
@@ -184,25 +178,25 @@ def next_back_card(user, action):
     if action == 'next':
         if cur_card < len(base[id]['new_cards']) - 1:
             base[id]['cur_card'] += 1
-            save_base(base)
+            save_base(base, user['chat_id'])
 
             return base[id]['cur_card']
 
         else:
             base[id]['cur_card'] = 0
-            save_base(base)
+            save_base(base, user['chat_id'])
 
             return base[id]['cur_card']
 
     if action == 'back':
         if cur_card > 0:
             base[id]['cur_card'] -= 1
-            save_base(base)
+            save_base(base, user['chat_id'])
 
             return base[id]['cur_card']
 
         else:
             base[id]['cur_card'] = len(base[id]['new_cards']) - 1
-            save_base(base)
+            save_base(base, user['chat_id'])
 
             return base[id]['cur_card']

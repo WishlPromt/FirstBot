@@ -1,6 +1,6 @@
 import json
 
-from social_credits import check_user
+from social_credits import check_user, save_base
 
 
 def load_base(chat_id):
@@ -13,12 +13,6 @@ def load_items():
     with open('items.json', 'r', encoding='utf-8') as file:
         items = json.load(file)
         return items
-
-
-def save_base(base):
-    file = open('credits_base.json', 'w', encoding='utf-8')
-    json.dump(base, file, indent=4, ensure_ascii=False)
-    file.close()
 
 
 def show_profile(user):
@@ -50,12 +44,12 @@ def equip(user, item):
 
         if items[item][3] == 'Предмет':
             base[id]['favorite_item'] = item
-            save_base(base)
+            save_base(base, user['chat_id'])
             return f'Теперь предмет <b>{item}</b> отображается у вас в /profile'
 
         elif items[item][3] == 'Роль':
             base[id]['role'] = item
-            save_base(base)
+            save_base(base, user['chat_id'])
             return f'Теперь роль <b>{item}</b> отображается у вас в /profile'
 
         return 'Ошибка. Иди нахуй'
