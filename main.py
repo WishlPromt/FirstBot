@@ -500,8 +500,7 @@ def chat(message):
     global action
 
     text = message.text.lower()
-    text = text.translate(str.maketrans('', '', ignore_symbols))
-    words = text.split()
+    answer = ''
 
     target_id = None
 
@@ -510,23 +509,27 @@ def chat(message):
     except:
         pass
 
-    if message.text.find('@OkeeeeMyBot') != -1 or target_id == "7179420529":
+    if text.find('@OkeeeeMyBot') != -1 or target_id == "7179420529":
 
         for i in data.keys():
+            for m in data[i]['messages']:
 
-            if data[i]['messages'] in words:
-                if i == 'hello' or i == 'bye':
-                    bot.send_message(message.chat.id, choice(data[i]['answers']) + ', ' + message.from_user.first_name)
-                elif i == 'id':
-                    bot.reply_to(message, f'Вот твой ID: {message.from_user.id}')
-                elif i == 'info':
-                    info(message)
-                elif i == 'developer':
-                    developer(message)
-                else:
-                    bot.send_message(message.chat.id, choice(data[i]['answers']))
+                if message.text.find(m) != -1:
+                    if i == 'hello' or i == 'bye':
+                        answer += choice(data[i]['answers']) + ', ' + message.from_user.first_name
+                    elif i == 'id':
+                        answer += f'Вот твой ID: {message.from_user.id}'
+                    elif i == 'info':
+                        answer += info(message)
+                    elif i == 'developer':
+                        answer += developer(message)
+                    else:
+                        answer += choice(data[i]['answers'])
 
-                break
+                    if answer != '':
+                        bot.reply_to(message, answer)
+
+                    break
 
 
 bot.polling(none_stop=True)
