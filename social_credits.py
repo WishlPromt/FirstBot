@@ -6,7 +6,15 @@ from system import convert_time
 def load_base(chat_id):
     with open("credits_base.json", "r", encoding="utf-8") as file:
         base = json.load(file)
+        print('load' + str(base))
+        print('load2 '+ str(base[chat_id]))
         return base[chat_id]
+
+
+def load_full_base():
+    with open("credits_base.json", "r", encoding="utf-8") as file:
+        base = json.load(file)
+        return base
 
 
 def save_base(base):
@@ -19,33 +27,38 @@ def new_id(user: dict):
     if user['username'] == 'null':
         user['username'] = user['name']
 
-    base = load_base(user['chat_id'])
+    base = load_full_base()
+    print('new id ' + str(base))
 
-    base[user['id']] = {'username': user['username'],
-                        'credits': 0,
-                        'time': 0,
-                        'inventory': [],
-                        'cards_packs': {
-                            'Пак карточек': 0,
-                            'Коробка карточек': 0
-                        },
-                        "favorite_item": "Нет предмета",
-                        "role": "Нет роли",
-                        "favorite_card": "Нет карты",
-                        'cards': {
-                            'Обычные': [],
-                            'Редкие': [],
-                            'Эпические': [],
-                            'Легендарные': []
-                        },
-                        'new_cards': [],
-                        'cur_card': 0
-                        }
+    base[user['chat_id']][user['id']] = \
+        {'username': user['username'],
+         'credits': 0,
+         'time': 0,
+         'inventory': [],
+         'cards_packs': {
+             'Пак карточек': 0,
+             'Коробка карточек': 0
+         },
+         "favorite_item": "Нет предмета",
+         "role": "Нет роли",
+         "favorite_card": "Нет карты",
+         'cards': {
+             'Обычные': [],
+             'Редкие': [],
+             'Эпические': [],
+             'Легендарные': []
+         },
+         'new_cards': [],
+         'cur_card': 0
+         }
+    print('new id was created' + str(base))
+
     save_base(base)
 
 
 def check_user(user: dict):
     base = load_base(user['chat_id'])
+    print('check ' + str(base))
     if user['id'] not in base and user['id'] != "7179420529":
         new_id(user)
 
