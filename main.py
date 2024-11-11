@@ -83,7 +83,7 @@ def help(message):
 
 @bot.message_handler(commands=['info'])
 def info(message):
-    try:
+    if message.reply_to_message:
         bot.reply_to(message, f'Вот вся инфа о нем:\nID: {message.reply_to_message.from_user.id}\n'
                               f'Имя: {message.reply_to_message.from_user.first_name}\n'
                               f'Фамилия: {message.reply_to_message.from_user.last_name}\n'
@@ -94,7 +94,7 @@ def info(message):
                               f'Бот может присоединяться к группам: {message.reply_to_message.from_user.can_join_groups}\n'
                               f'Отключен режим конфиденциальности у бота: {message.reply_to_message.from_user.can_read_all_group_messages}\n'
                               f'Бот поддерживает встроенные запросы: {message.reply_to_message.from_user.supports_inline_queries}\n')
-    except:
+    else:
         bot.reply_to(message, f'Вот вся инфа о тебе:\nID: {message.from_user.id}\n'
                               f'Имя: {message.from_user.first_name}\n'
                               f'Фамилия: {message.from_user.last_name}\n'

@@ -1,8 +1,8 @@
 {
     "5105507379": {
         "username": "WishlPromt",
-        "credits": 56,
-        "time": 1731235320,
+        "credits": 128,
+        "time": 1731309994,
         "inventory": [
             "Костюм горничной",
             "Пак карточек",
@@ -134,8 +134,8 @@
     },
     "5422828618": {
         "username": "Mzmz640404",
-        "credits": 307,
-        "time": 1731239524,
+        "credits": 389,
+        "time": 1731255387,
         "inventory": [
             "Вилка",
             "Шампунь Жумайсынба",
@@ -306,8 +306,8 @@
     },
     "6891646558": {
         "username": "darhasira",
-        "credits": 85,
-        "time": 1731235028,
+        "credits": 130,
+        "time": 1731248812,
         "inventory": [
             "Пак карточек"
         ],
@@ -420,6 +420,27 @@
     },
     "1355067969": {
         "username": "skymalll111",
+        "credits": 0,
+        "time": 0,
+        "inventory": [],
+        "cards_packs": {
+            "Пак карточек": 0,
+            "Коробка карточек": 0
+        },
+        "favorite_item": "Нет предмета",
+        "role": "Нет роли",
+        "favorite_card": "Нет карты",
+        "cards": {
+            "Обычные": [],
+            "Редкие": [],
+            "Эпические": [],
+            "Легендарные": []
+        },
+        "new_cards": [],
+        "cur_card": 0
+    },
+    "6890556633": {
+        "username": "IM_CHIKATILO",
         "credits": 0,
         "time": 0,
         "inventory": [],
