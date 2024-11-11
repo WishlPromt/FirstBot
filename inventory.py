@@ -1,5 +1,5 @@
 import json
-from social_credits import check_user
+from social_credits import check_user, save_base
 from telebot import types
 
 
@@ -13,6 +13,12 @@ def load_items_base():
     with open('items.json', 'r', encoding='utf-8') as file:
         items_base = json.load(file)
         return items_base
+
+
+def save_base(base):
+    file = open('credits_base.json', 'w', encoding='utf-8')
+    json.dump(base, file, indent=4, ensure_ascii=False)
+    file.close()
 
 
 def show_inventory(user):
@@ -41,36 +47,56 @@ def show_inventory(user):
         return f'<b>{username}</b>, ваш инвентарь <b>пуст</b>\n /shop для покупки предметов и ролей'
 
 
-def create_cards_markup(prev_rare, next_rare):
+def create_cards_markup():
     markup = types.InlineKeyboardMarkup()
 
-    prev_rare_btn = types.InlineKeyboardButton(prev_rare, callback_data=f'go {prev_rare}')
-    next_rare_btn = types.InlineKeyboardButton(next_rare, callback_data=f'go {next_rare}')
-
     next_btn = types.InlineKeyboardButton('>>', callback_data='next card')
-    back_btn = types.InlineKeyboardButton('>>', callback_data='back card')
-
+    back_btn = types.InlineKeyboardButton('<<', callback_data='back card')
 
     equip_btn = types.InlineKeyboardButton('В профиль', callback_data='equip card')
     sell_btn = types.InlineKeyboardButton('Продать', callback_data='sell')
 
-
-    markup.row(next_btn, back_btn)
-    markup.row(prev_rare_btn, next_rare_btn)
+    markup.row(back_btn, next_btn)
     markup.add(equip_btn)
     markup.add(sell_btn)
 
     return markup
 
 
-def show_card_inventory(user):
+def get_cards(user):
     check_user(user)
-    base = load_base()
 
     id = user['id']
+    base = load_base()
+
+    base[id]['new_cards'] = []
+    base[id]['cur_card'] = 0
+    print(base)
+
     cards = base[id]['cards']
 
-    image = cards['Обычные'][0]
+    for rare in cards:
+        for card in cards[rare]:
+            base[id]['new_cards'].append(card)
+            print(base)
+
+    print(base)
+    save_base(base)
+
+
+def show_card_inventory(card):
+
+    if card[:2] == 're':
+        image = f'cards/regular/{card}'
+
+    elif card[:2] == 'ra':
+        image = f'cards/rare/{card}'
+
+    elif card[0] == 'e':
+        image = f'cards/epic/{card}'
+
+    else:
+        image = f'cards/legendary/{card}'
 
     return image
 

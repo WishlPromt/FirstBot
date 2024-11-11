@@ -4,7 +4,7 @@ from random import choice, randint
 import json, time
 from social_credits import add_credits, show_credits, work, check_user, balance
 from shop import buy, get_items, next_page, back_page
-from inventory import show_inventory, show_card_inventory, create_cards_markup
+from inventory import show_inventory, show_card_inventory, create_cards_markup, get_cards
 from system import get_message_data
 from cards_open import open_pack, show_cards, next_back_card, create_markup, get_packs, get_card_info
 from profile import show_profile, equip, show_items
@@ -184,10 +184,22 @@ def callback(callback):
         bot.delete_message(callback.message.chat.id, callback.message.id)
 
     if callback.data == 'next card':
-        opener = callback.message.reply_to_message.from_user.id
+        opener = get_message_data(callback.message.reply_to_message)
 
+        next_back_card(opener, 'next')
 
-        markup = show_card_inventory(get_message_data(callback))
+        card = show_cards(opener)
+
+        with open(f'cards/{card}', 'rb') as image_card:
+            bot.edit_message_media(chat_id=callback.message.chat.id,
+                                   message_id=callback.message.id,
+                                   media=types.InputMediaPhoto(image_card))
+
+            bot.edit_message_caption(chat_id=callback.message.chat.id,
+                                     message_id=callback.message.id,
+                                     caption=f'{get_message_data(callback)["username"]}, вы получили {get_card_info(card)}',
+                                     reply_markup=create_markup(),
+                                     parse_mode='html')
 
 
 
@@ -301,6 +313,7 @@ def open_cards_pack(message):
         if cards:
 
             card = show_cards(get_message_data(message))
+            print(card)
             with open(f'cards/{card}', 'rb') as image_card:
                 bot.send_photo(message.chat.id,
                                image_card,
@@ -350,15 +363,17 @@ def shop(message, page=1):
 def show_cards_user(message):
     user = get_message_data(message)
 
-    card = show_card_inventory(user)
-    markup = create_cards_markup('Легендарные', 'Редкие')
-
-    bot.send_photo(chat_id=message.chat.id,
-                   reply_to_message_id=message.id,
-                   photo=card,
-                   caption=f'Карточка {user["username"]}\n'
-                           f'#{get_card_info(card)}',
-                   reply_markup=markup)
+    get_cards(user)
+    card = show_cards(user)
+    markup = create_cards_markup()
+    with open(f'cards/{card}', 'rb') as image_card:
+        bot.send_photo(chat_id=message.chat.id,
+                       reply_to_message_id=message.id,
+                       photo=image_card,
+                       caption=f'Карточка {user["username"]}\n'
+                               f'{get_card_info(card)}',
+                       reply_markup=markup,
+                       parse_mode='html')
 
 
 @bot.message_handler(commands=['use'])

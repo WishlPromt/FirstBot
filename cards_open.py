@@ -93,8 +93,6 @@ def open_pack(user, item, message_id):
     base[id]['new_cards'] = []
     base[id]['cur_card'] = 0
 
-    base[id]['iterator_of_message'] = message_id
-
     if item == 'Пак карточек' and base[id]['cards_packs'][item] > 0:
         for c in range(random.randint(5, 7)):
             rare = get_rare()
