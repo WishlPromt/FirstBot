@@ -174,7 +174,7 @@ def nsfw(message):
 def callback(callback):
 
     if callback.data in items.keys():
-        buy_status = buy(callback.data, get_message_data(callback))
+        buy_status = buy(callback.data, get_message_data(callback, callback.message.chat.id))
         bot.send_message(callback.message.chat.id, buy_status, parse_mode='html')
 
     if callback.data.find('>>') != -1:
@@ -195,9 +195,9 @@ def callback(callback):
 
         if callback.from_user.id == opener:
 
-            next_back_card(get_message_data(callback), 'next')
+            next_back_card(get_message_data(callback, callback.message.chat.id), 'next')
 
-            card = show_cards(get_message_data(callback))
+            card = show_cards(get_message_data(callback, callback.message.chat.id))
 
             with open(f'cards/{card}', 'rb') as image_card:
 
@@ -207,7 +207,7 @@ def callback(callback):
 
                 bot.edit_message_caption(chat_id=callback.message.chat.id,
                                          message_id=callback.message.id,
-                                         caption=f'{get_message_data(callback)["username"]}, вы получили {get_card_info(card)}',
+                                         caption=f'{get_message_data(callback, callback.message.chat.id)["username"]}, вы получили {get_card_info(card)}',
                                          reply_markup=create_markup(),
                                          parse_mode='html')
 
@@ -218,9 +218,9 @@ def callback(callback):
 
         if callback.from_user.id == opener:
 
-            next_back_card(get_message_data(callback), 'back')
+            next_back_card(get_message_data(callback, callback.message.chat.id), 'back')
 
-            card = show_cards(get_message_data(callback))
+            card = show_cards(get_message_data(callback, callback.message.chat.id))
 
             with open(f'cards/{card}', 'rb') as image_card:
 
@@ -230,7 +230,7 @@ def callback(callback):
 
                 bot.edit_message_caption(chat_id=callback.message.chat.id,
                                          message_id=callback.message.id,
-                                         caption=f'{get_message_data(callback)["username"]}, вы получили {get_card_info(card)}',
+                                         caption=f'{get_message_data(callback, callback.message.chat.id)["username"]}, вы получили {get_card_info(card)}',
                                          reply_markup=create_markup(),
                                          parse_mode='html')
 

@@ -26,8 +26,11 @@ def check_chat_id(chat_id):
         save_base(base)
 
 
-def get_message_data(data):
-    check_chat_id(str(data.chat.id))
+def get_message_data(data, chat_id=''):
+    if chat_id == '':
+        chat_id = str(data.chat.id)
+
+    check_chat_id(chat_id)
 
     id = str(data.from_user.id)
     username = data.from_user.username
@@ -39,7 +42,7 @@ def get_message_data(data):
     except:
         datetime = 0
 
-    return {'chat_id': str(data.chat.id),
+    return {'chat_id': chat_id,
             'id': id,
             'username': username,
             'datetime': datetime,

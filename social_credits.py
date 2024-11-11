@@ -17,7 +17,10 @@ def load_full_base():
 
 def save_base(base, chat_id):
     full_base = load_full_base()
+    print('full base: ' + str(full_base))
+    print('chat base: ' + str(base))
     full_base[chat_id] = base
+    print('saved full base: ' + str(full_base))
 
     file = open('credits_base.json', 'w', encoding='utf-8')
     json.dump(full_base, file, indent=4, ensure_ascii=False)
@@ -29,7 +32,6 @@ def new_id(user: dict):
         user['username'] = user['name']
 
     base = load_full_base()
-    print('new id ' + str(base))
 
     base[user['chat_id']][user['id']] = \
         {'username': user['username'],
@@ -52,14 +54,12 @@ def new_id(user: dict):
          'new_cards': [],
          'cur_card': 0
          }
-    print('new id was created' + str(base))
 
-    save_base(base, user['chat_id'])
+    save_base(base[user['chat_id']], user['chat_id'])
 
 
 def check_user(user: dict):
     base = load_base(user['chat_id'])
-    print('check ' + str(base))
     if user['id'] not in base and user['id'] != "7179420529":
         new_id(user)
 
@@ -69,6 +69,7 @@ def add_credits(user: dict, credits):
     base = load_base(user['chat_id'])
     id = user['id']
     base[id]['credits'] = base[id]['credits'] + credits
+    print('work base : ' + str(base))
     save_base(base, user['chat_id'])
 
 
@@ -86,6 +87,8 @@ def work(user: dict):
 
         add_credits(user, credits)
         now = datetime + 7200
+
+        base = load_base(user['chat_id'])
         base[id]['time'] = now
 
         save_base(base, user['chat_id'])
