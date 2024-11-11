@@ -71,16 +71,24 @@ def get_cards(user):
 
     base[id]['new_cards'] = []
     base[id]['cur_card'] = 0
-    print(base)
 
     cards = base[id]['cards']
 
     for rare in cards:
         for card in cards[rare]:
-            base[id]['new_cards'].append(card)
-            print(base)
+            if rare == 'Обычные':
+                base[id]['new_cards'].append('regular/'+card)
 
-    print(base)
+            elif rare == 'Редкие':
+                base[id]['new_cards'].append('rare/'+card)
+
+            elif rare == 'Эпические':
+                base[id]['new_cards'].append('epic/'+card)
+
+            elif rare == 'Легендарные':
+                base[id]['new_cards'].append('legendary/'+card)
+
+
     save_base(base)
 
 

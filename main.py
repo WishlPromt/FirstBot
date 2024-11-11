@@ -288,6 +288,7 @@ def open_cards_pack(message):
         if cards:
 
             card = show_cards(get_message_data(message))
+            print(card)
             with open(f'cards/{card}', 'rb') as image_card:
                 bot.send_photo(message.chat.id,
                                image_card,
@@ -313,7 +314,6 @@ def open_cards_pack(message):
         if cards:
 
             card = show_cards(get_message_data(message))
-            print(card)
             with open(f'cards/{card}', 'rb') as image_card:
                 bot.send_photo(message.chat.id,
                                image_card,
