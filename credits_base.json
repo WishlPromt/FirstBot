@@ -1,7 +1,7 @@
 {
     "5105507379": {
         "username": "WishlPromt",
-        "credits": 170,
+        "credits": 30,
         "time": 1731326531,
         "inventory": [
             "Костюм горничной",
@@ -85,7 +85,27 @@
                 "re127.jpeg",
                 "re289.jpeg",
                 "re401.png",
-                "re406.jpg"
+                "re406.jpg",
+                "re782.png",
+                "re809.png",
+                "re809.png",
+                "re406.jpg",
+                "re401.png",
+                "re401.png",
+                "re016.jpg",
+                "re289.jpeg",
+                "re782.jpeg",
+                "re019.jpg",
+                "re017.jpeg",
+                "re809.png",
+                "re456.jpg",
+                "re401.png",
+                "re017.jpeg",
+                "re097.jpeg",
+                "re962.png",
+                "re576.jpg",
+                "re017.jpeg",
+                "re904.jpg"
             ],
             "Редкие": [
                 "ra090.jpg",
@@ -110,27 +130,30 @@
                 "ra409.png",
                 "ra789.jpeg",
                 "ra409.png",
-                "ra408.png"
+                "ra408.png",
+                "ra309.jpg",
+                "ra309.jpg"
             ],
             "Эпические": [
                 "e234.jpeg",
                 "e234.jpeg",
                 "e569.jpeg",
                 "e569.jpeg",
-                "e245.jpeg"
+                "e245.jpeg",
+                "e237.png"
             ],
             "Легендарные": []
         },
         "new_cards": [
-            "rare/ra408.png",
-            "regular/re891.jpg",
-            "regular/re127.jpeg",
-            "regular/re289.jpeg",
-            "regular/re401.png",
-            "regular/re406.jpg"
+            "regular/re097.jpeg",
+            "regular/re962.png",
+            "regular/re576.jpg",
+            "regular/re017.jpeg",
+            "regular/re904.jpg",
+            "rare/ra309.jpg"
         ],
-        "cur_card": 1,
-        "iterator_of_message": 388
+        "cur_card": 3,
+        "iterator_of_message": 5772
     },
     "5422828618": {
         "username": "Mzmz640404",
