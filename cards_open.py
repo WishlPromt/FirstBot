@@ -34,11 +34,16 @@ def get_packs(user, pack):
     return False
 
 
-def get_card_info(card):
+def get_card_info(card, user):
+    check_user(user)
+    base = load_base()
+
     rare: str
     name: str
+    count: str
 
     name = '#' + card[card.find('/')+1:card.find('.')]
+    count = str(base['id']['cur_card']+1) + '/' + str(len(base['id']['new_cards']))
 
     if card[0:card.find('/')] == 'regular':
         rare = 'Обычная'

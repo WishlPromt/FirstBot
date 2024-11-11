@@ -4,7 +4,7 @@ from random import choice, randint
 import json, time
 from social_credits import add_credits, show_credits, work, check_user, balance
 from shop import buy, get_items, next_page, back_page
-from inventory import show_inventory, create_cards_markup, get_cards
+from inventory import show_inventory, create_cards_markup, get_cards, reset_cards
 from system import get_message_data
 from cards_open import open_pack, show_cards, next_back_card, create_markup, get_packs, get_card_info
 from profile import show_profile, equip, show_items, equip_card
@@ -199,7 +199,7 @@ def callback(callback):
             bot.edit_message_caption(chat_id=callback.message.chat.id,
                                      message_id=callback.message.id,
                                      caption=f'Карточка {user["username"]}\n'
-                                             f'{get_card_info(card)}',
+                                             f'{get_card_info(card, user)}',
                                      reply_markup=markup,
                                      parse_mode='html')
 
@@ -220,7 +220,7 @@ def callback(callback):
             bot.edit_message_caption(chat_id=callback.message.chat.id,
                                      message_id=callback.message.id,
                                      caption=f'Карточка {user["username"]}\n'
-                                             f'{get_card_info(card)}',
+                                             f'{get_card_info(card, user)}',
                                      reply_markup=markup,
                                      parse_mode='html')
 
@@ -251,7 +251,7 @@ def callback(callback):
 
                 bot.edit_message_caption(chat_id=callback.message.chat.id,
                                          message_id=callback.message.id,
-                                         caption=f'{get_message_data(callback)["username"]}, вы получили {get_card_info(card)}',
+                                         caption=f'{get_message_data(callback)["username"]}, вы получили {get_card_info(card, get_message_data(callback))}',
                                          reply_markup=create_markup(),
                                          parse_mode='html')
 
@@ -274,7 +274,7 @@ def callback(callback):
 
                 bot.edit_message_caption(chat_id=callback.message.chat.id,
                                          message_id=callback.message.id,
-                                         caption=f'{get_message_data(callback)["username"]}, вы получили {get_card_info(card)}',
+                                         caption=f'{get_message_data(callback)["username"]}, вы получили {get_card_info(card, get_message_data(callback))}',
                                          reply_markup=create_markup(),
                                          parse_mode='html')
 
@@ -305,7 +305,7 @@ def send_balance(message):
 @bot.message_handler(commands=['inventory'])
 def send_inventory(message):
     inventory = show_inventory(get_message_data(message))
-    bot.reply_to(message, inventory + '\n Чтобы отобразить роль/предмет в профиле - /equip_items\n /open_pack - открыть пак карточек', parse_mode='html')
+    bot.reply_to(message, inventory + '\n Чтобы отобразить роль/предмет в профиле - /equip_items\n /open_pack - открыть пак карточек\n /show_cards - коллекционные карточки', parse_mode='html')
 
 
 @bot.message_handler(commands=['open_pack'])
@@ -323,7 +323,7 @@ def open_cards_pack(message):
                 bot.send_photo(message.chat.id,
                                image_card,
                                reply_to_message_id=message.id,
-                               caption=f'{get_message_data(message)["username"]}, вы получили {get_card_info(card)}',
+                               caption=f'{get_message_data(message)["username"]}, вы получили {get_card_info(card, get_message_data(message))}',
                                reply_markup=create_markup(),
                                parse_mode='html')
 
@@ -393,6 +393,8 @@ def shop(message, page=1):
 def show_cards_user(message):
     user = get_message_data(message)
 
+    reset_cards(user)
+
     get_cards(user)
     card = show_cards(user)
     markup = create_cards_markup()
@@ -401,7 +403,7 @@ def show_cards_user(message):
                        reply_to_message_id=message.id,
                        photo=image_card,
                        caption=f'Карточка {user["username"]}\n'
-                               f'{get_card_info(card)}',
+                               f'{get_card_info(card, user)}',
                        reply_markup=markup,
                        parse_mode='html')
 

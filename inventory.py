@@ -1,5 +1,5 @@
 import json
-from social_credits import check_user, save_base
+from social_credits import check_user
 from telebot import types
 
 
@@ -69,9 +69,6 @@ def get_cards(user):
     id = user['id']
     base = load_base()
 
-    base[id]['new_cards'] = []
-    base[id]['cur_card'] = 0
-
     cards = base[id]['cards']
 
     for rare in cards:
@@ -108,3 +105,13 @@ def show_card_inventory(card):
 
     return image
 
+
+def reset_cards(user):
+    check_user(user)
+    id = user['id']
+    base = load_base()
+
+    base[id]['new_cards'] = []
+    base[id]['cur_card'] = 0
+
+    save_base(base)
