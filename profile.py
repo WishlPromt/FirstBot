@@ -60,6 +60,16 @@ def equip(user, item):
         return 'Это не твой предмет/роль. Иди нахуй'
 
 
+def equip_card(user, card):
+    check_user(user)
+    id = user['id']
+    base = load_base()
+
+    base[id]['favorite_card'] = card
+
+    save_base(base)
+
+
 def show_items(user):
     check_user(user)
     id = user['id']

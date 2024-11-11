@@ -56,7 +56,7 @@ def get_card_info(card):
     else:
         rare = '???'
 
-    return f'\n <i>{name}</i>\n\n <b>{rare}</b>'
+    return f'\n <i>{name}</i>.\n\n <b>{rare}</b>'
 
 
 def create_markup():

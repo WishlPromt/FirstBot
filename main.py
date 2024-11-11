@@ -4,10 +4,10 @@ from random import choice, randint
 import json, time
 from social_credits import add_credits, show_credits, work, check_user, balance
 from shop import buy, get_items, next_page, back_page
-from inventory import show_inventory, show_card_inventory, create_cards_markup, get_cards
+from inventory import show_inventory, create_cards_markup, get_cards
 from system import get_message_data
 from cards_open import open_pack, show_cards, next_back_card, create_markup, get_packs, get_card_info
-from profile import show_profile, equip, show_items
+from profile import show_profile, equip, show_items, equip_card
 
 
 #JSON
@@ -189,18 +189,48 @@ def callback(callback):
         next_back_card(opener, 'next')
 
         card = show_cards(opener)
+        user = get_message_data(callback)
 
+        markup = create_cards_markup()
         with open(f'cards/{card}', 'rb') as image_card:
             bot.edit_message_media(chat_id=callback.message.chat.id,
                                    message_id=callback.message.id,
                                    media=types.InputMediaPhoto(image_card))
-
             bot.edit_message_caption(chat_id=callback.message.chat.id,
                                      message_id=callback.message.id,
-                                     caption=f'{get_message_data(callback)["username"]}, вы получили {get_card_info(card)}',
-                                     reply_markup=create_markup(),
+                                     caption=f'Карточка {user["username"]}\n'
+                                             f'{get_card_info(card)}',
+                                     reply_markup=markup,
                                      parse_mode='html')
 
+
+    elif callback.data == 'back card':
+        opener = get_message_data(callback.message.reply_to_message)
+
+        next_back_card(opener, 'back')
+
+        card = show_cards(opener)
+        user = get_message_data(callback)
+
+        markup = create_cards_markup()
+        with open(f'cards/{card}', 'rb') as image_card:
+            bot.edit_message_media(chat_id=callback.message.chat.id,
+                                   message_id=callback.message.id,
+                                   media=types.InputMediaPhoto(image_card))
+            bot.edit_message_caption(chat_id=callback.message.chat.id,
+                                     message_id=callback.message.id,
+                                     caption=f'Карточка {user["username"]}\n'
+                                             f'{get_card_info(card)}',
+                                     reply_markup=markup,
+                                     parse_mode='html')
+
+    elif callback.data == 'equip card':
+        opener = callback.message.reply_to_message.from_user.id
+        text = callback.message.caption
+
+        if callback.from_user.id == opener:
+
+            equip_card(get_message_data(callback.message.reply_to_message), text[text.find('#')+1:text.find('.')])
 
 
     if callback.data == 'new Следующая':
