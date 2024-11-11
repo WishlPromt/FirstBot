@@ -1,5 +1,5 @@
 import json
-from social_credits import check_user, save_base
+from social_credits import check_user, save_base, load_full_base
 
 
 #DATABASES
@@ -8,10 +8,10 @@ with open('items.json', 'r', encoding='utf-8') as file:
 
 
 def load_base(chat_id):
-
-    with open('credits_base.json', 'r', encoding='utf-8') as file:
-        credits = json.load(file)
-        return credits[chat_id]
+    with open("credits_base.json", "r", encoding="utf-8") as file:
+        base = json.load(file)
+        print(base)
+        return base[chat_id]
 
 
 #Variables
@@ -19,11 +19,9 @@ max_pages = 3
 
 
 def buy(item, buyer):
-
     check_user(buyer)
 
     base = load_base(buyer['chat_id'])
-    print(base)
 
     inventory = base[buyer['id']]['inventory']
     username = base[buyer['id']]['username']
@@ -39,7 +37,6 @@ def buy(item, buyer):
             base[buyer['id']]['inventory'] = inventory
             base[buyer['id']]['credits'] = base[buyer['id']]['credits'] - price
 
-            print(base)
             save_base(base, buyer['chat_id'])
 
             return f'<b>{username}</b>, вы купили <b>{item}</b>!\n{items[item][1]}'

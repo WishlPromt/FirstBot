@@ -6,6 +6,7 @@ from system import convert_time
 def load_base(chat_id):
     with open("credits_base.json", "r", encoding="utf-8") as file:
         base = json.load(file)
+        print('noraml: ' + str(base))
         return base[chat_id]
 
 
@@ -17,13 +18,11 @@ def load_full_base():
 
 def save_base(base, chat_id):
     full_base = load_full_base()
-    print('full base: ' + str(full_base))
-    print('chat base: ' + str(base))
     full_base[chat_id] = base
-    print('saved full base: ' + str(full_base))
 
     file = open('credits_base.json', 'w', encoding='utf-8')
     json.dump(full_base, file, indent=4, ensure_ascii=False)
+    print('base saved: ' + str(full_base))
     file.close()
 
 
@@ -60,7 +59,6 @@ def new_id(user: dict):
 
 def check_user(user: dict):
     base = load_base(user['chat_id'])
-    print('check: ' + str(base))
     if user['id'] not in base and user['id'] != "7179420529":
         new_id(user)
 
@@ -70,7 +68,6 @@ def add_credits(user: dict, credits):
     base = load_base(user['chat_id'])
     id = user['id']
     base[id]['credits'] = base[id]['credits'] + credits
-    print('work base : ' + str(base))
     save_base(base, user['chat_id'])
 
 

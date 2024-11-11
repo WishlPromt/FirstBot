@@ -2,7 +2,7 @@ import telebot
 from telebot import types
 from random import choice, randint
 import json, time
-from social_credits import add_credits, show_credits, work, check_user, balance
+from social_credits import add_credits, show_credits, work, check_user, balance, load_full_base
 from shop import buy, get_items, next_page, back_page
 from inventory import show_inventory
 from system import get_message_data
@@ -501,7 +501,6 @@ def end_game(message):
 #Чат
 @bot.message_handler(func=lambda message: True)
 def chat(message):
-    global action
 
     text = message.text.lower()
     text = text.translate(str.maketrans('', '', ignore_symbols))

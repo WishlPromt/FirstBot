@@ -29,7 +29,7 @@ def check_chat_id(chat_id):
 def get_message_data(data, chat_id=''):
     if chat_id == '':
         chat_id = str(data.chat.id)
-    print(chat_id)
+
     check_chat_id(chat_id)
 
     id = str(data.from_user.id)
