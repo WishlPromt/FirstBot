@@ -4,7 +4,7 @@ from random import choice, randint
 import json, time
 from social_credits import add_credits, show_credits, work, check_user, balance
 from shop import buy, get_items, next_page, back_page
-from inventory import show_inventory
+from inventory import show_inventory, show_card_inventory, create_cards_markup
 from system import get_message_data
 from cards_open import open_pack, show_cards, next_back_card, create_markup, get_packs, get_card_info
 from profile import show_profile, equip, show_items
@@ -183,6 +183,12 @@ def callback(callback):
         shop(callback.message, back)
         bot.delete_message(callback.message.chat.id, callback.message.id)
 
+    if callback.data == 'next card':
+        opener = callback.message.reply_to_message.from_user.id
+
+
+        markup = show_card_inventory(get_message_data(callback))
+
 
 
     if callback.data == 'new Следующая':
@@ -338,6 +344,21 @@ def shop(message, page=1):
     markup.row(but_back, but_next)
 
     bot.send_message(message.chat.id, 'Магазин бота', reply_markup=markup)
+
+
+@bot.message_handler(commands=['show_cards'])
+def show_cards_user(message):
+    user = get_message_data(message)
+
+    card = show_card_inventory(user)
+    markup = create_cards_markup('Легендарные', 'Редкие')
+
+    bot.send_photo(chat_id=message.chat.id,
+                   reply_to_message_id=message.id,
+                   photo=card,
+                   caption=f'Карточка {user["username"]}\n'
+                           f'#{get_card_info(card)}',
+                   reply_markup=markup)
 
 
 @bot.message_handler(commands=['use'])
