@@ -18,19 +18,19 @@ def convert_time(datetime):
 
 
 def check_chat_id(chat_id):
-    print(chat_id)
+
     base = load_base()
-    print(load_base())
+
     if chat_id not in base:
         base[chat_id] = {}
         print(base)
         save_base(base)
-        print(base)
 
 
 def get_message_data(data):
     print(data.chat.id)
     check_chat_id(str(data.chat.id))
+    print(load_base())
 
     id = str(data.from_user.id)
     username = data.from_user.username
