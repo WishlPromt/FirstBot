@@ -398,8 +398,8 @@
     },
     "6638790681": {
         "username": "Lalsans1111",
-        "credits": 148,
-        "time": 1731342621,
+        "credits": 192,
+        "time": 1731414106,
         "inventory": [
             "Шампунь Жумайсынба"
         ],
@@ -504,14 +504,15 @@
     },
     "1336049480": {
         "username": "Rimura_tempest3919",
-        "credits": 8,
+        "credits": 3,
         "time": 1731405075,
         "inventory": [
             "Пак карточек",
-            "Костюм горничной"
+            "Костюм горничной",
+            "Вилка"
         ],
         "cards_packs": {
-            "Пак карточек": 1,
+            "Пак карточек": 0,
             "Коробка карточек": 0
         },
         "favorite_item": "Шампунь Жумайсынба",
@@ -544,7 +545,12 @@
                 "re345.jpg",
                 "re017.jpeg",
                 "re345.jpg",
-                "re401.png"
+                "re401.png",
+                "re097.jpeg",
+                "re782.png",
+                "re782.png",
+                "re962.png",
+                "re589.jpeg"
             ],
             "Редкие": [
                 "ra408.png",
@@ -556,26 +562,29 @@
                 "ra534.png",
                 "ra090.jpg",
                 "ra091.jpg",
-                "ra100.jpg"
+                "ra100.jpg",
+                "ra589.jpeg"
             ],
             "Эпические": [
                 "e234.jpeg",
                 "e234.jpeg",
                 "e237.png",
                 "e490.jpeg",
-                "e567.jpg"
+                "e567.jpg",
+                "e490.jpeg"
             ],
             "Легендарные": []
         },
         "new_cards": [
-            "regular/re017.jpeg",
-            "rare/ra090.jpg",
-            "regular/re345.jpg",
-            "regular/re401.png",
-            "rare/ra091.jpg",
-            "rare/ra100.jpg"
+            "regular/re097.jpeg",
+            "regular/re782.png",
+            "epic/e490.jpeg",
+            "regular/re782.png",
+            "rare/ra589.jpeg",
+            "regular/re962.png",
+            "regular/re589.jpeg"
         ],
-        "cur_card": 4,
+        "cur_card": 5,
         "iterator_of_message": 5619
     },
     "1355067969": {
