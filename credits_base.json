@@ -442,8 +442,8 @@
     },
     "6891646558": {
         "username": "darhasira",
-        "credits": 239,
-        "time": 1731342916,
+        "credits": 271,
+        "time": 1731409711,
         "inventory": [
             "Пак карточек"
         ],
@@ -575,7 +575,7 @@
             "rare/ra091.jpg",
             "rare/ra100.jpg"
         ],
-        "cur_card": 3,
+        "cur_card": 4,
         "iterator_of_message": 5619
     },
     "1355067969": {
