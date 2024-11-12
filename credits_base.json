@@ -511,7 +511,7 @@
             "Костюм горничной"
         ],
         "cards_packs": {
-            "Пак карточек": 2,
+            "Пак карточек": 1,
             "Коробка карточек": 0
         },
         "favorite_item": "Шампунь Жумайсынба",
@@ -541,7 +541,10 @@
                 "re962.png",
                 "re270.jpg",
                 "re406.jpg",
-                "re345.jpg"
+                "re345.jpg",
+                "re017.jpeg",
+                "re345.jpg",
+                "re401.png"
             ],
             "Редкие": [
                 "ra408.png",
@@ -550,7 +553,10 @@
                 "ra078.jpg",
                 "ra178.png",
                 "ra091.jpg",
-                "ra534.png"
+                "ra534.png",
+                "ra090.jpg",
+                "ra091.jpg",
+                "ra100.jpg"
             ],
             "Эпические": [
                 "e234.jpeg",
@@ -562,13 +568,14 @@
             "Легендарные": []
         },
         "new_cards": [
-            "regular/re580.jpg",
-            "regular/re962.png",
-            "regular/re270.jpg",
-            "regular/re406.jpg",
-            "regular/re345.jpg"
+            "regular/re017.jpeg",
+            "rare/ra090.jpg",
+            "regular/re345.jpg",
+            "regular/re401.png",
+            "rare/ra091.jpg",
+            "rare/ra100.jpg"
         ],
-        "cur_card": 1,
+        "cur_card": 3,
         "iterator_of_message": 5619
     },
     "1355067969": {
