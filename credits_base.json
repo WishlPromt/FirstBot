@@ -1,8 +1,8 @@
 {
     "5105507379": {
         "username": "WishlPromt",
-        "credits": 63,
-        "time": 1731335574,
+        "credits": 101,
+        "time": 1731405201,
         "inventory": [
             "Костюм горничной",
             "Пак карточек",
@@ -12,7 +12,7 @@
         ],
         "favorite_item": "Шампунь Жумайсынба",
         "role": "Клоун",
-        "favorite_card": "re809",
+        "favorite_card": "/e569",
         "cards_packs": {
             "Пак карточек": 0,
             "Коробка карточек": 0
@@ -264,13 +264,13 @@
             "epic/e245.jpeg",
             "epic/e237.png"
         ],
-        "cur_card": 21,
+        "cur_card": 115,
         "iterator_of_message": 5772
     },
     "5422828618": {
         "username": "Mzmz640404",
-        "credits": 159,
-        "time": 1731333039,
+        "credits": 196,
+        "time": 1731351709,
         "inventory": [
             "Вилка",
             "Шампунь Жумайсынба",
@@ -398,8 +398,8 @@
     },
     "6638790681": {
         "username": "Lalsans1111",
-        "credits": 107,
-        "time": 1731327252,
+        "credits": 148,
+        "time": 1731342621,
         "inventory": [
             "Шампунь Жумайсынба"
         ],
@@ -442,8 +442,8 @@
     },
     "6891646558": {
         "username": "darhasira",
-        "credits": 198,
-        "time": 1731332301,
+        "credits": 239,
+        "time": 1731342916,
         "inventory": [
             "Пак карточек"
         ],
@@ -504,14 +504,14 @@
     },
     "1336049480": {
         "username": "Rimura_tempest3919",
-        "credits": 103,
-        "time": 1731332177,
+        "credits": 8,
+        "time": 1731405075,
         "inventory": [
             "Пак карточек",
             "Костюм горничной"
         ],
         "cards_packs": {
-            "Пак карточек": 0,
+            "Пак карточек": 2,
             "Коробка карточек": 0
         },
         "favorite_item": "Шампунь Жумайсынба",
@@ -533,14 +533,24 @@
                 "re016.jpg",
                 "re576.jpg",
                 "re904.jpg",
-                "re580.jpg"
+                "re580.jpg",
+                "re097.jpeg",
+                "re576.jpg",
+                "re580.jpg",
+                "re580.jpg",
+                "re962.png",
+                "re270.jpg",
+                "re406.jpg",
+                "re345.jpg"
             ],
             "Редкие": [
                 "ra408.png",
                 "ra589.jpeg",
                 "ra789.jpeg",
                 "ra078.jpg",
-                "ra178.png"
+                "ra178.png",
+                "ra091.jpg",
+                "ra534.png"
             ],
             "Эпические": [
                 "e234.jpeg",
@@ -552,13 +562,11 @@
             "Легендарные": []
         },
         "new_cards": [
-            "regular/re016.jpg",
-            "regular/re576.jpg",
-            "regular/re904.jpg",
-            "rare/ra178.png",
-            "epic/e490.jpeg",
-            "epic/e567.jpg",
-            "regular/re580.jpg"
+            "regular/re580.jpg",
+            "regular/re962.png",
+            "regular/re270.jpg",
+            "regular/re406.jpg",
+            "regular/re345.jpg"
         ],
         "cur_card": 1,
         "iterator_of_message": 5619

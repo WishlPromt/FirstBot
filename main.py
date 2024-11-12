@@ -227,10 +227,12 @@ def callback(callback):
     elif callback.data == 'equip card':
         opener = callback.message.reply_to_message.from_user.id
         text = callback.message.caption
+        user = get_message_data(callback)
 
         if callback.from_user.id == opener:
 
             equip_card(get_message_data(callback.message.reply_to_message), text[text.find('#')+1:text.find('.')])
+            bot.send_message(callback.message.chat.id, f'{user["username"]}, теперь карточка {text[text.find("#")+2:text.find(".")]} отбражается у вас в /profile')
 
 
     if callback.data == 'new Следующая':
@@ -318,7 +320,7 @@ def open_cards_pack(message):
         if cards:
 
             card = show_cards(get_message_data(message))
-            print(card)
+
             with open(f'cards/{card}', 'rb') as image_card:
                 bot.send_photo(message.chat.id,
                                image_card,
