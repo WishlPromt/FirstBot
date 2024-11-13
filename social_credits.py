@@ -6,6 +6,22 @@ from system import convert_time
 with open("credits_base.json", "r", encoding="utf-8") as file:
     base = json.load(file)
 
+with open("items.json", "r", encoding="utf-8") as file:
+    items = json.load(file)
+
+
+all_parameters = {'credits': 0,
+                  'time': 0,
+                  'collect_time': 0,
+                  'inventory': [],
+                  'favorite_item': '',
+                  'role': '',
+                  'favorite_card': '',
+                  'cards_packs': {'Пак карточек': 0, 'Коробка карточек': 0},
+                  'cards': {'Обычные': [], 'Редкие': [], 'Эпические': [], 'Легендарные': []},
+                  'new_cards': [],
+                  'cur_card': 0}
+
 
 def save_base():
     file = open('credits_base.json', 'w', encoding='utf-8')
@@ -19,6 +35,7 @@ def new_id(user: dict):
     base[user['id']] = {'username': user['username'],
                         'credits': 0,
                         'time': 0,
+                        'collect_time': 0,
                         'inventory': [],
                         'cards_packs': {
                             'Пак карточек': 0,
@@ -42,6 +59,10 @@ def new_id(user: dict):
 def check_user(user: dict):
     if user['id'] not in base and user['id'] != "7179420529":
         new_id(user)
+
+    for parameter in all_parameters.keys():
+        if parameter not in user['id'].keys():
+            user['id'][parameter] = all_parameters[parameter]
 
 
 
@@ -73,6 +94,26 @@ def work(user: dict):
 
     else:
         return f'Не так быстро!\n Вы сможете снова воркать только <b>{convert_time(base[id]["time"])}</b>'
+
+
+def collect(user: dict):
+    check_user(user)
+    id = user['id']
+
+    collects = ''
+
+    for item in base[id]['inventory']:
+        item_collect = items[item][4]
+
+        if item_collect != 'random':
+            add_credits(user, item_collect)
+
+        else:
+            add_credits(user, randint(-25, 60))
+
+        collects += f'{item} - {item_collect} кредитов'
+
+    return collects
 
 
 def balance(user: dict):

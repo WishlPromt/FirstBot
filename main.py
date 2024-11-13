@@ -2,7 +2,7 @@ import telebot
 from telebot import types
 from random import choice, randint
 import json, time
-from social_credits import add_credits, show_credits, work, check_user, balance
+from social_credits import add_credits, show_credits, work, check_user, balance, collect
 from shop import buy, get_items, next_page, back_page
 from inventory import show_inventory, create_cards_markup, get_cards, reset_cards
 from system import get_message_data
@@ -295,8 +295,12 @@ def work_credit(message):
 
 
 @bot.message_handler(commands=['collect'])
-def collect(message):
+def command_collect(message):
     user = get_message_data(message)
+
+    collects = collect(user)
+
+    bot.reply_to(message, f'{user["username"]}, со своего инвентаря вы собираете:\n {collects}')
 
 
 @bot.message_handler(commands=['credits'])
