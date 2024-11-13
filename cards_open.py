@@ -198,31 +198,35 @@ def sell_card(user):
 
     id = user['id']
     base = load_base()
-    cur_card = base[id]['new_cards']['cur_card']
+    cur_card = base[id]['new_cards'][base[id]['cur_card']]
     rare = cur_card[0:cur_card.find('/')]
     name = cur_card[cur_card.find('/')+1:]
 
     if rare == 'regular':
         price = 3
         base[id]['cards']['Обычные'].remove(name)
+        base[id]['new_cards'].remove(cur_card)
         add_credits(user, price)
         save_base(base)
 
     elif rare == 'rare':
         price = 7
         base[id]['cards']['Обычные'].remove(name)
+        base[id]['new_cards'].remove(cur_card)
         add_credits(user, price)
         save_base(base)
 
     elif rare == 'epic':
         price = 15
         base[id]['cards']['Обычные'].remove(name)
+        base[id]['new_cards'].remove(cur_card)
         add_credits(user, price)
         save_base(base)
 
     elif rare == 'legendary':
         price = 200
         base[id]['cards']['Обычные'].remove(name)
+        base[id]['new_cards'].remove(cur_card)
         add_credits(user, price)
         save_base(base)
 

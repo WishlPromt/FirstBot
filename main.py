@@ -245,7 +245,7 @@ def callback(callback):
             if sell:
                 bot.edit_message_caption(chat_id=callback.message.chat.id,
                                          message_id=callback.message.id,
-                                         caption=f'Карточка {sell[0]} продана за {sell[1]}\n'
+                                         caption=f'Карточка {sell[0]} продана за {sell[1]} кредитов\n'
                                                  f'Пользователь - {user["username"]}',
                                          reply_markup=create_simple_markup(),
                                          parse_mode='html')
