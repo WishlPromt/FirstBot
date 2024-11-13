@@ -270,7 +270,7 @@ def callback(callback):
 
                 bot.edit_message_caption(chat_id=callback.message.chat.id,
                                          message_id=callback.message.id,
-                                         caption=f'{get_message_data(callback)["username"]}, вы получили {get_card_info(card, get_message_data(callback))}',
+                                         caption=f'Карточка {get_message_data(callback)["username"]}\n{get_card_info(card, get_message_data(callback))}',
                                          reply_markup=create_markup(),
                                          parse_mode='html')
 
@@ -341,7 +341,7 @@ def open_cards_pack(message):
 
     if get_packs(get_message_data(message), 'Пак карточек'):
 
-        cards = open_pack(get_message_data(message), 'Пак карточек', message.id)
+        cards = open_pack(get_message_data(message), 'Пак карточек')
 
         if cards:
 

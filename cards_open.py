@@ -211,21 +211,21 @@ def sell_card(user):
 
     elif rare == 'rare':
         price = 7
-        base[id]['cards']['Обычные'].remove(name)
+        base[id]['cards']['Редкие'].remove(name)
         base[id]['new_cards'].remove(cur_card)
         add_credits(user, price)
         save_base(base)
 
     elif rare == 'epic':
         price = 15
-        base[id]['cards']['Обычные'].remove(name)
+        base[id]['cards']['Эпические'].remove(name)
         base[id]['new_cards'].remove(cur_card)
         add_credits(user, price)
         save_base(base)
 
     elif rare == 'legendary':
         price = 200
-        base[id]['cards']['Обычные'].remove(name)
+        base[id]['cards']['Легендарные'].remove(name)
         base[id]['new_cards'].remove(cur_card)
         add_credits(user, price)
         save_base(base)

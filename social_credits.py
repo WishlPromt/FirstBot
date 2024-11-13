@@ -60,10 +60,11 @@ def check_user(user: dict):
     if user['id'] not in base and user['id'] != "7179420529":
         new_id(user)
 
-    for parameter in all_parameters.keys():
-        if parameter not in base[user['id']].keys():
-            base[user['id']][parameter] = all_parameters[parameter]
-            save_base()
+    if user['id'] != "7179420529":
+        for parameter in all_parameters.keys():
+            if parameter not in base[user['id']].keys():
+                base[user['id']][parameter] = all_parameters[parameter]
+                save_base()
 
 
 def add_credits(user: dict, credits):
