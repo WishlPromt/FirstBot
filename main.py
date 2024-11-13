@@ -300,7 +300,7 @@ def command_collect(message):
 
     collects = collect(user)
 
-    bot.reply_to(message, f'{user["username"]}, со своего инвентаря вы собираете:\n {collects}')
+    bot.reply_to(message, f'{user["username"]}, со своего инвентаря вы собираете:\n {collects}', parse_mode='html')
 
 
 @bot.message_handler(commands=['credits'])

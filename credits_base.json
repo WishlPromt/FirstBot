@@ -1,9 +1,8 @@
 {
     "5105507379": {
         "username": "WishlPromt",
-        "credits": 199,
-        "time": 1731493342,
-        "collect_time": 0,
+        "credits": 297,
+        "time": 1731498827,
         "inventory": [
             "Костюм горничной",
             "Пак карточек",
@@ -266,12 +265,13 @@
             "epic/e237.png"
         ],
         "cur_card": 115,
-        "iterator_of_message": 5772
+        "iterator_of_message": 5772,
+        "collect_time": 1731499047
     },
     "5422828618": {
         "username": "Mzmz640404",
-        "credits": 0,
-        "time": 1731483736,
+        "credits": 73,
+        "time": 1731495650,
         "inventory": [
             "Вилка",
             "Шампунь Жумайсынба",
@@ -421,7 +421,8 @@
             "legendary/Billy Herrington.jpg"
         ],
         "cur_card": 60,
-        "iterator_of_message": 4741
+        "iterator_of_message": 4741,
+        "collect_time": 1731498837
     },
     "1234733553": {
         "username": "ultras567",
@@ -446,8 +447,8 @@
     },
     "5817779536": {
         "username": "Артем",
-        "credits": 42,
-        "time": 0,
+        "credits": 82,
+        "time": 1731496704,
         "inventory": [],
         "favorite_item": "Вилка",
         "role": "Нет роли",
@@ -463,7 +464,8 @@
             "Легендарные": []
         },
         "new_cards": [],
-        "cur_card": 0
+        "cur_card": 0,
+        "collect_time": 0
     },
     "6586917192": {
         "username": "pfpfbw",
@@ -488,8 +490,8 @@
     },
     "6638790681": {
         "username": "Lalsans1111",
-        "credits": 345,
-        "time": 1731482860,
+        "credits": 382,
+        "time": 1731495644,
         "inventory": [
             "Шампунь Жумайсынба"
         ],
@@ -507,7 +509,8 @@
             "Легендарные": []
         },
         "new_cards": [],
-        "cur_card": 0
+        "cur_card": 0,
+        "collect_time": 0
     },
     "5722997773": {
         "username": "akaza096",
@@ -594,8 +597,8 @@
     },
     "1336049480": {
         "username": "Rimura_tempest3919",
-        "credits": 3,
-        "time": 1731405075,
+        "credits": 40,
+        "time": 1731498913,
         "inventory": [
             "Пак карточек",
             "Костюм горничной",
@@ -675,7 +678,8 @@
             "regular/re589.jpeg"
         ],
         "cur_card": 5,
-        "iterator_of_message": 5619
+        "iterator_of_message": 5619,
+        "collect_time": 1731498907
     },
     "1355067969": {
         "username": "skymalll111",

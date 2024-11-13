@@ -61,9 +61,9 @@ def check_user(user: dict):
         new_id(user)
 
     for parameter in all_parameters.keys():
-        if parameter not in user['id'].keys():
-            user['id'][parameter] = all_parameters[parameter]
-
+        if parameter not in base[user['id']].keys():
+            base[user['id']][parameter] = all_parameters[parameter]
+            save_base()
 
 
 def add_credits(user: dict, credits):
@@ -99,21 +99,35 @@ def work(user: dict):
 def collect(user: dict):
     check_user(user)
     id = user['id']
+    datetime = user['datetime']
+    lock_data = base[id]['collect_time']
 
     collects = ''
+    credit_collects = 0
 
-    for item in base[id]['inventory']:
-        item_collect = items[item][4]
+    if datetime >= lock_data:
+        for item in base[id]['inventory']:
+            item_collect = items[item][4]
+            if item_collect != 'None':
 
-        if item_collect != 'random':
-            add_credits(user, item_collect)
+                if item_collect != 'random':
+                    add_credits(user, item_collect)
+                    credit_collects += item_collect
 
-        else:
-            add_credits(user, randint(-25, 60))
+                else:
+                    item_collect = randint(-25, 60)
+                    add_credits(user, item_collect)
+                    credit_collects += item_collect
 
-        collects += f'{item} - {item_collect} кредитов'
+                collects += f'<b>{item}</b> - <b>{item_collect}</b> кредитов\n'
 
-    return collects
+        now = datetime + 7200
+        base[id]['collect_time'] = now
+        save_base()
+
+        return f'{collects} \nВы сможете собрать кредиты снова только <i>{convert_time(base[id]["collect_time"])}</i>'
+
+    return f'Не так быстро!\n Вы сможете снова собрать кредиты только <b>{convert_time(base[id]["collect_time"])}</b>'
 
 
 def balance(user: dict):
