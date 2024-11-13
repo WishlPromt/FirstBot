@@ -1,8 +1,8 @@
 {
     "5105507379": {
         "username": "WishlPromt",
-        "credits": 101,
-        "time": 1731405201,
+        "credits": 199,
+        "time": 1731493342,
         "inventory": [
             "Костюм горничной",
             "Пак карточек",
@@ -269,8 +269,8 @@
     },
     "5422828618": {
         "username": "Mzmz640404",
-        "credits": 196,
-        "time": 1731351709,
+        "credits": 0,
+        "time": 1731483736,
         "inventory": [
             "Вилка",
             "Шампунь Жумайсынба",
@@ -280,9 +280,9 @@
         ],
         "favorite_item": "Вилка",
         "role": "Dungeon master",
-        "favorite_card": "Нет карты",
+        "favorite_card": "Billy Herrington",
         "cards_packs": {
-            "Пак карточек": 1,
+            "Пак карточек": 5,
             "Коробка карточек": 0
         },
         "cards": {
@@ -311,26 +311,115 @@
                 "re097.jpeg",
                 "re576.jpg",
                 "re782.png",
-                "re809.png"
+                "re809.png",
+                "re743.png",
+                "re832.jpg",
+                "re962.png",
+                "re845.jpg",
+                "re734.png",
+                "re727.png",
+                "re727.png",
+                "re385.jpg",
+                "re576.jpg",
+                "re245.png",
+                "re016.jpg",
+                "re678.jpeg",
+                "re270.jpg",
+                "re401.png",
+                "re523.jpg",
+                "re378.png",
+                "re091.png",
+                "re091.png",
+                "re009.png",
+                "re017.jpeg",
+                "re267.jpeg",
+                "re734.png",
+                "re401.png"
             ],
             "Редкие": [
                 "ra078.jpg",
                 "ra789.jpeg",
                 "ra589.jpeg",
-                "ra090.jpg"
+                "ra090.jpg",
+                "ra309.jpg",
+                "ra123.jpeg",
+                "ra091.jpg",
+                "ra789.jpeg",
+                "ra408.png",
+                "ra789.jpeg"
             ],
-            "Эпические": [],
-            "Легендарные": []
+            "Эпические": [
+                "e234.jpeg",
+                "e245.jpeg"
+            ],
+            "Легендарные": [
+                "Billy Herrington.jpg"
+            ]
         },
         "new_cards": [
+            "regular/re097.jpeg",
+            "regular/re576.jpg",
+            "regular/re790.jpeg",
+            "regular/re270.jpg",
+            "regular/re456.jpg",
+            "regular/re782.png",
+            "regular/re017.jpeg",
+            "regular/re579.png",
+            "regular/re782.png",
+            "regular/re962.png",
+            "regular/re912.jpg",
+            "regular/re270.jpg",
+            "regular/re097.jpeg",
+            "regular/re912.jpg",
+            "regular/re580.jpg",
+            "regular/re782.png",
+            "regular/re580.jpg",
+            "regular/re580.jpg",
+            "regular/re456.jpg",
             "regular/re127.jpeg",
             "regular/re782.jpeg",
             "regular/re097.jpeg",
             "regular/re576.jpg",
             "regular/re782.png",
-            "regular/re809.png"
+            "regular/re809.png",
+            "regular/re743.png",
+            "regular/re832.jpg",
+            "regular/re962.png",
+            "regular/re845.jpg",
+            "regular/re734.png",
+            "regular/re727.png",
+            "regular/re727.png",
+            "regular/re385.jpg",
+            "regular/re576.jpg",
+            "regular/re245.png",
+            "regular/re016.jpg",
+            "regular/re678.jpeg",
+            "regular/re270.jpg",
+            "regular/re401.png",
+            "regular/re523.jpg",
+            "regular/re378.png",
+            "regular/re091.png",
+            "regular/re091.png",
+            "regular/re009.png",
+            "regular/re017.jpeg",
+            "regular/re267.jpeg",
+            "regular/re734.png",
+            "regular/re401.png",
+            "rare/ra078.jpg",
+            "rare/ra789.jpeg",
+            "rare/ra589.jpeg",
+            "rare/ra090.jpg",
+            "rare/ra309.jpg",
+            "rare/ra123.jpeg",
+            "rare/ra091.jpg",
+            "rare/ra789.jpeg",
+            "rare/ra408.png",
+            "rare/ra789.jpeg",
+            "epic/e234.jpeg",
+            "epic/e245.jpeg",
+            "legendary/Billy Herrington.jpg"
         ],
-        "cur_card": 4,
+        "cur_card": 60,
         "iterator_of_message": 4741
     },
     "1234733553": {
@@ -377,8 +466,8 @@
     },
     "6586917192": {
         "username": "pfpfbw",
-        "credits": 36,
-        "time": 1730575828,
+        "credits": 67,
+        "time": 1731437962,
         "inventory": [],
         "favorite_item": "Вилка",
         "role": "Нет роли",
@@ -398,8 +487,8 @@
     },
     "6638790681": {
         "username": "Lalsans1111",
-        "credits": 192,
-        "time": 1731414106,
+        "credits": 345,
+        "time": 1731482860,
         "inventory": [
             "Шампунь Жумайсынба"
         ],
@@ -442,8 +531,8 @@
     },
     "6891646558": {
         "username": "darhasira",
-        "credits": 271,
-        "time": 1731409711,
+        "credits": 406,
+        "time": 1731490913,
         "inventory": [
             "Пак карточек"
         ],
@@ -612,6 +701,27 @@
         "username": "IM_CHIKATILO",
         "credits": 0,
         "time": 0,
+        "inventory": [],
+        "cards_packs": {
+            "Пак карточек": 0,
+            "Коробка карточек": 0
+        },
+        "favorite_item": "Нет предмета",
+        "role": "Нет роли",
+        "favorite_card": "Нет карты",
+        "cards": {
+            "Обычные": [],
+            "Редкие": [],
+            "Эпические": [],
+            "Легендарные": []
+        },
+        "new_cards": [],
+        "cur_card": 0
+    },
+    "1406938098": {
+        "username": "Geng_BeHg",
+        "credits": 33,
+        "time": 1731445644,
         "inventory": [],
         "cards_packs": {
             "Пак карточек": 0,

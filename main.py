@@ -232,7 +232,7 @@ def callback(callback):
         if callback.from_user.id == opener:
 
             equip_card(get_message_data(callback.message.reply_to_message), text[text.find('#')+1:text.find('.')])
-            bot.send_message(callback.message.chat.id, f'{user["username"]}, теперь карточка {text[text.find("#")+2:text.find(".")]} отбражается у вас в /profile')
+            bot.send_message(callback.message.chat.id, f'{user["username"]}, теперь карточка {text[text.find("#")+1:text.find(".")]} отбражается у вас в /profile')
 
 
     if callback.data == 'new Следующая':
@@ -292,6 +292,11 @@ def profile(message):
 def work_credit(message):
     user = get_message_data(message)
     bot.reply_to(message, f'<b>{user["username"]}</b>, {work(user)}', parse_mode='html')
+
+
+@bot.message_handler(commands=['collect'])
+def collect(message):
+    user = get_message_data(message)
 
 
 @bot.message_handler(commands=['credits'])
@@ -579,27 +584,29 @@ def chat(message):
     except:
         pass
 
-    if text.find('@OkeeeeMyBot') != -1 or target_id == "7179420529":
+    if text.find('@okeeeemybot') != -1 or target_id == "7179420529":
 
         for i in data.keys():
             for m in data[i]['messages']:
 
                 if message.text.find(m) != -1:
                     if i == 'hello' or i == 'bye':
-                        answer += choice(data[i]['answers']) + ', ' + message.from_user.first_name
+                        answer += choice(data[i]['answers']) + ', ' + message.from_user.first_name + '. '
                     elif i == 'id':
-                        answer += f'Вот твой ID: {message.from_user.id}'
+                        answer += f'Вот твой ID: {message.from_user.id}' + '. '
                     elif i == 'info':
-                        answer += info(message)
+                        answer += info(message) + '. '
                     elif i == 'developer':
-                        answer += developer(message)
+                        answer += developer(message) + '. '
                     else:
-                        answer += choice(data[i]['answers'])
-
-                    if answer != '':
-                        bot.reply_to(message, answer)
+                        answer += choice(data[i]['answers']) + '. '
 
                     break
+
+        if answer != '':
+            bot.reply_to(message, answer)
+
+
 
 
 if __name__ == '__main__':
