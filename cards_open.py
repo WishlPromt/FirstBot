@@ -2,7 +2,7 @@ import json
 import os
 import random
 from telebot import types
-from social_credits import check_user
+from social_credits import check_user, add_credits
 
 
 def load_base():
@@ -88,7 +88,7 @@ def get_rare():
         return 'legendary'
 
 
-def open_pack(user, item, message_id):
+def open_pack(user, item):
     check_user(user)
 
     id = user['id']
@@ -176,6 +176,46 @@ def show_cards(user):
 
     return base[id]["new_cards"][0]
 
+
+def sell_card(user):
+    check_user(user)
+
+    id = user['id']
+    base = load_base()
+    cur_card = base[id]['new_cards']['cur_card']
+    rare = cur_card[0:cur_card.find('/')]
+    name = cur_card[cur_card.find('/')+1:]
+
+    price = 0
+
+    if rare == 'regular':
+        price = 3
+        base[id]['cards']['Обычные'].remove(name)
+        add_credits(user, price)
+        save_base(base)
+
+    elif rare == 'rare':
+        price = 7
+        base[id]['cards']['Обычные'].remove(name)
+        add_credits(user, price)
+        save_base(base)
+
+    elif rare == 'epic':
+        price = 15
+        base[id]['cards']['Обычные'].remove(name)
+        add_credits(user, price)
+        save_base(base)
+
+    elif rare == 'legendary':
+        price = 200
+        base[id]['cards']['Обычные'].remove(name)
+        add_credits(user, price)
+        save_base(base)
+
+    else:
+        return False
+
+    return [name, price]
 
 def next_back_card(user, action):
     check_user(user)
