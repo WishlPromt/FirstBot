@@ -6,7 +6,7 @@ from social_credits import add_credits, show_credits, work, check_user, balance,
 from shop import buy, get_items, next_page, back_page
 from inventory import show_inventory, create_cards_markup, get_cards, reset_cards
 from system import get_message_data
-from cards_open import open_pack, show_cards, next_back_card, create_markup, get_packs, get_card_info
+from cards_open import open_pack, show_cards, next_back_card, create_markup, get_packs, get_card_info, sell_card, create_simple_markup
 from profile import show_profile, equip, show_items, equip_card
 
 
@@ -233,6 +233,23 @@ def callback(callback):
 
             equip_card(get_message_data(callback.message.reply_to_message), text[text.find('#')+1:text.find('.')])
             bot.send_message(callback.message.chat.id, f'{user["username"]}, теперь карточка {text[text.find("#")+1:text.find(".")]} отбражается у вас в /profile')
+
+    elif callback.data == 'sell':
+        opener = callback.message.reply_to_message.from_user.id
+        user = get_message_data(callback)
+
+        if callback.from_user.id == opener:
+
+            sell = sell_card(get_message_data(callback.message.reply_to_message))
+
+            if sell:
+                bot.edit_message_caption(chat_id=callback.message.chat.id,
+                                         message_id=callback.message.id,
+                                         caption=f'Карточка {sell[0]} продана за {sell[1]}\n'
+                                                 f'Пользователь - {user["username"]}',
+                                         reply_markup=create_simple_markup(),
+                                         parse_mode='html')
+
 
 
     if callback.data == 'new Следующая':

@@ -69,9 +69,25 @@ def create_markup():
     cards_markup = types.InlineKeyboardMarkup()
     btn_next = types.InlineKeyboardButton('>>', callback_data='new Следующая')
     btn_back = types.InlineKeyboardButton('<<', callback_data='new Предыдущая')
+    btn_profile = types.InlineKeyboardButton('В профиль', callback_data='equip card')
+    btn_sell = types.InlineKeyboardButton('Продать', callback_data='sell')
+
+    cards_markup.row(btn_back, btn_next)
+    cards_markup.add(btn_profile)
+    cards_markup.add(btn_sell)
+
+    return cards_markup
+
+
+def create_simple_markup():
+    cards_markup = types.InlineKeyboardMarkup()
+    btn_next = types.InlineKeyboardButton('>>', callback_data='new Следующая')
+    btn_back = types.InlineKeyboardButton('<<', callback_data='new Предыдущая')
+
     cards_markup.row(btn_back, btn_next)
 
     return cards_markup
+
 
 def get_rare():
     rare_n = random.randint(1, 100)
@@ -185,8 +201,6 @@ def sell_card(user):
     cur_card = base[id]['new_cards']['cur_card']
     rare = cur_card[0:cur_card.find('/')]
     name = cur_card[cur_card.find('/')+1:]
-
-    price = 0
 
     if rare == 'regular':
         price = 3
