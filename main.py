@@ -195,7 +195,7 @@ def nsfw(message):
 @bot.callback_query_handler(func=lambda callback: True)
 def callback(callback):
     try:
-        msg_thread_id = callback.reply_to_message.message_thread_id
+        msg_thread_id = callback.message.message_thread_id
     except AttributeError:
         msg_thread_id = "General"
 
@@ -340,12 +340,14 @@ def callback(callback):
 #SOCIAL CREDITS
 @bot.message_handler(commands=['profile'])
 def profile(message):
+
     if not message.reply_to_message:
         profile = show_profile(get_message_data(message))
         message_id = message.id
-
         print(get_message_data(message))
         print(message_id)
+
+
     else:
         profile = show_profile(get_message_data(message.reply_to_message))
         message_id = message.reply_to_message.message_id
@@ -355,14 +357,18 @@ def profile(message):
 
     try:
         with open(f'cards/{profile[1]}', 'rb') as image:
-             bot.send_photo(chat_id=message.chat.id,
-                            photo=image,
-                            caption=profile[0],
-                            reply_to_message_id=message_id,
-                            parse_mode='html')
+            bot.send_photo(chat_id=message.chat.id,
+                           photo=image,
+                           caption=profile[0],
+                           reply_to_message_id=message_id,
+                           parse_mode='html')
 
     except:
         bot.reply_to(message, profile[0], parse_mode='html')
+
+    print(profile[1], ' ', profile[0])
+
+
 
 
 @bot.message_handler(commands=['work'])
