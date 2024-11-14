@@ -36,7 +36,7 @@ ignore_symbols = ',."\'{}[]()!#$%^&*№;:?\\|/'
 bot = telebot.TeleBot('7179420529:AAEOXaN8vYV5OVd4_OYDy7tK6hHGWxnTjL8')
 
 
-@bot.message_handler(commands=['s'])
+@bot.message_handler(commands=['start'])
 def start(message):
     bot.reply_to(message, f'Дарова, {message.from_user.first_name}')
 
@@ -61,24 +61,24 @@ def stop(message):
 @bot.message_handler(commands=['help'])
 def help(message):
     bot.reply_to(message, 'Я короче бот.\n'
-                                      'Умею разговаривать\n'
-                                      'У меня есть несколько <i>команд</i>:\n'
-                                      'Обычные команды:\n'
-                                      '/start\n'
-                                      '/help\n'
-                                      '/developer\n'
-                                      '/info\n'
-                                      '/education\n'
-                                      '/finish\n'
-                                      '/nsfw\n'
-                                      'Для администрации:\n'
-                                      '/mute\n'
-                                      'Экономика:\n'
-                                      '/work\n'
-                                      '/shop\n'
-                                      '/balance\n'
-                                      'Мини-игры:\n'
-                                      '/russian_roulette\n', 'html')
+                          'Умею разговаривать\n'
+                          'У меня есть несколько <i>команд</i>:\n'
+                          'Обычные команды:\n'
+                          '/start\n'
+                          '/help\n'
+                          '/developer\n'
+                          '/info\n'
+                          '/education\n'
+                          '/finish\n'
+                          '/nsfw\n'
+                          'Для администрации:\n'
+                          '/mute\n'
+                          'Экономика:\n'
+                          '/work\n'
+                          '/shop\n'
+                          '/balance\n'
+                          'Мини-игры:\n'
+                          '/russian_roulette\n', parse_mode='html')
 
 
 @bot.message_handler(commands=['economy_help'])
@@ -343,9 +343,15 @@ def profile(message):
     if not message.reply_to_message:
         profile = show_profile(get_message_data(message))
         message_id = message.id
+
+        print(get_message_data(message))
+        print(message_id)
     else:
         profile = show_profile(get_message_data(message.reply_to_message))
         message_id = message.reply_to_message.message_id
+
+        print(get_message_data(message))
+        print(message_id)
 
     try:
         with open(f'cards/{profile[1]}', 'rb') as image:
@@ -421,7 +427,7 @@ def open_cards_pack(message):
 
     if get_packs(get_message_data(message), 'Коробка карточек'):
 
-        cards = open_pack(get_message_data(message), 'Коробка карточек', message.id)
+        cards = open_pack(get_message_data(message), 'Коробка карточек')
 
         if cards:
 
@@ -447,7 +453,7 @@ def shop(message, page=1):
 
     markup = create_shop(page)
 
-    bot.send_message(message.chat.id, 'Магазин бота', reply_markup=markup)
+    bot.reply_to(message, 'Магазин бота', reply_markup=markup)
 
 
 @bot.message_handler(commands=['show_cards'])
@@ -480,7 +486,7 @@ def show_equip_items(message):
     user_inventory = show_items(get_message_data(message))
 
     for item in user_inventory:
-        bot.send_message(message.chat.id, item)
+        bot.reply_to(message, item)
 
 @bot.message_handler(commands=['equip'])
 def equip_item(message):
@@ -495,7 +501,7 @@ def equip_item(message):
 
 
 #GAMES
-@bot.message_handler(commands=['russian_roulette', 'russkaia_ruletka'])
+@bot.message_handler(commands=[])
 def start_roul(message):
     global games, org, players
     games = 'roul'
@@ -535,14 +541,14 @@ def join(message):
                         'org': False})
         bot.reply_to(message, 'Вы в игре!')
     else:
-        bot.send_message(message.chat.id, 'Игру то начни')
+        bot.reply_to(message, 'Игру то начни')
 
 
-@bot.message_handler(commands=['play'])
+@bot.message_handler(commands=[])
 def start_game(message):
     global players, games, org
     if len(players) < 2:
-        bot.send_message(message.chat.id, 'Не набралось достаточное кол-во игроков. Игра отменяется')
+        bot.reply_to(message, 'Не набралось достаточное кол-во игроков. Игра отменяется')
         end_game(message)
 
     starter = message.from_user.id
@@ -552,7 +558,7 @@ def start_game(message):
     if games == 'roul':
         if starter == org:
 
-            bot.send_message(message.chat.id, 'Русская рулетка началась!')
+            bot.reply_to(message, 'Русская рулетка началась!')
             for r in range(3):
                 if len(players) > 1:
                     time.sleep(3)
@@ -618,7 +624,7 @@ def end_game(message):
         org = None
         games = None
         players = []
-        bot.send_message(message.chat.id, 'Игра завершена')
+        bot.reply_to(message, 'Игра завершена')
     else:
         bot.reply_to(message, 'У тебя нет прав')
 
