@@ -86,7 +86,7 @@ def work(user: dict):
     if datetime >= lock_data:
 
         add_credits(user, credits)
-        now = datetime + 14400
+        now = datetime + 7200
         base[id]['time'] = now
 
         save_base()
@@ -122,7 +122,7 @@ def collect(user: dict):
 
                 collects += f'<b>{item}</b> - <b>{item_collect}</b> кредитов\n'
 
-        now = datetime + 7200
+        now = datetime + 14400
         base[id]['collect_time'] = now
         save_base()
 

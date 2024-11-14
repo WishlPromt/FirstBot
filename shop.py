@@ -1,4 +1,5 @@
 import json
+from telebot import types
 from social_credits import check_user
 
 
@@ -26,6 +27,33 @@ def save_inventory():
 
 #Variables
 max_pages = 3
+
+
+def create_shop(page):
+    items = get_items(page)
+    names = []
+    for name in items.keys():
+        names.append(name)
+
+    prices = []
+    item_types = []
+
+    for name in names:
+        prices.append(items[name][0])
+        item_types.append(items[name][3])
+
+    markup = types.InlineKeyboardMarkup()
+    but_item_0 = types.InlineKeyboardButton(f'{item_types[0]} {names[0]} - {str(prices[0])}', callback_data=names[0])
+    but_item_1 = types.InlineKeyboardButton(f'{item_types[1]} {names[1]} - {str(prices[1])}', callback_data=names[1])
+    but_item_2 = types.InlineKeyboardButton(f'{item_types[2]} {names[2]} - {str(prices[2])}', callback_data=names[2])
+    but_next = types.InlineKeyboardButton('>>', callback_data=f'>>{page}')
+    but_back = types.InlineKeyboardButton('<<', callback_data=f'<<{page}')
+    markup.add(but_item_0)
+    markup.add(but_item_1)
+    markup.add(but_item_2)
+    markup.row(but_back, but_next)
+
+    return markup
 
 
 def buy(item, buyer):
@@ -90,14 +118,14 @@ def next_page(cur_page):
     if cur_page < max_pages:
         return cur_page + 1
     else:
-        return cur_page
+        return 1
 
 
 def back_page(cur_page):
     if cur_page > 1:
         return cur_page - 1
     else:
-        return cur_page
+        return max_pages
 
 
 def get_items(page):

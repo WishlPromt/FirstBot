@@ -141,7 +141,7 @@ def open_pack(user, item):
                 base[id]['cards']['Легендарные'].append(card)
 
     elif item == 'Коробка карточек' and base[id]['cards_packs'][item] > 0:
-        for c in range(random.randint(250, 300)):
+        for c in range(random.randint(150, 200)):
             rare = get_rare()
             if rare == 'regular':
                 card = random.choice(regular_cards)
