@@ -1,8 +1,8 @@
 {
     "5105507379": {
         "username": "WishlPromt",
-        "credits": 160,
-        "time": 1731584121,
+        "credits": 193,
+        "time": 1731591839,
         "inventory": [
             "Костюм горничной",
             "Пак карточек",
@@ -13,7 +13,7 @@
         ],
         "favorite_item": "Шампунь Жумайсынба",
         "role": "Dungeon master",
-        "favorite_card": "/e569",
+        "favorite_card": "regular/re019.jpg",
         "cards_packs": {
             "Пак карточек": 0,
             "Коробка карточек": 0
@@ -303,13 +303,13 @@
             "epic/e569.jpeg",
             "epic/e569.jpeg"
         ],
-        "cur_card": 6,
+        "cur_card": 1,
         "iterator_of_message": 5772,
         "collect_time": 1731591323
     },
     "5422828618": {
         "username": "Mzmz640404",
-        "credits": 225,
+        "credits": 264,
         "time": 1731584970,
         "inventory": [
             "Вилка",
@@ -519,11 +519,11 @@
         ],
         "cur_card": 0,
         "iterator_of_message": 4741,
-        "collect_time": 1731498837
+        "collect_time": 1731597923
     },
     "1234733553": {
         "username": "ultras567",
-        "credits": 85,
+        "credits": 88,
         "time": 0,
         "inventory": [],
         "favorite_item": "Вилка",
@@ -635,8 +635,8 @@
     },
     "6891646558": {
         "username": "darhasira",
-        "credits": 539,
-        "time": 1731574720,
+        "credits": 579,
+        "time": 1731592291,
         "inventory": [
             "Пак карточек"
         ],
@@ -711,7 +711,7 @@
         },
         "favorite_item": "Шампунь Жумайсынба",
         "role": "Клоун",
-        "favorite_card": "re017",
+        "favorite_card": "legendary/Billy Herrington.jpg",
         "cards": {
             "Обычные": [
                 "re809.png",
@@ -880,7 +880,7 @@
             "epic/e490.jpeg",
             "legendary/Billy Herrington.jpg"
         ],
-        "cur_card": 5,
+        "cur_card": 76,
         "iterator_of_message": 5619,
         "collect_time": 1731591326
     },
@@ -1007,5 +1007,26 @@
             "regular/re019.jpg"
         ],
         "cur_card": 1
+    },
+    "7179420529": {"username": "KabachokBot",
+        "credits": 999,
+        "time": 0,
+        "collect_time": 0,
+        "inventory": [],
+        "cards_packs": {
+            "Пак карточек": 0,
+            "Коробка карточек": 0
+        },
+        "favorite_item": "Плетка",
+        "role": "Раб Вишла",
+        "favorite_card": "Нет карты",
+        "cards": {
+            "Обычные": [],
+            "Редкие": [],
+            "Эпические": [],
+            "Легендарные": []
+        },
+        "new_cards": [],
+        "cur_card": 0
     }
 }

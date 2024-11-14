@@ -193,6 +193,12 @@ def show_cards(user):
     return base[id]["new_cards"][0]
 
 
+def get_cur_card(user):
+    base = load_base()
+
+    return base[user['id']]['new_cards'][base[user['id']]['cur_card']]
+
+
 def sell_card(user):
     check_user(user)
 

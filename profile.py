@@ -29,10 +29,11 @@ def show_profile(user):
     role = base[id]['role']
     fav_card = base[id]['favorite_card']
 
-    profile = (f'{username} - {role}\n'
-               f'Кредиты: {credits}\n'
-               f'Любимый предмет: {fav_item}\n'
-               f'Любимая карта: {fav_card}')
+    profile = [f'<b>{username}</b> - <b>{role}</b>\n'
+               f'<b>Кредиты</b>: <b>{credits}</b>\n'
+               f'<b>Любимый предмет</b>: <b>{fav_item}</b>\n'
+               f'<b>Любимая карта</b>: <b>{fav_card[fav_card.find("/")+1:fav_card.find(".")]}</b>',
+               base[id]['favorite_card']]
 
     return profile
 

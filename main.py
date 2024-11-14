@@ -6,7 +6,7 @@ from social_credits import add_credits, show_credits, work, check_user, balance,
 from shop import buy, next_page, back_page, create_shop
 from inventory import show_inventory, create_cards_markup, get_cards, reset_cards
 from system import get_message_data
-from cards_open import open_pack, show_cards, next_back_card, create_markup, get_packs, get_card_info, sell_card, create_simple_markup
+from cards_open import open_pack, show_cards, next_back_card, create_markup, get_packs, get_card_info, sell_card, create_simple_markup, get_cur_card
 from profile import show_profile, equip, show_items, equip_card
 
 
@@ -84,15 +84,15 @@ def help(message):
 @bot.message_handler(commands=['economy_help'])
 def economy_help(message):
     bot.reply_to(message, 'Экономика:\n'
-                          'Вы можете зарабатывать валюту(<b>кредиты</b>) с помщью команд бота:\n'
+                          'Вы можете зарабатывать валюту(<b>кредиты</b>) с помощью команд бота:\n'
                           '/work - <b>работать</b>, зарабатывается от <i>30 до 45</i> кредитов, можно использовать раз в <i>2 часа</i>\n'
                           '/collect - <b>собрать кредиты</b> с инвенторя, почти каждый ваш предмет в инвенторе приносит прибыль, можно использовать раз в <i>4 часа</i>(о кредитах с каждого предмета-/help_collect)\n'
                           'Вы можете тратить кредиты на покупку <i>предметов и ролей</i> в <b>магазине</b>(/shop). Просмотреть <b>инвентарь</b> можно через /inventory\n'
                           'Все купленные предметы отображаются у вас в <b>профиле</b> - /profile'
                           'После покупки предмета/роли можно <b>экипировать</b> его/ее с помощью /equip_items\n'
-                          'Также есть <b>коллекционные карточки</b> - <i>обычные</i>, <i>редкие, <i>эпические</i> и <i>легендарные</i>, получить их можно открывая <b>паки</b> и <b>коробки карточек</b>(приобретаются в магазине)\n'
+                          'Также есть <b>коллекционные карточки</b> - <i>обычные</i>, <i>редкие</i>, <i>эпические</i> и <i>легендарные</i>, получить их можно открывая <b>паки</b> и <b>коробки карточек</b>(приобретаются в магазине)\n'
                           'Их можно <b>просмотреть</b> с помощью /show_cards'
-                          'Их можно также <b>экипировать в профиль<b> и <b>продать</b>(кнопки есть при просмотре)', parse_mode='html')
+                          'Их можно также <b>экипировать в профиль</b> и <b>продать</b>(кнопки есть при просмотре)', parse_mode='html')
 
 
 @bot.message_handler(commands=['help_collect'])
@@ -225,7 +225,6 @@ def callback(callback):
         next_back_card(opener, 'next')
 
         card = show_cards(opener)
-        user = get_message_data(callback)
 
         markup = create_cards_markup()
         with open(f'cards/{card}', 'rb') as image_card:
@@ -234,8 +233,8 @@ def callback(callback):
                                    media=types.InputMediaPhoto(image_card))
             bot.edit_message_caption(chat_id=callback.message.chat.id,
                                      message_id=callback.message.id,
-                                     caption=f'Карточка {user["username"]}\n'
-                                             f'{get_card_info(card, user)}',
+                                     caption=f'Карточка {opener["username"]}\n'
+                                             f'{get_card_info(card, opener)}',
                                      reply_markup=markup,
                                      parse_mode='html')
 
@@ -246,7 +245,6 @@ def callback(callback):
         next_back_card(opener, 'back')
 
         card = show_cards(opener)
-        user = get_message_data(callback)
 
         markup = create_cards_markup()
         with open(f'cards/{card}', 'rb') as image_card:
@@ -255,8 +253,8 @@ def callback(callback):
                                    media=types.InputMediaPhoto(image_card))
             bot.edit_message_caption(chat_id=callback.message.chat.id,
                                      message_id=callback.message.id,
-                                     caption=f'Карточка {user["username"]}\n'
-                                             f'{get_card_info(card, user)}',
+                                     caption=f'Карточка {opener["username"]}\n'
+                                             f'{get_card_info(card, opener)}',
                                      reply_markup=markup,
                                      parse_mode='html')
 
@@ -267,7 +265,7 @@ def callback(callback):
 
         if callback.from_user.id == opener:
 
-            equip_card(get_message_data(callback.message.reply_to_message), text[text.find('#')+1:text.find('.')])
+            equip_card(get_message_data(callback.message.reply_to_message), get_cur_card(user))
             bot.send_message(callback.message.chat.id, f'{user["username"]}, теперь карточка {text[text.find("#")+1:text.find(".")]} отбражается у вас в /profile')
 
     elif callback.data == 'sell':
@@ -338,7 +336,23 @@ def callback(callback):
 #SOCIAL CREDITS
 @bot.message_handler(commands=['profile'])
 def profile(message):
-    bot.reply_to(message, show_profile(get_message_data(message)))
+    if not message.reply_to_message:
+        profile = show_profile(get_message_data(message))
+        message_id = message.id
+    else:
+        profile = show_profile(get_message_data(message.reply_to_message))
+        message_id = message.reply_to_message.message_id
+
+    try:
+        with open(f'cards/{profile[1]}', 'rb') as image:
+             bot.send_photo(chat_id=message.chat.id,
+                            photo=image,
+                            caption=profile[0],
+                            reply_to_message_id=message_id,
+                            parse_mode='html')
+
+    except:
+        bot.send_message(message.chat.id, profile[0], parse_mode='html', reply_to_message_id=message_id)
 
 
 @bot.message_handler(commands=['work'])
