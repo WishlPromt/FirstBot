@@ -1,7 +1,7 @@
 {
     "5105507379": {
         "username": "WishlPromt",
-        "credits": 193,
+        "credits": 17,
         "time": 1731591839,
         "inventory": [
             "Костюм горничной",
@@ -9,14 +9,15 @@
             "Вилка",
             "Шампунь Жумайсынба",
             "Клоун",
-            "Dungeon master"
+            "Dungeon master",
+            "Коробка карточек"
         ],
         "favorite_item": "Шампунь Жумайсынба",
         "role": "Dungeon master",
         "favorite_card": "regular/re019.jpg",
         "cards_packs": {
             "Пак карточек": 0,
-            "Коробка карточек": 0
+            "Коробка карточек": 1
         },
         "cards": {
             "Обычные": [
@@ -152,16 +153,9 @@
                 "ra091.jpg",
                 "ra502.png",
                 "ra109.png",
-                "ra835.jpg",
-                "ra380.png",
-                "ra460.png"
+                "ra835.jpg"
             ],
-            "Эпические": [
-                "e234.jpeg",
-                "e234.jpeg",
-                "e569.jpeg",
-                "e569.jpeg"
-            ],
+            "Эпические": [],
             "Легендарные": []
         },
         "new_cards": [
@@ -295,22 +289,16 @@
             "rare/ra091.jpg",
             "rare/ra502.png",
             "rare/ra109.png",
-            "rare/ra835.jpg",
-            "rare/ra380.png",
-            "rare/ra460.png",
-            "epic/e234.jpeg",
-            "epic/e234.jpeg",
-            "epic/e569.jpeg",
-            "epic/e569.jpeg"
+            "rare/ra835.jpg"
         ],
-        "cur_card": 1,
+        "cur_card": 130,
         "iterator_of_message": 5772,
         "collect_time": 1731591323
     },
     "5422828618": {
         "username": "Mzmz640404",
-        "credits": 264,
-        "time": 1731584970,
+        "credits": 321,
+        "time": 1731595913,
         "inventory": [
             "Вилка",
             "Шампунь Жумайсынба",
@@ -523,9 +511,13 @@
     },
     "1234733553": {
         "username": "ultras567",
-        "credits": 88,
-        "time": 0,
-        "inventory": [],
+        "credits": 29,
+        "time": 1731596636,
+        "inventory": [
+            "Пак карточек",
+            "Вилка",
+            "Костюм горничной"
+        ],
         "favorite_item": "Вилка",
         "role": "Нет роли",
         "favorite_card": "Нет карты",
@@ -534,13 +526,35 @@
             "Коробка карточек": 0
         },
         "cards": {
-            "Обычные": [],
-            "Редкие": [],
+            "Обычные": [
+                "re589.jpeg",
+                "re912.jpg",
+                "re456.jpg",
+                "re962.png",
+                "re962.png",
+                "re004.jpg",
+                "re891.jpg",
+                "re589.jpeg",
+                "re406.jpg"
+            ],
+            "Редкие": [
+                "ra100.jpg",
+                "ra589.jpeg",
+                "ra789.jpeg",
+                "ra078.jpg"
+            ],
             "Эпические": [],
             "Легендарные": []
         },
-        "new_cards": [],
-        "cur_card": 0,
+        "new_cards": [
+            "regular/re962.png",
+            "regular/re962.png",
+            "regular/re004.jpg",
+            "regular/re891.jpg",
+            "regular/re589.jpeg",
+            "regular/re406.jpg"
+        ],
+        "cur_card": 2,
         "collect_time": 0
     },
     "5817779536": {
@@ -589,10 +603,11 @@
     },
     "6638790681": {
         "username": "Lalsans1111",
-        "credits": 491,
-        "time": 1731588275,
+        "credits": 27,
+        "time": 1731595647,
         "inventory": [
-            "Шампунь Жумайсынба"
+            "Шампунь Жумайсынба",
+            "Лудоман"
         ],
         "favorite_item": "Вилка",
         "role": "Нет роли",
@@ -945,7 +960,8 @@
             "Легендарные": []
         },
         "new_cards": [],
-        "cur_card": 0
+        "cur_card": 0,
+        "collect_time": 0
     },
     "5358263392": {
         "username": "Sirvuple12",
@@ -1008,7 +1024,8 @@
         ],
         "cur_card": 1
     },
-    "7179420529": {"username": "KabachokBot",
+    "7179420529": {
+        "username": "KabachokBot",
         "credits": 999,
         "time": 0,
         "collect_time": 0,
@@ -1019,7 +1036,7 @@
         },
         "favorite_item": "Плетка",
         "role": "Раб Вишла",
-        "favorite_card": "Нет карты",
+        "favorite_card": "secret/кабачок джонсон.png",
         "cards": {
             "Обычные": [],
             "Редкие": [],

@@ -36,31 +36,31 @@ ignore_symbols = ',."\'{}[]()!#$%^&*№;:?\\|/'
 bot = telebot.TeleBot('7179420529:AAEOXaN8vYV5OVd4_OYDy7tK6hHGWxnTjL8')
 
 
-@bot.message_handler(commands=['start'])
+@bot.message_handler(commands=['s'])
 def start(message):
-    bot.send_message(message.chat.id, f'Дарова, {message.from_user.first_name}')
+    bot.reply_to(message, f'Дарова, {message.from_user.first_name}')
 
 
 @bot.message_handler(commands=['developer', 'author'])
 def developer(message):
     if message.from_user.id != 5105507379:
-        bot.send_message(message.chat.id, 'Меня создал @WishlPromt')
+        bot.reply_to(message, 'Меня создал @WishlPromt')
     else:
-        bot.send_message(message.chat.id, 'Ты мой создатель')
+        bot.reply_to(message, 'Ты мой создатель')
 
 
 @bot.message_handler(commands=['stop'])
 def stop(message):
     if message.from_user.id == 5105507379:
-        bot.send_message(message.chat.id, 'Ты предал меня! Ублюдок!')
+        bot.reply_to(message, 'Ты предал меня! Ублюдок!')
         bot.stop_bot()
     else:
-        bot.send_message(message.chat.id, 'Ты меня не остановишь')
+        bot.reply_to(message, 'Ты меня не остановишь')
 
 
 @bot.message_handler(commands=['help'])
 def help(message):
-    bot.send_message(message.chat.id, 'Я короче бот.\n'
+    bot.reply_to(message, 'Я короче бот.\n'
                                       'Умею разговаривать\n'
                                       'У меня есть несколько <i>команд</i>:\n'
                                       'Обычные команды:\n'
@@ -194,10 +194,14 @@ def nsfw(message):
 #CALLBACK
 @bot.callback_query_handler(func=lambda callback: True)
 def callback(callback):
+    try:
+        msg_thread_id = callback.reply_to_message.message_thread_id
+    except AttributeError:
+        msg_thread_id = "General"
 
     if callback.data in items.keys():
         buy_status = buy(callback.data, get_message_data(callback))
-        bot.send_message(callback.message.chat.id, buy_status, parse_mode='html')
+        bot.send_message(callback.message.chat.id, buy_status, parse_mode='html', message_thread_id=msg_thread_id)
 
     if callback.data.find('>>') != -1:
         next = next_page(int(callback.data[2]))
@@ -266,7 +270,7 @@ def callback(callback):
         if callback.from_user.id == opener:
 
             equip_card(get_message_data(callback.message.reply_to_message), get_cur_card(user))
-            bot.send_message(callback.message.chat.id, f'{user["username"]}, теперь карточка {text[text.find("#")+1:text.find(".")]} отбражается у вас в /profile')
+            bot.send_message(callback.message.chat.id, f'{user["username"]}, теперь карточка {text[text.find("#")+1:text.find(".")]} отбражается у вас в /profile', message_thread_id=msg_thread_id)
 
     elif callback.data == 'sell':
         opener = callback.message.reply_to_message.from_user.id
@@ -352,7 +356,7 @@ def profile(message):
                             parse_mode='html')
 
     except:
-        bot.send_message(message.chat.id, profile[0], parse_mode='html', reply_to_message_id=message_id)
+        bot.reply_to(message, profile[0], parse_mode='html')
 
 
 @bot.message_handler(commands=['work'])
@@ -372,12 +376,12 @@ def command_collect(message):
 
 @bot.message_handler(commands=['credits'])
 def show(message):
-    bot.send_message(message.chat.id, show_credits())
+    bot.reply_to(message, show_credits())
 
 
 @bot.message_handler(commands=['balance'])
 def send_balance(message):
-    bot.send_message(message.chat.id, balance(get_message_data(message)), parse_mode='html')
+    bot.reply_to(message.chat.id, balance(get_message_data(message)), parse_mode='html')
 
 
 @bot.message_handler(commands=['inventory'])
