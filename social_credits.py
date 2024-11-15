@@ -20,7 +20,8 @@ all_parameters = {'credits': 0,
                   'cards_packs': {'Пак карточек': 0, 'Коробка карточек': 0},
                   'cards': {'Обычные': [], 'Редкие': [], 'Эпические': [], 'Легендарные': []},
                   'new_cards': [],
-                  'cur_card': 0}
+                  'cur_card': 0,
+                  'max_pages': 0}
 
 
 def save_base():
@@ -51,7 +52,8 @@ def new_id(user: dict):
                             'Легендарные': []
                         },
                         'new_cards': [],
-                        'cur_card': 0
+                        'cur_card': 0,
+                        'max_pages': 0
                         }
     save_base()
 
@@ -108,7 +110,7 @@ def collect(user: dict):
 
     if datetime >= lock_data:
         for item in base[id]['inventory']:
-            item_collect = items[item][4]
+            item_collect = items[item][3]
             if item_collect != 'None':
 
                 if item_collect != 'random':

@@ -3,7 +3,7 @@ from telebot import types
 from random import choice, randint
 import json, time, os
 from social_credits import add_credits, show_credits, work, check_user, balance, collect
-from shop import buy, next_page, back_page, create_shop
+from shop import buy, next_page, back_page, create_shop, get_max_pages
 from inventory import show_inventory, create_cards_markup, get_cards, reset_cards
 from system import get_message_data, generate_id
 from cards_open import open_pack, show_cards, next_back_card, create_markup, get_packs, get_card_info, sell_card, create_simple_markup, get_cur_card, create_markup_photo
@@ -205,9 +205,9 @@ def callback(callback):
         bot.send_message(callback.message.chat.id, buy_status, parse_mode='html')
 
     if callback.data.find('>>') != -1:
-        next = next_page(int(callback.data[2]))
+        next = next_page(int(callback.data[2]), get_max_pages(get_message_data(callback)))
 
-        markup = create_shop(next)
+        markup = create_shop(next, get_message_data(callback))
 
         bot.edit_message_text(chat_id=callback.message.chat.id,
                               message_id=callback.message.id,
@@ -215,9 +215,9 @@ def callback(callback):
                               reply_markup=markup)
 
     elif callback.data.find('<<') != -1:
-        back = back_page(int(callback.data[2]))
+        back = back_page(int(callback.data[2]), get_max_pages(get_message_data(callback)))
 
-        markup = create_shop(back)
+        markup = create_shop(back, get_message_data(callback))
 
         bot.edit_message_text(chat_id=callback.message.chat.id,
                               message_id=callback.message.id,
@@ -461,7 +461,7 @@ def open_cards_pack(message):
 def shop(message, page=1):
     check_user(get_message_data(message))
 
-    markup = create_shop(page)
+    markup = create_shop(page, get_message_data(message))
 
     bot.reply_to(message, 'Магазин бота', reply_markup=markup)
 

@@ -17,9 +17,9 @@ def save_base(base):
     file.close()
 
 
-def add_credits(user: dict, credits):
+def add_credits(user: dict, credits, base):
     check_user(user)
-    base = load_base()
+
     id = user['id']
     base[id]['credits'] = base[id]['credits'] + credits
     save_base(base)
@@ -235,25 +235,25 @@ def sell_card(user):
         price = 3
         base[id]['cards']['Обычные'].remove(name)
         base[id]['new_cards'].remove(cur_card)
-        add_credits(user, price)
+        add_credits(user, price, base)
 
     elif rare == 'rare':
         price = 7
         base[id]['cards']['Редкие'].remove(name)
         base[id]['new_cards'].remove(cur_card)
-        add_credits(user, price)
+        add_credits(user, price, base)
 
     elif rare == 'epic':
         price = 15
         base[id]['cards']['Эпические'].remove(name)
         base[id]['new_cards'].remove(cur_card)
-        add_credits(user, price)
+        add_credits(user, price, base)
 
     elif rare == 'legendary':
         price = 200
         base[id]['cards']['Легендарные'].remove(name)
         base[id]['new_cards'].remove(cur_card)
-        add_credits(user, price)
+        add_credits(user, price, base)
 
     else:
         return False
