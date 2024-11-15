@@ -8,7 +8,6 @@ from inventory import show_inventory, create_cards_markup, get_cards, reset_card
 from system import get_message_data, generate_id
 from cards_open import open_pack, show_cards, next_back_card, create_markup, get_packs, get_card_info, sell_card, create_simple_markup, get_cur_card, create_markup_photo
 from profile import show_profile, equip, show_items, equip_card
-from preposition import add_card_to_prep
 
 
 #JSON
@@ -192,6 +191,11 @@ def nsfw(message):
         bot.reply_to(message, f'<a href="https://youtu.be/6Sdaudjygeg?si=naV-TAMJSSIVNeEv">Возьми</a>', parse_mode='html', disable_web_page_preview=True)
 
 
+@bot.message_handler(commands=['get_chat'])
+def get_chat(message):
+    bot.reply_to(message, message.chat.id)
+
+
 #CALLBACK
 @bot.callback_query_handler(func=lambda callback: True)
 def callback(callback):
@@ -225,7 +229,7 @@ def callback(callback):
         id = ids[0]
         id = generate_id(ids, id, callback.data)
 
-        photo = callback.message.reply_to_message.photo[-1]
+        photo = callback.message.photo[-1]
         file_info = bot.get_file(photo.file_id)
         downloaded_file = bot.download_file(file_info.file_path)
         save_path = f'cards/{callback.data}/{id}.jpg'
@@ -480,17 +484,7 @@ def show_cards_user(message):
                        reply_markup=markup,
                        parse_mode='html')
 
-
-@bot.message_handler(content_types=['photo'])
-def add_new_card(message):
-    try:
-        if (message.from_user.id == 7179420529) and message.caption.find('Предложка') != -1:
-            bot.reply_to(message, 'Выберите редкость для карты', reply_markup=create_markup_photo())
-    except:
-        pass
-
-
-@bot.message_handler(commands=['/add_card'])
+@bot.message_handler(commands=['add_card'])
 def preposition(message):
     bot.reply_to(message, 'Ответьте на мое сообщение карточкой, которую хотите добавить, я отправлю ее разработчику')
 
@@ -498,16 +492,29 @@ def preposition(message):
 @bot.message_handler(content_types=['photo'])
 def preposition_card(message):
     if message.reply_to_message:
-        if message.capture:
-            comment = message.capture
-        else:
-            comment = ''
 
-        photo = message.reply_to_message.photo[-1]
-        file_info = bot.get_file(photo.file_id)
-        downloaded_file = bot.download_file(file_info.file_path)
+        if message.reply_to_message.text == 'Ответьте на мое сообщение карточкой, которую хотите добавить, я отправлю ее разработчику' and message.reply_to_message.from_user.id == 7179420529:
 
-        add_card_to_prep(downloaded_file, get_message_data(message), comment)
+            photo = message.photo[-1]
+            file_info = bot.get_file(photo.file_id)
+            downloaded_file = bot.download_file(file_info.file_path)
+            name = str(randint(-1000000000, 1000000)) + str(randint(-1000000000, 1000000000)) + str(randint(-1000000000, 1000000000))
+
+            with open(f'cards/preposition/{name}.jpg', 'wb') as new_file:
+                print(new_file)
+                new_file.write(downloaded_file)
+
+
+@bot.message_handler(commands=['show_prep'])
+def show_prep(message):
+    if message.from_user.id == 5105507379:
+        for image in os.listdir('cards/preposition/'):
+            with open(f'cards/preposition/{image}', 'rb') as card:
+                bot.send_photo(chat_id=message.chat.id,
+                               photo=card,
+                               reply_to_message_id=message.id,
+                               caption='Выберите редкость для карты',
+                               reply_markup=create_markup_photo())
 
 
 @bot.message_handler(commands=['use'])
