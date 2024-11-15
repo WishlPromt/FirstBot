@@ -30,9 +30,6 @@ def save_inventory():
     file.close()
 
 
-#Variables
-max_pages = 4
-
 def get_max_pages(user):
     check_user(user)
     load_base()
@@ -94,6 +91,8 @@ def buy(item, buyer):
     inventory = credits[buyer['id']]['inventory']
     username = credits[buyer['id']]['username']
 
+    if items[item][4] not in inventory:
+        return f'<b>{username}</b>, для покупки этого предмета нужна роль {items[item][4]}'
 
     price = items[item][0]
 
@@ -166,8 +165,6 @@ def get_items(page, user):
             list_items.remove(i)
 
     list_items = [list_items[i:i + 3] for i in range(0, len(list_items), 3)]
-
-    print(list_items)
 
     for item in list_items[page-1]:
         items_on_page[item] = items[item]

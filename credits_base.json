@@ -1,8 +1,8 @@
 {
     "5105507379": {
         "username": "WishlPromt",
-        "credits": 375,
-        "time": 1731686826,
+        "credits": 406,
+        "time": 1731699350,
         "inventory": [
             "Костюм горничной",
             "Пак карточек",
@@ -316,14 +316,14 @@
         },
         "new_cards": [],
         "cur_card": 0,
-        "max_pages": 3,
+        "max_pages": 5,
         "iterator_of_message": 5772,
         "collect_time": 1731700262
     },
     "5422828618": {
         "username": "Mzmz640404",
-        "credits": 448,
-        "time": 1731686967,
+        "credits": 485,
+        "time": 1731699342,
         "inventory": [
             "Вилка",
             "Шампунь Жумайсынба",
@@ -459,9 +459,10 @@
             "regular/re891.jpg",
             "rare/ra386.jpeg"
         ],
-        "cur_card": 6,
+        "cur_card": 0,
         "iterator_of_message": 4741,
-        "collect_time": 1731694178
+        "collect_time": 1731694178,
+        "max_pages": 5
     },
     "1234733553": {
         "username": "ultras567",
@@ -589,7 +590,8 @@
         },
         "new_cards": [],
         "cur_card": 0,
-        "collect_time": 1731595484
+        "collect_time": 1731595484,
+        "max_pages": 5
     },
     "5722997773": {
         "username": "akaza096",
@@ -615,8 +617,8 @@
     },
     "6891646558": {
         "username": "darhasira",
-        "credits": 735,
-        "time": 1731682741,
+        "credits": 774,
+        "time": 1731699346,
         "inventory": [
             "Пак карточек"
         ],
@@ -674,7 +676,8 @@
             "regular/re782.png"
         ],
         "cur_card": 1,
-        "collect_time": 0
+        "collect_time": 0,
+        "max_pages": 0
     },
     "1336049480": {
         "username": "Rimura_tempest3919",

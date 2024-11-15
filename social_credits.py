@@ -21,7 +21,7 @@ all_parameters = {'credits': 0,
                   'cards': {'Обычные': [], 'Редкие': [], 'Эпические': [], 'Легендарные': []},
                   'new_cards': [],
                   'cur_card': 0,
-                  'max_pages': 0}
+                  'max_pages': 1}
 
 
 def save_base():
@@ -53,7 +53,7 @@ def new_id(user: dict):
                         },
                         'new_cards': [],
                         'cur_card': 0,
-                        'max_pages': 0
+                        'max_pages': 1
                         }
     save_base()
 
@@ -122,13 +122,13 @@ def collect(user: dict):
                     add_credits(user, item_collect)
                     credit_collects += item_collect
 
-                collects += f'<b>{item}</b> - <b>{item_collect}</b> кредитов\n'
+                collects += f'<b>{item}</b>: <b>{item_collect}</b> кредитов\n'
 
-        now = datetime + 14400
+        now = datetime + 28800
         base[id]['collect_time'] = now
         save_base()
 
-        return f'Всего - <b>{credit_collects}</b> кредитов\n{collects} \nВы сможете собрать кредиты снова только <i>{convert_time(base[id]["collect_time"])}</i>'
+        return f'Всего: <b>{credit_collects}</b> кредитов\n{collects} \nВы сможете собрать кредиты снова только <i>{convert_time(base[id]["collect_time"])}</i>'
 
     return f'Не так быстро!\n Вы сможете снова собрать кредиты только <b>{convert_time(base[id]["collect_time"])}</b>'
 
