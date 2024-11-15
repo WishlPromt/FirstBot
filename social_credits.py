@@ -126,7 +126,7 @@ def collect(user: dict):
         base[id]['collect_time'] = now
         save_base()
 
-        return f'{collects} \nВы сможете собрать кредиты снова только <i>{convert_time(base[id]["collect_time"])}</i>'
+        return f'Всего - <b>{credit_collects}</b> кредитов\n{collects} \nВы сможете собрать кредиты снова только <i>{convert_time(base[id]["collect_time"])}</i>'
 
     return f'Не так быстро!\n Вы сможете снова собрать кредиты только <b>{convert_time(base[id]["collect_time"])}</b>'
 

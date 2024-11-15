@@ -1,12 +1,12 @@
 import telebot
 from telebot import types
 from random import choice, randint
-import json, time
+import json, time, os
 from social_credits import add_credits, show_credits, work, check_user, balance, collect
 from shop import buy, next_page, back_page, create_shop
 from inventory import show_inventory, create_cards_markup, get_cards, reset_cards
-from system import get_message_data
-from cards_open import open_pack, show_cards, next_back_card, create_markup, get_packs, get_card_info, sell_card, create_simple_markup, get_cur_card
+from system import get_message_data, generate_id
+from cards_open import open_pack, show_cards, next_back_card, create_markup, get_packs, get_card_info, sell_card, create_simple_markup, get_cur_card, create_markup_photo
 from profile import show_profile, equip, show_items, equip_card
 
 
@@ -223,6 +223,20 @@ def callback(callback):
                               text='Магазин бота',
                               reply_markup=markup)
 
+    if callback.data in ['regular', 'rare', 'epic', 'legendary']:
+        ids = os.listdir(f'cards/{callback.data}')
+        id = ids[0]
+        id = generate_id(ids, id, callback.data)
+
+        photo = callback.message.reply_to_message.photo[-1]
+        file_info = bot.get_file(photo.file_id)
+        downloaded_file = bot.download_file(file_info.file_path)
+        save_path = f'cards/{callback.data}/{id}.jpg'
+        with open(save_path, 'wb') as new_file:
+            new_file.write(downloaded_file)
+        bot.reply_to(callback.message.reply_to_message, f'Карточка добавлена под id {id}.')
+
+
     if callback.data == 'next card':
         opener = get_message_data(callback.message.reply_to_message)
 
@@ -344,16 +358,10 @@ def profile(message):
     if not message.reply_to_message:
         profile = show_profile(get_message_data(message))
         message_id = message.id
-        print(get_message_data(message))
-        print(message_id)
-
 
     else:
         profile = show_profile(get_message_data(message.reply_to_message))
         message_id = message.reply_to_message.message_id
-
-        print(get_message_data(message))
-        print(message_id)
 
     try:
         with open(f'cards/{profile[1]}', 'rb') as image:
@@ -365,10 +373,6 @@ def profile(message):
 
     except:
         bot.reply_to(message, profile[0], parse_mode='html')
-
-    print(profile[1], ' ', profile[0])
-
-
 
 
 @bot.message_handler(commands=['work'])
@@ -393,7 +397,7 @@ def show(message):
 
 @bot.message_handler(commands=['balance'])
 def send_balance(message):
-    bot.reply_to(message.chat.id, balance(get_message_data(message)), parse_mode='html')
+    bot.reply_to(message, balance(get_message_data(message)), parse_mode='html')
 
 
 @bot.message_handler(commands=['inventory'])
@@ -479,6 +483,15 @@ def show_cards_user(message):
                                f'{get_card_info(card, user)}',
                        reply_markup=markup,
                        parse_mode='html')
+
+
+@bot.message_handler(content_types=['photo'])
+def add_new_card(message):
+    try:
+        if message.from_user.id == 5105507379 and message.caption.find('/add_card') != -1:
+            bot.reply_to(message, 'Выберите редкость для карты', reply_markup=create_markup_photo())
+    except:
+        pass
 
 
 @bot.message_handler(commands=['use'])
