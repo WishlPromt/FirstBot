@@ -2,7 +2,7 @@ import json
 import os
 import random
 from telebot import types
-from social_credits import check_user, add_credits
+from social_credits import check_user
 
 
 def load_base():
@@ -15,6 +15,14 @@ def save_base(base):
     file = open('credits_base.json', 'w', encoding='utf-8')
     json.dump(base, file, indent=4, ensure_ascii=False)
     file.close()
+
+
+def add_credits(user: dict, credits):
+    check_user(user)
+    base = load_base()
+    id = user['id']
+    base[id]['credits'] = base[id]['credits'] + credits
+    save_base(base)
 
 
 regular_cards = os.listdir('cards/regular')
@@ -228,28 +236,24 @@ def sell_card(user):
         base[id]['cards']['Обычные'].remove(name)
         base[id]['new_cards'].remove(cur_card)
         add_credits(user, price)
-        save_base(base)
 
     elif rare == 'rare':
         price = 7
         base[id]['cards']['Редкие'].remove(name)
         base[id]['new_cards'].remove(cur_card)
         add_credits(user, price)
-        save_base(base)
 
     elif rare == 'epic':
         price = 15
         base[id]['cards']['Эпические'].remove(name)
         base[id]['new_cards'].remove(cur_card)
         add_credits(user, price)
-        save_base(base)
 
     elif rare == 'legendary':
         price = 200
         base[id]['cards']['Легендарные'].remove(name)
         base[id]['new_cards'].remove(cur_card)
         add_credits(user, price)
-        save_base(base)
 
     else:
         return False

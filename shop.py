@@ -26,7 +26,7 @@ def save_inventory():
 
 
 #Variables
-max_pages = 3
+max_pages = 4
 
 
 def create_shop(page):

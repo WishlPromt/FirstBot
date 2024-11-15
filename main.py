@@ -498,7 +498,7 @@ def preposition_card(message):
             photo = message.photo[-1]
             file_info = bot.get_file(photo.file_id)
             downloaded_file = bot.download_file(file_info.file_path)
-            name = str(randint(-1000000000, 1000000)) + str(randint(-1000000000, 1000000000)) + str(randint(-1000000000, 1000000000))
+            name = str(message.from_user.username) + str(randint(-1000, 1000)) + str(randint(-1000, 1000)) + str(randint(-1000, 1000))
 
             with open(f'cards/preposition/{name}.jpg', 'wb') as new_file:
                 print(new_file)
@@ -513,7 +513,7 @@ def show_prep(message):
                 bot.send_photo(chat_id=message.chat.id,
                                photo=card,
                                reply_to_message_id=message.id,
-                               caption='Выберите редкость для карты',
+                               caption=f'Выберите редкость для карты - {image}',
                                reply_markup=create_markup_photo())
 
 

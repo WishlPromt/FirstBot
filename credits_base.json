@@ -1,7 +1,7 @@
 {
     "5105507379": {
         "username": "WishlPromt",
-        "credits": 265,
+        "credits": 268,
         "time": 1731672430,
         "inventory": [
             "Костюм горничной",
@@ -21,12 +21,8 @@
         },
         "cards": {
             "Обычные": [
-                "re019.jpg",
-                "re127.jpeg",
                 "re401.png",
-                "re904.jpg",
                 "re891.jpg",
-                "re097.jpeg",
                 "re809.png",
                 "re019.jpg",
                 "re576.jpg",
@@ -319,12 +315,8 @@
             ]
         },
         "new_cards": [
-            "regular/re019.jpg",
-            "regular/re127.jpeg",
             "regular/re401.png",
-            "regular/re904.jpg",
             "regular/re891.jpg",
-            "regular/re097.jpeg",
             "regular/re809.png",
             "regular/re019.jpg",
             "regular/re576.jpg",
@@ -609,13 +601,13 @@
             "epic/e237.png",
             "legendary/Billy Herrington.jpg"
         ],
-        "cur_card": 0,
+        "cur_card": 2,
         "iterator_of_message": 5772,
         "collect_time": 1731680725
     },
     "5422828618": {
         "username": "Mzmz640404",
-        "credits": 399,
+        "credits": 364,
         "time": 1731595913,
         "inventory": [
             "Вилка",
@@ -628,7 +620,7 @@
         "role": "Dungeon master",
         "favorite_card": "Billy Herrington",
         "cards_packs": {
-            "Пак карточек": 1,
+            "Пак карточек": 0,
             "Коробка карточек": 0
         },
         "cards": {
@@ -700,7 +692,16 @@
                 "re245.png",
                 "re496.png",
                 "re845.jpg",
-                "re378.png"
+                "re378.png",
+                "re912.jpg",
+                "re017.jpeg",
+                "re127.jpeg",
+                "re289.jpeg",
+                "re727.png",
+                "re782.jpeg",
+                "re912.jpg",
+                "re386.jpg",
+                "re891.jpg"
             ],
             "Редкие": [
                 "ra078.jpg",
@@ -718,7 +719,10 @@
                 "ra835.jpg",
                 "ra421.jpg",
                 "ra187.jpeg",
-                "ra123.jpeg"
+                "ra123.jpeg",
+                "ra100.jpg",
+                "ra589.jpeg",
+                "ra386.jpeg"
             ],
             "Эпические": [
                 "e234.jpeg",
@@ -732,105 +736,22 @@
             ]
         },
         "new_cards": [
-            "regular/re097.jpeg",
-            "regular/re576.jpg",
-            "regular/re790.jpeg",
-            "regular/re270.jpg",
-            "regular/re456.jpg",
-            "regular/re782.png",
-            "regular/re017.jpeg",
-            "regular/re579.png",
-            "regular/re782.png",
-            "regular/re962.png",
-            "regular/re912.jpg",
-            "regular/re270.jpg",
-            "regular/re097.jpeg",
-            "regular/re912.jpg",
-            "regular/re580.jpg",
-            "regular/re782.png",
-            "regular/re580.jpg",
-            "regular/re580.jpg",
-            "regular/re456.jpg",
-            "regular/re127.jpeg",
-            "regular/re782.jpeg",
-            "regular/re097.jpeg",
-            "regular/re576.jpg",
-            "regular/re782.png",
-            "regular/re809.png",
-            "regular/re743.png",
-            "regular/re832.jpg",
-            "regular/re962.png",
-            "regular/re845.jpg",
-            "regular/re734.png",
-            "regular/re727.png",
-            "regular/re385.jpg",
-            "regular/re576.jpg",
-            "regular/re245.png",
-            "regular/re016.jpg",
-            "regular/re678.jpeg",
-            "regular/re270.jpg",
-            "regular/re401.png",
-            "regular/re523.jpg",
-            "regular/re378.png",
-            "regular/re091.png",
-            "regular/re091.png",
-            "regular/re009.png",
-            "regular/re017.jpeg",
-            "regular/re267.jpeg",
-            "regular/re734.png",
-            "regular/re401.png",
+            "regular/re289.jpeg",
             "regular/re727.png",
             "regular/re782.jpeg",
-            "regular/re589.jpeg",
-            "regular/re456.jpg",
-            "regular/re580.jpg",
-            "regular/re091.png",
-            "regular/re275.jpeg",
-            "regular/re456.jpg",
             "regular/re912.jpg",
+            "regular/re386.jpg",
             "regular/re891.jpg",
-            "regular/re345.jpg",
-            "regular/re379.jpeg",
-            "regular/re097.jpeg",
-            "regular/re406.jpg",
-            "regular/re267.jpeg",
-            "regular/re496.png",
-            "regular/re097.jpeg",
-            "regular/re245.png",
-            "regular/re496.png",
-            "regular/re845.jpg",
-            "regular/re378.png",
-            "rare/ra078.jpg",
-            "rare/ra789.jpeg",
-            "rare/ra589.jpeg",
-            "rare/ra090.jpg",
-            "rare/ra309.jpg",
-            "rare/ra123.jpeg",
-            "rare/ra091.jpg",
-            "rare/ra789.jpeg",
-            "rare/ra408.png",
-            "rare/ra789.jpeg",
-            "rare/ra100.jpg",
-            "rare/ra100.jpg",
-            "rare/ra835.jpg",
-            "rare/ra421.jpg",
-            "rare/ra187.jpeg",
-            "rare/ra123.jpeg",
-            "epic/e234.jpeg",
-            "epic/e245.jpeg",
-            "epic/e569.jpeg",
-            "epic/e237.png",
-            "epic/e569.jpeg",
-            "legendary/Billy Herrington.jpg"
+            "rare/ra386.jpeg"
         ],
-        "cur_card": 0,
+        "cur_card": 6,
         "iterator_of_message": 4741,
         "collect_time": 1731616970
     },
     "1234733553": {
         "username": "ultras567",
-        "credits": 3,
-        "time": 1731672437,
+        "credits": 277,
+        "time": 1731681272,
         "inventory": [
             "Пак карточек",
             "Вилка",
@@ -838,42 +759,39 @@
         ],
         "favorite_item": "Вилка",
         "role": "Нет роли",
-        "favorite_card": "Нет карты",
+        "favorite_card": "epic/e64914.jpg",
         "cards_packs": {
             "Пак карточек": 0,
             "Коробка карточек": 0
         },
         "cards": {
             "Обычные": [
-                "re589.jpeg",
                 "re912.jpg",
-                "re456.jpg",
                 "re962.png",
-                "re962.png",
-                "re004.jpg",
                 "re891.jpg",
-                "re589.jpeg",
                 "re406.jpg",
-                "re386.jpg",
                 "re891.jpg",
-                "re782.png",
-                "re678.jpeg"
+                "re678.jpeg",
+                "re589.jpeg",
+                "re019.jpg",
+                "re009.png"
             ],
             "Редкие": [
                 "ra100.jpg",
                 "ra589.jpeg",
-                "ra789.jpeg",
                 "ra078.jpg",
-                "ra408.png"
+                "ra408.png",
+                "ra492.png"
             ],
             "Эпические": [
-                "e569.jpeg",
-                "e237.png"
+                "e237.png",
+                "e64914.jpg",
+                "e138.jpg"
             ],
             "Легендарные": []
         },
         "new_cards": [
-            "regular/re678.jpeg"
+            "epic/e138.jpg"
         ],
         "cur_card": 1,
         "collect_time": 1731679639
@@ -971,8 +889,8 @@
     },
     "6891646558": {
         "username": "darhasira",
-        "credits": 694,
-        "time": 1731672763,
+        "credits": 735,
+        "time": 1731682741,
         "inventory": [
             "Пак карточек"
         ],
@@ -1389,6 +1307,28 @@
         "username": null,
         "credits": 0,
         "time": 0,
+        "collect_time": 0,
+        "inventory": [],
+        "cards_packs": {
+            "Пак карточек": 0,
+            "Коробка карточек": 0
+        },
+        "favorite_item": "Нет предмета",
+        "role": "Нет роли",
+        "favorite_card": "Нет карты",
+        "cards": {
+            "Обычные": [],
+            "Редкие": [],
+            "Эпические": [],
+            "Легендарные": []
+        },
+        "new_cards": [],
+        "cur_card": 0
+    },
+    "6809090019": {
+        "username": "EbanibeZdar69696969",
+        "credits": 30,
+        "time": 1731683804,
         "collect_time": 0,
         "inventory": [],
         "cards_packs": {
