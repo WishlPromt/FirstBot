@@ -194,14 +194,10 @@ def nsfw(message):
 #CALLBACK
 @bot.callback_query_handler(func=lambda callback: True)
 def callback(callback):
-    try:
-        msg_thread_id = callback.message.message_thread_id
-    except AttributeError:
-        msg_thread_id = "General"
 
     if callback.data in items.keys():
         buy_status = buy(callback.data, get_message_data(callback))
-        bot.send_message(callback.message.chat.id, buy_status, parse_mode='html', message_thread_id=msg_thread_id)
+        bot.send_message(callback.message.chat.id, buy_status, parse_mode='html')
 
     if callback.data.find('>>') != -1:
         next = next_page(int(callback.data[2]))
@@ -284,7 +280,7 @@ def callback(callback):
         if callback.from_user.id == opener:
 
             equip_card(get_message_data(callback.message.reply_to_message), get_cur_card(user))
-            bot.send_message(callback.message.chat.id, f'{user["username"]}, теперь карточка {text[text.find("#")+1:text.find(".")]} отбражается у вас в /profile', message_thread_id=msg_thread_id)
+            bot.send_message(callback.message.chat.id, f'{user["username"]}, теперь карточка {text[text.find("#")+1:text.find(".")]} отбражается у вас в /profile')
 
     elif callback.data == 'sell':
         opener = callback.message.reply_to_message.from_user.id
@@ -488,7 +484,7 @@ def show_cards_user(message):
 @bot.message_handler(content_types=['photo'])
 def add_new_card(message):
     try:
-        if message.from_user.id == 5105507379 and message.caption.find('/add_card') != -1:
+        if (message.from_user.id == 5105507379 or message.from_user.id == 1234733553) and message.caption.find('/add_card') != -1:
             bot.reply_to(message, 'Выберите редкость для карты', reply_markup=create_markup_photo())
     except:
         pass

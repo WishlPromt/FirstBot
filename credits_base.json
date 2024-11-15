@@ -1,8 +1,8 @@
 {
     "5105507379": {
         "username": "WishlPromt",
-        "credits": 183,
-        "time": 1731658226,
+        "credits": 216,
+        "time": 1731672430,
         "inventory": [
             "Костюм горничной",
             "Пак карточек",
@@ -829,8 +829,8 @@
     },
     "1234733553": {
         "username": "ultras567",
-        "credits": 29,
-        "time": 1731596636,
+        "credits": 3,
+        "time": 1731672437,
         "inventory": [
             "Пак карточек",
             "Вилка",
@@ -853,27 +853,30 @@
                 "re004.jpg",
                 "re891.jpg",
                 "re589.jpeg",
-                "re406.jpg"
+                "re406.jpg",
+                "re386.jpg",
+                "re891.jpg",
+                "re782.png",
+                "re678.jpeg"
             ],
             "Редкие": [
                 "ra100.jpg",
                 "ra589.jpeg",
                 "ra789.jpeg",
-                "ra078.jpg"
+                "ra078.jpg",
+                "ra408.png"
             ],
-            "Эпические": [],
+            "Эпические": [
+                "e569.jpeg",
+                "e237.png"
+            ],
             "Легендарные": []
         },
         "new_cards": [
-            "regular/re962.png",
-            "regular/re962.png",
-            "regular/re004.jpg",
-            "regular/re891.jpg",
-            "regular/re589.jpeg",
-            "regular/re406.jpg"
+            "regular/re678.jpeg"
         ],
-        "cur_card": 2,
-        "collect_time": 0
+        "cur_card": 1,
+        "collect_time": 1731679639
     },
     "5817779536": {
         "username": "Артем",
@@ -968,8 +971,8 @@
     },
     "6891646558": {
         "username": "darhasira",
-        "credits": 662,
-        "time": 1731662040,
+        "credits": 694,
+        "time": 1731672763,
         "inventory": [
             "Пак карточек"
         ],
@@ -1031,8 +1034,8 @@
     },
     "1336049480": {
         "username": "Rimura_tempest3919",
-        "credits": -149,
-        "time": 1731583742,
+        "credits": 10,
+        "time": 1731672422,
         "inventory": [
             "Пак карточек",
             "Костюм горничной",
@@ -1047,7 +1050,6 @@
         "favorite_card": "legendary/Billy Herrington.jpg",
         "cards": {
             "Обычные": [
-                "re809.png",
                 "re809.png",
                 "re790.jpeg",
                 "re904.jpg",
@@ -1106,7 +1108,13 @@
                 "re016.jpg",
                 "re809.png",
                 "re401.png",
-                "re378.png"
+                "re378.png",
+                "re378.png",
+                "re378.png",
+                "re379.jpeg",
+                "re733.jpg",
+                "re001.png",
+                "re401.png"
             ],
             "Редкие": [
                 "ra408.png",
@@ -1127,20 +1135,17 @@
                 "ra534.png",
                 "ra390.png",
                 "ra492.png",
-                "ra492.png"
+                "ra492.png",
+                "ra309.jpg"
             ],
             "Эпические": [
-                "e234.jpeg",
-                "e234.jpeg",
-                "e237.png",
-                "e567.jpg"
+                "e234.jpeg"
             ],
             "Легендарные": [
                 "Billy Herrington.jpg"
             ]
         },
         "new_cards": [
-            "regular/re809.png",
             "regular/re809.png",
             "regular/re790.jpeg",
             "regular/re904.jpg",
@@ -1200,6 +1205,12 @@
             "regular/re809.png",
             "regular/re401.png",
             "regular/re378.png",
+            "regular/re378.png",
+            "regular/re378.png",
+            "regular/re379.jpeg",
+            "regular/re733.jpg",
+            "regular/re001.png",
+            "regular/re401.png",
             "rare/ra408.png",
             "rare/ra589.jpeg",
             "rare/ra789.jpeg",
@@ -1219,15 +1230,13 @@
             "rare/ra390.png",
             "rare/ra492.png",
             "rare/ra492.png",
+            "rare/ra309.jpg",
             "epic/e234.jpeg",
-            "epic/e234.jpeg",
-            "epic/e237.png",
-            "epic/e567.jpg",
             "legendary/Billy Herrington.jpg"
         ],
-        "cur_card": 83,
+        "cur_card": 84,
         "iterator_of_message": 5619,
-        "collect_time": 1731591326
+        "collect_time": 1731679631
     },
     "1355067969": {
         "username": "skymalll111",
@@ -1317,8 +1326,8 @@
     },
     "5716944509": {
         "username": "Aaposxalko",
-        "credits": 13,
-        "time": 1731579753,
+        "credits": 51,
+        "time": 1731672971,
         "collect_time": 0,
         "inventory": [
             "Костюм горничной",

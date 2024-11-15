@@ -94,12 +94,10 @@ def create_markup_photo():
     btn_regular = types.InlineKeyboardButton('Обычная', callback_data='regular')
     btn_rare = types.InlineKeyboardButton('Редкая', callback_data='rare')
     btn_epic = types.InlineKeyboardButton('Эпическая', callback_data='epic')
-    btn_legendary = types.InlineKeyboardButton('Легендарная', callback_data='legendary')
 
     markup.add(btn_regular)
     markup.add(btn_rare)
     markup.add(btn_epic)
-    markup.add(btn_legendary)
 
     return markup
 
