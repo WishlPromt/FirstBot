@@ -8,6 +8,7 @@ from inventory import show_inventory, create_cards_markup, get_cards, reset_card
 from system import get_message_data, generate_id
 from cards_open import open_pack, show_cards, next_back_card, create_markup, get_packs, get_card_info, sell_card, create_simple_markup, get_cur_card, create_markup_photo
 from profile import show_profile, equip, show_items, equip_card
+from preposition import add_card_to_prep
 
 
 #JSON
@@ -24,7 +25,7 @@ def save_base():
     file.close()
 
 
-#VARIABKES
+#VARIABLES
 games = None
 org = None
 players = []
@@ -346,7 +347,6 @@ def callback(callback):
                                          parse_mode='html')
 
 
-
 #SOCIAL CREDITS
 @bot.message_handler(commands=['profile'])
 def profile(message):
@@ -484,10 +484,30 @@ def show_cards_user(message):
 @bot.message_handler(content_types=['photo'])
 def add_new_card(message):
     try:
-        if (message.from_user.id == 5105507379 or message.from_user.id == 1234733553) and message.caption.find('/add_card') != -1:
+        if (message.from_user.id == 7179420529) and message.caption.find('Предложка') != -1:
             bot.reply_to(message, 'Выберите редкость для карты', reply_markup=create_markup_photo())
     except:
         pass
+
+
+@bot.message_handler(commands=['/add_card'])
+def preposition(message):
+    bot.reply_to(message, 'Ответьте на мое сообщение карточкой, которую хотите добавить, я отправлю ее разработчику')
+
+
+@bot.message_handler(content_types=['photo'])
+def preposition_card(message):
+    if message.reply_to_message:
+        if message.capture:
+            comment = message.capture
+        else:
+            comment = ''
+
+        photo = message.reply_to_message.photo[-1]
+        file_info = bot.get_file(photo.file_id)
+        downloaded_file = bot.download_file(file_info.file_path)
+
+        add_card_to_prep(downloaded_file, get_message_data(message), comment)
 
 
 @bot.message_handler(commands=['use'])
