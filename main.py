@@ -241,10 +241,12 @@ def callback(callback):
     if callback.data in ['open Пак карточек', 'open Коробка карточек', 'open Anime pack', 'open Motivation pack']:
         message = callback.message.reply_to_message
         user = get_message_data(message)
+        item = callback.data[callback.data.find(' ')+1:]
+        print(item)
 
-        if get_packs(user, 'Пак карточек'):
+        if get_packs(user, item):
 
-            cards = open_pack(user, 'Пак карточек')
+            cards = open_pack(user, item)
 
             if cards:
 
@@ -259,7 +261,7 @@ def callback(callback):
                                    parse_mode='html')
 
             else:
-                bot.reply_to(message, f'{get_message_data(message)["username"]}, вы не получили не одной карточки')
+                bot.reply_to(message, f'{get_message_data(message)["username"]}, вы не получили ни одной карточки')
 
         else:
             bot.reply_to(message, f'{get_message_data(message)["username"]}, у тебя нет паков, купи в /shop')
@@ -448,45 +450,20 @@ def open_cards_pack(message):
     btn_anime_pack = types.InlineKeyboardButton(f'Anime pack - {packs[2]}', callback_data='open Anime pack')
     btn_motivation_pack = types.InlineKeyboardButton(f'Motivation pack - {packs[3]}', callback_data='open Motivation pack')
 
-    if packs[0] > 0:
+    if packs[0]:
         markup.add(btn_pack)
-    if packs[1] > 0:
+    if packs[1]:
         markup.add(btn_box)
-    if packs[2] > 0:
+    if packs[2]:
         markup.add(btn_anime_pack)
-    if packs[3] > 0:
+    if packs[3]:
         markup.add(btn_motivation_pack)
 
-    if packs == [0, 0, 0, 0]:
+    if packs == [False, False, False, False]:
         bot.reply_to(message, 'У тебя нет паков, купи их в /shop')
 
     else:
         bot.reply_to(message, 'Открыть паки', reply_markup=markup)
-
-
-@bot.message_handler(commands=['open_box'])
-def open_cards_pack(message):
-
-    if get_packs(get_message_data(message), 'Коробка карточек'):
-
-        cards = open_pack(get_message_data(message), 'Коробка карточек')
-
-        if cards:
-
-            card = show_cards(get_message_data(message))
-            with open(f'cards/{card}', 'rb') as image_card:
-                bot.send_photo(message.chat.id,
-                               image_card,
-                               reply_to_message_id=message.id,
-                               caption=f'{get_message_data(message)["username"]}, вы получили {card}',
-                               reply_markup=create_markup(),
-                               parse_mode='html')
-
-        else:
-            bot.reply_to(message, f'{get_message_data(message)["username"]}, вы не получили не одной карточки')
-
-    else:
-        bot.reply_to(message, f'{get_message_data(message)["username"]}, у тебя нет паков, купи в /shop')
 
 
 @bot.message_handler(commands=['shop'])
