@@ -163,13 +163,16 @@ def open_pack(user, item):
     max_cards = [7, 200, 12]
 
     if ('Motivated' or 'Любитель аниме-тянок') in base[id]['inventory']:
-        for min in min_cards:
-            min += int(min / 100 * 25)
-        for max in max_cards:
-            max += int(max / 100 * 25)
+        print('true')
+        for min in range(len(min_cards)):
+            min_cards[min] += int(min_cards[min] / 100 * 25)
+        print(min_cards)
+        for max in range(len(max_cards)):
+            max_cards[max] += int(max_cards[max] / 100 * 25)
+        print(max_cards)
 
     if item == 'Пак карточек' and base[id]['cards_packs'][item] > 0:
-        for c in range(random.randint(min_cards[0], max_cards[1])):
+        for c in range(random.randint(min_cards[0], max_cards[0])):
             rare = get_rare()
             if rare == 'regular':
                 card = random.choice(regular_cards)
