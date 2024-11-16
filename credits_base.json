@@ -1,8 +1,8 @@
 {
     "5105507379": {
         "username": "WishlPromt",
-        "credits": 4,
-        "time": 1731766615,
+        "credits": 31,
+        "time": 1731776283,
         "inventory": [
             "Костюм горничной",
             "Пак карточек",
@@ -10,7 +10,8 @@
             "Клоун",
             "Dungeon master",
             "Коробка карточек",
-            "Motivated"
+            "Motivated",
+            "Вилка"
         ],
         "favorite_item": "Шампунь Жумайсынба",
         "role": "Motivated",
@@ -578,14 +579,14 @@
             "epic/e567.jpg",
             "legendary/Billy Herrington.jpg"
         ],
-        "cur_card": 271,
+        "cur_card": 1,
         "max_pages": 5,
         "iterator_of_message": 5772,
         "collect_time": 1731793550
     },
     "5422828618": {
         "username": "Mzmz640404",
-        "credits": 560,
+        "credits": 599,
         "time": 1731742992,
         "inventory": [
             "Вилка",
@@ -727,13 +728,13 @@
         ],
         "cur_card": 0,
         "iterator_of_message": 4741,
-        "collect_time": 1731764588,
+        "collect_time": 1731801642,
         "max_pages": 5
     },
     "1234733553": {
         "username": "ultras567",
-        "credits": 320,
-        "time": 1731742270,
+        "credits": 365,
+        "time": 1731772715,
         "inventory": [
             "Пак карточек",
             "Вилка",
@@ -790,7 +791,7 @@
             "rare/ra078.jpg"
         ],
         "cur_card": 0,
-        "collect_time": 1731679639,
+        "collect_time": 1731794388,
         "max_pages": 1
     },
     "5817779536": {
@@ -1404,5 +1405,28 @@
             "regular/re809.png"
         ],
         "cur_card": 4
+    },
+    "6477148998": {
+        "username": null,
+        "credits": 33,
+        "time": 1731777688,
+        "collect_time": 0,
+        "inventory": [],
+        "cards_packs": {
+            "Пак карточек": 0,
+            "Коробка карточек": 0
+        },
+        "favorite_item": "Нет предмета",
+        "role": "Нет роли",
+        "favorite_card": "Нет карты",
+        "cards": {
+            "Обычные": [],
+            "Редкие": [],
+            "Эпические": [],
+            "Легендарные": []
+        },
+        "new_cards": [],
+        "cur_card": 0,
+        "max_pages": 1
     }
 }

@@ -777,7 +777,5 @@ def chat(message):
             bot.reply_to(message, answer)
 
 
-
-
 if __name__ == '__main__':
-    bot.polling(none_stop=True)
+    bot.infinity_polling(timeout=90, long_polling_timeout=5, interval=1)

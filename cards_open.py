@@ -32,6 +32,7 @@ legendary_cards = os.listdir('cards/legendary')
 secret_cards = os.listdir('cards/secret')
 
 
+
 def get_packs(user, pack):
     check_user(user)
     id = user['id']
@@ -148,6 +149,21 @@ def get_special_rare():
         return 'secret'
 
 
+def get_secret_card(pack):
+    cards = []
+    if pack == 'Motivation pack':
+        for c in secret_cards:
+            if c[0:c.find('_')] == 'mp':
+                cards.append(c)
+
+    elif pack == 'Anime pack':
+        for c in secret_cards:
+            if c[0:c.find('_')] == 'ap':
+                cards.append(c)
+
+    return cards
+
+
 def open_pack(user, item):
     check_user(user)
 
@@ -238,7 +254,7 @@ def open_pack(user, item):
                 base[id]['cards']['Легендарные'].append(card)
 
             elif rare == 'secret':
-                card = random.choice(secret_cards)
+                card = get_secret_card(item)
                 cards.append(f'secret/{card}')
                 base[id]['cards']['Секретные'].append(card)
 
