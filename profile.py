@@ -45,12 +45,12 @@ def equip(user, item):
 
     if item in base[id]['inventory']:
 
-        if items[item][3] == 'Предмет':
+        if items[item][2] == 'Предмет':
             base[id]['favorite_item'] = item
             save_base(base)
             return f'Теперь предмет <b>{item}</b> отображается у вас в /profile'
 
-        elif items[item][3] == 'Роль':
+        elif items[item][2] == 'Роль':
             base[id]['role'] = item
             save_base(base)
             return f'Теперь роль <b>{item}</b> отображается у вас в /profile'

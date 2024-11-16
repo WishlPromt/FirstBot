@@ -2,9 +2,12 @@ import json
 from random import randint
 from system import convert_time
 
-
-with open("credits_base.json", "r", encoding="utf-8") as file:
-    base = json.load(file)
+base = {}
+def load_base():
+    global base
+    with open("credits_base.json", "r", encoding="utf-8") as file:
+        base = json.load(file)
+load_base()
 
 with open("items.json", "r", encoding="utf-8") as file:
     items = json.load(file)
@@ -135,6 +138,7 @@ def collect(user: dict):
 
 def balance(user: dict):
     check_user(user)
+    load_base()
     id = user['id']
 
     return f'<b>{base[id]["username"]}</b>\n Ваши социальные кредиты:\n <b>{str(base[id]["credits"])}</b>'

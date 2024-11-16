@@ -162,7 +162,7 @@ def open_pack(user, item):
     min_cards = [5, 150, 12]
     max_cards = [7, 200, 12]
 
-    if ('Motivated' or 'Любитель аниме-тянок') in base[id]['inventory']:
+    if base[id]['role'] == ('Motivated' or 'Любитель аниме-тянок'):
         print('true')
         for min in range(len(min_cards)):
             min_cards[min] += int(min_cards[min] / 100 * 25)
@@ -305,6 +305,12 @@ def sell_card(user):
     elif rare == 'legendary':
         price = 200
         base[id]['cards']['Легендарные'].remove(name)
+        base[id]['new_cards'].remove(cur_card)
+        add_credits(user, price, base)
+
+    elif rare == 'secret':
+        price = 500
+        base[id]['cards']['Секретные'].remove(name)
         base[id]['new_cards'].remove(cur_card)
         add_credits(user, price, base)
 
