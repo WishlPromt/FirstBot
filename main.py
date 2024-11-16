@@ -238,7 +238,7 @@ def callback(callback):
         bot.reply_to(callback.message.reply_to_message, f'Карточка добавлена под id {id}.')
 
 
-    if callback.data in ['Пак карточек', 'Коробка карточек', 'Anime pack', 'Motivation pack']:
+    if callback.data in ['open Пак карточек', 'open Коробка карточек', 'open Anime pack', 'open Motivation pack']:
         message = callback.message.reply_to_message
         user = get_message_data(message)
 
@@ -443,10 +443,10 @@ def open_cards_pack(message):
 
     markup = types.InlineKeyboardMarkup()
 
-    btn_pack = types.InlineKeyboardButton(f'Пак карточек - {packs[0]}', callback_data='Пак карточек')
-    btn_box = types.InlineKeyboardButton(f'Коробка карточек - {packs[1]}', callback_data='Коробка карточек')
-    btn_anime_pack = types.InlineKeyboardButton(f'Anime pack - {packs[2]}', callback_data='Anime pack')
-    btn_motivation_pack = types.InlineKeyboardButton(f'Motivation pack - {packs[3]}', callback_data='Motivation pack')
+    btn_pack = types.InlineKeyboardButton(f'Пак карточек - {packs[0]}', callback_data='open Пак карточек')
+    btn_box = types.InlineKeyboardButton(f'Коробка карточек - {packs[1]}', callback_data='open Коробка карточек')
+    btn_anime_pack = types.InlineKeyboardButton(f'Anime pack - {packs[2]}', callback_data='open Anime pack')
+    btn_motivation_pack = types.InlineKeyboardButton(f'Motivation pack - {packs[3]}', callback_data='open Motivation pack')
 
     if packs[0] > 0:
         markup.add(btn_pack)
@@ -457,7 +457,11 @@ def open_cards_pack(message):
     if packs[3] > 0:
         markup.add(btn_motivation_pack)
 
-    bot.reply_to(message, 'Открыть паки', reply_markup=markup)
+    if packs == [0, 0, 0, 0]:
+        bot.reply_to(message, 'У тебя нет паков, купи их в /shop')
+
+    else:
+        bot.reply_to(message, 'Открыть паки', reply_markup=markup)
 
 
 @bot.message_handler(commands=['open_box'])

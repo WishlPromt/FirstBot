@@ -39,7 +39,7 @@ def get_packs(user, pack):
     base = load_base()
 
     if base[id]['cards_packs'][pack] > 0:
-        return True
+        return base[id]['cards_packs'][pack]
     return False
 
 
