@@ -238,6 +238,33 @@ def callback(callback):
         bot.reply_to(callback.message.reply_to_message, f'Карточка добавлена под id {id}.')
 
 
+    if callback.data in ['Пак карточек', 'Коробка карточек', 'Anime pack', 'Motivation pack']:
+        message = callback.message.reply_to_message
+        user = get_message_data(message)
+
+        if get_packs(user, 'Пак карточек'):
+
+            cards = open_pack(user, 'Пак карточек')
+
+            if cards:
+
+                card = show_cards(user)
+
+                with open(f'cards/{card}', 'rb') as image_card:
+                    bot.send_photo(message.chat.id,
+                                   image_card,
+                                   reply_to_message_id=message.id,
+                                   caption=f'{user["username"]}, вы получили {get_card_info(card, user)}',
+                                   reply_markup=create_markup(),
+                                   parse_mode='html')
+
+            else:
+                bot.reply_to(message, f'{get_message_data(message)["username"]}, вы не получили не одной карточки')
+
+        else:
+            bot.reply_to(message, f'{get_message_data(message)["username"]}, у тебя нет паков, купи в /shop')
+
+
     if callback.data == 'next card':
         opener = get_message_data(callback.message.reply_to_message)
 
@@ -408,28 +435,29 @@ def send_inventory(message):
 
 @bot.message_handler(commands=['open_pack'])
 def open_cards_pack(message):
+    user = get_message_data(message)
 
-    if get_packs(get_message_data(message), 'Пак карточек'):
+    packs = []
+    for i in ['Пак карточек', 'Коробка карточек', 'Anime pack', 'Motivation pack']:
+        packs.append(get_packs(user, i))
 
-        cards = open_pack(get_message_data(message), 'Пак карточек')
+    markup = types.InlineKeyboardMarkup()
 
-        if cards:
+    btn_pack = types.InlineKeyboardButton(f'Пак карточек - {packs[0]}', callback_data='Пак карточек')
+    btn_box = types.InlineKeyboardButton(f'Коробка карточек - {packs[1]}', callback_data='Коробка карточек')
+    btn_anime_pack = types.InlineKeyboardButton(f'Anime pack - {packs[2]}', callback_data='Anime pack')
+    btn_motivation_pack = types.InlineKeyboardButton(f'Motivation pack - {packs[3]}', callback_data='Motivation pack')
 
-            card = show_cards(get_message_data(message))
+    if packs[0] > 0:
+        markup.add(btn_pack)
+    if packs[1] > 0:
+        markup.add(btn_box)
+    if packs[2] > 0:
+        markup.add(btn_anime_pack)
+    if packs[3] > 0:
+        markup.add(btn_motivation_pack)
 
-            with open(f'cards/{card}', 'rb') as image_card:
-                bot.send_photo(message.chat.id,
-                               image_card,
-                               reply_to_message_id=message.id,
-                               caption=f'{get_message_data(message)["username"]}, вы получили {get_card_info(card, get_message_data(message))}',
-                               reply_markup=create_markup(),
-                               parse_mode='html')
-
-        else:
-            bot.reply_to(message, f'{get_message_data(message)["username"]}, вы не получили не одной карточки')
-
-    else:
-        bot.reply_to(message, f'{get_message_data(message)["username"]}, у тебя нет паков, купи в /shop')
+    bot.reply_to(message, 'Открыть паки', reply_markup=markup)
 
 
 @bot.message_handler(commands=['open_box'])
