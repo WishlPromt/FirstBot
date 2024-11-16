@@ -253,12 +253,20 @@ def callback(callback):
                 card = show_cards(user)
 
                 with open(f'cards/{card}', 'rb') as image_card:
-                    bot.send_photo(message.chat.id,
-                                   image_card,
-                                   reply_to_message_id=message.id,
-                                   caption=f'{user["username"]}, вы получили {get_card_info(card, user)}',
-                                   reply_markup=create_markup(),
-                                   parse_mode='html')
+                    if card[card.find('.')+1:] != 'gif':
+                        bot.send_photo(message.chat.id,
+                                       image_card,
+                                       reply_to_message_id=message.id,
+                                       caption=f'{user["username"]}, вы получили {get_card_info(card, user)}',
+                                       reply_markup=create_markup(),
+                                       parse_mode='html')
+                    else:
+                        bot.send_animation(message.chat.id,
+                                           image_card,
+                                           reply_to_message_id=message.id,
+                                           caption=f'{user["username"]}, вы получили {get_card_info(card, user)}',
+                                           reply_markup=create_markup(),
+                                           parse_mode='html')
 
             else:
                 bot.reply_to(message, f'{get_message_data(message)["username"]}, вы не получили ни одной карточки')
@@ -276,9 +284,15 @@ def callback(callback):
 
         markup = create_cards_markup()
         with open(f'cards/{card}', 'rb') as image_card:
-            bot.edit_message_media(chat_id=callback.message.chat.id,
-                                   message_id=callback.message.id,
-                                   media=types.InputMediaPhoto(image_card))
+            if card[card.find('.')+1:] != 'gif':
+                bot.edit_message_media(chat_id=callback.message.chat.id,
+                                       message_id=callback.message.id,
+                                       media=types.InputMediaPhoto(image_card))
+            else:
+                bot.edit_message_media(chat_id=callback.message.chat.id,
+                                       message_id=callback.message.id,
+                                       media=types.InputMediaAnimation(image_card))
+
             bot.edit_message_caption(chat_id=callback.message.chat.id,
                                      message_id=callback.message.id,
                                      caption=f'Карточка {opener["username"]}\n'
@@ -296,9 +310,15 @@ def callback(callback):
 
         markup = create_cards_markup()
         with open(f'cards/{card}', 'rb') as image_card:
-            bot.edit_message_media(chat_id=callback.message.chat.id,
-                                   message_id=callback.message.id,
-                                   media=types.InputMediaPhoto(image_card))
+            if card[card.find('.')+1:] != 'gif':
+                bot.edit_message_media(chat_id=callback.message.chat.id,
+                                       message_id=callback.message.id,
+                                       media=types.InputMediaPhoto(image_card))
+            else:
+                bot.edit_message_media(chat_id=callback.message.chat.id,
+                                       message_id=callback.message.id,
+                                       media=types.InputMediaAnimation(image_card))
+
             bot.edit_message_caption(chat_id=callback.message.chat.id,
                                      message_id=callback.message.id,
                                      caption=f'Карточка {opener["username"]}\n'
@@ -345,10 +365,14 @@ def callback(callback):
             card = show_cards(get_message_data(callback))
 
             with open(f'cards/{card}', 'rb') as image_card:
-
-                bot.edit_message_media(chat_id=callback.message.chat.id,
-                                       message_id=callback.message.id,
-                                       media=types.InputMediaPhoto(image_card))
+                if card[card.find('.')+1:] != 'gif':
+                    bot.edit_message_media(chat_id=callback.message.chat.id,
+                                           message_id=callback.message.id,
+                                           media=types.InputMediaPhoto(image_card))
+                else:
+                    bot.edit_message_media(chat_id=callback.message.chat.id,
+                                           message_id=callback.message.id,
+                                           media=types.InputMediaAnimation(image_card))
 
                 bot.edit_message_caption(chat_id=callback.message.chat.id,
                                          message_id=callback.message.id,
@@ -368,10 +392,14 @@ def callback(callback):
             card = show_cards(get_message_data(callback))
 
             with open(f'cards/{card}', 'rb') as image_card:
-
-                bot.edit_message_media(chat_id=callback.message.chat.id,
-                                       message_id=callback.message.id,
-                                       media=types.InputMediaPhoto(image_card))
+                if card[card.find('.'):] != 'gif':
+                    bot.edit_message_media(chat_id=callback.message.chat.id,
+                                           message_id=callback.message.id,
+                                           media=types.InputMediaPhoto(image_card))
+                else:
+                    bot.edit_message_media(chat_id=callback.message.chat.id,
+                                           message_id=callback.message.id,
+                                           media=types.InputMediaAnimation(image_card))
 
                 bot.edit_message_caption(chat_id=callback.message.chat.id,
                                          message_id=callback.message.id,
@@ -394,11 +422,18 @@ def profile(message):
 
     try:
         with open(f'cards/{profile[1]}', 'rb') as image:
-            bot.send_photo(chat_id=message.chat.id,
-                           photo=image,
-                           caption=profile[0],
-                           reply_to_message_id=message_id,
-                           parse_mode='html')
+            if profile[1][profile[1].find('.')+1:] != 'gif':
+                bot.send_photo(chat_id=message.chat.id,
+                               photo=image,
+                               caption=profile[0],
+                               reply_to_message_id=message_id,
+                               parse_mode='html')
+            else:
+                bot.send_animation(chat_id=message.chat.id,
+                                   animation=image,
+                                   caption=profile[0],
+                                   reply_to_message_id=message_id,
+                                   parse_mode='html')
 
     except:
         bot.reply_to(message, profile[0], parse_mode='html')
@@ -485,13 +520,22 @@ def show_cards_user(message):
     card = show_cards(user)
     markup = create_cards_markup()
     with open(f'cards/{card}', 'rb') as image_card:
-        bot.send_photo(chat_id=message.chat.id,
-                       reply_to_message_id=message.id,
-                       photo=image_card,
-                       caption=f'Карточка {user["username"]}\n'
-                               f'{get_card_info(card, user)}',
-                       reply_markup=markup,
-                       parse_mode='html')
+        if card[card.find('.')+1:] != 'gif':
+            bot.send_photo(chat_id=message.chat.id,
+                           reply_to_message_id=message.id,
+                           photo=image_card,
+                           caption=f'Карточка {user["username"]}\n'
+                                   f'{get_card_info(card, user)}',
+                           reply_markup=markup,
+                           parse_mode='html')
+        else:
+            bot.send_animation(chat_id=message.chat.id,
+                               reply_to_message_id=message.id,
+                               animation=image_card,
+                               caption=f'Карточка {user["username"]}\n'
+                                       f'{get_card_info(card, user)}',
+                               reply_markup=markup,
+                               parse_mode='html')
 
 @bot.message_handler(commands=['add_card'])
 def preposition(message):

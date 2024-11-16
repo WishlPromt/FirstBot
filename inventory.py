@@ -85,6 +85,9 @@ def get_cards(user):
             elif rare == 'Легендарные':
                 base[id]['new_cards'].append('legendary/'+card)
 
+            elif rare == 'Секретные':
+                base[id]['new_cards'].append('secret/' + card)
+
 
     save_base(base)
 
