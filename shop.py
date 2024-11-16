@@ -91,7 +91,7 @@ def buy(item, buyer):
     inventory = credits[buyer['id']]['inventory']
     username = credits[buyer['id']]['username']
 
-    if items[item][4] not in inventory:
+    if items[item][4] != 'standart' and items[item][4] not in inventory:
         return f'<b>{username}</b>, для покупки этого предмета нужна роль {items[item][4]}'
 
     price = items[item][0]
