@@ -30,6 +30,12 @@ epic_cards = os.listdir('cards/epic')
 legendary_cards = os.listdir('cards/legendary')
 secret_cards = os.listdir('cards/secret')
 
+card_names = []
+for dir in os.listdir('cards'):
+    for card in os.listdir(f'cards/{dir}'):
+        card_names.append(card[0:card.find('.')])
+
+
 
 def add_new_card(card, rare):
     global regular_cards, rare_cards, epic_cards, legendary_cards

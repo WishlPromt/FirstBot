@@ -2,7 +2,7 @@
     "5105507379": {
         "username": "WishlPromt",
         "credits": 24,
-        "time": 1731925450,
+        "time": 1731941965,
         "inventory": [
             "Костюм горничной",
             "Пак карточек",
@@ -17,7 +17,7 @@
         ],
         "favorite_item": "Шампунь Жумайсынба",
         "role": "Motivated",
-        "favorite_card": "legendary/Billy Herrington.jpg",
+        "favorite_card": "legendary/Billy_Herrington.jpg",
         "cards_packs": {
             "Пак карточек": 0,
             "Коробка карточек": 0,
@@ -583,17 +583,17 @@
             "epic/e567.jpg",
             "epic/e567.jpg",
             "epic/e567.jpg",
-            "legendary/Billy Herrington.jpg"
+            "legendary/Billy_Herrington.jpg"
         ],
         "cur_card": 273,
-        "max_pages": 4,
+        "max_pages": 3,
         "iterator_of_message": 5772,
         "collect_time": 1731947069
     },
     "5422828618": {
         "username": "Mzmz640404",
         "credits": 426,
-        "time": 1731927960,
+        "time": 1731945694,
         "inventory": [
             "Вилка",
             "Шампунь Жумайсынба",
@@ -747,7 +747,7 @@
                 "e569.jpeg"
             ],
             "Легендарные": [
-                "Billy Herrington.jpg"
+                "Billy_Herrington.jpg"
             ],
             "Секретные": []
         },
@@ -766,7 +766,7 @@
     "1234733553": {
         "username": "ultras567",
         "credits": 450,
-        "time": 1731925508,
+        "time": 1731938811,
         "inventory": [
             "Пак карточек",
             "Вилка",
@@ -893,7 +893,7 @@
     "6638790681": {
         "username": "Lalsans1111",
         "credits": 108,
-        "time": 1731928476,
+        "time": 1731941973,
         "inventory": [
             "Шампунь Жумайсынба",
             "Лудоман"
@@ -1029,7 +1029,7 @@
         },
         "favorite_item": "Шампунь Жумайсынба",
         "role": "Клоун",
-        "favorite_card": "legendary/Billy Herrington.jpg",
+        "favorite_card": "legendary/Billy_Herrington.jpg",
         "cards": {
             "Обычные": [
                 "re809.png",
@@ -1124,7 +1124,7 @@
                 "e234.jpeg"
             ],
             "Легендарные": [
-                "Billy Herrington.jpg"
+                "Billy_Herrington.jpg"
             ],
             "Секретные": []
         },
@@ -1322,8 +1322,8 @@
     },
     "5716944509": {
         "username": "Aaposxalko",
-        "credits": 165,
-        "time": 1731917972,
+        "credits": 142,
+        "time": 1731938809,
         "collect_time": 1731947776,
         "inventory": [
             "Костюм горничной",
@@ -1337,7 +1337,7 @@
         },
         "favorite_item": "Нет предмета",
         "role": "Нет роли",
-        "favorite_card": "Нет карты",
+        "favorite_card": "rare/ra090.jpg",
         "cards": {
             "Обычные": [
                 "re378.png",
@@ -1347,21 +1347,18 @@
                 "re209.jpg",
                 "re019.jpg"
             ],
-            "Редкие": [],
+            "Редкие": [
+                "ra090.jpg"
+            ],
             "Эпические": [],
             "Легендарные": [],
             "Секретные": []
         },
         "new_cards": [
-            "regular/re378.png",
-            "regular/re127.jpeg",
-            "regular/re912.jpg",
-            "regular/re456.jpg",
-            "regular/re209.jpg",
-            "regular/re019.jpg"
+            "rare/ra090.jpg"
         ],
-        "cur_card": 1,
-        "max_pages": 1
+        "cur_card": 0,
+        "max_pages": 4
     },
     "7179420529": {
         "username": "KabachokBot",
@@ -1391,7 +1388,7 @@
     "6809090019": {
         "username": "EbanibeZdar69696969",
         "credits": 54,
-        "time": 1731924991,
+        "time": 1731946034,
         "collect_time": 0,
         "inventory": [
             "Пак карточек",

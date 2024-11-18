@@ -51,21 +51,23 @@ def create_shop(page, user):
 
     try:
         but_item_0 = types.InlineKeyboardButton(f'{item_types[0]} {names[0]} - {str(prices[0])}', callback_data=names[0])
+        markup.add(but_item_0)
     except:
-        but_item_0 = types.InlineKeyboardButton('Empty', callback_data='Empty')
-    markup.add(but_item_0)
+        pass
 
     try:
         but_item_1 = types.InlineKeyboardButton(f'{item_types[1]} {names[1]} - {str(prices[1])}', callback_data=names[1])
+        markup.add(but_item_1)
     except:
-        but_item_1 = types.InlineKeyboardButton('Empty', callback_data='Empty')
-    markup.add(but_item_1)
+        pass
+
 
     try:
         but_item_2 = types.InlineKeyboardButton(f'{item_types[2]} {names[2]} - {str(prices[2])}', callback_data=names[2])
+        markup.add(but_item_2)
     except:
-        but_item_2 = types.InlineKeyboardButton('Empty', callback_data='Empty')
-    markup.add(but_item_2)
+        pass
+
 
     but_next = types.InlineKeyboardButton('>>', callback_data=f'>>{page}')
     but_back = types.InlineKeyboardButton('<<', callback_data=f'<<{page}')

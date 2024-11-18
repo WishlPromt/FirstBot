@@ -2,7 +2,7 @@ import telebot
 from telebot import types
 from random import choice, randint
 import json, time, os
-from social_credits import add_credits, show_credits, work, check_user, balance, collect
+from social_credits import add_credits, dashboard, work, check_user, balance, collect
 from shop import buy, next_page, back_page, create_shop, get_max_pages
 from inventory import show_inventory, create_cards_markup, get_cards, reset_cards
 from system import get_message_data, generate_id
@@ -35,8 +35,7 @@ ignore_symbols = ',."\'{}[]()!#$%^&*№;:?\\|/'
 
 bot = telebot.TeleBot('7179420529:AAEOXaN8vYV5OVd4_OYDy7tK6hHGWxnTjL8')
 
-
-@bot.message_handler(commands=['start'])
+@bot.message_handler(commands=['start', 'hello'])
 def start(message):
     bot.reply_to(message, f'Дарова, {message.from_user.first_name}')
 
@@ -460,9 +459,9 @@ def command_collect(message):
     bot.reply_to(message, f'{user["username"]}, со своего инвентаря вы собираете:\n {collects}', parse_mode='html')
 
 
-@bot.message_handler(commands=['credits'])
-def show(message):
-    bot.reply_to(message, show_credits())
+@bot.message_handler(commands=['dashboard'])
+def show_dashboard(message):
+    bot.send_message(message.chat.id, dashboard(), parse_mode='html')
 
 
 @bot.message_handler(commands=['balance'])
@@ -542,6 +541,36 @@ def show_cards_user(message):
                                        f'{get_card_info(card, user)}',
                                reply_markup=markup,
                                parse_mode='html')
+
+
+from cards_open import card_names
+@bot.message_handler(commands=card_names)
+def show_card(message):
+
+    card = ''
+    for dir in os.listdir('cards'):
+        for c in os.listdir(f'cards/{dir}'):
+            if message.text[1:] == c[0:c.find('.')]:
+                card = f'{dir}/{c}'
+
+    if not card:
+        bot.reply_to(message, 'Карта не найдена')
+        return
+
+    with open(f'cards/{card}', 'rb') as image_card:
+        if card[card.find('.') + 1:] != 'gif':
+            bot.send_photo(chat_id=message.chat.id,
+                           reply_to_message_id=message.id,
+                           photo=image_card,
+                           caption=f'Карточка {card}',
+                           parse_mode='html')
+        else:
+            bot.send_animation(chat_id=message.chat.id,
+                               reply_to_message_id=message.id,
+                               animation=image_card,
+                               caption=f'Карточка {card}',
+                               parse_mode='html')
+
 
 @bot.message_handler(commands=['add_card'])
 def preposition(message):

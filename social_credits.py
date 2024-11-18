@@ -118,6 +118,9 @@ def collect(user: dict):
     collects = ''
     credit_collects = 0
 
+    if not base[id]['inventory']:
+        return f'Ваш инвентарь пуст!\nВы можете пополнить его в /shop'
+
     if datetime >= lock_data:
         for item in base[id]['inventory']:
             item_collect = items[item][3]
@@ -153,10 +156,51 @@ def balance(user: dict):
     return f'<b>{base[id]["username"]}</b>\n Ваши социальные кредиты:\n <b>{str(base[id]["credits"])}</b>'
 
 
-def show_credits():
+def dashboard():
     base = load_base()
-    credits = 'Социальные кредиты участников'
-    for id in base.keys():
-        credits += '\n' + str(base[id]['username']) + ': ' + str(base[id]['credits'])
-    return credits
+    board = 'Топ лучших пользователей чата\n'
+    unsorted_users = {}
+
+    for user in base.keys():
+        if user != '7179420529':
+            unsorted_users[user] = base[user]['credits']
+
+            if base[user]['inventory']:
+                for item in base[user]['inventory']:
+                    unsorted_users[user] += items[item][0]
+
+    users = sorted(unsorted_users.items(), key=lambda item: item[1], reverse=True)
+    top_users = []
+
+    if len(users) >= 10:
+        for u in range(10):
+            top_users.append(users[u])
+    else:
+        top_users = users.copy()
+
+    if top_users:
+        board = 'Топ участников чата\n'
+        for user in top_users:
+
+            id = user[0]
+
+            inventory_sell = 0
+            if base[id]['inventory']:
+                for item in base[id]['inventory']:
+                    inventory_sell += items[item][0]
+
+            ofc = base[id]['favorite_card']
+            fav_card = ofc[ofc.find('/')+1:ofc.find('.')]
+
+            userboard = (f'{top_users.index(user)+1}. <b>{base[id]["username"]}</b>  -  <b>{base[id]["role"]}</b>\n'
+                         f'    <b>Социальные кредиты</b>:   <b>{base[id]["credits"]}</b>\n'
+                         f'    <b>Общая стоимость инвентаря</b>:   <b>{inventory_sell}</b>\n'
+                         f'    <b>Любимый предмет</b>:   <b>{base[id]["favorite_item"]}</b>\n'
+                         f'    <b>Любимая карточка</b>:   /{fav_card}\n\n')
+
+            board += userboard
+
+        return board
+
+    return 'Дэшборд пуст'
 
