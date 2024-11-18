@@ -2,12 +2,11 @@ import json
 from random import randint
 from system import convert_time
 
-base = {}
+
 def load_base():
-    global base
     with open("credits_base.json", "r", encoding="utf-8") as file:
         base = json.load(file)
-load_base()
+        return base
 
 with open("items.json", "r", encoding="utf-8") as file:
     items = json.load(file)
@@ -27,13 +26,14 @@ all_parameters = {'credits': 0,
                   'max_pages': 1}
 
 
-def save_base():
+def save_base(base):
     file = open('credits_base.json', 'w', encoding='utf-8')
     json.dump(base, file, indent=4, ensure_ascii=False)
     file.close()
 
 
 def new_id(user: dict):
+    base = load_base()
     if user['username'] =='null':
         user['username'] = user['name']
     base[user['id']] = {'username': user['username'],
@@ -58,10 +58,11 @@ def new_id(user: dict):
                         'cur_card': 0,
                         'max_pages': 1
                         }
-    save_base()
+    save_base(base)
 
 
 def check_user(user: dict):
+    base = load_base()
     if user['id'] not in base and user['id'] != "7179420529":
         new_id(user)
 
@@ -69,11 +70,12 @@ def check_user(user: dict):
         for parameter in all_parameters.keys():
             if parameter not in base[user['id']].keys():
                 base[user['id']][parameter] = all_parameters[parameter]
-                save_base()
+                save_base(base)
 
 
 def add_credits(user: dict, credits):
     check_user(user)
+    base = load_base()
     id = user['id']
     base[id]['credits'] = base[id]['credits'] + credits
     save_base()
@@ -81,6 +83,7 @@ def add_credits(user: dict, credits):
 
 def work(user: dict):
     check_user(user)
+    base = load_base()
     id = user['id']
     datetime = user['datetime']
     lock_data = base[id]['time']
@@ -104,6 +107,7 @@ def work(user: dict):
 
 def collect(user: dict):
     check_user(user)
+    base = load_base()
     id = user['id']
     datetime = user['datetime']
     lock_data = base[id]['collect_time']
@@ -138,13 +142,14 @@ def collect(user: dict):
 
 def balance(user: dict):
     check_user(user)
-    load_base()
+    base = load_base()
     id = user['id']
 
     return f'<b>{base[id]["username"]}</b>\n Ваши социальные кредиты:\n <b>{str(base[id]["credits"])}</b>'
 
 
 def show_credits():
+    base = load_base()
     credits = 'Социальные кредиты участников'
     for id in base.keys():
         credits += '\n' + str(base[id]['username']) + ': ' + str(base[id]['credits'])

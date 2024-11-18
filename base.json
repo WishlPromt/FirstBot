@@ -331,5 +331,13 @@
         "answers": [
             "Иди нахуй"
         ]
+    },
+    "fuck_you_zhenya": {
+        "messages": [
+            "пошли жеку"
+        ],
+        "answers": [
+            "Иди нахуй, @just_zhenya_public"
+        ]
     }
 }

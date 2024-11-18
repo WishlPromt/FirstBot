@@ -24,13 +24,23 @@ def add_credits(user: dict, credits, base):
     base[id]['credits'] = base[id]['credits'] + credits
     save_base(base)
 
-
 regular_cards = os.listdir('cards/regular')
 rare_cards = os.listdir('cards/rare')
 epic_cards = os.listdir('cards/epic')
 legendary_cards = os.listdir('cards/legendary')
 secret_cards = os.listdir('cards/secret')
 
+
+def add_new_card(card, rare):
+    global regular_cards, rare_cards, epic_cards, legendary_cards
+    if rare == 'regular':
+        regular_cards.append(card)
+    elif rare == 'rare':
+        rare_cards.append(card)
+    elif rare == 'epic':
+        epic_cards.append(card)
+    elif rare == 'legendary':
+        legendary_cards.append(card)
 
 
 def get_packs(user, pack):
@@ -178,7 +188,7 @@ def open_pack(user, item):
     min_cards = [5, 150, 12]
     max_cards = [7, 200, 12]
 
-    if base[id]['role'] == ('Motivated' or 'Любитель аниме-тянок'):
+    if ('Motivated' or 'Любитель аниме-тянок') in base[id]['inventory']:
         print('true')
         for min in range(len(min_cards)):
             min_cards[min] += int(min_cards[min] / 100 * 25)

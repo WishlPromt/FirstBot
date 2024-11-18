@@ -9,6 +9,7 @@ with open('items.json', 'r', encoding='utf-8') as file:
 
 
 credits = {}
+packs_items = ['Пак карточек', 'Коробка карточек', 'Anime pack', 'Motivation pack']
 
 def load_base():
     global credits
@@ -97,7 +98,7 @@ def buy(item, buyer):
     price = items[item][0]
 
 
-    if item not in inventory and item not in ['Пак карточек', 'Коробка карточек']:
+    if item not in inventory and item not in packs_items:
         if price <= credits[buyer['id']]['credits']:
 
             inventory.append(item)
@@ -111,7 +112,7 @@ def buy(item, buyer):
         else:
             return f'<b>{username}</b>, у вас нет денег\n Используйте /balance, чтобы посмотреть баланс'
 
-    elif item not in inventory and item in ['Пак карточек', 'Коробка карточек']:
+    elif item not in inventory and item in packs_items:
         if price <= credits[buyer['id']]['credits']:
 
             inventory.append(item)
@@ -126,7 +127,7 @@ def buy(item, buyer):
         else:
             return f'<b>{username}</b>, у вас нет денег\n'
 
-    elif item in inventory and item in ['Пак карточек', 'Коробка карточек']:
+    elif item in inventory and item in packs_items:
         if price <= credits[buyer['id']]['credits']:
 
             credits[buyer['id']]['cards_packs'][item] += 1
@@ -159,10 +160,15 @@ def back_page(cur_page, max_pages):
 def get_items(page, user):
     items_on_page = {}
     list_items = list(items.keys())
+    id = user['id']
 
     for i in list_items:
-        if items[i][4] != 'standart' and not items[i][4] in credits[user['id']]['inventory']:
+        if items[i][4] != 'standart' and not items[i][4] in credits[id]['inventory']:
             list_items.remove(i)
+
+    for item in list_items:
+        if item in credits[id]['inventory'] and item not in packs_items:
+            list_items.remove(item)
 
     list_items = [list_items[i:i + 3] for i in range(0, len(list_items), 3)]
 
