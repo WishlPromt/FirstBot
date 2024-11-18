@@ -2,7 +2,6 @@ import json
 from social_credits import check_user
 from telebot import types
 
-
 def load_base():
     with open('credits_base.json', 'r', encoding='utf-8') as file:
         base = json.load(file)
@@ -31,7 +30,7 @@ def show_inventory(user):
     inventory = base[id]['inventory']
     cards_packs = base[id]['cards_packs']
 
-    if inventory != []:
+    if inventory:
         text = f'<b>{username}</b>, вот ваш инвентарь: \n'
 
         for item in inventory:
@@ -48,13 +47,15 @@ def show_inventory(user):
 
 
 def create_cards_markup():
+    base = load_base()
+
     markup = types.InlineKeyboardMarkup()
 
     next_btn = types.InlineKeyboardButton('>>', callback_data='next card')
     back_btn = types.InlineKeyboardButton('<<', callback_data='back card')
 
     equip_btn = types.InlineKeyboardButton('В профиль', callback_data='equip card')
-    sell_btn = types.InlineKeyboardButton('Продать', callback_data='sell')
+    sell_btn = types.InlineKeyboardButton(f'Продать', callback_data='sell')
 
     markup.row(back_btn, next_btn)
     markup.add(equip_btn)

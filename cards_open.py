@@ -188,14 +188,12 @@ def open_pack(user, item):
     min_cards = [5, 150, 12]
     max_cards = [7, 200, 12]
 
-    if ('Motivated' or 'Любитель аниме-тянок') in base[id]['inventory']:
-        print('true')
+    if 'Любитель аниме-тянок' in base[id]['inventory']:
         for min in range(len(min_cards)):
             min_cards[min] += int(min_cards[min] / 100 * 25)
-        print(min_cards)
         for max in range(len(max_cards)):
             max_cards[max] += int(max_cards[max] / 100 * 25)
-        print(max_cards)
+
 
     if item == 'Пак карточек' and base[id]['cards_packs'][item] > 0:
         for c in range(random.randint(min_cards[0], max_cards[0])):
@@ -301,6 +299,24 @@ def get_cur_card(user):
     return base[user['id']]['new_cards'][base[user['id']]['cur_card']]
 
 
+def get_price(rare, id, base):
+    price = 0
+    if rare == 'regular':
+        price = 3
+    elif rare == 'rare':
+        price = 7
+    elif rare == 'epic':
+        price = 15
+    elif rare == 'legendary':
+        price = 200
+    elif rare == 'secret':
+        price = 500
+
+    if 'Motivated' in base[id]['inventory']:
+        price += int(price / 100 * 25)
+
+    return price
+
 def sell_card(user):
     check_user(user)
 
@@ -311,25 +327,25 @@ def sell_card(user):
     name = cur_card[cur_card.find('/')+1:]
 
     if rare == 'regular':
-        price = 3
+        price = get_price(rare, id, base)
         base[id]['cards']['Обычные'].remove(name)
         base[id]['new_cards'].remove(cur_card)
         add_credits(user, price, base)
 
     elif rare == 'rare':
-        price = 7
+        price = get_price(rare, id, base)
         base[id]['cards']['Редкие'].remove(name)
         base[id]['new_cards'].remove(cur_card)
         add_credits(user, price, base)
 
     elif rare == 'epic':
-        price = 15
+        price = get_price(rare, id, base)
         base[id]['cards']['Эпические'].remove(name)
         base[id]['new_cards'].remove(cur_card)
         add_credits(user, price, base)
 
     elif rare == 'legendary':
-        price = 200
+        price = get_price(rare, id, base)
         base[id]['cards']['Легендарные'].remove(name)
         base[id]['new_cards'].remove(cur_card)
         add_credits(user, price, base)

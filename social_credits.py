@@ -34,7 +34,7 @@ def save_base(base):
 
 def new_id(user: dict):
     base = load_base()
-    if user['username'] =='null':
+    if user['username'] == None:
         user['username'] = user['name']
     base[user['id']] = {'username': user['username'],
                         'credits': 0,
@@ -65,7 +65,7 @@ def check_user(user: dict):
     base = load_base()
     if user['id'] not in base and user['id'] != "7179420529":
         new_id(user)
-
+    base = load_base()
     if user['id'] != "7179420529":
         for parameter in all_parameters.keys():
             if parameter not in base[user['id']].keys():
@@ -78,7 +78,7 @@ def add_credits(user: dict, credits):
     base = load_base()
     id = user['id']
     base[id]['credits'] = base[id]['credits'] + credits
-    save_base()
+    save_base(base)
 
 
 def work(user: dict):
@@ -89,15 +89,18 @@ def work(user: dict):
     lock_data = base[id]['time']
 
     credits = randint(30, 45)
-
+    if 'Boss of the gym' in base[id]['inventory']:
+        credits += int(credits / 100 * 50)
 
     if datetime >= lock_data:
 
         add_credits(user, credits)
-        now = datetime + 7200
-        base[id]['time'] = now
+        lock = 7200
+        if 'Липовый модератор' in base[id]['inventory']:
+            lock -= int(lock / 100 * 25)
+        base[id]['time'] = datetime + lock
 
-        save_base()
+        save_base(base)
 
         return f'Вы заработали <b>{credits}</b> кредитов!\nВы сможете воркать снова только <i>{convert_time(base[id]["time"])}</i>'
 
@@ -131,9 +134,11 @@ def collect(user: dict):
 
                 collects += f'<b>{item}</b>: <b>{item_collect}</b> кредитов\n'
 
-        now = datetime + 28800
-        base[id]['collect_time'] = now
-        save_base()
+        lock = 28800
+        if 'Липовый модератор' in base[id]['inventory']:
+            lock -= int(lock / 100 * 25)
+        base[id]['collect_time'] = datetime + lock
+        save_base(base)
 
         return f'Всего: <b>{credit_collects}</b> кредитов\n{collects} \nВы сможете собрать кредиты снова только <i>{convert_time(base[id]["collect_time"])}</i>'
 
