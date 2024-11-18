@@ -8,41 +8,33 @@ with open('items.json', 'r', encoding='utf-8') as file:
     items = json.load(file)
 
 
-credits = {}
 packs_items = ['Пак карточек', 'Коробка карточек', 'Anime pack', 'Motivation pack']
 
 def load_base():
-    global credits
     with open('credits_base.json', 'r', encoding='utf-8') as file:
         credits = json.load(file)
+        return credits
 
 
-load_base()
-
-
-def save_base():
+def save_base(base):
     file = open('credits_base.json', 'w', encoding='utf-8')
-    json.dump(credits, file, indent=4, ensure_ascii=False)
-    file.close()
-
-def save_inventory():
-    file = open('credits_base.json', 'w', encoding='utf-8')
-    json.dump(credits, file, indent=4, ensure_ascii=False)
+    json.dump(base, file, indent=4, ensure_ascii=False)
     file.close()
 
 
 def get_max_pages(user):
     check_user(user)
-    load_base()
+    base = load_base()
 
-    return credits[user['id']]['max_pages']
+    return base[user['id']]['max_pages']
 
 
 def create_shop(page, user):
+    base = load_base()
     get = get_items(page, user)
     items = get[0]
-    credits[user['id']]['max_pages'] = get[1]
-    save_base()
+    base[user['id']]['max_pages'] = get[1]
+    save_base(base)
 
     names = []
     for name in items:
@@ -87,10 +79,10 @@ def buy(item, buyer):
 
     check_user(buyer)
 
-    load_base()
+    base = load_base()
 
-    inventory = credits[buyer['id']]['inventory']
-    username = credits[buyer['id']]['username']
+    inventory = base[buyer['id']]['inventory']
+    username = base[buyer['id']]['username']
 
     if items[item][4] != 'standart' and items[item][4] not in inventory:
         return f'<b>{username}</b>, для покупки этого предмета нужна роль {items[item][4]}'
@@ -99,13 +91,13 @@ def buy(item, buyer):
 
 
     if item not in inventory and item not in packs_items:
-        if price <= credits[buyer['id']]['credits']:
+        if price <= base[buyer['id']]['credits']:
 
             inventory.append(item)
-            credits[buyer['id']]['inventory'] = inventory
-            credits[buyer['id']]['credits'] = credits[buyer['id']]['credits'] - price
+            base[buyer['id']]['inventory'] = inventory
+            base[buyer['id']]['credits'] = base[buyer['id']]['credits'] - price
 
-            save_inventory()
+            save_base(base)
 
             return f'<b>{username}</b>, вы купили <b>{item}</b>!\n{items[item][1]}'
 
@@ -113,14 +105,14 @@ def buy(item, buyer):
             return f'<b>{username}</b>, у вас нет денег\n Используйте /balance, чтобы посмотреть баланс'
 
     elif item not in inventory and item in packs_items:
-        if price <= credits[buyer['id']]['credits']:
+        if price <= base[buyer['id']]['credits']:
 
             inventory.append(item)
-            credits[buyer['id']]['cards_packs'][item] = 1
-            credits[buyer['id']]['inventory'] = inventory
-            credits[buyer['id']]['credits'] = credits[buyer['id']]['credits'] - price
+            base[buyer['id']]['cards_packs'][item] = 1
+            base[buyer['id']]['inventory'] = inventory
+            base[buyer['id']]['credits'] = base[buyer['id']]['credits'] - price
 
-            save_inventory()
+            save_base(base)
 
             return f'<b>{username}</b>, вы купили <b>{item}</b>.\n{items[item][1]}'
 
@@ -128,19 +120,19 @@ def buy(item, buyer):
             return f'<b>{username}</b>, у вас нет денег\n'
 
     elif item in inventory and item in packs_items:
-        if price <= credits[buyer['id']]['credits']:
+        if price <= base[buyer['id']]['credits']:
 
-            credits[buyer['id']]['cards_packs'][item] += 1
-            credits[buyer['id']]['credits'] = credits[buyer['id']]['credits'] - price
+            base[buyer['id']]['cards_packs'][item] += 1
+            base[buyer['id']]['credits'] = base[buyer['id']]['credits'] - price
 
-            save_inventory()
+            save_base(base)
 
-            return f'<b>{username}</b>, вы купили <b>{item}</b>.\n Теперь их у вас <b>{credits[buyer["id"]]["cards_packs"][item]}</b>\n{items[item][1]}'
+            return f'<b>{username}</b>, вы купили <b>{item}</b>.\n Теперь их у вас <b>{base[buyer["id"]]["cards_packs"][item]}</b>\n{items[item][1]}'
 
         else:
             return f'<b>{username}</b>, у вас нет денег\n Используйте /balance, чтобы посмотреть баланс'
 
-    return f'<b>{username}</b>, предмет уже есть в вашем инвенторе'
+    return f'<b>{username}</b>, предмет уже есть в вашем инвентаре'
 
 
 def next_page(cur_page, max_pages):
@@ -158,16 +150,17 @@ def back_page(cur_page, max_pages):
 
 
 def get_items(page, user):
+    base = load_base()
     items_on_page = {}
     list_items = list(items.keys())
     id = user['id']
 
     for i in list_items:
-        if items[i][4] != 'standart' and not items[i][4] in credits[id]['inventory']:
+        if items[i][4] != 'standart' and not items[i][4] in base[id]['inventory']:
             list_items.remove(i)
 
-    for item in list_items:
-        if item in credits[id]['inventory'] and item not in packs_items:
+    for item in base[id]['inventory']:
+        if item not in packs_items:
             list_items.remove(item)
 
     list_items = [list_items[i:i + 3] for i in range(0, len(list_items), 3)]

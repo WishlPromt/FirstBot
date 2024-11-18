@@ -2,6 +2,7 @@ import json
 from social_credits import check_user
 from telebot import types
 
+
 def load_base():
     with open('credits_base.json', 'r', encoding='utf-8') as file:
         base = json.load(file)

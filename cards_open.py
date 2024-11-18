@@ -313,7 +313,7 @@ def get_price(rare, id, base):
         price = 500
 
     if 'Motivated' in base[id]['inventory']:
-        price += int(price / 100 * 25)
+        price += int(price / 100 * 50)
 
     return price
 

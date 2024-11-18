@@ -96,20 +96,20 @@ def economy_help(message):
 
 
 @bot.message_handler(commands=['help_collect'])
-def economy_help(message):
+def collect_help(message):
     bot.reply_to(message, 'Сбор кредитов с инвентаря:\n'
                           '<b>Вилка</b> - <b>1</b>\n'
                           '<b>Костюм горничной</b> - <b>3</b>\n'
                           '<b>Шампунь Жумайсынба</b> - <b>5</b>\n'
                           '<b>Клоун</b> - <b>10</b>\n'
-                          '<b>Сборник анекдотов</b> - <b>5</b>\n'
-                          '<b>Dungeon master</b> - <b>30</b>\n'
+                          '<b>Сборник анекдотов</b> - <b>5</b> - <i>Генерирует анекдоты - /rofl</i>\n'
+                          '<b>Dungeon master</b> - <b>30</b> - <i>Позволяет делать /fisting пользователям</i>\n'
                           '<b>Лудоман</b> - от <b>-25</b> до <b>60</b>\n'
-                          '<b>Любитель аниме-тянок</b> - <b>10</b> - <b>Добавляет 25% карточек в паки, если экипирован</b>\n'
-                          '<b>Motivated</b> - <b>10</b> - <b>Добавляет 25% карточек в паки, если экипирован</b>\n'
+                          '<b>Любитель аниме-тянок</b> - <b>10</b> - <i>Добавляет 25% карточек в паки</i>\n'
+                          '<b>Motivated</b> - <b>10</b> - <i>Увеличивает стоимость продажи карт на 50%</i>\n'
                           '<b>Палка-уебалка</b> - <b>45</b>\n'
-                          '<b>Липовый модератор</b> - <b>100</b>\n'
-                          '<b>Boss of the gym</b> - <b>150</b>\n', parse_mode='html')
+                          '<b>Липовый модератор</b> - <b>100</b> - <i>Уменьшает время между использованием /work и /collect на 50%</i>\n'
+                          '<b>Boss of the gym</b> - <b>150</b> - <i>/work дает на 50% кредитов больше</i>\n', parse_mode='html')
 
 
 @bot.message_handler(commands=['info'])
