@@ -28,7 +28,7 @@ def show_inventory(user):
 
     id = user['id']
     username = base[id]['username']
-    inventory = base[id]['inventory']
+    inventory = get_inventory(user)
     cards_packs = base[id]['cards_packs']
 
     if inventory:
@@ -45,6 +45,12 @@ def show_inventory(user):
 
     else:
         return f'<b>{username}</b>, ваш инвентарь <b>пуст</b>\n /shop для покупки предметов и ролей'
+
+
+def get_inventory(user):
+    check_user(user)
+    base = load_base()
+    return base[user['id']]['inventory']
 
 
 def create_cards_markup():

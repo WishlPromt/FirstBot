@@ -1,8 +1,8 @@
 {
     "5105507379": {
         "username": "WishlPromt",
-        "credits": 184,
-        "time": 1731999155,
+        "credits": 218,
+        "time": 1732014536,
         "inventory": [
             "Костюм горничной",
             "Пак карточек",
@@ -16,7 +16,7 @@
             "Лудоман"
         ],
         "favorite_item": "Шампунь Жумайсынба",
-        "role": "Motivated",
+        "role": "Лудоман",
         "favorite_card": "legendary/Billy_Herrington.jpg",
         "cards_packs": {
             "Пак карточек": 0,
@@ -765,8 +765,8 @@
     },
     "1234733553": {
         "username": "ultras567",
-        "credits": 450,
-        "time": 0,
+        "credits": 488,
+        "time": 1732014367,
         "inventory": [
             "Пак карточек",
             "Вилка",
@@ -823,12 +823,12 @@
             "rare/ra078.jpg"
         ],
         "cur_card": 0,
-        "collect_time": 0,
+        "collect_time": 1732036971,
         "max_pages": 4
     },
     "5817779536": {
         "username": "Артем",
-        "credits": 54,
+        "credits": 81,
         "time": 1731496704,
         "inventory": [
             "Пак карточек"
@@ -843,28 +843,15 @@
             "Motivation pack": 0
         },
         "cards": {
-            "Обычные": [
-                "re456.jpg",
-                "re496.png",
-                "re127.jpeg",
-                "re406.jpg"
-            ],
+            "Обычные": [],
             "Редкие": [],
-            "Эпические": [
-                "e490.jpeg"
-            ],
+            "Эпические": [],
             "Легендарные": [],
             "Секретные": []
         },
-        "new_cards": [
-            "regular/re456.jpg",
-            "regular/re496.png",
-            "regular/re127.jpeg",
-            "epic/e490.jpeg",
-            "regular/re406.jpg"
-        ],
-        "cur_card": 5,
-        "collect_time": 0,
+        "new_cards": [],
+        "cur_card": 0,
+        "collect_time": 1732037093,
         "max_pages": 5
     },
     "6586917192": {
@@ -892,8 +879,8 @@
     },
     "6638790681": {
         "username": "Lalsans1111",
-        "credits": 108,
-        "time": 1731960108,
+        "credits": 145,
+        "time": 1732014503,
         "inventory": [
             "Шампунь Жумайсынба",
             "Лудоман"
@@ -947,8 +934,8 @@
     },
     "6891646558": {
         "username": "darhasira",
-        "credits": 936,
-        "time": 1731999320,
+        "credits": 971,
+        "time": 1732014672,
         "inventory": [
             "Пак карточек"
         ],
@@ -1322,12 +1309,13 @@
     },
     "5716944509": {
         "username": "Aaposxalko",
-        "credits": 142,
-        "time": 1731938809,
-        "collect_time": 1731947776,
+        "credits": 171,
+        "time": 1732014698,
+        "collect_time": 1732037251,
         "inventory": [
             "Костюм горничной",
-            "Пак карточек"
+            "Пак карточек",
+            "Вилка"
         ],
         "cards_packs": {
             "Пак карточек": 2,

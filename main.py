@@ -4,7 +4,7 @@ from random import choice, randint
 import json, time, os
 from social_credits import add_credits, dashboard, work, check_user, balance, collect
 from shop import buy, next_page, back_page, create_shop, get_max_pages
-from inventory import show_inventory, create_cards_markup, get_cards, reset_cards
+from inventory import show_inventory, create_cards_markup, get_cards, reset_cards, get_inventory
 from system import get_message_data, generate_id
 from cards_open import open_pack, show_cards, next_back_card, create_markup, get_packs, get_card_info, sell_card, create_simple_markup, get_cur_card, create_markup_photo
 from profile import show_profile, equip, show_items, equip_card
@@ -74,8 +74,13 @@ def help(message):
                           '/mute\n'
                           'Экономика:\n'
                           '/work\n'
+                          '/collect\n'
                           '/shop\n'
                           '/balance\n'
+                          '/profile'
+                          '/equip\n'
+                          '/show_cards'
+                          '/show_card'
                           'Мини-игры:\n'
                           '/russian_roulette\n', parse_mode='html')
 
@@ -88,7 +93,7 @@ def economy_help(message):
                           '/collect - <b>собрать кредиты</b> с инвенторя, почти каждый ваш предмет в инвенторе приносит прибыль, можно использовать раз в <i>4 часа</i>(о кредитах с каждого предмета-/help_collect)\n'
                           'Вы можете тратить кредиты на покупку <i>предметов и ролей</i> в <b>магазине</b>(/shop). Просмотреть <b>инвентарь</b> можно через /inventory\n'
                           'Все купленные предметы отображаются у вас в <b>профиле</b> - /profile'
-                          'После покупки предмета/роли можно <b>экипировать</b> его/ее с помощью /equip_items\n'
+                          'После покупки предмета/роли можно <b>экипировать</b> его/ее с помощью /equip\n'
                           'Также есть <b>коллекционные карточки</b> - <i>обычные</i>, <i>редкие</i>, <i>эпические</i> и <i>легендарные</i>, получить их можно открывая <b>паки</b> и <b>коробки карточек</b>(приобретаются в магазине)\n'
                           'Их можно <b>просмотреть</b> с помощью /show_cards'
                           'Их можно также <b>экипировать в профиль</b> и <b>продать</b>(кнопки есть при просмотре)', parse_mode='html')
@@ -227,6 +232,16 @@ def callback(callback):
                               message_id=callback.message.id,
                               text='Магазин бота',
                               reply_markup=markup)
+
+    if callback.data.find('equip.') != -1:
+        item = callback.data[callback.data.find('.')+1:]
+        user = get_message_data(callback)
+
+        equip_status = equip(user, item)
+        print(equip_status)
+
+        bot.send_message(callback.message.chat.id, equip_status, parse_mode='html')
+
 
     if callback.data in ['regular', 'rare', 'epic', 'legendary']:
         from cards_open import add_new_card
@@ -613,25 +628,19 @@ def show_prep(message):
 def use_item(message):
     bot.reply_to(message, 'В разработке')
 
-
-@bot.message_handler(commands=['equip_items'])
-def show_equip_items(message):
-    bot.reply_to(message, 'Ответьте на сообщение с названием предмета, который вы хотите экипировать командой /equip')
-    user_inventory = show_items(get_message_data(message))
-
-    for item in user_inventory:
-        bot.reply_to(message, item)
-
 @bot.message_handler(commands=['equip'])
 def equip_item(message):
-    if message.reply_to_message:
-        try:
-            equip_status = equip(get_message_data(message), message.reply_to_message.text)
-            bot.reply_to(message, equip_status, parse_mode='html')
-        except:
-            bot.reply_to(message, 'Долбаеб')
-    else:
-        bot.reply_to(message, 'Долбаеб')
+    user = get_message_data(message)
+    inventory = get_inventory(user)
+
+    markup = types.InlineKeyboardMarkup()
+
+    for item in inventory:
+        button = types.InlineKeyboardButton(item, callback_data=f'equip.{item}')
+        markup.add(button)
+
+    bot.reply_to(message, 'Экипировка предметов и ролей', reply_markup=markup)
+
 
 
 #GAMES
