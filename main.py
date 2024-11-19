@@ -264,35 +264,36 @@ def callback(callback):
         user = get_message_data(message)
         item = callback.data[callback.data.find(' ')+1:]
 
-        if get_packs(user, item):
-            bot.reply_to(message, f'{user["username"]} открывает {item}')
-            cards = open_pack(user, item)
+        if callback.from_user.id == user['id']:
+            if get_packs(user, item):
+                bot.reply_to(message, f'{user["username"]} открывает {item}')
+                cards = open_pack(user, item)
 
-            if cards:
+                if cards:
 
-                card = show_cards(user)
+                    card = show_cards(user)
 
-                with open(f'cards/{card}', 'rb') as image_card:
-                    if card[card.find('.')+1:] != 'gif':
-                        bot.send_photo(message.chat.id,
-                                       image_card,
-                                       reply_to_message_id=message.id,
-                                       caption=f'{user["username"]}, вы получили {get_card_info(card, user)}',
-                                       reply_markup=create_markup(),
-                                       parse_mode='html')
-                    else:
-                        bot.send_animation(message.chat.id,
+                    with open(f'cards/{card}', 'rb') as image_card:
+                        if card[card.find('.')+1:] != 'gif':
+                            bot.send_photo(message.chat.id,
                                            image_card,
                                            reply_to_message_id=message.id,
                                            caption=f'{user["username"]}, вы получили {get_card_info(card, user)}',
                                            reply_markup=create_markup(),
                                            parse_mode='html')
+                        else:
+                            bot.send_animation(message.chat.id,
+                                               image_card,
+                                               reply_to_message_id=message.id,
+                                               caption=f'{user["username"]}, вы получили {get_card_info(card, user)}',
+                                               reply_markup=create_markup(),
+                                               parse_mode='html')
+
+                else:
+                    bot.reply_to(message, f'{get_message_data(message)["username"]}, вы не получили ни одной карточки')
 
             else:
-                bot.reply_to(message, f'{get_message_data(message)["username"]}, вы не получили ни одной карточки')
-
-        else:
-            bot.reply_to(message, f'{get_message_data(message)["username"]}, у тебя нет паков, купи в /shop')
+                bot.reply_to(message, f'{get_message_data(message)["username"]}, у тебя нет паков, купи в /shop')
 
 
     if callback.data == 'next card':

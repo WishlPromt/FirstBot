@@ -35,8 +35,8 @@ def show_inventory(user):
         text = f'<b>{username}</b>, вот ваш инвентарь: \n'
 
         for item in inventory:
-            if item not in ['Пак карточек']:
-                text += f'<b>{item}</b>\n {items_base[item][3]}\n {items_base[item][1]}\n'
+            if item not in ['Пак карточек', 'Коробка карточек', 'Anime pack', 'Motivation pack']:
+                text += f'<b>{item}</b>\n {items_base[item][2]}\n {items_base[item][1]}\n'
 
             else:
                 text += f'<b>{item} - x{cards_packs[item]}</b>\n Предмет\n {items_base[item][1]}\n'

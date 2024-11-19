@@ -275,10 +275,10 @@ def open_pack(user, item):
     base[id]['new_cards'] = cards
     save_base(base)
 
-    if cards != []:
+    if cards:
         base[id]['cards_packs'][item] -= 1
         save_base(base)
-        return True
+        return cards
 
     else:
         return False
