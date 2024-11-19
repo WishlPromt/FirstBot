@@ -4,12 +4,24 @@ from random import randint
 def load_base(chat_id):
     with open('credits_base.json', 'r', encoding='utf-8') as file:
         base = json.load(file)
-        return base[chat_id]
+        return base[str(chat_id)]
+
+
+def load_full_base():
+    with open('credits_base.json', 'r', encoding='utf-8') as file:
+        full_base = json.load(file)
+        return full_base
 
 
 def save_base(base, chat_id):
-    full_base = open('credits_base.json', 'r', encoding='utf-8')
-    full_base[chat_id] = base
+    full_base = json.load(open('credits_base.json', 'r', encoding='utf-8'))
+    full_base[str(chat_id)] = base
+    with open('credits_base.json', 'w', encoding='utf-8') as file:
+        json.dump(full_base, file, indent=4, ensure_ascii=False)
+        file.close()
+
+
+def save_full_base(full_base):
     with open('credits_base.json', 'w', encoding='utf-8') as file:
         json.dump(full_base, file, indent=4, ensure_ascii=False)
         file.close()

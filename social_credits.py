@@ -1,6 +1,6 @@
 import json
 from random import randint
-from system import convert_time, load_base, save_base
+from system import convert_time, load_base, save_base, load_full_base, save_full_base
 
 
 with open("items.json", "r", encoding="utf-8") as file:
@@ -52,6 +52,11 @@ def new_id(user: dict):
 
 
 def check_user(user: dict):
+    full_base = load_full_base()
+    if user['chat_id'] not in full_base:
+        full_base[user['chat_id']] = {}
+        save_full_base(full_base)
+
     base = load_base(user['chat_id'])
     if user['id'] not in base and user['id'] != "7179420529":
         new_id(user)
