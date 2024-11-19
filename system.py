@@ -30,9 +30,8 @@ def save_full_base(full_base):
 def convert_time(datetime):
     return time.strftime('%H:%M:%S %d.%m.%Y', time.localtime(datetime))
 
-def get_message_data(data):
+def get_message_data(data, chat_id):
     id = str(data.from_user.id)
-    chat_id = data.chat.id
     username = data.from_user.username
     name = data.from_user.first_name
     if username == None:

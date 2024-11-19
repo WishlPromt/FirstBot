@@ -53,8 +53,8 @@ def new_id(user: dict):
 
 def check_user(user: dict):
     full_base = load_full_base()
-    if user['chat_id'] not in full_base:
-        full_base[user['chat_id']] = {}
+    if str(user['chat_id']) not in full_base:
+        full_base[str(user['chat_id'])] = {}
         save_full_base(full_base)
 
     base = load_base(user['chat_id'])

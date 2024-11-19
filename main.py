@@ -205,13 +205,13 @@ def get_chat(message):
 def callback(callback):
 
     if callback.data in items.keys():
-        buy_status = buy(callback.data, get_message_data(callback))
+        buy_status = buy(callback.data, get_message_data(callback, callback.message.chat.id))
         bot.send_message(callback.message.chat.id, buy_status, parse_mode='html')
 
     if callback.data.find('>>') != -1:
-        next = next_page(int(callback.data[2]), get_max_pages(get_message_data(callback)))
+        next = next_page(int(callback.data[2]), get_max_pages(get_message_data(callback, callback.message.chat.id)))
 
-        markup = create_shop(next, get_message_data(callback))
+        markup = create_shop(next, get_message_data(callback, callback.message.chat.id))
 
         bot.edit_message_text(chat_id=callback.message.chat.id,
                               message_id=callback.message.id,
@@ -219,9 +219,9 @@ def callback(callback):
                               reply_markup=markup)
 
     elif callback.data.find('<<') != -1:
-        back = back_page(int(callback.data[2]), get_max_pages(get_message_data(callback)))
+        back = back_page(int(callback.data[2]), get_max_pages(get_message_data(callback, callback.message.chat.id)))
 
-        markup = create_shop(back, get_message_data(callback))
+        markup = create_shop(back, get_message_data(callback, callback.message.chat.id))
 
         bot.edit_message_text(chat_id=callback.message.chat.id,
                               message_id=callback.message.id,
@@ -230,7 +230,7 @@ def callback(callback):
 
     if callback.data.find('equip.') != -1:
         item = callback.data[callback.data.find('.')+1:]
-        user = get_message_data(callback)
+        user = get_message_data(callback, callback.message.chat.id)
 
         equip_status = equip(user, item)
         print(equip_status)
@@ -256,7 +256,7 @@ def callback(callback):
 
     if callback.data in ['open Пак карточек', 'open Коробка карточек', 'open Anime pack', 'open Motivation pack']:
         message = callback.message.reply_to_message
-        user = get_message_data(message)
+        user = get_message_data(message, callback.message.chat.id)
         item = callback.data[callback.data.find(' ')+1:]
 
         if str(callback.from_user.id) == user['id']:
@@ -285,14 +285,14 @@ def callback(callback):
                                                parse_mode='html')
 
                 else:
-                    bot.reply_to(message, f'{get_message_data(message)["username"]}, вы не получили ни одной карточки')
+                    bot.reply_to(message, f'{get_message_data(message, callback.message.chat.id)["username"]}, вы не получили ни одной карточки')
 
             else:
-                bot.reply_to(message, f'{get_message_data(message)["username"]}, у тебя нет паков, купи в /shop')
+                bot.reply_to(message, f'{get_message_data(message, callback.message.chat.id)["username"]}, у тебя нет паков, купи в /shop')
 
 
     if callback.data == 'next card':
-        opener = get_message_data(callback.message.reply_to_message)
+        opener = get_message_data(callback.message.reply_to_message, callback.message.chat.id)
 
         next_back_card(opener, 'next')
 
@@ -318,7 +318,7 @@ def callback(callback):
 
 
     elif callback.data == 'back card':
-        opener = get_message_data(callback.message.reply_to_message)
+        opener = get_message_data(callback.message.reply_to_message, callback.message.chat.id)
 
         next_back_card(opener, 'back')
 
@@ -345,20 +345,20 @@ def callback(callback):
     elif callback.data == 'equip card':
         opener = callback.message.reply_to_message.from_user.id
         text = callback.message.caption
-        user = get_message_data(callback)
+        user = get_message_data(callback, callback.message.chat.id)
 
         if callback.from_user.id == opener:
 
-            equip_card(get_message_data(callback.message.reply_to_message), get_cur_card(user))
+            equip_card(get_message_data(callback.message.reply_to_message, callback.message.chat.id), get_cur_card(user))
             bot.send_message(callback.message.chat.id, f'{user["username"]}, теперь карточка {text[text.find("#")+1:text.find(".")]} отбражается у вас в /profile')
 
     elif callback.data == 'sell':
         opener = callback.message.reply_to_message.from_user.id
-        user = get_message_data(callback)
+        user = get_message_data(callback, callback.message.chat.id)
 
         if callback.from_user.id == opener:
 
-            sell = sell_card(get_message_data(callback.message.reply_to_message))
+            sell = sell_card(get_message_data(callback.message.reply_to_message, callback.message.chat.id))
 
             if sell:
                 bot.edit_message_caption(chat_id=callback.message.chat.id,
@@ -376,9 +376,9 @@ def callback(callback):
 
         if callback.from_user.id == opener:
 
-            next_back_card(get_message_data(callback), 'next')
+            next_back_card(get_message_data(callback, callback.message.chat.id), 'next')
 
-            card = show_cards(get_message_data(callback))
+            card = show_cards(get_message_data(callback, callback.message.chat.id))
 
             with open(f'cards/{card}', 'rb') as image_card:
                 if card[card.find('.')+1:] != 'gif':
@@ -392,7 +392,7 @@ def callback(callback):
 
                 bot.edit_message_caption(chat_id=callback.message.chat.id,
                                          message_id=callback.message.id,
-                                         caption=f'Карточка {get_message_data(callback)["username"]}\n{get_card_info(card, get_message_data(callback))}',
+                                         caption=f'Карточка {get_message_data(callback, callback.message.chat.id)["username"]}\n{get_card_info(card, get_message_data(callback, callback.message.chat.id))}',
                                          reply_markup=create_markup(),
                                          parse_mode='html')
 
@@ -403,9 +403,9 @@ def callback(callback):
 
         if callback.from_user.id == opener:
 
-            next_back_card(get_message_data(callback), 'back')
+            next_back_card(get_message_data(callback, callback.message.chat.id), 'back')
 
-            card = show_cards(get_message_data(callback))
+            card = show_cards(get_message_data(callback, callback.message.chat.id))
 
             with open(f'cards/{card}', 'rb') as image_card:
                 if card[card.find('.'):] != 'gif':
@@ -419,7 +419,7 @@ def callback(callback):
 
                 bot.edit_message_caption(chat_id=callback.message.chat.id,
                                          message_id=callback.message.id,
-                                         caption=f'{get_message_data(callback)["username"]}, вы получили {get_card_info(card, get_message_data(callback))}',
+                                         caption=f'{get_message_data(callback, callback.message.chat.id)["username"]}, вы получили {get_card_info(card, get_message_data(callback, callback.message.chat.id))}',
                                          reply_markup=create_markup(),
                                          parse_mode='html')
 
@@ -429,11 +429,11 @@ def callback(callback):
 def profile(message):
 
     if not message.reply_to_message:
-        profile = show_profile(get_message_data(message))
+        profile = show_profile(get_message_data(message, message.chat.id))
         message_id = message.id
 
     else:
-        profile = show_profile(get_message_data(message.reply_to_message))
+        profile = show_profile(get_message_data(message.reply_to_message, message.chat.id))
         message_id = message.reply_to_message.message_id
 
     try:
@@ -457,13 +457,13 @@ def profile(message):
 
 @bot.message_handler(commands=['work'])
 def work_credit(message):
-    user = get_message_data(message)
+    user = get_message_data(message, message.chat.id)
     bot.reply_to(message, f'<b>{user["username"]}</b>, {work(user)}', parse_mode='html')
 
 
 @bot.message_handler(commands=['collect'])
 def command_collect(message):
-    user = get_message_data(message)
+    user = get_message_data(message, message.chat.id)
 
     collects = collect(user)
 
@@ -477,18 +477,18 @@ def show_dashboard(message):
 
 @bot.message_handler(commands=['balance'])
 def send_balance(message):
-    bot.reply_to(message, balance(get_message_data(message)), parse_mode='html')
+    bot.reply_to(message, balance(get_message_data(message, message.chat.id)), parse_mode='html')
 
 
 @bot.message_handler(commands=['inventory'])
 def send_inventory(message):
-    inventory = show_inventory(get_message_data(message))
+    inventory = show_inventory(get_message_data(message, message.chat.id))
     bot.reply_to(message, inventory + '\n Чтобы отобразить роль/предмет в профиле - /equip\n /open_pack - открыть пак карточек\n /show_cards - коллекционные карточки', parse_mode='html')
 
 
 @bot.message_handler(commands=['open_pack'])
 def open_cards_pack(message):
-    user = get_message_data(message)
+    user = get_message_data(message, message.chat.id)
 
     packs = []
     for i in ['Пак карточек', 'Коробка карточек', 'Anime pack', 'Motivation pack']:
@@ -519,16 +519,16 @@ def open_cards_pack(message):
 
 @bot.message_handler(commands=['shop'])
 def shop(message, page=1):
-    check_user(get_message_data(message))
+    check_user(get_message_data(message, message.chat.id))
 
-    markup = create_shop(page, get_message_data(message))
+    markup = create_shop(page, get_message_data(message, message.chat.id))
 
     bot.reply_to(message, 'Магазин бота', reply_markup=markup)
 
 
 @bot.message_handler(commands=['show_cards'])
 def show_cards_user(message):
-    user = get_message_data(message)
+    user = get_message_data(message, message.chat.id)
 
     reset_cards(user)
 
@@ -626,7 +626,7 @@ def use_item(message):
 
 @bot.message_handler(commands=['equip'])
 def equip_item(message):
-    user = get_message_data(message)
+    user = get_message_data(message, message.chat.id)
     inventory = get_inventory(user)
 
     markup = types.InlineKeyboardMarkup()
@@ -640,9 +640,9 @@ def equip_item(message):
 
 @bot.message_handler(commands=['fisting'])
 def fisting(message):
-    master = get_message_data(message)['username']
+    master = get_message_data(message, message.chat.id)['username']
     if message.reply_to_message:
-        slave = get_message_data(message.reply_to_message)['username']
+        slave = get_message_data(message.reply_to_message, message.chat.id)['username']
     else:
         slave = 'Воздух'
     text = choice([f'{master} сделал фистинг {slave}',
@@ -721,7 +721,7 @@ def start_game(message):
                 time.sleep(2)
 
                 bot.send_message(message.chat.id, f'{players[0]["username"]} - Победитель! Он получает 100 кредитов!')
-                add_credits(get_message_data(message), 100)
+                add_credits(get_message_data(message, message.chat.id), 100)
 
             else:
                 bot.send_message(message.chat.id, 'НИЧЬЯ!')

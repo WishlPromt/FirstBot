@@ -12,7 +12,7 @@ def load_items_base():
 
 def show_inventory(user):
     check_user(user)
-    base = load_base()
+    base = load_base(user['chat_id'])
     items_base = load_items_base()
 
     id = user['id']
@@ -38,12 +38,11 @@ def show_inventory(user):
 
 def get_inventory(user):
     check_user(user)
-    base = load_base()
+    base = load_base(user['chat_id'])
     return base[user['id']]['inventory']
 
 
 def create_cards_markup():
-    base = load_base()
 
     markup = types.InlineKeyboardMarkup()
 
@@ -64,7 +63,7 @@ def get_cards(user):
     check_user(user)
 
     id = user['id']
-    base = load_base()
+    base = load_base(user['chat_id'])
 
     cards = base[id]['cards']
 
@@ -86,7 +85,7 @@ def get_cards(user):
                 base[id]['new_cards'].append('secret/' + card)
 
 
-    save_base(base)
+    save_base(base, user['chat_id'])
 
 
 def show_card_inventory(card):
@@ -109,9 +108,9 @@ def show_card_inventory(card):
 def reset_cards(user):
     check_user(user)
     id = user['id']
-    base = load_base()
+    base = load_base(user['chat_id'])
 
     base[id]['new_cards'] = []
     base[id]['cur_card'] = 0
 
-    save_base(base)
+    save_base(base, user['chat_id'])
