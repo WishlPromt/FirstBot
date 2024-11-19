@@ -643,6 +643,18 @@ def equip_item(message):
     bot.reply_to(message, 'Экипировка предметов и ролей', reply_markup=markup)
 
 
+@bot.message_handler(commands=['fisting'])
+def fisting(message):
+    master = get_message_data(message)['username']
+    if message.reply_to_message:
+        slave = get_message_data(message.reply_to_message)['username']
+    else:
+        slave = 'Воздух'
+    text = choice([f'{master} сделал фистинг {slave}',
+                  f'{slave} был пронзен мечом {master}',
+                  f'{master} посвятил {slave} в Dungeon Master\'ы'])
+    bot.send_message(message.chat.id, text)
+
 
 #GAMES
 @bot.message_handler(commands=[])

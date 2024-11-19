@@ -1,10 +1,19 @@
 import time, json
 from random import randint
 
-def load_base():
+def load_base(chat_id):
     with open('credits_base.json', 'r', encoding='utf-8') as file:
         base = json.load(file)
-        return base
+        return base[chat_id]
+
+
+def save_base(base, chat_id):
+    full_base = open('credits_base.json', 'r', encoding='utf-8')
+    full_base[chat_id] = base
+    with open('credits_base.json', 'w', encoding='utf-8') as file:
+        json.dump(full_base, file, indent=4, ensure_ascii=False)
+        file.close()
+
 
 def convert_time(datetime):
     return time.strftime('%H:%M:%S %d.%m.%Y', time.localtime(datetime))
