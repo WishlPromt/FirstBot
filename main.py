@@ -550,8 +550,12 @@ def show_card(message):
     card = ''
     for dir in os.listdir('cards'):
         for c in os.listdir(f'cards/{dir}'):
-            if message.text[1:] == c[0:c.find('.')]:
-                card = f'{dir}/{c}'
+            if message.text.find('@'):
+                if message.text[1:message.text.find('@')] == c[0:c.find('.')]:
+                    card = f'{dir}/{c}'
+            else:
+                if message.text[1:] == c[0:c.find('.')]:
+                    card = f'{dir}/{c}'
 
     if not card:
         bot.reply_to(message, 'Карта не найдена')

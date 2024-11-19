@@ -98,6 +98,8 @@ def work(user: dict):
         lock = 7200
         if 'Липовый модератор' in base[id]['inventory']:
             lock -= int(lock / 100 * 25)
+
+        base = load_base()
         base[id]['time'] = datetime + lock
 
         save_base(base)
@@ -140,6 +142,7 @@ def collect(user: dict):
         lock = 28800
         if 'Липовый модератор' in base[id]['inventory']:
             lock -= int(lock / 100 * 25)
+        base = load_base()
         base[id]['collect_time'] = datetime + lock
         save_base(base)
 
@@ -202,5 +205,5 @@ def dashboard():
 
         return board
 
-    return 'Дэшборд пуст'
+    return 'Дашборд пуст'
 
