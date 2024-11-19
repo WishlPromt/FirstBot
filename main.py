@@ -487,7 +487,7 @@ def send_balance(message):
 @bot.message_handler(commands=['inventory'])
 def send_inventory(message):
     inventory = show_inventory(get_message_data(message))
-    bot.reply_to(message, inventory + '\n Чтобы отобразить роль/предмет в профиле - /equip_items\n /open_pack - открыть пак карточек\n /show_cards - коллекционные карточки', parse_mode='html')
+    bot.reply_to(message, inventory + '\n Чтобы отобразить роль/предмет в профиле - /equip\n /open_pack - открыть пак карточек\n /show_cards - коллекционные карточки', parse_mode='html')
 
 
 @bot.message_handler(commands=['open_pack'])
