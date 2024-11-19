@@ -264,7 +264,7 @@ def callback(callback):
         user = get_message_data(message)
         item = callback.data[callback.data.find(' ')+1:]
 
-        if callback.from_user.id == user['id']:
+        if str(callback.from_user.id) == user['id']:
             if get_packs(user, item):
                 bot.reply_to(message, f'{user["username"]} открывает {item}')
                 cards = open_pack(user, item)
