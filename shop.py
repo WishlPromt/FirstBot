@@ -1,6 +1,7 @@
 import json
 from telebot import types
 from social_credits import check_user
+from system import load_base, save_base
 
 
 #DATABASES
@@ -10,31 +11,20 @@ with open('items.json', 'r', encoding='utf-8') as file:
 
 packs_items = ['Пак карточек', 'Коробка карточек', 'Anime pack', 'Motivation pack']
 
-def load_base():
-    with open('credits_base.json', 'r', encoding='utf-8') as file:
-        credits = json.load(file)
-        return credits
-
-
-def save_base(base):
-    file = open('credits_base.json', 'w', encoding='utf-8')
-    json.dump(base, file, indent=4, ensure_ascii=False)
-    file.close()
-
 
 def get_max_pages(user):
     check_user(user)
-    base = load_base()
+    base = load_base(user['chat_id'])
 
     return base[user['id']]['max_pages']
 
 
 def create_shop(page, user):
-    base = load_base()
+    base = load_base(user['chat_id'])
     get = get_items(page, user)
     items = get[0]
     base[user['id']]['max_pages'] = get[1]
-    save_base(base)
+    save_base(base, user['chat_id'])
 
     names = []
     for name in items:
@@ -81,7 +71,7 @@ def buy(item, buyer):
 
     check_user(buyer)
 
-    base = load_base()
+    base = load_base(buyer['chat_id'])
 
     inventory = base[buyer['id']]['inventory']
     username = base[buyer['id']]['username']
@@ -99,7 +89,7 @@ def buy(item, buyer):
             base[buyer['id']]['inventory'] = inventory
             base[buyer['id']]['credits'] = base[buyer['id']]['credits'] - price
 
-            save_base(base)
+            save_base(base, buyer['chat_id'])
 
             return f'<b>{username}</b>, вы купили <b>{item}</b>!\n{items[item][1]}'
 
@@ -114,7 +104,7 @@ def buy(item, buyer):
             base[buyer['id']]['inventory'] = inventory
             base[buyer['id']]['credits'] = base[buyer['id']]['credits'] - price
 
-            save_base(base)
+            save_base(base, buyer['chat_id'])
 
             return f'<b>{username}</b>, вы купили <b>{item}</b>.\n{items[item][1]}'
 
@@ -127,7 +117,7 @@ def buy(item, buyer):
             base[buyer['id']]['cards_packs'][item] += 1
             base[buyer['id']]['credits'] = base[buyer['id']]['credits'] - price
 
-            save_base(base)
+            save_base(base, buyer['chat_id'])
 
             return f'<b>{username}</b>, вы купили <b>{item}</b>.\n Теперь их у вас <b>{base[buyer["id"]]["cards_packs"][item]}</b>\n{items[item][1]}'
 
@@ -152,7 +142,7 @@ def back_page(cur_page, max_pages):
 
 
 def get_items(page, user):
-    base = load_base()
+    base = load_base(user['chat_id'])
     items_on_page = {}
     list_items = list(items.keys())
     id = user['id']

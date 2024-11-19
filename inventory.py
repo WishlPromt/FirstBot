@@ -1,24 +1,13 @@
 import json
 from social_credits import check_user
 from telebot import types
-
-
-def load_base():
-    with open('credits_base.json', 'r', encoding='utf-8') as file:
-        base = json.load(file)
-        return base
+from system import load_base, save_base
 
 
 def load_items_base():
     with open('items.json', 'r', encoding='utf-8') as file:
         items_base = json.load(file)
         return items_base
-
-
-def save_base(base):
-    file = open('credits_base.json', 'w', encoding='utf-8')
-    json.dump(base, file, indent=4, ensure_ascii=False)
-    file.close()
 
 
 def show_inventory(user):

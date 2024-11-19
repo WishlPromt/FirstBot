@@ -20,6 +20,7 @@ def convert_time(datetime):
 
 def get_message_data(data):
     id = str(data.from_user.id)
+    chat_id = data.chat.id
     username = data.from_user.username
     name = data.from_user.first_name
     if username == None:
@@ -30,6 +31,7 @@ def get_message_data(data):
         datetime = 0
 
     return {'id': id,
+            'chat_id': chat_id,
             'username': username,
             'datetime': datetime,
             'name': name}

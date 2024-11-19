@@ -7,7 +7,7 @@ from shop import buy, next_page, back_page, create_shop, get_max_pages
 from inventory import show_inventory, create_cards_markup, get_cards, reset_cards, get_inventory
 from system import get_message_data, generate_id
 from cards_open import open_pack, show_cards, next_back_card, create_markup, get_packs, get_card_info, sell_card, create_simple_markup, get_cur_card, create_markup_photo
-from profile import show_profile, equip, show_items, equip_card
+from profile import show_profile, equip, equip_card
 
 
 #JSON
@@ -17,11 +17,6 @@ with open('base.json', 'r', encoding='utf-8') as file:
 
 with open('items.json', 'r', encoding='utf-8') as file:
     items = json.load(file)
-
-def save_base():
-    file = open('base.json', 'w', encoding='utf-8')
-    json.dump(data, file, indent=4, ensure_ascii=False)
-    file.close()
 
 
 #VARIABLES
@@ -477,7 +472,7 @@ def command_collect(message):
 
 @bot.message_handler(commands=['dashboard'])
 def show_dashboard(message):
-    bot.send_message(message.chat.id, dashboard(), parse_mode='html')
+    bot.send_message(message.chat.id, dashboard(message.chat.id), parse_mode='html')
 
 
 @bot.message_handler(commands=['balance'])

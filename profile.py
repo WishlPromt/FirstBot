@@ -1,27 +1,17 @@
 import json
-
+from system import load_base, save_base
 from social_credits import check_user
-
-def load_base():
-    with open('credits_base.json', 'r', encoding='utf-8') as file:
-        base = json.load(file)
-        return base
 
 def load_items():
     with open('items.json', 'r', encoding='utf-8') as file:
         items = json.load(file)
         return items
 
-def save_base(base):
-    file = open('credits_base.json', 'w', encoding='utf-8')
-    json.dump(base, file, indent=4, ensure_ascii=False)
-    file.close()
-
 
 def show_profile(user):
     check_user(user)
     id = user['id']
-    base = load_base()
+    base = load_base(user['chat_id'])
 
     username = base[id]['username']
     credits = base[id]['credits']
@@ -41,18 +31,18 @@ def equip(user, item):
     check_user(user)
     id = user['id']
     items = load_items()
-    base = load_base()
+    base = load_base(user['chat_id'])
 
     if item in base[id]['inventory']:
 
         if items[item][2] == 'Предмет':
             base[id]['favorite_item'] = item
-            save_base(base)
+            save_base(base, user['chat_id'])
             return f'Теперь предмет <b>{item}</b> отображается у вас в /profile'
 
         elif items[item][2] == 'Роль':
             base[id]['role'] = item
-            save_base(base)
+            save_base(base, user['chat_id'])
             return f'Теперь роль <b>{item}</b> отображается у вас в /profile'
 
         return 'Ошибка. Иди нахуй'
@@ -64,16 +54,16 @@ def equip(user, item):
 def equip_card(user, card):
     check_user(user)
     id = user['id']
-    base = load_base()
+    base = load_base(user['chat_id'])
 
     base[id]['favorite_card'] = card
 
-    save_base(base)
+    save_base(base, user['chat_id'])
 
 
 def show_items(user):
     check_user(user)
     id = user['id']
-    base = load_base()
+    base = load_base(user['chat_id'])
 
     return base[id]['inventory']

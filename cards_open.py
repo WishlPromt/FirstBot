@@ -1,20 +1,8 @@
-import json
+from system import load_base, save_base
 import os
 import random
 from telebot import types
 from social_credits import check_user
-
-
-def load_base():
-    with open('credits_base.json', 'r', encoding='utf-8') as file:
-        base = json.load(file)
-        return base
-
-
-def save_base(base):
-    file = open('credits_base.json', 'w', encoding='utf-8')
-    json.dump(base, file, indent=4, ensure_ascii=False)
-    file.close()
 
 
 def add_credits(user: dict, credits, base):
@@ -22,7 +10,7 @@ def add_credits(user: dict, credits, base):
 
     id = user['id']
     base[id]['credits'] = base[id]['credits'] + credits
-    save_base(base)
+    save_base(base, user['chat_id'])
 
 regular_cards = os.listdir('cards/regular')
 rare_cards = os.listdir('cards/rare')
@@ -53,7 +41,7 @@ def get_packs(user, pack):
     check_user(user)
     id = user['id']
 
-    base = load_base()
+    base = load_base(user['chat_id'])
 
     if base[id]['cards_packs'][pack] > 0:
         return base[id]['cards_packs'][pack]
@@ -62,7 +50,7 @@ def get_packs(user, pack):
 
 def get_card_info(card, user):
     check_user(user)
-    base = load_base()
+    base = load_base(user['chat_id'])
     id = user['id']
 
     rare: str
@@ -186,7 +174,7 @@ def open_pack(user, item):
     id = user['id']
     cards = []
 
-    base = load_base()
+    base = load_base(user['chat_id'])
 
     base[id]['new_cards'] = []
     base[id]['cur_card'] = 0
@@ -273,11 +261,11 @@ def open_pack(user, item):
                 base[id]['cards']['Секретные'].append(card)
 
     base[id]['new_cards'] = cards
-    save_base(base)
+    save_base(base, user['chat_id'])
 
     if cards:
         base[id]['cards_packs'][item] -= 1
-        save_base(base)
+        save_base(base, user['chat_id'])
         return cards
 
     else:
@@ -289,7 +277,7 @@ def show_cards(user):
 
     id = user['id']
 
-    base = load_base()
+    base = load_base(user['chat_id'])
     cur_card = base[id]['cur_card']
 
     if cur_card <= len(base[id]["new_cards"]) - 1:
@@ -300,7 +288,7 @@ def show_cards(user):
 
 
 def get_cur_card(user):
-    base = load_base()
+    base = load_base(user['chat_id'])
 
     return base[user['id']]['new_cards'][base[user['id']]['cur_card']]
 
@@ -327,7 +315,7 @@ def sell_card(user):
     check_user(user)
 
     id = user['id']
-    base = load_base()
+    base = load_base(user['chat_id'])
     cur_card = base[id]['new_cards'][base[id]['cur_card']]
     rare = cur_card[0:cur_card.find('/')]
     name = cur_card[cur_card.find('/')+1:]
@@ -371,32 +359,32 @@ def next_back_card(user, action):
     check_user(user)
 
     id = user['id']
-    base = load_base()
+    base = load_base(user['chat_id'])
 
     cur_card = base[id]['cur_card']
 
     if action == 'next':
         if cur_card < len(base[id]['new_cards']) - 1:
             base[id]['cur_card'] += 1
-            save_base(base)
+            save_base(base, user['chat_id'])
 
             return base[id]['cur_card']
 
         else:
             base[id]['cur_card'] = 0
-            save_base(base)
+            save_base(base, user['chat_id'])
 
             return base[id]['cur_card']
 
     if action == 'back':
         if cur_card > 0:
             base[id]['cur_card'] -= 1
-            save_base(base)
+            save_base(base, user['chat_id'])
 
             return base[id]['cur_card']
 
         else:
             base[id]['cur_card'] = len(base[id]['new_cards']) - 1
-            save_base(base)
+            save_base(base, user['chat_id'])
 
             return base[id]['cur_card']
