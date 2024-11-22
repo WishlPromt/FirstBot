@@ -14,7 +14,7 @@ all_parameters = {'credits': 0,
                   'favorite_item': '',
                   'role': '',
                   'favorite_card': '',
-                  'cards_packs': {'Пак карточек': 0, 'Коробка карточек': 0},
+                  'cards_packs': {'Пак карточек': 0, 'Коробка карточек': 0, "Anime pack": 0, "Motivation pack": 0},
                   'cards': {'Обычные': [], 'Редкие': [], 'Эпические': [], 'Легендарные': [], 'Секретные': []},
                   'new_cards': [],
                   'cur_card': 0,
@@ -32,7 +32,9 @@ def new_id(user: dict):
                         'inventory': [],
                         'cards_packs': {
                             'Пак карточек': 0,
-                            'Коробка карточек': 0
+                            'Коробка карточек': 0,
+                            "Anime pack": 0,
+                            "Motivation pack": 0
                         },
                         "favorite_item": "Нет предмета",
                         "role": "Нет роли",

@@ -8,6 +8,7 @@ from inventory import show_inventory, create_cards_markup, get_cards, reset_card
 from system import get_message_data, generate_id
 from cards_open import open_pack, show_cards, next_back_card, create_markup, get_packs, get_card_info, sell_card, create_simple_markup, get_cur_card, create_markup_photo
 from profile import show_profile, equip, equip_card
+import items_using
 
 
 #JSON
@@ -107,7 +108,7 @@ def collect_help(message):
                           '<b>Любитель аниме-тянок</b> - <b>10</b> - <i>Добавляет 25% карточек в паки</i>\n'
                           '<b>Motivated</b> - <b>10</b> - <i>Увеличивает стоимость продажи карт на 50%</i>\n'
                           '<b>Палка-уебалка</b> - <b>45</b>\n'
-                          '<b>Липовый модератор</b> - <b>100</b> - <i>Уменьшает время между использованием /work и /collect на 50%</i>\n'
+                          '<b>Липовый модератор</b> - <b>100</b> - <i>Уменьшает время между использованием /work и /collect на 25%</i>\n'
                           '<b>Boss of the gym</b> - <b>150</b> - <i>/work дает на 50% кредитов больше</i>\n', parse_mode='html')
 
 
@@ -149,22 +150,29 @@ def mute(message):
                 bot.reply_to(message, "Невозможно замутить администратора.")
             else:
                 duration = 60  # Значение по умолчанию - 1 минута
+                cause = ''
                 args = message.text.split()[1:]
                 if args:
                     try:
                         duration = int(args[0])
+                        for arg in args[1:]:
+                            cause += arg + ' '
                     except ValueError:
                         bot.reply_to(message, "Неправильный формат времени.")
                         return
                     if duration < 1:
                         bot.reply_to(message, "Время должно быть положительным числом.")
                         return
-                    if duration > 1440:
-                        bot.reply_to(message, "Максимальное время - 1 день.")
+                    if duration > 604800:
+                        bot.reply_to(message, "Максимальное время - 1 неделя.")
                         return
-                bot.restrict_chat_member(chat_id, user_id, until_date=time.time() + duration * 60)
-                bot.reply_to(message,
-                             f"Пользователь {message.reply_to_message.from_user.username} замучен на {duration} минут.")
+                if cause:
+                    bot.restrict_chat_member(chat_id, user_id, until_date=time.time() + duration * 60)
+                    bot.reply_to(message.reply_to_message,
+                                 f"Пользователь {message.reply_to_message.from_user.username} замучен на {duration} минут.\n"
+                                 f"Причина: {cause}")
+                else:
+                    bot.reply_to(message, 'Без причины мут не дам')
         else:
             bot.reply_to(message,
                          "Эта команда должна быть использована в ответ на сообщение пользователя, которого вы хотите замутить.")
@@ -561,7 +569,7 @@ def show_card(message):
     card = ''
     for dir in os.listdir('cards'):
         for c in os.listdir(f'cards/{dir}'):
-            if message.text.find('@'):
+            if message.text.find('@') != -1:
                 if message.text[1:message.text.find('@')] == c[0:c.find('.')]:
                     card = f'{dir}/{c}'
             else:
@@ -640,15 +648,18 @@ def equip_item(message):
 
 @bot.message_handler(commands=['fisting'])
 def fisting(message):
-    master = get_message_data(message, message.chat.id)['username']
-    if message.reply_to_message:
-        slave = get_message_data(message.reply_to_message, message.chat.id)['username']
+    if items_using.get_master(get_message_data(message, message.chat.id)):
+        master = get_message_data(message, message.chat.id)['username']
+        if message.reply_to_message:
+            slave = get_message_data(message.reply_to_message, message.chat.id)['username']
+        else:
+            slave = 'Воздух'
+        text = choice([f'{master} сделал фистинг {slave}',
+                      f'{slave} был пронзен мечом {master}',
+                      f'{master} посвятил {slave} в Dungeon Master\'ы'])
+        bot.send_message(message.chat.id, text)
     else:
-        slave = 'Воздух'
-    text = choice([f'{master} сделал фистинг {slave}',
-                  f'{slave} был пронзен мечом {master}',
-                  f'{master} посвятил {slave} в Dungeon Master\'ы'])
-    bot.send_message(message.chat.id, text)
+        bot.reply_to(message, 'Ты не master, поэтому недостоин это делать')
 
 
 #GAMES
@@ -812,6 +823,14 @@ def chat(message):
 
         if answer != '':
             bot.reply_to(message, answer)
+
+
+@bot.message_handler(content_types=['new_chat_members'])
+def new_member(message):
+    greetings = [f'Welcome to the club, buddy!',
+                 f'Приветствуем в этом чате! Мы тебя забулим, не против?',
+                 f'Дарова!']
+    bot.reply_to(message, choice(greetings))
 
 
 if __name__ == '__main__':

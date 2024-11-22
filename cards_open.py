@@ -302,9 +302,9 @@ def get_price(rare, id, base):
     elif rare == 'epic':
         price = 15
     elif rare == 'legendary':
-        price = 200
+        price = 100
     elif rare == 'secret':
-        price = 500
+        price = 400
 
     if 'Motivated' in base[id]['inventory']:
         price += int(price / 100 * 50)
@@ -345,7 +345,7 @@ def sell_card(user):
         add_credits(user, price, base)
 
     elif rare == 'secret':
-        price = 500
+        price = get_price(rare, id, base)
         base[id]['cards']['Секретные'].remove(name)
         base[id]['new_cards'].remove(cur_card)
         add_credits(user, price, base)
