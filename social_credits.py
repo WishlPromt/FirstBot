@@ -14,11 +14,12 @@ all_parameters = {'credits': 0,
                   'favorite_item': '',
                   'role': '',
                   'favorite_card': '',
-                  'cards_packs': {'Пак карточек': 0, 'Коробка карточек': 0, "Anime pack": 0, "Motivation pack": 0},
+                  'cards_packs': {'Пак карточек': 0, 'Коробка карточек': 0, "Anime pack": 0, "Motivation pack": 0, "Dungeon pack": 0},
                   'cards': {'Обычные': [], 'Редкие': [], 'Эпические': [], 'Легендарные': [], 'Секретные': []},
                   'new_cards': [],
                   'cur_card': 0,
-                  'max_pages': 1}
+                  'max_pages': 1,
+                  'selled_cards': []}
 
 
 def new_id(user: dict):
@@ -34,7 +35,8 @@ def new_id(user: dict):
                             'Пак карточек': 0,
                             'Коробка карточек': 0,
                             "Anime pack": 0,
-                            "Motivation pack": 0
+                            "Motivation pack": 0,
+                            "Dungeon pack": 0
                         },
                         "favorite_item": "Нет предмета",
                         "role": "Нет роли",
@@ -48,7 +50,8 @@ def new_id(user: dict):
                         },
                         'new_cards': [],
                         'cur_card': 0,
-                        'max_pages': 1
+                        'max_pages': 1,
+                        'selled_cards': []
                         }
     save_base(base, user['chat_id'])
 

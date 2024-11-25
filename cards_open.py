@@ -43,6 +43,9 @@ def get_packs(user, pack):
 
     base = load_base(user['chat_id'])
 
+    if pack not in base[id]['cards_packs']:
+        base[id]['cards_packs'][pack] = 0
+
     if base[id]['cards_packs'][pack] > 0:
         return base[id]['cards_packs'][pack]
     return False
@@ -78,6 +81,9 @@ def get_card_info(card, user):
 
     else:
         rare = '???'
+
+    if base[id]['cur_card'] in base[id]['selled_cards']:
+        return f'{count}\n Карточка <i>{name}</i> продана.\n\n <b>{rare}</b>'
 
     return f'{count}\n <i>{name}</i>.\n\n <b>{rare}</b>'
 
@@ -165,6 +171,11 @@ def get_secret_card(pack):
             if c[0:c.find('_')] == 'ap':
                 cards.append(c)
 
+    elif pack == 'Dungeon pack':
+        for c in secret_cards:
+            if c[0:c.find('_')] == 'dp':
+                cards.append(c)
+
     return cards
 
 
@@ -178,6 +189,7 @@ def open_pack(user, item):
 
     base[id]['new_cards'] = []
     base[id]['cur_card'] = 0
+    base[id]['selled_cards'] = []
 
     min_cards = [5, 150, 12]
     max_cards = [7, 200, 12]
@@ -237,7 +249,7 @@ def open_pack(user, item):
                 cards.append(f'legendary/{card}')
                 base[id]['cards']['Легендарные'].append(card)
 
-    elif item == 'Anime pack' or item == 'Motivation pack' and base[id]['cards_packs'][item] > 0:
+    elif item == 'Anime pack' or item == 'Motivation pack' or item == 'Dungeon pack' and base[id]['cards_packs'][item] > 0:
         for c in range(random.randint(min_cards[2], max_cards[2])):
             rare = get_special_rare()
             if rare == 'rare':
@@ -256,7 +268,7 @@ def open_pack(user, item):
                 base[id]['cards']['Легендарные'].append(card)
 
             elif rare == 'secret':
-                card = get_secret_card(item)
+                card = random.choice(get_secret_card(item))
                 cards.append(f'secret/{card}')
                 base[id]['cards']['Секретные'].append(card)
 
@@ -323,31 +335,31 @@ def sell_card(user):
     if rare == 'regular':
         price = get_price(rare, id, base)
         base[id]['cards']['Обычные'].remove(name)
-        base[id]['new_cards'].remove(cur_card)
+        base[id]['selled_cards'].append(base[id]['cur_card'])
         add_credits(user, price, base)
 
     elif rare == 'rare':
         price = get_price(rare, id, base)
         base[id]['cards']['Редкие'].remove(name)
-        base[id]['new_cards'].remove(cur_card)
+        base[id]['selled_cards'].append(base[id]['cur_card'])
         add_credits(user, price, base)
 
     elif rare == 'epic':
         price = get_price(rare, id, base)
         base[id]['cards']['Эпические'].remove(name)
-        base[id]['new_cards'].remove(cur_card)
+        base[id]['selled_cards'].append(base[id]['cur_card'])
         add_credits(user, price, base)
 
     elif rare == 'legendary':
         price = get_price(rare, id, base)
         base[id]['cards']['Легендарные'].remove(name)
-        base[id]['new_cards'].remove(cur_card)
+        base[id]['selled_cards'].append(base[id]['cur_card'])
         add_credits(user, price, base)
 
     elif rare == 'secret':
         price = get_price(rare, id, base)
         base[id]['cards']['Секретные'].remove(name)
-        base[id]['new_cards'].remove(cur_card)
+        base[id]['selled_cards'].append(base[id]['cur_card'])
         add_credits(user, price, base)
 
     else:

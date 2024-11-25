@@ -9,7 +9,7 @@ with open('items.json', 'r', encoding='utf-8') as file:
     items = json.load(file)
 
 
-packs_items = ['Пак карточек', 'Коробка карточек', 'Anime pack', 'Motivation pack']
+packs_items = ['Пак карточек', 'Коробка карточек', 'Anime pack', 'Motivation pack', 'Dungeon pack']
 
 
 def get_max_pages(user):

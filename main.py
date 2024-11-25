@@ -1,4 +1,5 @@
 import telebot
+import requests
 from telebot import types
 from random import choice, randint
 import json, time, os
@@ -18,6 +19,12 @@ with open('base.json', 'r', encoding='utf-8') as file:
 
 with open('items.json', 'r', encoding='utf-8') as file:
     items = json.load(file)
+
+
+def load_chats_base():
+    with open('chats_base.json', 'r', encoding='utf-8') as file:
+        base = json.load(file)
+        return base
 
 
 #VARIABLES
@@ -184,14 +191,39 @@ def mute(message):
 @bot.message_handler(commands=['unmute'])
 def unmute(message):
     if message.reply_to_message:
-        chat_id = message.chat.id
-        user_id = message.reply_to_message.from_user.id
-        bot.restrict_chat_member(chat_id, user_id, can_send_messages=True, can_send_media_messages=True,
-                                 can_send_other_messages=True, can_add_web_page_previews=True)
-        bot.reply_to(message, f"Пользователь {message.reply_to_message.from_user.username} размучен.")
+        iterator_status = bot.get_chat_member(message.chat.id, message.from_user.id).status
+        if iterator_status == 'administrator' or iterator_status == 'creator':
+            chat_id = message.chat.id
+            user_id = message.reply_to_message.from_user.id
+            bot.restrict_chat_member(chat_id, user_id, can_send_messages=True, can_send_media_messages=True,
+                                     can_send_other_messages=True, can_add_web_page_previews=True)
+            bot.reply_to(message, f"Пользователь {message.reply_to_message.from_user.username} размучен.")
+        else:
+            bot.send_message(message, 'У тебя нет прав')
     else:
         bot.reply_to(message,
                      "Эта команда должна быть использована в ответ на сообщение пользователя, которого вы хотите размутить.")
+
+
+@bot.message_handler(commands=['ban'])
+def ban(message):
+    base = load_chats_base()
+
+    if message.reply_to_message:
+        iterator_status = bot.get_chat_member(message.chat.id, message.from_user.id).status
+        if iterator_status == 'administrator' or iterator_status == 'creator':
+            message = message.reply_to_message
+            id = str(message.from_user.id)
+            username = message.from_user.username
+            chat_id = str(message.chat.id)
+            if id not in base[chat_id]['ban_blacklist']:
+                bot.ban_chat_member(chat_id, int(id))
+                base[chat_id]['banned_users'][username] = id
+                bot.send_message(chat_id, f'Пользователь {username} забанен')
+            else:
+                bot.send_message(chat_id, f'Пользователя нельзя забанить')
+        else:
+            bot.send_message(message, 'У тебя нет прав')
 
 
 @bot.message_handler(commands=['nsfw'])
@@ -245,7 +277,6 @@ def callback(callback):
 
         bot.send_message(callback.message.chat.id, equip_status, parse_mode='html')
 
-
     if callback.data in ['regular', 'rare', 'epic', 'legendary']:
         from cards_open import add_new_card
         ids = os.listdir(f'cards/{callback.data}')
@@ -261,8 +292,7 @@ def callback(callback):
             add_new_card(id+'.jpg', callback.data)
         bot.reply_to(callback.message.reply_to_message, f'Карточка добавлена под id {id}.')
 
-
-    if callback.data in ['open Пак карточек', 'open Коробка карточек', 'open Anime pack', 'open Motivation pack']:
+    if callback.data in ['open Пак карточек', 'open Коробка карточек', 'open Anime pack', 'open Motivation pack', 'open Dungeon pack']:
         message = callback.message.reply_to_message
         user = get_message_data(message, callback.message.chat.id)
         item = callback.data[callback.data.find(' ')+1:]
@@ -298,7 +328,6 @@ def callback(callback):
             else:
                 bot.reply_to(message, f'{get_message_data(message, callback.message.chat.id)["username"]}, у тебя нет паков, купи в /shop')
 
-
     if callback.data == 'next card':
         opener = get_message_data(callback.message.reply_to_message, callback.message.chat.id)
 
@@ -323,7 +352,6 @@ def callback(callback):
                                              f'{get_card_info(card, opener)}',
                                      reply_markup=markup,
                                      parse_mode='html')
-
 
     elif callback.data == 'back card':
         opener = get_message_data(callback.message.reply_to_message, callback.message.chat.id)
@@ -376,8 +404,6 @@ def callback(callback):
                                          reply_markup=create_simple_markup(),
                                          parse_mode='html')
 
-
-
     if callback.data == 'new Следующая':
 
         opener = callback.message.reply_to_message.from_user.id
@@ -404,7 +430,6 @@ def callback(callback):
                                          reply_markup=create_markup(),
                                          parse_mode='html')
 
-
     elif callback.data == 'new Предыдущая':
 
         opener = callback.message.reply_to_message.from_user.id
@@ -416,7 +441,7 @@ def callback(callback):
             card = show_cards(get_message_data(callback, callback.message.chat.id))
 
             with open(f'cards/{card}', 'rb') as image_card:
-                if card[card.find('.'):] != 'gif':
+                if card[card.find('.')+1:] != 'gif':
                     bot.edit_message_media(chat_id=callback.message.chat.id,
                                            message_id=callback.message.id,
                                            media=types.InputMediaPhoto(image_card))
@@ -499,7 +524,7 @@ def open_cards_pack(message):
     user = get_message_data(message, message.chat.id)
 
     packs = []
-    for i in ['Пак карточек', 'Коробка карточек', 'Anime pack', 'Motivation pack']:
+    for i in ['Пак карточек', 'Коробка карточек', 'Anime pack', 'Motivation pack', 'Dungeon pack']:
         packs.append(get_packs(user, i))
 
     markup = types.InlineKeyboardMarkup()
@@ -508,6 +533,8 @@ def open_cards_pack(message):
     btn_box = types.InlineKeyboardButton(f'Коробка карточек - {packs[1]}', callback_data='open Коробка карточек')
     btn_anime_pack = types.InlineKeyboardButton(f'Anime pack - {packs[2]}', callback_data='open Anime pack')
     btn_motivation_pack = types.InlineKeyboardButton(f'Motivation pack - {packs[3]}', callback_data='open Motivation pack')
+    btn_dungeon_pack = types.InlineKeyboardButton(f'Dungeon pack - {packs[4]}',
+                                                     callback_data='open Dungeon pack')
 
     if packs[0]:
         markup.add(btn_pack)
@@ -517,6 +544,8 @@ def open_cards_pack(message):
         markup.add(btn_anime_pack)
     if packs[3]:
         markup.add(btn_motivation_pack)
+    if packs[4]:
+        markup.add(btn_dungeon_pack)
 
     if packs == [False, False, False, False]:
         bot.reply_to(message, 'У тебя нет паков, купи их в /shop')
@@ -648,7 +677,12 @@ def equip_item(message):
 
 @bot.message_handler(commands=['fisting'])
 def fisting(message):
-    if items_using.get_master(get_message_data(message, message.chat.id)):
+    get_master = False
+    for role in ['Dungeon master', 'Full master']:
+        if items_using.get_item(get_message_data(message, message.chat.id), role):
+            get_master = True
+
+    if get_master:
         master = get_message_data(message, message.chat.id)['username']
         if message.reply_to_message:
             slave = get_message_data(message.reply_to_message, message.chat.id)['username']
@@ -660,6 +694,16 @@ def fisting(message):
         bot.send_message(message.chat.id, text)
     else:
         bot.reply_to(message, 'Ты не master, поэтому недостоин это делать')
+
+
+@bot.message_handler(commands=['rofl'])
+def rofl(message):
+    if items_using.get_item(get_message_data(message, message.chat.id), 'Сборник анекдотов'):
+        with open('rofls.json', 'r', encoding='utf-8') as file:
+            base = json.load(file)['rofls']
+        bot.reply_to(message, choice(base))
+    else:
+        bot.reply_to(message, 'У тебя нет сборника анекдотов')
 
 
 #GAMES

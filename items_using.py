@@ -1,8 +1,8 @@
 from social_credits import check_user
 from system import load_base
-def get_master(user):
+def get_item(user, item):
     check_user(user)
     base = load_base(user['chat_id'])
 
-    if ('Dungeon master' or 'Full master') in base[user['id']]['inventory']:
+    if item in base[user['id']]['inventory']:
         return True
