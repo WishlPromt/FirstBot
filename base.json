@@ -339,5 +339,13 @@
         "answers": [
             "Иди нахуй, @just_zhenya_public"
         ]
+    },
+    "suck": {
+        "messages": [
+            "сосал", "соси", "сосни", "suck"
+        ],
+        "answers": [
+            "соси", "suck some dick"
+        ]
     }
 }

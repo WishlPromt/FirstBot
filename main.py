@@ -26,6 +26,11 @@ def load_chats_base():
         base = json.load(file)
         return base
 
+def save_chats_base(chat_id, base):
+    full_base = load_chats_base()
+    with open('chats_base.json', 'w', encoding='utf-8') as file:
+        full_base[chat_id] = base
+        json.dump(full_base, file, indent=4, ensure_ascii=False)
 
 #VARIABLES
 games = None
@@ -80,10 +85,10 @@ def help(message):
                           '/collect\n'
                           '/shop\n'
                           '/balance\n'
-                          '/profile'
+                          '/profile\n'
                           '/equip\n'
-                          '/show_cards'
-                          '/show_card'
+                          '/show_cards\n'
+                          '/show_card\n'
                           'Мини-игры:\n'
                           '/russian_roulette\n', parse_mode='html')
 
@@ -114,9 +119,11 @@ def collect_help(message):
                           '<b>Лудоман</b> - от <b>-25</b> до <b>60</b>\n'
                           '<b>Любитель аниме-тянок</b> - <b>10</b> - <i>Добавляет 25% карточек в паки</i>\n'
                           '<b>Motivated</b> - <b>10</b> - <i>Увеличивает стоимость продажи карт на 50%</i>\n'
-                          '<b>Палка-уебалка</b> - <b>45</b>\n'
-                          '<b>Липовый модератор</b> - <b>100</b> - <i>Уменьшает время между использованием /work и /collect на 25%</i>\n'
-                          '<b>Boss of the gym</b> - <b>150</b> - <i>/work дает на 50% кредитов больше</i>\n', parse_mode='html')
+                          '<b>Палка-уебалка</b> - <b>40</b> - <i>Позволяет пиздить юзеров - /uebat</i>\n'
+                          '<b>Липовый модератор</b> - <b>50</b> - <i>Уменьшает время между использованием /work и /collect на 25%</i>\n'
+                          '<b>Boss of the gym</b> - <b>100</b> - <i>/work дает на 50% кредитов больше</i>\n'
+                          '<b>Full master</b> - <b>50</b> - <i>Позволяет получать 300 кредитов за /fisting</i>',
+                 parse_mode='html')
 
 
 @bot.message_handler(commands=['info'])
@@ -547,7 +554,7 @@ def open_cards_pack(message):
     if packs[4]:
         markup.add(btn_dungeon_pack)
 
-    if packs == [False, False, False, False]:
+    if packs == [False, False, False, False, False]:
         bot.reply_to(message, 'У тебя нет паков, купи их в /shop')
 
     else:
@@ -678,22 +685,54 @@ def equip_item(message):
 @bot.message_handler(commands=['fisting'])
 def fisting(message):
     get_master = False
+    user = get_message_data(message, message.chat.id)
     for role in ['Dungeon master', 'Full master']:
         if items_using.get_item(get_message_data(message, message.chat.id), role):
             get_master = True
 
     if get_master:
-        master = get_message_data(message, message.chat.id)['username']
+
+        master = '@'+user['username']
         if message.reply_to_message:
-            slave = get_message_data(message.reply_to_message, message.chat.id)['username']
+            slave = '@'+get_message_data(message.reply_to_message, message.chat.id)['username']
         else:
             slave = 'Воздух'
+
+        lock_time = items_using.get_time(user, 'fisting')
         text = choice([f'{master} сделал фистинг {slave}',
-                      f'{slave} был пронзен мечом {master}',
-                      f'{master} посвятил {slave} в Dungeon Master\'ы'])
+                       f'{slave} был пронзен мечом {master}',
+                       f'{master} посвятил {slave} в Boys'])
+        if not lock_time:
+            if slave != 'Воздух':
+                text += ' за 300 bucks'
+                add_credits(user, 300)
+                items_using.set_time(user, 'fisting')
+            else:
+                text += '\nМастер должен получить деньги за свою работу, однако воздух не платит'
+        else:
+            text += f'\n slave\'у повезло, ведь fisting у master\'а станет платным только {lock_time}'
         bot.send_message(message.chat.id, text)
+
     else:
         bot.reply_to(message, 'Ты не master, поэтому недостоин это делать')
+
+
+@bot.message_handler(commands=['uebat'])
+def uebat(message):
+    if message.reply_to_message:
+        target = '@'+message.reply_to_message.from_user.username
+    else:
+        target = 'Воздух'
+    status = items_using.get_item(get_message_data(message, message.chat.id), 'Палка-уебалка')
+    username = '@'+message.from_user.username
+
+    if status:
+        answers = [f'{username} уебал палкой {target}',
+                   f'{username} въебал {target}',
+                   f'{target} получил пизды от {username}']
+        bot.send_message(message.chat.id, choice(answers))
+    else:
+        bot.reply_to(message, 'У тебя нет палки-уебалки')
 
 
 @bot.message_handler(commands=['rofl'])
@@ -835,6 +874,41 @@ def end_game(message):
         bot.reply_to(message, 'У тебя нет прав')
 
 
+def new_chat(data):
+    keys = {
+        'owner': data.from_user.id,
+        'title': data.chat.title,
+        'admins': {},
+        'banwords': [],
+        'ban_blacklist': [],
+        'banned_users': {}
+    }
+    return keys
+
+
+#Chat settings
+@bot.message_handler(commands=['register_chat'])
+def register_chat(message):
+    base = load_chats_base()
+    user_status = bot.get_chat_member(message.chat.id, message.from_user.id).status
+
+    if user_status == 'creator':
+        chat_id = str(message.chat.id)
+        if chat_id not in base:
+            try:
+                save_chats_base(chat_id, new_chat(message))
+                bot.reply_to(message, 'Ваш чат зарегистрирован')
+            except:
+                bot.reply_to(message, 'Бля, ошибка, напиши этому долбоебу: @WishlPromt')
+        else:
+            bot.reply_to(message, 'Чат уже зарегистрирован')
+
+
+@bot.message_handler(commands=['settings'])
+def settings(message):
+    pass
+
+
 #Чат
 @bot.message_handler(func=lambda message: True)
 def chat(message):
@@ -871,10 +945,15 @@ def chat(message):
 
 @bot.message_handler(content_types=['new_chat_members'])
 def new_member(message):
-    greetings = [f'Welcome to the club, buddy!',
-                 f'Приветствуем в этом чате! Мы тебя забулим, не против?',
-                 f'Дарова!']
-    bot.reply_to(message, choice(greetings))
+    if message.from_user.id != 7179420529:
+        greetings = [f'Welcome to the club, buddy!',
+                     f'Приветствуем в этом чате! Мы тебя забулим, не против?',
+                     f'Дарова!']
+        bot.reply_to(message, choice(greetings))
+    else:
+        bot.send_message(message.chat.id, 'Привет я КабачокБот!\n'
+                                          'Маленький бот для групп, с помощью меня вы можете ее модерировать, а также развлекаться, например работать(/economy_help)\n'
+                                          'Если есть вопросы - /help')
 
 
 if __name__ == '__main__':

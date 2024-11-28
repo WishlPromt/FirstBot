@@ -19,7 +19,13 @@ all_parameters = {'credits': 0,
                   'new_cards': [],
                   'cur_card': 0,
                   'max_pages': 1,
-                  'selled_cards': []}
+                  'selled_cards': [],
+                  'special_time':
+                      {
+                          'fisting': 0,
+                          'uebat': 0
+                      }
+                  }
 
 
 def new_id(user: dict):
@@ -51,7 +57,12 @@ def new_id(user: dict):
                         'new_cards': [],
                         'cur_card': 0,
                         'max_pages': 1,
-                        'selled_cards': []
+                        'selled_cards': [],
+                        'special_time':
+                            {
+                                'fisting': 0,
+                                'uebat': 0
+                            }
                         }
     save_base(base, user['chat_id'])
 
@@ -139,7 +150,7 @@ def collect(user: dict):
 
                 collects += f'<b>{item}</b>: <b>{item_collect}</b> кредитов\n'
 
-        lock = 28800
+        lock = 43200
         if 'Липовый модератор' in base[id]['inventory']:
             lock -= int(lock / 100 * 25)
         base = load_base(user['chat_id'])
@@ -161,7 +172,6 @@ def balance(user: dict):
 
 def dashboard(chat_id):
     base = load_base(chat_id)
-    board = 'Топ лучших пользователей чата\n'
     unsorted_users = {}
 
     for user in base.keys():

@@ -2,8 +2,8 @@
     "-1002441251117": {
         "5105507379": {
             "username": "WishlPromt",
-            "credits": 1106,
-            "time": 1732531782,
+            "credits": 969,
+            "time": 1732784135,
             "inventory": [
                 "Костюм горничной",
                 "Пак карточек",
@@ -16,11 +16,12 @@
                 "Motivation pack",
                 "Лудоман",
                 "Любитель аниме-тянок",
-                "Сборник анекдотов"
+                "Сборник анекдотов",
+                "Boss of the gym"
             ],
             "favorite_item": "Шампунь Жумайсынба",
-            "role": "Motivated",
-            "favorite_card": "legendary/1606.jpg",
+            "role": "Boss of the gym",
+            "favorite_card": "epic/e5039.jpg",
             "cards_packs": {
                 "Пак карточек": 0,
                 "Коробка карточек": 0,
@@ -216,11 +217,9 @@
                     "ra090.jpg",
                     "ra589.jpeg",
                     "ra409.png",
-                    "ra178.png",
                     "ra309.jpg",
                     "ra589.jpeg",
                     "ra534.png",
-                    "ra178.png",
                     "ra589.jpeg",
                     "ra123.jpeg",
                     "ra309.jpg",
@@ -236,7 +235,6 @@
                     "ra408.png",
                     "ra309.jpg",
                     "ra309.jpg",
-                    "ra386.jpeg",
                     "ra534.png",
                     "ra367.jpg",
                     "ra409.png",
@@ -244,19 +242,14 @@
                     "ra789.jpeg",
                     "ra367.jpg",
                     "ra589.jpeg",
-                    "ra492.png",
                     "ra091.jpg",
                     "ra502.png",
                     "ra109.png",
                     "ra835.jpg",
                     "ra421.jpg",
                     "ra356.png",
-                    "ra380.png",
-                    "ra376.jpg",
-                    "ra460.png",
                     "ra356.png",
                     "ra100.jpg",
-                    "ra460.png",
                     "ra356.png",
                     "ra460.png",
                     "ra589.jpeg",
@@ -275,11 +268,9 @@
                     "ra408.png",
                     "ra460.png",
                     "ra376.jpg",
-                    "ra257.jpg",
                     "ra386.jpeg",
                     "ra257.jpg",
                     "ra367.jpg",
-                    "ra187.jpeg",
                     "ra109.png",
                     "ra367.jpg",
                     "ra090.jpg",
@@ -313,42 +304,78 @@
                     "ra390.png",
                     "ra178.png",
                     "ra421.jpg",
-                    "ra44698.jpg"
+                    "ra44698.jpg",
+                    "ra376.jpg",
+                    "ra178.png",
+                    "ra257.jpg",
+                    "ra178.png",
+                    "ra492.png",
+                    "ra386.jpeg",
+                    "ra380.png",
+                    "ra187.jpeg",
+                    "ra460.png",
+                    "ra460.png",
+                    "ra178.png",
+                    "ra091.jpg",
+                    "ra367.jpg",
+                    "ra408.png",
+                    "ra091.jpg",
+                    "ra390.png",
+                    "ra390.png",
+                    "ra386.jpeg",
+                    "ra835.jpg",
+                    "ra257.jpg",
+                    "ra502.png"
                 ],
                 "Эпические": [
                     "e567.jpg",
-                    "e567.jpg",
-                    "e567.jpg",
                     "e569.jpeg",
-                    "e234.jpeg"
+                    "e5039.jpg",
+                    "e567.jpg",
+                    "e567.jpg",
+                    "e567.jpg"
                 ],
                 "Легендарные": [
-                    "Billy Herrington.jpg",
-                    "1606.jpg"
+                    "Billy_Herrington.jpg",
+                    "1606.jpg",
+                    "Billy_Herrington.jpg",
+                    "675.jpg"
                 ],
                 "Секретные": []
             },
             "new_cards": [
-                "rare/ra091.jpg",
-                "rare/ra090.jpg",
-                "rare/ra091.jpg",
-                "epic/e234.jpeg",
-                "rare/ra386.jpeg",
-                "rare/ra789.jpeg",
-                "rare/ra390.png",
+                "epic/e567.jpg",
                 "rare/ra178.png",
-                "rare/ra421.jpg"
+                "rare/ra091.jpg",
+                "legendary/Billy_Herrington.jpg",
+                "rare/ra367.jpg",
+                "rare/ra408.png",
+                "rare/ra091.jpg",
+                "rare/ra390.png",
+                "rare/ra390.png",
+                "rare/ra386.jpeg",
+                "rare/ra835.jpg",
+                "legendary/675.jpg",
+                "rare/ra257.jpg",
+                "rare/ra502.png",
+                "epic/e567.jpg"
             ],
-            "cur_card": 4,
+            "cur_card": 14,
             "max_pages": 3,
             "iterator_of_message": 5772,
-            "collect_time": 1732540351,
-            "selled_cards": []
+            "collect_time": 1732820137,
+            "selled_cards": [
+                14
+            ],
+            "special_time": {
+                "fisting": 1733044484,
+                "uebat": 0
+            }
         },
         "5422828618": {
             "username": "Mzmz640404",
-            "credits": 404,
-            "time": 1732531823,
+            "credits": 804,
+            "time": 1732787862,
             "inventory": [
                 "Вилка",
                 "Шампунь Жумайсынба",
@@ -359,7 +386,9 @@
                 "Boss of the gym",
                 "Dungeon pack",
                 "Клоун",
-                "Сборник анекдотов"
+                "Сборник анекдотов",
+                "Липовый модератор",
+                "Full Master"
             ],
             "favorite_item": "Шампунь Жумайсынба",
             "role": "Boss of the gym",
@@ -522,7 +551,16 @@
                     "ra178.png",
                     "ra356.png",
                     "ra408.png",
-                    "ra534.png"
+                    "ra534.png",
+                    "ra090.jpg",
+                    "ra789.jpeg",
+                    "ra376.jpg",
+                    "ra386.jpeg",
+                    "ra078.jpg",
+                    "ra090.jpg",
+                    "ra367.jpg",
+                    "ra100.jpg",
+                    "ra789.jpeg"
                 ],
                 "Эпические": [
                     "e234.jpeg",
@@ -534,37 +572,40 @@
                     "e358.jpeg",
                     "e245.jpeg",
                     "e567.jpg",
-                    "e5039.jpg"
+                    "e5039.jpg",
+                    "e490.jpeg",
+                    "e237.png"
                 ],
                 "Легендарные": [
                     "Billy_Herrington.jpg",
+                    "675.jpg",
                     "675.jpg"
                 ],
                 "Секретные": []
             },
             "new_cards": [
-                "rare/ra178.png",
-                "epic/e358.jpeg",
-                "rare/ra1937.jpg",
-                "epic/e245.jpeg",
-                "epic/e567.jpg",
-                "rare/ra367.jpg",
+                "rare/ra090.jpg",
+                "rare/ra789.jpeg",
+                "epic/e490.jpeg",
                 "legendary/675.jpg",
-                "rare/ra178.png",
-                "rare/ra356.png",
-                "epic/e5039.jpg",
-                "rare/ra408.png",
-                "rare/ra534.png"
+                "rare/ra376.jpg",
+                "rare/ra386.jpeg",
+                "rare/ra078.jpg",
+                "epic/e237.png",
+                "rare/ra090.jpg",
+                "rare/ra367.jpg",
+                "rare/ra100.jpg",
+                "rare/ra789.jpeg"
             ],
             "cur_card": 11,
             "iterator_of_message": 4741,
-            "collect_time": 1732540401,
-            "max_pages": 3,
+            "collect_time": 1732808778,
+            "max_pages": 2,
             "selled_cards": []
         },
         "1234733553": {
             "username": "ultras567",
-            "credits": 271,
+            "credits": 285,
             "time": 1732387231,
             "inventory": [
                 "Пак карточек",
@@ -623,13 +664,14 @@
                 "rare/ra078.jpg"
             ],
             "cur_card": 0,
-            "collect_time": 1732282841,
-            "max_pages": 4
+            "collect_time": 1732653412,
+            "max_pages": 4,
+            "selled_cards": []
         },
         "5817779536": {
             "username": "Артем",
-            "credits": 81,
-            "time": 1731496704,
+            "credits": 115,
+            "time": 1732546667,
             "inventory": [
                 "Пак карточек"
             ],
@@ -652,7 +694,8 @@
             "new_cards": [],
             "cur_card": 0,
             "collect_time": 1732037093,
-            "max_pages": 5
+            "max_pages": 5,
+            "selled_cards": []
         },
         "6586917192": {
             "username": "pfpfbw",
@@ -679,8 +722,8 @@
         },
         "6638790681": {
             "username": "Lalsans1111",
-            "credits": 393,
-            "time": 1732507145,
+            "credits": 616,
+            "time": 1732789962,
             "inventory": [
                 "Шампунь Жумайсынба",
                 "Лудоман"
@@ -704,7 +747,8 @@
             "new_cards": [],
             "cur_card": 0,
             "collect_time": 1732423224,
-            "max_pages": 5
+            "max_pages": 5,
+            "selled_cards": []
         },
         "5722997773": {
             "username": "akaza096",
@@ -734,13 +778,15 @@
         },
         "6891646558": {
             "username": "darhasira",
-            "credits": 750,
-            "time": 1732532031,
+            "credits": 426,
+            "time": 1732729734,
             "inventory": [
                 "Пак карточек",
                 "Липовый модератор",
                 "Шампунь Жумайсынба",
-                "Motivated"
+                "Motivated",
+                "Палка-уебалка",
+                "Dungeon master"
             ],
             "cards_packs": {
                 "Пак карточек": 0,
@@ -750,7 +796,7 @@
             },
             "favorite_item": "Шампунь Жумайсынба",
             "role": "Липовый модератор",
-            "favorite_card": "Нет карты",
+            "favorite_card": "regular/re004.jpg",
             "cards": {
                 "Обычные": [
                     "re019.jpg",
@@ -774,7 +820,27 @@
                     "re406.jpg",
                     "re127.jpeg",
                     "re406.jpg",
-                    "re782.png"
+                    "re782.png",
+                    "re209.jpg",
+                    "re401.png",
+                    "re401.png",
+                    "re385.jpg",
+                    "re962.png",
+                    "re289.jpeg",
+                    "re962.png",
+                    "re401.png",
+                    "re782.jpeg",
+                    "re580.jpg",
+                    "re045.jpg",
+                    "re004.jpg",
+                    "re127.jpeg",
+                    "re589.jpeg",
+                    "re385.jpg",
+                    "re496.png",
+                    "re523.jpg",
+                    "re275.jpeg",
+                    "re127.jpeg",
+                    "re097.jpeg"
                 ],
                 "Редкие": [
                     "ra109.png",
@@ -782,30 +848,35 @@
                     "ra109.png",
                     "ra409.png",
                     "ra534.png",
-                    "ra589.jpeg"
+                    "ra589.jpeg",
+                    "ra789.jpeg",
+                    "ra100.jpg"
                 ],
                 "Эпические": [
-                    "e569.jpeg"
+                    "e569.jpeg",
+                    "e237.png"
                 ],
-                "Легендарные": [],
+                "Легендарные": [
+                    "675.jpg"
+                ],
                 "Секретные": []
             },
             "new_cards": [
-                "regular/re378.png",
-                "regular/re406.jpg",
+                "epic/e237.png",
+                "regular/re523.jpg",
+                "regular/re275.jpeg",
                 "regular/re127.jpeg",
-                "regular/re406.jpg",
-                "rare/ra589.jpeg",
-                "regular/re782.png"
+                "regular/re097.jpeg"
             ],
-            "cur_card": 1,
-            "collect_time": 1732519597,
-            "max_pages": 4
+            "cur_card": 4,
+            "collect_time": 1732746698,
+            "max_pages": 3,
+            "selled_cards": []
         },
         "1336049480": {
             "username": "Rimura_tempest3919",
-            "credits": 84,
-            "time": 1732170858,
+            "credits": 166,
+            "time": 1732725261,
             "inventory": [
                 "Пак карточек",
                 "Костюм горничной",
@@ -898,7 +969,10 @@
                     "re523.jpg",
                     "re580.jpg",
                     "re209.jpg",
-                    "re270.jpg"
+                    "re270.jpg",
+                    "re734.png",
+                    "re962.png",
+                    "re580.jpg"
                 ],
                 "Редкие": [
                     "ra408.png",
@@ -923,7 +997,9 @@
                     "ra309.jpg",
                     "ra390.png",
                     "ra460.png",
-                    "ra44698.jpg"
+                    "ra44698.jpg",
+                    "ra367.jpg",
+                    "ra091.jpg"
                 ],
                 "Эпические": [
                     "e234.jpeg"
@@ -934,44 +1010,20 @@
                 "Секретные": []
             },
             "new_cards": [
-                "regular/re733.jpg",
-                "regular/re523.jpg",
+                "regular/re734.png",
+                "rare/ra367.jpg",
+                "regular/re962.png",
                 "regular/re580.jpg",
-                "regular/re209.jpg",
-                "regular/re270.jpg",
-                "rare/ra44698.jpg"
+                "rare/ra091.jpg"
             ],
-            "cur_card": 5,
+            "cur_card": 0,
             "iterator_of_message": 5619,
-            "collect_time": 1732192827,
-            "max_pages": 4
+            "collect_time": 1732643087,
+            "max_pages": 4,
+            "selled_cards": []
         },
         "1355067969": {
             "username": "skymalll111",
-            "credits": 0,
-            "time": 0,
-            "inventory": [],
-            "cards_packs": {
-                "Пак карточек": 0,
-                "Коробка карточек": 0,
-                "Anime pack": 0,
-                "Motivation pack": 0
-            },
-            "favorite_item": "Нет предмета",
-            "role": "Нет роли",
-            "favorite_card": "Нет карты",
-            "cards": {
-                "Обычные": [],
-                "Редкие": [],
-                "Эпические": [],
-                "Легендарные": [],
-                "Секретные": []
-            },
-            "new_cards": [],
-            "cur_card": 0
-        },
-        "6890556633": {
-            "username": "IM_CHIKATILO",
             "credits": 0,
             "time": 0,
             "inventory": [],
@@ -1047,15 +1099,16 @@
         },
         "5716944509": {
             "username": "Aaposxalko",
-            "credits": 186,
-            "time": 1732533808,
-            "collect_time": 1732553970,
+            "credits": 5,
+            "time": 1732783573,
+            "collect_time": 1732819580,
             "inventory": [
                 "Костюм горничной",
                 "Пак карточек",
                 "Вилка",
                 "Клоун",
-                "Сборник анекдотов"
+                "Сборник анекдотов",
+                "Dungeon master"
             ],
             "cards_packs": {
                 "Пак карточек": 2,
@@ -1064,7 +1117,7 @@
                 "Motivation pack": 0
             },
             "favorite_item": "Нет предмета",
-            "role": "Нет роли",
+            "role": "Dungeon master",
             "favorite_card": "rare/ra090.jpg",
             "cards": {
                 "Обычные": [
@@ -1086,7 +1139,8 @@
                 "rare/ra090.jpg"
             ],
             "cur_card": 0,
-            "max_pages": 4
+            "max_pages": 4,
+            "selled_cards": []
         },
         "7179420529": {
             "username": "KabachokBot",
@@ -1115,8 +1169,8 @@
         },
         "6809090019": {
             "username": "EbanibeZdar69696969",
-            "credits": 640,
-            "time": 1732533230,
+            "credits": 1013,
+            "time": 1732789582,
             "collect_time": 0,
             "inventory": [
                 "Пак карточек",
@@ -1149,7 +1203,8 @@
             },
             "new_cards": [],
             "cur_card": 0,
-            "max_pages": 4
+            "max_pages": 4,
+            "selled_cards": []
         },
         "528677877": {
             "username": "just_zhenya_bot",
@@ -1232,7 +1287,7 @@
     "-1002307722923": {
         "5105507379": {
             "username": "WishlPromt",
-            "credits": 4298,
+            "credits": 6398,
             "time": 1732369047,
             "collect_time": 1732049843,
             "inventory": [
@@ -1244,7 +1299,8 @@
                 "Motivated",
                 "Motivation pack",
                 "Любитель аниме-тянок",
-                "Anime pack"
+                "Anime pack",
+                "Dungeon master"
             ],
             "cards_packs": {
                 "Пак карточек": 0,
@@ -1336,6 +1392,68 @@
             ],
             "cur_card": 7,
             "max_pages": 4,
+            "selled_cards": [],
+            "special_time": {
+                "fisting": 1732871290,
+                "uebat": 0
+            }
+        }
+    },
+    "-1001635860480": {
+        "1087968824": {
+            "username": "GroupAnonymousBot",
+            "credits": 40,
+            "time": 1732709395,
+            "collect_time": 0,
+            "inventory": [],
+            "cards_packs": {
+                "Пак карточек": 0,
+                "Коробка карточек": 0,
+                "Anime pack": 0,
+                "Motivation pack": 0,
+                "Dungeon pack": 0
+            },
+            "favorite_item": "Нет предмета",
+            "role": "Нет роли",
+            "favorite_card": "Нет карты",
+            "cards": {
+                "Обычные": [],
+                "Редкие": [],
+                "Эпические": [],
+                "Легендарные": [],
+                "Секретные": []
+            },
+            "new_cards": [],
+            "cur_card": 0,
+            "max_pages": 1,
+            "selled_cards": []
+        },
+        "6890556633": {
+            "username": "IM_CHIKATILO",
+            "credits": 31,
+            "time": 1732711052,
+            "collect_time": 0,
+            "inventory": [],
+            "cards_packs": {
+                "Пак карточек": 0,
+                "Коробка карточек": 0,
+                "Anime pack": 0,
+                "Motivation pack": 0,
+                "Dungeon pack": 0
+            },
+            "favorite_item": "Нет предмета",
+            "role": "Нет роли",
+            "favorite_card": "Нет карты",
+            "cards": {
+                "Обычные": [],
+                "Редкие": [],
+                "Эпические": [],
+                "Легендарные": [],
+                "Секретные": []
+            },
+            "new_cards": [],
+            "cur_card": 0,
+            "max_pages": 1,
             "selled_cards": []
         }
     }

@@ -12,9 +12,9 @@
   "Motivated": [750, "I am the storm that is approaching.\n Увеличивает стоимость продажи карточек на 50%", "Роль", 10, "standart"],
   "Motivation pack": [350, "Пак коллекционных карточек, имеет повышенные шансы выпадения и секретные карточки.\n Содержит 12 карт\nОткрыть-/open_pack", "Предмет", "None", "Motivated"],
   "Коробка карточек": [750, "Коробка коллекционных карточек, в нем 150-200 карт. \nВы сможете открыть его /open_card", "Предмет", "None", "standart"],
-  "Палка-уебалка": [800, "Можно кого-нибудь ударить ей", "Предмет", 45, "standart"],
-  "Липовый модератор": [1000, "Не приняли заявку.\nУменьшает время между /work и /collect на 25%", "Роль", 100, "standart"],
+  "Палка-уебалка": [800, "Можно кого-нибудь ударить ей", "Предмет", 40, "standart"],
+  "Липовый модератор": [1000, "Не приняли заявку.\nУменьшает время между /work и /collect на 25%", "Роль", 50, "standart"],
   "Dungeon pack": [350, "Пак коллекционных карточек, имеет повышенные шансы выпадения и секретные карточки.\n Содержит 12 карт\nОткрыть-/open_pack", "Предмет", "None", "Boss of the gym"],
-  "Boss of the gym": [1500, "What the hell you do doing?\n/work дает на 50% больше кредитов", "Роль", 150, "standart"],
-  "Full Master": [1000, "Fisting in three hundred bucks - /fisting", "Роль", 100, "Boss of the gym"]
+  "Boss of the gym": [1500, "What the hell you do doing?\n/work дает на 50% больше кредитов", "Роль", 100, "standart"],
+  "Full Master": [1000, "Fisting in three hundred bucks - /fisting", "Роль", 50, "Boss of the gym"]
 }

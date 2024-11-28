@@ -1,7 +1,20 @@
 {
-  "-1002441251117": {
-    "ban_blacklist": ["5422828618"],
-    "banwords":  [],
-    "banned_users": {}
-  }
+    "-1002441251117": {
+        "owner": 5105507379,
+        "title": "Коммуникабельные бабуины",
+        "admins": {},
+        "ban_blacklist": [
+            "5422828618"
+        ],
+        "banwords": [],
+        "banned_users": {}
+    },
+    "-1002307722923": {
+        "owner": 5105507379,
+        "title": "Полигон ботов",
+        "admins": {},
+        "banwords": [],
+        "ban_blacklist": [],
+        "banned_users": {}
+    }
 }
