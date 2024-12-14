@@ -22,11 +22,11 @@ def get_time(user, command):
     return 'error'
 
 
-def set_time(user, command):
+def set_time(user, command, days):
     check_user(user)
     base = load_base(user['chat_id'])
     id = user['id']
 
     if command in base[id]['special_time']:
-        base[id]['special_time'][command] = user['datetime'] + 259200
+        base[id]['special_time'][command] = user['datetime'] + 86400 * days
         save_base(base, user['chat_id'])

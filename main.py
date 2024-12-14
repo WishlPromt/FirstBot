@@ -495,7 +495,7 @@ def profile(message):
         bot.reply_to(message, profile[0], parse_mode='html')
 
 
-@bot.message_handler(commands=['work'])
+@bot.message_handler(commands=[])
 def work_credit(message):
     user = get_message_data(message, message.chat.id)
     bot.reply_to(message, f'<b>{user["username"]}</b>, {work(user)}', parse_mode='html')
@@ -561,7 +561,7 @@ def open_cards_pack(message):
         bot.reply_to(message, 'Открыть паки', reply_markup=markup)
 
 
-@bot.message_handler(commands=['shop'])
+@bot.message_handler(commands=[])
 def shop(message, page=1):
     check_user(get_message_data(message, message.chat.id))
 
@@ -651,6 +651,8 @@ def preposition_card(message):
                 print(new_file)
                 new_file.write(downloaded_file)
 
+                bot.reply_to(message, 'Карточка отправлена')
+
 
 @bot.message_handler(commands=['show_prep'])
 def show_prep(message):
@@ -686,7 +688,7 @@ def equip_item(message):
 def fisting(message):
     get_master = False
     user = get_message_data(message, message.chat.id)
-    for role in ['Dungeon master', 'Full master']:
+    for role in ['Dungeon master', 'Full Master']:
         if items_using.get_item(get_message_data(message, message.chat.id), role):
             get_master = True
 
@@ -702,15 +704,16 @@ def fisting(message):
         text = choice([f'{master} сделал фистинг {slave}',
                        f'{slave} был пронзен мечом {master}',
                        f'{master} посвятил {slave} в Boys'])
-        if not lock_time:
-            if slave != 'Воздух':
-                text += ' за 300 bucks'
-                add_credits(user, 300)
-                items_using.set_time(user, 'fisting')
+        if items_using.get_item(user, 'Full Master'):
+            if not lock_time:
+                if slave != 'Воздух':
+                    text += ' за 300 bucks'
+                    add_credits(user, 300)
+                    items_using.set_time(user, 'fisting')
+                else:
+                    text += '\nМастер должен получить деньги за свою работу, однако воздух не платит'
             else:
-                text += '\nМастер должен получить деньги за свою работу, однако воздух не платит'
-        else:
-            text += f'\n slave\'у повезло, ведь fisting у master\'а станет платным только {lock_time}'
+                text += f'\n slave\'у повезло, ведь fisting у master\'а станет платным только {lock_time}'
         bot.send_message(message.chat.id, text)
 
     else:
@@ -719,18 +722,38 @@ def fisting(message):
 
 @bot.message_handler(commands=['uebat'])
 def uebat(message):
+    user = get_message_data(message, message.chat.id)
     if message.reply_to_message:
-        target = '@'+message.reply_to_message.from_user.username
+        try:
+            target = '@'+get_message_data(message.reply_to_message, message.chat.id)['username']
+        except:
+            target = '@' + message.reply_to_message.from_user.first_name
     else:
         target = 'Воздух'
-    status = items_using.get_item(get_message_data(message, message.chat.id), 'Палка-уебалка')
-    username = '@'+message.from_user.username
+    status = items_using.get_item(user, 'Палка-уебалка', 3)
+    username = '@'+user['username']
+
 
     if status:
-        answers = [f'{username} уебал палкой {target}',
+        text = choice([f'{username} уебал палкой {target}',
                    f'{username} въебал {target}',
-                   f'{target} получил пизды от {username}']
-        bot.send_message(message.chat.id, choice(answers))
+                   f'{target} получил пизды от {username}'])
+        if target != 'Воздух':
+            lock_time = items_using.get_time(user, 'uebat')
+            if not lock_time:
+                text += f'\n{target} отправляется в мут на 2 минуты'
+                try:
+                    bot.restrict_chat_member(message.chat.id,
+                                             message.reply_to_message.from_user.id,
+                                             until_date=time.time() + 120)
+                    items_using.set_time(user, 'uebat', 1)
+                except:
+                    text += f'\nНо у меня не получается его замутить, поэтому не'
+                items_using.set_time(user, 'uebat')
+            else:
+                text += f'\nМутить палка-уебалка сможет только в {lock_time}'
+
+        bot.send_message(message.chat.id, text)
     else:
         bot.reply_to(message, 'У тебя нет палки-уебалки')
 

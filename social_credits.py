@@ -182,6 +182,20 @@ def dashboard(chat_id):
                 for item in base[user]['inventory']:
                     unsorted_users[user] += items[item][0]
 
+            if base[user]['cards']:
+                for rare in base[user]['cards']:
+                    for card in base[user]['cards'][rare]:
+                        if rare == 'Обычные':
+                            unsorted_users[user] += 1
+                        if rare == 'Редкие':
+                            unsorted_users[user] += 3
+                        if rare == 'Эпические':
+                            unsorted_users[user] += 5
+                        if rare == 'Легендарные':
+                            unsorted_users[user] += 15
+                        if rare == 'Секретные':
+                            unsorted_users[user] += 50
+
     users = sorted(unsorted_users.items(), key=lambda item: item[1], reverse=True)
     top_users = []
 
